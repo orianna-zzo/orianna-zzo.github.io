@@ -8,17 +8,54 @@
 		<div style="position:absolute; padding-top:12px; z-index:100; width:100%">
 			{% include header-nav.html %}
 		</div>
-		<div style="position:absolute; bottom=0px; right:0px; z-index:0">	
-			{% include keynote.html %}    
-		</div>
-		<div style="position:absolute; z-index:10; margin-right:auto; margin-left:auto; width:100%; margin-top:250px;">
+		
+		<!-- <div style="position:absolute; z-index:10; margin-right:auto; margin-left:auto; width:100%; margin-top:250px;">
 			<p style="font-family: SourceCodePro-Black, rockwell_bold, Verdana, Arial, sans-serif; font-size:70px; color:white; text-align:center;">
 				“Hello World!”
 			</p>
 			<p style="font-family:TrajanPro3, SourceCodePro-Black, rockwell_bold, Verdana, Arial, sans-serif; font-size:16px; color:white; text-align:center; margin-top:10px; margin-right:20px;">
 				~ Orianna is Here ~
 			</p>
+		</div> -->
 		
+		<div id="container">
+			<div id="skippr">
+				<div style="background-image: url(/images/home/2015-01-22.jpg)">
+					{% include keynote_word.html %}
+				</div>
+				<div style="background-image: url(/images/home/2014-03-09.jpg)">
+					{% include keynote_word.html %}
+				</div>
+				<div style="background-image: url(/images/home/2014-12-13.jpg)">
+					{% include keynote_word.html %}
+				</div>
+				<div style="background-image: url(/images/home/2015-02-11.jpg)">
+					{% include keynote_word.html %}
+				</div>
+				<div style="background-image: url(/images/home/2015-02-21.jpg)">
+					{% include keynote_word.html %}
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script src="js/skippr.js"></script>
+		<script>
+			$(function(){
+				$('#skippr').skippr({		
+					transition: 'fade',
+					navType: 'bubble',
+					arrows: true,
+					autoPlay: true,
+					childrenElementType: 'div', 
+					autoPlayDuration: 10000,
+					keyboardOnAlways: true,
+					hidePrevious: false
+				});
+			});
+		</script>
 		
 	</body>
 
