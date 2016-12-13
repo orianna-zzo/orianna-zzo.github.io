@@ -42,10 +42,12 @@ ul, ol, dl, figure,
 /**
  * Images
  */
-img {
+/* img {
     max-width: 100%;
+	height: auto;
     vertical-align: middle;
-}
+	//margin: 1.5em auto 1.6em auto;
+} */
 
 
 
@@ -204,3 +206,84 @@ pre {
         }
     }
 }
+
+/**
+ * Fonts
+ */
+ @font-face {
+  font-family: 'Rockwell-Bold';
+
+  src: url('../fonts/Rockwell/Rockwell-Bold.eot');
+  src: url('../fonts/Rockwell/Rockwell-Bold?#iefix') format('embedded-opentype'), url('../fonts/Rockwell/Rockwell-Bold.woff2') format('woff2'), url('../fonts/Rockwell/Rockwell-Bold.woff') format('woff'), url('../fonts/Rockwell/Rockwell-Bold.ttf') format('truetype'), url('../fonts/Rockwell/Rockwell-Bold.svg#Rockwell-Bold') format('svg');
+}
+
+@font-face {
+  font-family: 'SourceCodePro-Black';
+
+  src: url('../fonts/SourceCodePro/SourceCodePro-Black.eot');
+  src: url('../fonts/SourceCodePro/SourceCodePro-Black?#iefix') format('embedded-opentype'), url('../fonts/SourceCodePro/SourceCodePro-Black.woff2') format('woff2'), url('../fonts/SourceCodePro/SourceCodePro-Black.woff') format('woff'), url('../fonts/SourceCodePro/SourceCodePro-Black.ttf') format('truetype'), url('../fonts/SourceCodePro/SourceCodePro-Black.svg#SourceCodePro-Black') format('svg');
+}
+
+@font-face {
+  font-family: 'TrajanPro3';
+
+  src: url('../fonts/TrajanPro/TrajanPro3.eot');
+  src: url('../fonts/TrajanPro/TrajanPro3?#iefix') format('embedded-opentype'), url('../fonts/TrajanPro/TrajanPro3.woff2') format('woff2'), url('../fonts/TrajanPro/TrajanPro3.woff') format('woff'), url('../fonts/TrajanPro/TrajanPro3.ttf') format('truetype'), url('../fonts/TrajanPro/TrajanPro3.svg#TrajanPro3') format('svg');
+}
+
+@font-face {
+  font-family: 'TrajanPro3-Bold';
+
+  src: url('../fonts/TrajanPro/TrajanPro3-Bold.eot');
+  src: url('../fonts/TrajanPro/TrajanPro3-Bold?#iefix') format('embedded-opentype'), url('../fonts/TrajanPro/TrajanPro3-Bold.woff2') format('woff2'), url('../fonts/TrajanPro/TrajanPro3-Bold.woff') format('woff'), url('../fonts/TrajanPro/TrajanPro3-Bold.ttf') format('truetype'), url('../fonts/TrajanPro/TrajanPro3-Bold.svg#TrajanPro3-Bold') format('svg');
+}
+
+/* @font-face {
+  font-family: 'Lato';
+
+  src: url('../fonts/Lato/Lato.eot');
+  src: url('../fonts/Lato/Lato?#iefix') format('embedded-opentype'), url('../fonts/Lato/Lato.woff2') format('woff2'), url('../fonts/Lato/Lato.woff') format('woff'), url('../fonts/Lato/Lato.ttf') format('truetype'), url('../fonts/Lato/Lato.svg#Lato') format('svg');
+}
+ */
+
+
+/**
+ * Others
+ */
+ .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* .pic-header{
+	background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')
+} */
+
+row-nav {
+	padding-left: 0;
+	margin-bottom: 0;
+	
+	
+	li {
+		position: relative;
+		display: block;
+		list-style: none;
+		float: left;
+		
+		a {
+			position: relative;
+			display: block;
+			padding: 10px 15px;
+		}
+		a:hover {
+			color: $grey-extreme-light;
+		}
+		a:focus {
+			text-decoration: none;
+			background-color: #eee;
+		}
+	}
+}
+

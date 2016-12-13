@@ -25,8 +25,43 @@
 }
 
 .site-nav {
-    float: right;
-    line-height: 56px;
+    //float: right;
+    //line-height: 56px;
+	border:none;
+	//position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	z-index: 3;
+	font-size: 18px;
+	
+	
+	.nav-brand {
+		//font-weight: 800;
+		// materialize
+		color: white;
+		height: 8px;
+		line-height: 8px;
+		&:hover{
+			color: $grey-extreme-light; //rgba(255, 255, 255, 0.8);
+		}
+	}
+	
+	/* row-nav {
+		li {
+			a {
+				text-transform: uppercase;
+				font-size: 12px;
+				line-height: 20px;
+				font-weight: 800;
+				letter-spacing: 1px;
+				// only highlight in mobile
+				&:active{
+					background: rgba(0,0,0,0.12)
+				}
+			}
+		}
+	}
 
     .menu-icon {
         display: none;
@@ -40,9 +75,9 @@
         &:not(:last-child) {
             margin-right: 20px;
         }
-    }
+    } */
 
-    @include media-query($on-palm) {
+    /* @include media-query($on-palm) {
         position: absolute;
         top: 9px;
         right: $spacing-unit / 2;
@@ -89,7 +124,7 @@
             }
             margin-left: 20px;
         }
-    }
+    } */
 }
 
 
@@ -98,10 +133,21 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
+	font-size: 14px;
+    border-top: 1px solid $grey-color-light; //draw a grey line
+	margin-bottom: 0;
     padding: $spacing-unit 0;
+	
+	a{
+		color:#337ab7;
+		// different to @brand-color
+		&:hover,
+		&:focus {
+			color: $brand-color;
+		}
+	}
 }
-
+/*
 .footer-heading {
     font-size: 18px;
     margin-bottom: $spacing-unit / 2;
@@ -161,7 +207,7 @@
         width:         calc(100% - (#{$spacing-unit} / 2));
     }
 }
-
+*/
 
 
 /**
@@ -240,3 +286,5 @@
         }
     }
 }
+
+
