@@ -4,5 +4,7 @@ _site
 .jekyll-metadata
 Gemfile
 Gemfile.lock
-_config.yml
+
 feed.xml
+
+images/home/HomePic

@@ -1,15 +1,61 @@
 ---
-layout: page
+layout: 
 title: Blog
 permalink: /blog/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+<html>
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+  {% include head.html %}
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+	<body style="position: relative">
+		<div style="position:absolute; padding-top:14px; z-index:10000; width:100%; color:black!important;">	
+			
+			<row-nav class="site-nav">
+				<div class="container-fluid" style="font-family:Rockwell-Bold, Verdana, Arial, sans-serif; font-size:18px;">
+
+					<div style="float: left!important;">
+						<!-- Site Title -->
+						<li style="padding-left: 0px;left:0;">
+							<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/">{{ site.title }}</a>
+						</li>
+					</div>
+
+					<!-- Site Navigatior -->
+					<div style="float:right!important; padding-right: 15px;right:0; ">
+						<ul>
+							<li>
+								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/">Home</a>
+							</li>
+							<!-- {% for page in site.pages %}{% if page.title %}
+							<li>
+								<a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+							</li>
+							{% endif %}{% endfor %} -->
+							<li>
+								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/blog">Blog</a>
+							</li>
+							<li>
+								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/moment">Moment</a>
+							</li>
+							<li>
+								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/me">Me</a>
+							</li>
+							<li>
+								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/about">About</a>
+							</li>
+						</ul>
+					   
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container -->
+			</row-nav>
+		</div>
+		
+
+		
+		
+	</body>
+
+</html>
