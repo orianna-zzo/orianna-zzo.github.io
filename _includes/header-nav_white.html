@@ -1,0 +1,40 @@
+<!-- Navigation -->
+<row-nav class="site-nav">
+    <div class="container-fluid" style="font-family: Rockwell-Bold, Verdana, Arial, sans-serif; font-size:18px;">
+
+        <div style="float: left!important;">
+			<!-- Site Title -->
+			<li style="padding-left: 0px;left:0;">
+				<a class="nav-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+			</li>
+        </div>
+
+        <!-- Site Navigatior -->
+        <div style="float:right!important; padding-right: 15px;right:0; ">
+			<ul>
+				<li>
+					<a class="nav-brand" href="{{ site.baseurl }}/">Home</a>
+				</li>
+				<!-- {% for page in site.pages %}{% if page.title %}
+				<li>
+					<a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+				</li>
+				{% endif %}{% endfor %} -->
+				<li>
+					<a class="nav-brand" href="{{ site.baseurl }}/blog">Blog</a>
+				</li>
+				<li>
+					<a class="nav-brand" href="{{ site.baseurl }}/moment">Moment</a>
+				</li>
+				<li>
+					<a class="nav-brand" href="{{ site.baseurl }}/me">Me</a>
+				</li>
+				<li>
+					<a class="nav-brand" href="{{ site.baseurl }}/about">About</a>
+				</li>
+			</ul>
+           
+        </div>        
+    </div>    
+</row-nav>
+

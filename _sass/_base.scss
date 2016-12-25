@@ -8,6 +8,14 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+
 
 
 /**
@@ -238,19 +246,183 @@ pre {
   src: url('../fonts/TrajanPro/TrajanPro3-Bold?#iefix') format('embedded-opentype'), url('../fonts/TrajanPro/TrajanPro3-Bold.woff2') format('woff2'), url('../fonts/TrajanPro/TrajanPro3-Bold.woff') format('woff'), url('../fonts/TrajanPro/TrajanPro3-Bold.ttf') format('truetype'), url('../fonts/TrajanPro/TrajanPro3-Bold.svg#TrajanPro3-Bold') format('svg');
 }
 
+@font-face {
+    font-family: 'Lora-Italic';
+    src: url('../fonts/Lora/Lora-Italic.eot');
+    src: url('../fonts/Lora/Lora-Italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lora/Lora-Italic.woff2') format('woff2'),
+         url('../fonts/Lora/Lora-Italic.woff') format('woff'),
+         url('../fonts/Lora/Lora-Italic.svg#loraitalic') format('svg');
+
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../fonts/Lora/Lora.eot');
+    src: url('../fonts/Lora/Lora.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Lora/Lora.woff2') format('woff2'),
+         url('../fonts/Lora/Lora.woff') format('woff'),
+         url('../fonts/Lora/Lora.svg#loraregular') format('svg');
+
+}
+
 /* @font-face {
   font-family: 'Lato';
 
   src: url('../fonts/Lato/Lato.eot');
-  src: url('../fonts/Lato/Lato?#iefix') format('embedded-opentype'), url('../fonts/Lato/Lato.woff2') format('woff2'), url('../fonts/Lato/Lato.woff') format('woff'), url('../fonts/Lato/Lato.ttf') format('truetype'), url('../fonts/Lato/Lato.svg#Lato') format('svg');
+  src: url('../fonts/Lato/Lato?#iefix') format('embedded-opentype'), 
+  url('../fonts/Lato/Lato.woff2') format('woff2'), 
+  url('../fonts/Lato/Lato.woff') format('woff'), 
+  url('../fonts/Lato/Lato.ttf') format('truetype'), 
+  url('../fonts/Lato/Lato.svg#Lato') format('svg');
+}
+
+@font-face {
+  font-family: 'Lato-Bold';
+
+  src: url('../fonts/Lato/Lato-Bold.eot');
+  src: url('../fonts/Lato/Lato-Bold?#iefix') format('embedded-opentype'), 
+  url('../fonts/Lato/Lato-Bold.woff2') format('woff2'), 
+  url('../fonts/Lato/Lato-Bold.woff') format('woff'), 
+  url('../fonts/Lato/Lato-Bold.ttf') format('truetype'), 
+  url('../fonts/Lato/Lato-Bold.svg#Lato') format('svg');
 }
  */
 
+/**
+ * Tags
+ */
+ .tags{
+	margin-bottom: -5px;
+	a,.tag{
+		display: inline-block;
+		border: 1px solid rgba(255,255,255,0.8);
+		border-radius: 999em;
+		padding: 0 10px;
+		color: rgba(255,255,255,1);
+		line-height: 24px;
+		font-size: 12px;
+		text-decoration: none;
+		margin: 0 1px;
+		margin-bottom: 6px;
+		&:hover, &:active{
+			color:white;
+			border-color: white;
+			background-color: rgba(255,255,255,0.4);
+			text-decoration: none;
 
+		}
+		@media only screen and (min-width: 768px) {
+			margin-right: 5px;
+		}
+	}
+}
+
+/* #tag-heading{
+	padding: 70px 0 60px;
+	@media only screen and (min-width: 768px) {
+		padding:55px 0;
+	}
+
+}
+// tag_cloud
+#tag_cloud{
+	margin:20px 0 15px 0;
+	a,.tag{
+		font-size: 14px;
+		border: none;
+		line-height: 28px;
+		margin: 0 2px;
+		margin-bottom: 8px;
+		background: #D6D6D6;
+		&:hover, &:active{
+			background-color: #0085a1 !important;
+		}
+	}
+	@media only screen and (min-width: 768px) {
+		margin-bottom: 25px;
+	}
+}
+
+.tag-comments{
+    font-size: 12px;
+    	@media only screen and (min-width: 768px) {
+		font-size:14px;
+	}
+}
+
+.one-tag-list{
+	.tag-text{
+		font-weight: 200;
+		.sans-serif;
+	}
+	.post-preview {
+		position: relative;
+		> a {
+			.post-title{
+				font-size: 16px;
+				font-weight: 500;
+				margin-top: 20px;
+			}
+			.post-subtitle{
+				font-size: 12px;
+			}
+		}
+		> .post-meta{
+			position: absolute;
+			right: 5px;
+			bottom: 0px;
+			margin: 0px;
+			font-size: 12px;
+			line-height: 12px;
+		}
+		@media only screen and (min-width: 768px) {
+			margin-left: 20px;
+			> a {
+				> .post-title {
+					font-size: 18px;
+					line-height: 1.3
+				}
+				> .post-subtitle{
+					font-size: 14px;
+				}
+			}
+			.post-meta{
+				font-size: 18px;
+			}
+		}
+	}
+} */
+ 
 /**
  * Others
  */
- .container-fluid {
+ 
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-fluid {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -287,3 +459,35 @@ row-nav {
 	}
 }
 
+/* .row { */
+  /* margin-right: -15px; */
+  /* margin-left: -15px; */
+/* } */
+
+/* form .row:first-child .floating-label-form-group { */
+	/* border-top: 1px solid $grey-color-light; */
+/* } */
+
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+/* .row:before, */
+/* .row:after, */
+.site-nav:before,
+.site-nav:after {
+  display: table;
+  content: " ";
+}
+
+.container:after,
+.container-fluid:after,
+/* .row:after, */
+.site-nav:after,
+.site-nav:after {
+  clear: both;
+}
+
+
+
+ 

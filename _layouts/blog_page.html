@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<!-- Page Header -->
+<header>
+	<div style="padding-top: 12px;">
+		{% include header-nav_black.html %}
+	</div>
+</header>
+
+<!-- Main Content --> 
+<div class="container">
+	<!-- <div class="row"> -->
+		<!-- Post Container -->
+		<div class="post-container">
+			{{ content }}
+		</div>
+		<!-- Sidebar Container -->
+		<div class="sidebar-container">
+			<!-- Featured Tags -->
+			{% if site.tags %}
+			<section>
+				<hr />
+				<h5>TAGS</h5>
+				<div class="tags">
+					{% for tag in site.tags %}
+						{% if tag[1].size > {{site.featured-condition-size}} %}
+							<!-- <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> -->
+								{{ tag[0] }}
+							<!-- </a> -->
+						{% endif %}
+					{% endfor %}
+				</div>
+			</section>
+			{% endif %}                
+		</div>
+        
+	<!-- </div> -->
+</div>
+

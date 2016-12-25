@@ -1,61 +1,32 @@
 ---
-layout: 
+layout: blog_page
 title: Blog
 permalink: /blog/
 ---
 
-<html>
+{% for post in site.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
+	
+	
+	
+</div>
+<hr>
+{% endfor %}
 
-  {% include head.html %}
 
-	<body style="position: relative">
-		<div style="position:absolute; padding-top:14px; z-index:10000; width:100%; color:black!important;">	
-			
-			<row-nav class="site-nav">
-				<div class="container-fluid" style="font-family:Rockwell-Bold, Verdana, Arial, sans-serif; font-size:18px;">
-
-					<div style="float: left!important;">
-						<!-- Site Title -->
-						<li style="padding-left: 0px;left:0;">
-							<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/">{{ site.title }}</a>
-						</li>
-					</div>
-
-					<!-- Site Navigatior -->
-					<div style="float:right!important; padding-right: 15px;right:0; ">
-						<ul>
-							<li>
-								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/">Home</a>
-							</li>
-							<!-- {% for page in site.pages %}{% if page.title %}
-							<li>
-								<a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-							</li>
-							{% endif %}{% endfor %} -->
-							<li>
-								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/blog">Blog</a>
-							</li>
-							<li>
-								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/moment">Moment</a>
-							</li>
-							<li>
-								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/me">Me</a>
-							</li>
-							<li>
-								<a class="nav-brand" style="color:#111;" href="{{ site.baseurl }}/about">About</a>
-							</li>
-						</ul>
-					   
-					</div>
-					<!-- /.navbar-collapse -->
-				</div>
-				<!-- /.container -->
-			</row-nav>
-		</div>
-		
-
-		
-		
-	</body>
-
-</html>

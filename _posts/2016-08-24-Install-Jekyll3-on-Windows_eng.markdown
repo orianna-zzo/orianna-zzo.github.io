@@ -2,7 +2,8 @@
 layout: post
 title:  "Install Jekyll3 on Windows"
 date:   2016-08-24 01:16:28 +0800
-categories: IT, Jekyll
+categories: CS
+tags: gitpage, CSS, jekyll
 ---
 
 I planned to build my own website long time ago. Finally, I'm ready to take action. Github page seems to be a great choice. It's time to learn how to build it. There are more tutorials on Linux than on Windows for beginers. Let's try and learn.

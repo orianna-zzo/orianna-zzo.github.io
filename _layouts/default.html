@@ -4,19 +4,13 @@
   {% include head.html %}
 
   <body>
-
-    <div style="padding-top: 12px;">
-		{% include header-nav.html %}
-	</div>
-
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
-
-    {% include footer.html %}
-
+    
+	{{ content }}
+	
+	<!-- <div style="bottom:0; width:100%; position:absolute;">
+		{% include footer_black.html %}
+	</div> -->
+	{% include footer_black.html %}
   </body>
 
 </html>
