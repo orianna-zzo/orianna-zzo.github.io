@@ -266,6 +266,16 @@ pre {
 
 }
 
+@font-face {
+    font-family: 'GoudyOldStyle';
+    src: url('../fonts/GoudyOldStyle/GoudyOldStyle.eot');
+    src: url('../fonts/GoudyOldStyle/GoudyOldStyle.eot?#iefix') format('embedded-opentype'),
+         //url('../fonts/GoudyOldStyle/GoudyOldStyle.woff2') format('woff2'),
+         url('../fonts/GoudyOldStyle/GoudyOldStyle.woff') format('woff'),
+         url('../fonts/GoudyOldStyle/GoudyOldStyle.svg#loraregular') format('svg');
+
+}
+
 /* @font-face {
   font-family: 'Lato';
 
@@ -487,7 +497,6 @@ row-nav {
 .site-nav:after {
   clear: both;
 }
-
 
 
  

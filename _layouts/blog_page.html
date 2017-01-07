@@ -3,8 +3,29 @@ layout: default
 ---
 <!-- Page Header -->
 <header>
+
 	<div style="padding-top: 12px;">
 		{% include header-nav_black.html %}
+	</div>
+	<div style="margin-top:10px; width:100%; background-color:#111;">
+	<!-- <div style="margin-top:10px; width:100%; background-color:#515151;"> -->
+			<ul style="font-size:16px; font-family:TrajanPro3; font-style:bold; float:left; position:relative; left:50%; margin:0 auto;">
+				<li id="li_all" onclick="getCategoryId('all')" style="float:left!important; list-style-type:none; margin:15px; position:relative; right:50%;" >				
+					<a class="nav-brand" style="color:#fdfdfd;" href="#all">All</a>
+					
+				</li>
+				{% for section in site.data.framework['section'] %}
+				{% if section.name == 'Blog' %}
+				{% for category in section.category%}
+				<li id="li_{{ category.name }}" onclick="getCategoryId('{{ category.name }}')" style="float:left!important; list-style-type:none; margin:15px; position:relative; right:50%;">				
+					<a class="nav-brand"  style="color:#fdfdfd;" href="#{{ category.name }}">{{ category.name }}</a>
+					
+				</li>
+				{% endfor %}
+				{% endif %}
+				{% endfor %}
+			</ul>
+	<div style="clear:both;"></div>
 	</div>
 </header>
 
@@ -19,8 +40,8 @@ layout: default
 		<div class="sidebar-container">
 			<!-- Tags -->
 			{% if site.tags %}
-			<hr />
-			<section style="margin-left:10px">				
+			<!-- <hr /> -->
+			<section style="margin-left:10px; margin-top:15px;">				
 				<h5>TAGS</h5>
 				<div class="tag-list">
 					{% for tag in site.tags %}						
@@ -34,3 +55,11 @@ layout: default
 	<!-- </div> -->
 </div>
 
+<script>
+	function getCategoryId(category_id) {
+		//document.write(this_id)
+		// 标题
+		x = document.getElementById("li_" + category_id)
+		//x.style.backgroundColor = '#999'
+	}
+</script>

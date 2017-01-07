@@ -142,6 +142,7 @@
  * Site footer
  */
 .site-footer {
+	
 	font-size: 12px;
     //border-top: 1px solid $grey-color-light; //draw a grey line
 	//padding-bottom: 0;
@@ -149,6 +150,7 @@
 	line-height:1.2;
 	
 	a{
+		
 		color:#337ab7;
 		// different to @brand-color
 		&:hover,
@@ -288,7 +290,7 @@
 			margin-bottom: 8px;
 		}
 		.post-subtitle {
-			font-family: Lora-Italic;
+			font-family: $serif-font-family;
 			font-size: 15px;
 			line-height: 1.3;
 			margin: 0;
@@ -330,21 +332,22 @@
 			}
 		}
 		.post-meta{
-			font-size: 18px;
+			font-size: 17px;
 		}
 	}
 }
 
 .post-content-preview{
-	//font-family: Lora-Italic;
-    font-size: 13px;
+	//font-family:  $serif-font-family;
+	font-family: Lora-Italic;
+    font-size: 14px;
     font-style: italic;
     color:#a3a3a3;
     &:hover{
         color: $brand-color;
     }
     @media only screen and (min-width: 768px) {
-        font-size:14px;
+        font-size:16px;
     }
 }
 

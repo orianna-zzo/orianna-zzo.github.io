@@ -1,0 +1,61 @@
+
+section:
+    - 
+        name: Home
+        index_url: ""
+    -   
+        name: Blog
+        index_url: "blog"
+        category:
+            -   name: CS
+                tag:  
+                    - CSS
+                    - github
+                    - research
+                    - machine learning
+
+            -   name: Musical
+                tag:
+                    - broadway
+                    - west end
+                    - English
+                    - German
+                    - French
+
+            -   name: Receipt
+                tag:
+                    - bread
+                    - cake
+                    - western
+                    - eastern
+            
+            -   name: Thought
+                tag:
+                    - life
+                    - meaning
+
+            -   name: Travelling
+                tag:
+                    - China
+                    - USA
+                    - Singapore
+                    - Boston
+                    - HK
+                    - Taiwan
+
+    -  
+        name:  Moment
+        index_url: "moment"
+        category: 
+            -   name: Album
+                tag:
+                    - astronomy
+                    - activity
+                    - shot
+
+    -   
+        name:  Me
+        index_url: "me"
+    -  
+        name:  About
+        index_url: "about"

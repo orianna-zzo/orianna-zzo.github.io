@@ -1,6 +1,7 @@
 <!-- Navigation -->
 <row-nav class="site-nav">
-    <div class="container-fluid" style="font-family: Rockwell-Bold, Verdana, Arial, sans-serif; font-size:18px;">
+    <!-- <div class="container-fluid" style="font-family:Lora-Italic;"> -->
+	<div class="container-fluid" style="font-family: Rockwell-Bold, Verdana, Arial, sans-serif; font-size:18px;">
 
         <div style="float: left!important;">
 			<!-- Site Title -->
@@ -12,14 +13,17 @@
         <!-- Site Navigatior -->
         <div style="float:right!important; padding-right: 15px;right:0; ">
 			<ul>
-				<li>
+				{% for section in site.data.framework['section'] %}
+				<li>				
+					<a class="nav-brand" href="{{ site.baseurl }}/{{ section.index_url }}">{{section.name}}</a>
+					
+				</li>
+				{% endfor %}
+			
+			
+				<!-- <li>
 					<a class="nav-brand" href="{{ site.baseurl }}/">Home</a>
-				</li>
-				<!-- {% for page in site.pages %}{% if page.title %}
-				<li>
-					<a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-				</li>
-				{% endif %}{% endfor %} -->
+				</li>				
 				<li>
 					<a class="nav-brand" href="{{ site.baseurl }}/blog">Blog</a>
 				</li>
@@ -31,7 +35,7 @@
 				</li>
 				<li>
 					<a class="nav-brand" href="{{ site.baseurl }}/about">About</a>
-				</li>
+				</li> -->
 			</ul>
            
         </div>        
