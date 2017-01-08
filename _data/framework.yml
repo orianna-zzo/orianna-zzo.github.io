@@ -10,29 +10,29 @@ section:
             -   name: CS
                 tag:  
                     - CSS
-                    - github
-                    - research
-                    - machine learning
+                    - Github
+                    - Research
+                    - Machine Learning
 
             -   name: Musical
                 tag:
-                    - broadway
-                    - west end
+                    - Broadway
+                    - West End
                     - English
                     - German
                     - French
 
             -   name: Receipt
                 tag:
-                    - bread
-                    - cake
-                    - western
-                    - eastern
+                    - Bread
+                    - Cake
+                    - Western
+                    - Eastern
             
             -   name: Thought
                 tag:
-                    - life
-                    - meaning
+                    - Life
+                    - Meaning
 
             -   name: Travelling
                 tag:
@@ -49,9 +49,9 @@ section:
         category: 
             -   name: Album
                 tag:
-                    - astronomy
-                    - activity
-                    - shot
+                    - Astronomy
+                    - Activity
+                    - Shot
 
     -   
         name:  Me
