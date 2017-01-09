@@ -26,4 +26,18 @@
 
 	</script>
 	{% endif %}
+	
+	// Baidu Tongji
+	{% if site.baidu_tongji_id %}
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?068a7903c1552f4b7c46b85c0719c515";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+	{% endif %}
+
 </head>
