@@ -76,7 +76,7 @@ layout: default
 						<h5>TAGS</h5>
 						<div class="tag-list">
 							{% for tag in category.tag %}						
-								<a  href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag}} </a>
+								<a  href="{{ site.baseurl }}/blog/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag}} </a>
 							{% endfor %}
 						</div>
 					</section>
@@ -93,6 +93,8 @@ layout: default
 
 <script>	
 	loadCategory();
+	
+	// 网站加载时选择div的显示和隐藏
 	function loadCategory() {
 		x = document.getElementById("category_body")
 		var category_id = window.location.hash
@@ -110,6 +112,8 @@ layout: default
 		}
 	
 	}
+	
+	// 选择category时选择div的显示和隐藏
 	function getCategoryId(category_id) {
 		//document.write(this_id)
 		// 标题

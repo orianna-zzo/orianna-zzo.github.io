@@ -1,10 +1,12 @@
 ---
 layout: blog_page
 title: Blog
-permalink: /blog/
+permalink: /Blog/
 ---
 
 {% for post in site.posts %}
+{% if post.section == 'Blog' %}
+
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <h2 class="post-title">
@@ -24,10 +26,9 @@ permalink: /blog/
 		{{ post.date | date: "%B %-d, %Y" }}
     </p>
 	
-	
-	
 </div>
 <hr>
+{% endif %}
 {% endfor %}
 
 

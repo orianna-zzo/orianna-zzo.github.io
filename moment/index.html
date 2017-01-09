@@ -1,24 +1,32 @@
 ---
 layout: page
 title: Moment
-permalink: /moment/
+permalink: /Moment/
 ---
 
-<div class="home">
+{% for post in site.posts %}
+{% if post.section == 'Moment' %}
 
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
         </h2>
-		<span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-		
-      </li>
-    {% endfor %}
-  </ul>
-
-
-
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        <!-- {% if post.author %}Posted by {{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} -->
+		{{ post.date | date: "%B %-d, %Y" }}
+    </p>
+	
 </div>
+<hr>
+{% endif %}
+{% endfor %}

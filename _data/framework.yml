@@ -5,7 +5,7 @@ section:
         index_url: ""
     -   
         name: Blog
-        index_url: "blog"
+        index_url: "Blog"
         category:
             -   name: CS
                 tag:  
@@ -45,7 +45,7 @@ section:
 
     -  
         name:  Moment
-        index_url: "moment"
+        index_url: "Moment"
         category: 
             -   name: Album
                 tag:
@@ -55,7 +55,7 @@ section:
 
     -   
         name:  Me
-        index_url: "me"
+        index_url: "Me"
     -  
         name:  About
-        index_url: "about"
+        index_url: "About"
