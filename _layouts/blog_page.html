@@ -44,8 +44,8 @@ layout: default
 				<!-- Tags -->
 				{% if site.tags %}
 				<!-- <hr /> -->
-				<section style="margin-left:10px; margin-top:15px;">				
-					<h5>TAGS</h5>
+				<section style="margin-left:10px; margin-top:15px;">
+					<h5><i class="fa fa-tags fa-lg"></i>&nbsp;	TAGS</h5>
 					<div class="tag-list">
 						{% for tag in site.tags %}						
 							<a  href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag[0]}} </a>
@@ -72,8 +72,9 @@ layout: default
 					<!-- Tags -->
 					{% if site.tags %}
 					<!-- <hr /> -->
-					<section style="margin-left:10px; margin-top:15px;">				
-						<h5>TAGS</h5>
+					
+					<section style="margin-left:10px; margin-top:15px;">	
+						<h5> <i class="fa fa-tags fa-lg"></i>&nbsp; TAGS </h5>
 						<div class="tag-list">
 							{% for tag in category.tag %}						
 								<a  href="{{ site.baseurl }}/blog/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag}} </a>

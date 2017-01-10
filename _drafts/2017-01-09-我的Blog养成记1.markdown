@@ -1,0 +1,20 @@
+---
+layout: post
+title:  "我的Blog养成记(6)之网站流量分析与统计"
+date:   2016-08-22 22:30:09 +0800
+author:   "Orianna"
+section: Blog
+categories: CS
+tags: [CSS, Blog, Jekyll, Google Analytics, 百度统计, 不蒜子]
+---
+
+拟计划写：
+preface
+1搭建我的博客——Jekyll安装与Gitpage初始化
+2博客分页设计——设计与灵感 感谢开源网站 trello.com的半途而废
+3Jekyll架构初探&博客主页&header+footer
+4 居中的标题栏
+5  _data 分类Blog与Moment
+6 网站流量分析与统计
+7 awesome font
+8 javascript 与随category变换的tag
