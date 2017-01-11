@@ -3,32 +3,70 @@ layout: blog_page
 title: Blog
 permalink: /Blog/
 ---
+<section id="post_section">
+	<div name="All"  style="display:block;">
+		{% for post in site.posts %}
+		{% if post.section == 'Blog' %}
 
-{% for post in site.posts %}
-{% if post.section == 'Blog' %}
-
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {{ post.content | strip_html | truncate:200 }}
-        </div>
-    </a>
-    <p class="post-meta">
-        <!-- {% if post.author %}Posted by {{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} -->
-		{{ post.date | date: "%B %-d, %Y" }}
-    </p>
-	
-</div>
-<hr>
-{% endif %}
-{% endfor %}
+		<div class="post-preview">
+			<a href="{{ post.url | prepend: site.baseurl }}">
+				<h2 class="post-title">
+					{{ post.title }}
+				</h2>
+				{% if post.subtitle %}
+				<h3 class="post-subtitle">
+					{{ post.subtitle }}
+				</h3>
+				{% endif %}
+				<div class="post-content-preview">
+					{{ post.content | strip_html | truncate:200 }}
+				</div>
+			</a>
+			<p class="post-meta">
+				<!-- {% if post.author %}Posted by {{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} -->
+				{{ post.date | date: "%B %-d, %Y" }}
+			</p>
+			
+		</div>
+		<hr>
+		{% endif %}
+		{% endfor %}
+	</div>	
+	{% for section in site.data.framework['section'] %}
+	{% if section.name == 'Blog' %}
+	{% for category in section.category %}
+	<div name="{{ category.name }}" style="display:none;">
+		{% for post in site.posts %}
+		{% if post.section == 'Blog' %}
+		{% if post.categories[0] ==  category.name %}
+		<div class="post-preview">
+			<a href="{{ post.url | prepend: site.baseurl }}">
+				<h2 class="post-title">
+					{{ post.title }}
+				</h2>
+				{% if post.subtitle %}
+				<h3 class="post-subtitle">
+					{{ post.subtitle }}
+				</h3>
+				{% endif %}
+				<div class="post-content-preview">
+					{{ post.content | strip_html | truncate:200 }}
+				</div>
+			</a>
+			<p class="post-meta">
+				<!-- {% if post.author %}Posted by {{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} -->
+				{{ post.date | date: "%B %-d, %Y" }}
+			</p>
+			
+		</div>
+		<hr/>
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+	</div>	
+	{% endfor %}
+	{% endif %}
+	{% endfor %}
+</section>	
 
 

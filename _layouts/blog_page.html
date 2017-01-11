@@ -10,15 +10,15 @@ layout: default
 	<div style="margin-top:10px; width:100%; background-color:#111;">
 	<!-- <div style="margin-top:10px; width:100%; background-color:#515151;"> -->
 			<ul style="font-size:16px; font-family:TrajanPro3; font-style:bold; float:left; position:relative; left:50%; margin:0 auto;">
-				<li id="li_all" onclick="getCategoryId('All')" style="float:left!important; list-style-type:none; margin:15px; position:relative; right:50%;" >				
-					<a class="nav-brand" style="color:#fdfdfd;" href="#All">All</a>
+				<li name="All" onclick="getCategoryId('All')" style="float:left!important; list-style-type:none; margin:15px; position:relative; right:50%;" >				
+					<a class="nav-brand" style="color:#fdfdfd;" href="?All">All</a>
 					
 				</li>
 				{% for section in site.data.framework['section'] %}
 				{% if section.name == 'Blog' %}
 				{% for category in section.category%}
-				<li id="li_{{ category.name }}" onclick="getCategoryId('{{ category.name }}')" style="float:left!important; list-style-type:none; margin:15px; position:relative; right:50%;">				
-					<a class="nav-brand"  style="color:#fdfdfd;" href="#{{ category.name }}">{{ category.name }}</a>
+				<li name="{{ category.name }}" onclick="getCategoryId('{{ category.name }}')" style="float:left!important; list-style-type:none; margin:15px; position:relative; right:50%;">				
+					<a class="nav-brand"  style="color:#fdfdfd;" href="?{{ category.name }}">{{ category.name }}</a>
 					
 				</li>
 				{% endfor %}
@@ -30,82 +30,85 @@ layout: default
 </header>
 
 
-<div id="category_body">
-
-	<!-- Main Content --> 
-	<div class="container" id="All"  style="display:block;">
-		<!-- <div class="row"> -->
-			<!-- Post Container -->
-			<div class="post-container">
-				{{ content }}
-			</div>
-			<!-- Sidebar Container -->
-			<div class="sidebar-container">
-				<!-- Tags -->
-				{% if site.tags %}
-				<!-- <hr /> -->
-				<section style="margin-left:10px; margin-top:15px;">
-					<h5><i class="fa fa-tags fa-lg"></i>&nbsp;	TAGS</h5>
-					<div class="tag-list">
-						{% for tag in site.tags %}						
-							<a  href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag[0]}} </a>
-						{% endfor %}
-					</div>
-				</section>
-				{% endif %}                
-			</div>
-			
-		<!-- </div> -->
-	</div>
-
-	{% for section in site.data.framework['section'] %}
-	{% if section.name == 'Blog' %}
-	{% for category in section.category%}
-		<div class="container" id="{{ category.name }}" style="display:none;">
-			<!-- <div class="row"> -->
-				<!-- Post Container -->
-				<div class="post-container">
-					{{ content }}
-				</div>
-				<!-- Sidebar Container -->
-				<div class="sidebar-container">
-					<!-- Tags -->
-					{% if site.tags %}
-					<!-- <hr /> -->
-					
-					<section style="margin-left:10px; margin-top:15px;">	
-						<h5> <i class="fa fa-tags fa-lg"></i>&nbsp; TAGS </h5>
-						<div class="tag-list">
-							{% for tag in category.tag %}						
-								<a  href="{{ site.baseurl }}/blog/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag}} </a>
-							{% endfor %}
-						</div>
-					</section>
-					{% endif %}                
+<!-- Main Content --> 
+<div class="container" >
+		
+		<!-- Sidebar Container -->
+		<div class="sidebar-container" >
+			<!-- Tags -->
+			{% if site.tags %}
+			<!-- <hr /> -->
+			<section style="margin-left:10px; margin-top:15px;" id="tag_section">
+				<h5><i class="fa fa-tags fa-lg"></i>&nbsp;	TAGS</h5>
+				
+				<div class="tag-list" name="All" style="display:block;">
+					{% for tag in site.tags %}						
+					<a  href="{{ site.baseurl }}/tags/?{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag[0]}} </a>
+					{% endfor %}
 				</div>
 				
-			<!-- </div> -->
+				{% for section in site.data.framework['section'] %}
+				{% if section.name == 'Blog' %}
+				{% for category in section.category%}
+				<div class="tag-list" name="{{ category.name }}" style="display:none;">
+					{% for tag in category.tag %}						
+					<a  href="{{ site.baseurl }}/blog/tags/?{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}"> {{tag}} </a>
+					{% endfor %}
+				</div>
+				{% endfor %}
+				{% endif %}
+				{% endfor %}
+			</section>
+			{% endif %}               
 		</div>
-	{% endfor %}
-	{% endif %}
-	{% endfor %}
+		
+		<!-- Main Post Container -->
+		<div class="post-container">
+			{{ content }}
+		</div>
+		
 </div>
-
 
 <script>	
 	loadCategory();
 	
+	
 	// 网站加载时选择div的显示和隐藏
 	function loadCategory() {
-		x = document.getElementById("category_body")
-		var category_id = window.location.hash
+		var x, category_id;
+		
+		// tag
+		x = document.getElementById("tag_section")
+		category_id = window.location.search
 		if (category_id == "") {
 			category_id = "All"
 		} else {
 			category_id = category_id.substring(1, category_id.length)				
 		}
 		for (var child_n=0; child_n<x.children.length; child_n++) {
-			if (x.children[child_n].id == category_id) {
+			if (x.children[child_n].attributes['name'] == undefined) {
+				continue;
+			}
+			if (x.children[child_n].attributes['name'].nodeValue == category_id) {
+				x.children[child_n].style.display = 'block';
+			} else {
+				x.children[child_n].style.display = 'none';
+			}
+		}
+		
+		// Post内容页
+		x = document.getElementById("post_section")
+		category_id = window.location.search
+		if (category_id == "") {
+			category_id = "All"
+		} else {
+			category_id = category_id.substring(1, category_id.length)				
+		}
+		for (var child_n=0; child_n<x.children.length; child_n++) {
+			if (x.children[child_n].attributes['name'] == undefined) {
+				continue;
+			}
+			if (x.children[child_n].attributes['name'].nodeValue == category_id) {
 				x.children[child_n].style.display = 'block';
 			} else {
 				x.children[child_n].style.display = 'none';
@@ -120,13 +123,31 @@ layout: default
 		// 标题
 		//x = document.getElementById("li_" + category_id)
 		//x.style.backgroundColor = '#999'
-		x = document.getElementById("category_body")
+		// tag
+		x = document.getElementById("tag_section")
 		for (var child_n=0; child_n<x.children.length; child_n++) {
-			if (x.children[child_n].id == category_id) {
+			if (x.children[child_n].attributes['name'] == undefined) {
+				continue;
+			}
+			if (x.children[child_n].attributes['name'].nodeValue == category_id) {
 				x.children[child_n].style.display = 'block';
 			} else {
 				x.children[child_n].style.display = 'none';
 			}
 		}
-	}
+		
+		x = document.getElementById("post_section")
+		for (var child_n=0; child_n<x.children.length; child_n++) {
+			if (x.children[child_n].attributes['name'] == undefined) {
+					continue;
+				}
+			if (x.children[child_n].attributes['name'].nodeValue == category_id) {
+				x.children[child_n].style.display = 'block';
+			} else {
+				x.children[child_n].style.display = 'none';
+			}
+		}
+	}	
+	
+	
 </script>

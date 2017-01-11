@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "我的Blog养成记(6)之网站流量分析与统计"
-date:   2016-08-22 22:30:09 +0800
+title: "我的Blog养成记(6)之网站流量分析与统计"
+subtitle: "增加Google Analytics、百度统计和不蒜子"
+date:   2017-01-09 23:30:09 +0800
 author:   "Orianna"
 section: Blog
 categories: CS
