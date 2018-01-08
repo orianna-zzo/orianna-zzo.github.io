@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</loc>
+    <lastmod>2018-01-07T11:05:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/about/</loc>
+    <lastmod>2018-01-06T02:15:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/blog/</loc>
+    <lastmod>2018-01-06T02:15:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</loc>
+    <lastmod>2018-01-01T16:05:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/</loc>
+    <lastmod>2018-01-07T11:05:25+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

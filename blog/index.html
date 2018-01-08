@@ -1,72 +1,217 @@
----
-layout: blog_page
-title: Blog
-permalink: /Blog/
----
-<section id="post_section">
-	<div name="All"  style="display:block;">
-		{% for post in site.posts %}
-		{% if post.section == 'Blog' %}
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-		<div class="post-preview">
-			<a href="{{ post.url | prepend: site.baseurl }}">
-				<h2 class="post-title">
-					{{ post.title }}
-				</h2>
-				{% if post.subtitle %}
-				<h3 class="post-subtitle">
-					{{ post.subtitle }}
-				</h3>
-				{% endif %}
-				<div class="post-content-preview">
-					{{ post.content | strip_html | truncate:200 }}
-				</div>
-			</a>
-			<p class="post-meta">
-				<!-- {% if post.author %}Posted by {{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} -->
-				{{ post.date | date: "%B %-d, %Y" }}
-			</p>
-			
-		</div>
-		<hr>
-		{% endif %}
-		{% endfor %}
-	</div>	
-	{% for section in site.data.framework['section'] %}
-	{% if section.name == 'Blog' %}
-	{% for category in section.category %}
-	<div name="{{ category.name }}" style="display:none;">
-		{% for post in site.posts %}
-		{% if post.section == 'Blog' %}
-		{% if post.categories[0] ==  category.name %}
-		<div class="post-preview">
-			<a href="{{ post.url | prepend: site.baseurl }}">
-				<h2 class="post-title">
-					{{ post.title }}
-				</h2>
-				{% if post.subtitle %}
-				<h3 class="post-subtitle">
-					{{ post.subtitle }}
-				</h3>
-				{% endif %}
-				<div class="post-content-preview">
-					{{ post.content | strip_html | truncate:200 }}
-				</div>
-			</a>
-			<p class="post-meta">
-				<!-- {% if post.author %}Posted by {{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }} -->
-				{{ post.date | date: "%B %-d, %Y" }}
-			</p>
-			
-		</div>
-		<hr/>
-		{% endif %}
-		{% endif %}
-		{% endfor %}
-	</div>	
-	{% endfor %}
-	{% endif %}
-	{% endfor %}
-</section>	
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="ZHENG Zi&#39;ou">
+<meta name="description" content="Don&#39;t panic">
+
+<meta property="og:title" content="Blog" />
+<meta property="og:description" content="Don&#39;t panic" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://orianna-zzo.github.io/blog/" />
+
+
+
+<meta property="og:updated_time" content="2018-01-06T02:15:26&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<title>
+
+
+     Blog 
+
+</title>
+<link rel="canonical" href="https://orianna-zzo.github.io/blog/">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-08%2018%3a44%3a46.1611429%20%2b0000%20UTC%20m%3d%2b0.290010001">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-08%2018%3a44%3a46.1611429%20%2b0000%20UTC%20m%3d%2b0.290010001">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-08%2018%3a44%3a46.1611429%20%2b0000%20UTC%20m%3d%2b0.290010001">
+    
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-08%2018%3a44%3a46.1611429%20%2b0000%20UTC%20m%3d%2b0.290010001">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://orianna-zzo.github.io/img/profile.png"
+
+>
+
+
+
+  <link href="https://orianna-zzo.github.io/blog/index.xml" rel="alternate" type="application/rss+xml" title="博客|ZHENG Zi&#39;ou&#39;s Home" />
+
+
+
+
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
+            
+            <a href="https://orianna-zzo.github.io/"><div class="name">ZHENG Zi&#39;ou</div></a>
+            
+              <h3 class="self-intro">Be myself. Love the wonderful world. Do the right things in the right way.</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://orianna-zzo.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://orianna-zzo.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:zhengziou@gmail.com"><img class="icon" src="https://orianna-zzo.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+            <a href="https://orianna-zzo.github.io/blog/index.xml"><img class="icon" src="https://orianna-zzo.github.io/img/rss.svg" alt="rss" /></a>
+        
+
+        
+        </div>
+    </div>
+</section>
+
+<section class="main">
+    <div class="container">
+        <div class="content">
+            
+            <div class="page-heading">Blog</div>
+            <ul>
+                
+                
+                    
+                    <li class="post-item">
+    
+    <span class="meta"><time datetime='2018-01-01T16:05:25&#43;08:00'>Jan 1, 2018</time></span>
+    
+    <a href="https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/"><span>Blog养成记(1) Preface</span></a>
+</li>
+
+                    
+                    <li class="post-item">
+    
+    <span class="meta"><time datetime='2018-01-07T11:05:25&#43;08:00'>Jan 7, 2018</time></span>
+    
+    <a href="https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/"><span>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</span></a>
+</li>
+
+                    
+                
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-90057853-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  
+
+  <script type="text/javascript">
+    hljs.initHighlightingOnLoad();
+  </script>
+
+
+
+
+
+</body>
+</html>
 
 

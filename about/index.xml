@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on 博客|ZHENG Zi&#39;ou&#39;s Home</title>
+    <link>https://orianna-zzo.github.io/about/</link>
+    <description>Recent content in About on 博客|ZHENG Zi&#39;ou&#39;s Home</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>my test?????</copyright>
+    <lastBuildDate>Sat, 06 Jan 2018 02:15:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
