@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on 博客|ZHENG Zi&#39;ou&#39;s Home</title>
+    <title>Categories on 博客|ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/categories/</link>
-    <description>Recent content in Categories on 博客|ZHENG Zi&#39;ou&#39;s Home</description>
+    <description>Recent content in Categories on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>my test?????</copyright>
     
 	<atom:link href="https://orianna-zzo.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>杂技浅尝</title>
+      <link>https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</link>
+      <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

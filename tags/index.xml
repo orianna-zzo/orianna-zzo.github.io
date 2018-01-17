@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on 博客|ZHENG Zi&#39;ou&#39;s Home</title>
+    <title>Tags on 博客|ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/tags/</link>
-    <description>Recent content in Tags on 博客|ZHENG Zi&#39;ou&#39;s Home</description>
+    <description>Recent content in Tags on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <copyright>my test?????</copyright>
+    <lastBuildDate>Sun, 07 Jan 2018 11:05:25 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker</title>
+      <link>https://orianna-zzo.github.io/tags/docker/</link>
+      <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://orianna-zzo.github.io/tags/hugo/</link>
+      <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
