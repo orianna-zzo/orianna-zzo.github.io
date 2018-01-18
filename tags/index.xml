@@ -6,10 +6,19 @@
     <description>Recent content in Tags on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 07 Jan 2018 11:05:25 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jan 2018 09:14:15 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Conda</title>
+      <link>https://orianna-zzo.github.io/tags/conda/</link>
+      <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/conda/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Docker</title>
@@ -26,6 +35,24 @@
       <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://orianna-zzo.github.io/tags/python/</link>
+      <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>环境配置</title>
+      <link>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
     </item>
     

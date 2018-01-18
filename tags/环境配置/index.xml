@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>杂技浅尝 on 博客|ZHENG Zi&#39;ou</title>
-    <link>https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</link>
-    <description>Recent content in 杂技浅尝 on 博客|ZHENG Zi&#39;ou</description>
+    <title>环境配置 on 博客|ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+    <description>Recent content in 环境配置 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 18 Jan 2018 09:14:15 +0800</lastBuildDate>
     
-	<atom:link href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,51 +29,6 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 首先非常重要的一点，venv也好，virtualenv也好都只针对python，也就是无法用在其他语言环境，而conda并不局限于python，它可以管理任何其他语言。我找到一篇关于澄清对conda误解的博文，看完就能对conda有个大致的认识。其中，第5条说明了作者认为conda相比于virtualenv/venv的优点，之后还给出了virtualenv与conda如何结合使用。对我来说最重要的是：conda环境完全隔离，连执行路径都不一致，还有很重要的一点，conda虚拟环境也方便迁移，可以在有外网的电脑生成后打包上传到无网的服务器上使用。这一点就基本决定了要使用conda建立python开发环境。
 此外，针对python，Anaconda的文档中对conda、pip和virtualenv进行了简要的比较，其中点明了pip是个包管理器、virtualenv是环境管理器，而conda两者兼顾，还可以升级python核心程序。这个很好地说明了conda的全能。具体对比如下：
    Task Conda package and environment manager command Pip package manager command Virtualenv environment manager command     Install a package conda install $PACKAGE_NAME pip install $PACKAGE_NAME X   Update a package conda update --name $ENVIRONMENT_NAME$PACKAGE_NAME pip install --upgrade $PACKAGE_NAME X   Update package manager conda update conda Linux/OSX： pip install -U pip Win： python -m pipinstall -U pip X   Uninstall a package conda remove --name $ENVIRONMENT_NAME$PACKAGE_NAME pip uninstall $PACKAGE_NAME X   Create an environment conda create --name $ENVIRONMENT_NAMEpython X cd $ENV_BASE_DIR; virtualenv$ENVIRONMENT_NAME   Activate an environment source activate $ENVIRONMENT_NAME X source$ENV_BASE_DIR/$ENVIRONMENT_NAME/bin/activate   Deactivate an environment source deactivate X deactivate   Search available packages conda search $SEARCH_TERM pip search $SEARCH_TERM X   Install package from specific source conda install --channel $URL$PACKAGE_NAME pip install --index-url $URL $PACKAGE_NAME X   List installed packages conda list --name $ENVIRONMENT_NAME pip list X   Create requirements file conda list --export pip freeze X   List all environments conda info --envs X Install virtualenv wrapper, then lsvirtualenv   Install other package manager conda install pip pip install conda X   Install Python conda install python=x.</description>
-    </item>
-    
-    <item>
-      <title>Blog养成记(4) 增加tags等分类</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
-      <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
-      
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
-      <description>Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
-自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
-分类taxonomy有3个概念：
- Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
- tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
-配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
-[taxonomies] tag = &amp;quot;tags&amp;quot; series = &amp;quot;series&amp;quot; category = &amp;quot;categories&amp;quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
-date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4)增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
-分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。</description>
-    </item>
-    
-    <item>
-      <title>Blog养成记(3) 语法高亮配置</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Tue, 09 Jan 2018 17:52:25 +0800</pubDate>
-      
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
-      <description>Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、关于语法高亮说明
-前言 Hugo官网在这里给出了详细的语法高亮配置说明。
-一般有以下3种常见方法：
-1. 使用Hugo默认Chroma
-2. 使用Pygments
-3. 使用CSS
-使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
-Pygments安装 我在建立Hugo镜像时已经安装了Pygments，不然需要先安装Pygments。如果在Debian和Ubuntu系统中可以用下面语句安装，其他系统也可参考：
-$ sudo apt-get install python3-pygments  Pygments配置 下面是我按官网在 config.toml 中配置的参数：
-[highlighting] pygmentsUseClassic = true pygmentsCodeFences = true pygmentsStyle = &amp;quot;autumn&amp;quot;  其中， pygmentsUseClassic=true 说明使用Pygments来进行语法高亮；
-pygmentsCodeFences=true 使在code fence中的根据设置的语言标签进行语法高亮；
-pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里查看各高亮风格，选择最心仪的。
-我选择了 autumn，下面是在code fence中的高亮示例：
-#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.</description>
     </item>
     
     <item>
@@ -105,22 +60,6 @@ $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile
 除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .</description>
-    </item>
-    
-    <item>
-      <title>Blog养成记(1) Preface</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</link>
-      <pubDate>Mon, 01 Jan 2018 16:05:25 +0800</pubDate>
-      
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</guid>
-      <description> 初始  养个Blog的想法从很早就有了，但是&amp;hellip;  从本科开始就一直想要一个自己的Blog，一直没有行动。本身我没有记日记的习惯，也没有需求和冲动写下什么，本科虽然有时想记下学下的内容，但笔记就够了，也没写什么技术博客的想法。除了很久之前偶尔在qq空间或者人人po两篇直抒胸臆的文章，也就没有其他了。此外，虽说博客最重要的是内容，但没有一个好的生态环境和前端界面设计，至少对于我来说，没有兴趣花时间在上面，原谅我还是外观主义者不够geek。当初选择qq空间和人人更多的是为了圈子和分享，记录的因素只占了很少的一部分，让我长久在这上面却不会满意，毕竟这两者的整体环境定位更偏大众。原谅我比较俗气。这就和你发邮件选择@qq.com还是@gmail.com或者@outlook.com感觉一样，后者给予更正式化的感觉，作为邮箱基础功能来说并没有实质性区别。对于界面设计，之前流行的CSDN或者博客园都是简洁风，不够美观现代化，但够用、功能强大、社区用户庞大，不过没让我提起兴趣。自建网站却止步于嫌整套网站建立使用Wordpress太重，嗯，还要租用服务器。我觉得我还要承认，当时作为本科生的我，太过局限于学校课堂，并未出去看看，对于网络信息的运用和挖掘也更多停留在看看答案、找找软件、翻翻视频的基础使用上，最多也就查看下算法之类的。
-近几年，特别从研究生开始，越来越多的都是自己查找信息，更多地接触了“世界”的信息和知识，拓宽了视野，也明白本科王建明老师所说的“语言定义了你的范围”这句话的含义。非常感谢导师王文敏教授和在北大的研究生生涯，研究生和本科生的学习方式上差别很多，真正开始“去林子里打鸟”，而这个林子也扩展为“世界的林子”。随着自我学习机会和时间愈多，碎片化学习和感想也愈多，加上虽然网上知识丰富，但内容庞杂，过段时间想再查找却需要对这些信息重新筛选略费时，再加上工作后发现个人体悟有些良多，人老了很多回忆开始忘却，想要记录的心情越发迫切，于是又一次萌生个人博客的想法。
-难产  选择恐惧症+控制狂的特质决定了我家Blog的难产&amp;hellip;  尽管现在有很多像知乎专栏这样有现代化的界面和良好的用户群的网站可以让人直接在上面写作发布更关心核心内容，但我还是更倾向于选择Github Pages，与Github非常紧密的关系是该倾向性很重要的原因（这对码农来说很有诱惑力），但仔细想想我的主要原因可能还是由于Github Pages中整个界面设计都可以自己定制，我自认控制欲还是挺强的（虽然界面设计是个头疼的问题）。
-Github Pages搭建个人博客，使用的是轻量级的静态网页，网上已经有很多教程和方案。其实去年大约10月开始我就已经开始着手搭建基于Jekyll的博客了。选择Jekyll只是因为它是官方推荐的选择，据说可定制化和功能很强大。尽管对前端框架和ruby都不熟，但由于个人固执，并没有选择简单fork一个theme就安心写博客。我看了官方推荐的好多theme，找了很多自己喜欢的设计和模块，根据自己的需求想进行重新设计和拼接。现在看来，当初界面整体设计有些不忍直视，还需要重新设计。那段时间持续了挺久，下班回去都22点多，却还会打开电脑看看怎么整，不过由于前端我是新手中的新手，很多问题需要好久才能解决并实现设想，后面搭着搭着想把中间遇到的问题和解决方案记下来，下次可以再找，也算记录博客的搭建过程，不过可惜只写了提纲以及最开始的安装部分。这在去深圳出差那段忙碌的日子打断之后再没有捡起来。
-重建  过去这么久，干脆重新开始吧！  断了这么久，好多都不记得了，看之前的设计也觉很多需要修改，干脆推倒重来。重来这回就从一开始进行记录，希望这次能够顺利养成。
-反正都要重新开始，就想选择更合适的静态网站工具。除了Jekyll外，Hexo是国人教程最多的，国外口碑也非常好，看到外国的一句评论说，缺点就是大多数内容都是中文，英文教程少，哈哈。去年的时候网上就已经很多博客写如何从Jekyll转到Hexo了，其中一个原因是Jekyll用的是Ruby，Hexo是基于Node.js，前者要学liquid，要用css预编译学scss或者less，后者要学js，但后者相对而言对程序员友好些，如果不是特别爱折腾会很繁琐，另一个主要原因说是Hexo的编译速度要比Jekyll快很多。不过这次我决定选择另一个Framework，使用Hugo。Hugo是用现在大热的go语言写的，据说编译起来比Hexo还会快很多。
-除此之外，由于新买了Macbook Pro，出于不想弄乱mac的环境可以瞎折腾这个考虑，最近一直在研究docker的使用和最佳实践，于是新的环境搭建希望是基于docker的。就这样开始吧！
-版本控制    Version Action Time     1.0 Init 2018-01-01   1.1 增加tag和版本控制 2018-01-17    </description>
     </item>
     
   </channel>

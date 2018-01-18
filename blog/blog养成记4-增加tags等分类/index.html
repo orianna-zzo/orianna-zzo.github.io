@@ -18,8 +18,8 @@ Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
  Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
-[taxonomies] tag = &quot;tags&quot; topic = &quot;topics&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
-date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养成记(4)增加tags、topics和categories&quot; tags: [&quot;hugo&quot;] topics: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
+[taxonomies] tag = &quot;tags&quot; series = &quot;series&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
+date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog养成记(4)增加tags等分类&quot; tags: [&quot;hugo&quot;] series: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
 分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。">
 
 <meta property="og:title" content="Blog养成记(4) 增加tags等分类" />
@@ -32,8 +32,8 @@ Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
  Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
-[taxonomies] tag = &quot;tags&quot; topic = &quot;topics&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
-date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养成记(4)增加tags、topics和categories&quot; tags: [&quot;hugo&quot;] topics: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
+[taxonomies] tag = &quot;tags&quot; series = &quot;series&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
+date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog养成记(4)增加tags等分类&quot; tags: [&quot;hugo&quot;] series: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
 分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/" />
@@ -47,6 +47,10 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 
 
 
+
+
+  
+  
 
 
 
@@ -77,11 +81,11 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-17%2018%3a20%3a06.2293369%20%2b0000%20UTC%20m%3d%2b5.803838501">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-17%2018%3a20%3a06.2293369%20%2b0000%20UTC%20m%3d%2b5.803838501">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-17%2018%3a20%3a06.2293369%20%2b0000%20UTC%20m%3d%2b5.803838501">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-18%2009%3a30%3a13.3439142%20%2b0000%20UTC%20m%3d%2b7.153304101">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-18%2009%3a30%3a13.3439142%20%2b0000%20UTC%20m%3d%2b7.153304101">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-18%2009%3a30%3a13.3439142%20%2b0000%20UTC%20m%3d%2b7.153304101">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-17%2018%3a20%3a06.2293369%20%2b0000%20UTC%20m%3d%2b5.803838501">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-18%2009%3a30%3a13.3439142%20%2b0000%20UTC%20m%3d%2b7.153304101">
     
 
 
@@ -203,16 +207,20 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
                         
                     </div>
                     <div style="display: flex;">
+                        
                         <div class="page-tag">
-                            <div class="page-tag">topic:</div>
+                            <div class="page-tag">series:</div>
                             
-                            <div class="page-tag" id="topics">
+                            <div class="page-tag" id="series">
                                 
-                                <a href="https://orianna-zzo.github.io/topics/blog%E5%85%BB%E6%88%90%E8%AE%B0">Blog养成记</a> 
+                                <a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0">Blog养成记</a> 
                                 
                             </div>
                             
                         </div>
+                        
+
+                        
                         <div class="page-tag">
                             <div class="page-tag">category: </div>
                             
@@ -223,7 +231,10 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
                             </div>
                             
                         </div>
+                        
                     </div>
+
+                    
                     <div class="page-tag">
                         <div class="page-tag">tags: </div>
                         
@@ -236,6 +247,7 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
                         </div>
                         
                     </div>
+                    
                 </div>
             </div>
             <div class="markdown">
@@ -276,16 +288,16 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 
 <pre><code>[taxonomies]
   tag = &quot;tags&quot;
-  topic = &quot;topics&quot;
+  series = &quot;series&quot;
   category = &quot;categories&quot;
 </code></pre>
 
 <p>而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">date</span><span class="p p-Indicator">:</span> <span class="s">&quot;2018-01-09T16:22:25+08:00&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">draft</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Blog养成记(4)</span><span class="nv"> </span><span class="s">增加tags、topics和categories&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">draft</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Blog养成记(4)</span><span class="nv"> </span><span class="s">增加tags等分类&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;hugo&quot;</span><span class="p p-Indicator">]</span>
-<span class="l l-Scalar l-Scalar-Plain">topics</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;Blog养成记&quot;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">series</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;Blog养成记&quot;</span><span class="p p-Indicator">]</span>
 <span class="l l-Scalar l-Scalar-Plain">categories</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;杂技浅尝&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 
@@ -303,6 +315,10 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 
 <h3 id="分类排序">分类排序</h3>
 
+<blockquote>
+<p>分类排序还未正式尝试，无法确认正式效果，还需后面确认后再补充。</p>
+</blockquote>
+
 <p>在内容页头部中以 <code>术语名称_weight</code> 来标志权重，可在分类的查看野种按该权重进行排序。但暂时只支持默认情况下以日期作为权重排序标准。</p>
 
 <p>还是以这篇博文为例：</p>
@@ -311,8 +327,8 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 <span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Blog养成记(4)</span><span class="nv"> </span><span class="s">增加tags、topics和categories&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;hugo&quot;</span><span class="p p-Indicator">]</span>
 <span class="l l-Scalar l-Scalar-Plain">tags_weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">66</span>
-<span class="l l-Scalar l-Scalar-Plain">topics</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;Blog养成记&quot;</span><span class="p p-Indicator">]</span>
-<span class="l l-Scalar l-Scalar-Plain">topics_weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">96</span>
+<span class="l l-Scalar l-Scalar-Plain">series</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;Blog养成记&quot;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">series_weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">96</span>
 <span class="l l-Scalar l-Scalar-Plain">categories</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;浅尝杂技&quot;</span><span class="p p-Indicator">]</span>
 <span class="l l-Scalar l-Scalar-Plain">categoryes_weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">96</span>
 </code></pre></div>
@@ -326,8 +342,6 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 <p>我先将 <code>themes/cocoa/layouts/blog</code> 中的 <code>single.html</code> 复制到 <code>layouts/blog</code> 中，只需要对主文件夹中 <code>layouts</code> 文件夹中进行修改，修改后的布局会自动覆盖主题中的布局。</p>
 
 <p>网页布局主要涉及到Hugo的模板，可对现有主题的布局进行的修改有很多，具体语法和教程可参考官网对于<a href="https://gohugo.io/templates/">模板的介绍</a>，现暂且从简单入手，只考虑对博客正文页增加tags、topics、categories，并增加table of contents作为目录导航，因此只需要考虑single page template单页模板，<a href="https://gohugo.io/templates/single-page-templates/">此处</a>有官网具体说明。</p>
-
-<h3 id="增加分类显示">增加分类显示</h3>
 
 <h4 id="显示分类">显示分类</h4>
 
@@ -389,7 +403,7 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 
 <p>这样meta类的div中的所有div都占有一行，但是如此一来，显示post时间和显示阅读时间也分成了两行，所以对于这两部分，在外面也套一个div，定义style的 <code>display: flex</code>。同样的，我也希望topic和category也在一行，所以做同样的操作。</p>
 
-<p>再加上一些局部布局样式修改，这一块代码现在应为：</p>
+<p>再加上一些局部布局样式修改以及若标签内没有内容就不显示这部分内容，这一块代码现在应为：</p>
 
 <div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="lineno"> 1 </span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;meta&quot;</span><span class="o">&gt;</span>
 <span class="lineno"> 2 </span><span class="hll">    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display: flex&quot;</span><span class="o">&gt;</span>
@@ -404,40 +418,48 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: true title: &quot;Blog养
 <span class="lineno">11 </span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
 <span class="lineno">12 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 <span class="lineno">13 </span><span class="hll">    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display: flex;&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">14 </span><span class="hll">        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">15 </span><span class="hll">            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">topic</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</span><span class="lineno">16 </span>            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">topics</span> <span class="p">}}</span>
-<span class="lineno">17 </span><span class="hll">            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;topics&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">18 </span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
-<span class="lineno">19 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">topics</span><span class="s2">&quot; | absURL }}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
-<span class="lineno">20 </span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-<span class="lineno">21 </span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">22 </span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-<span class="lineno">23 </span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">24 </span><span class="hll">        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">25 </span><span class="hll">            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">category</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</span><span class="lineno">26 </span>            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">categories</span> <span class="p">}}</span>
-<span class="lineno">27 </span><span class="hll">            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;categories&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">28 </span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
-<span class="lineno">29 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">categories</span><span class="s2">&quot; | absURL}}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
-<span class="lineno">30 </span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-<span class="lineno">31 </span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">32 </span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-<span class="lineno">33 </span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">34 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">35 </span><span class="hll">    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">36 </span><span class="hll">        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">tags</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-</span><span class="lineno">37 </span>        <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">tags</span> <span class="p">}}</span>
-<span class="lineno">38 </span><span class="hll">        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">39 </span>            <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
-<span class="lineno">40 </span><span class="hll">            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
-</span><span class="lineno">41 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">tags</span><span class="s2">&quot; | absURL }}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-<span class="lineno">42 </span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">43 </span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-<span class="lineno">44 </span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">45 </span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
-<span class="lineno">46 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<span class="lineno">47 </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class="lineno">14 </span><span class="hll">        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">series</span> <span class="p">}}</span>
+</span><span class="lineno">15 </span><span class="hll">        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+</span><span class="lineno">16 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">topic</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">17 </span><span class="hll">            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">series</span> <span class="p">}}</span>
+</span><span class="lineno">18 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;series&quot;</span><span class="o">&gt;</span>
+<span class="lineno">19 </span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="lineno">20 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">series</span><span class="s2">&quot; | absURL }}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
+<span class="lineno">21 </span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">22 </span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">23 </span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">24 </span><span class="hll">        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class="lineno">25 </span><span class="hll">        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="lineno">26 </span>
+<span class="lineno">27 </span><span class="hll">        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">categories</span> <span class="p">}}</span>
+</span><span class="lineno">28 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+<span class="lineno">29 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">category</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">30 </span>            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">categories</span> <span class="p">}}</span>
+<span class="lineno">31 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;categories&quot;</span><span class="o">&gt;</span>
+<span class="lineno">32 </span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="lineno">33 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">categories</span><span class="s2">&quot; | absURL}}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
+<span class="lineno">34 </span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">35 </span><span class="hll">            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class="lineno">36 </span><span class="hll">            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="lineno">37 </span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">38 </span><span class="hll">        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="lineno">39 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">40 </span><span class="hll">
+</span><span class="lineno">41 </span>    <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">tags</span> <span class="p">}}</span>
+<span class="lineno">42 </span>    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+<span class="lineno">43 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">tags</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">44 </span>        <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">tags</span> <span class="p">}}</span>
+<span class="lineno">45 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="o">&gt;</span>
+<span class="lineno">46 </span>            <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="lineno">47 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+<span class="lineno">48 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">tags</span><span class="s2">&quot; | absURL }}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="lineno">49 </span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">50 </span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">51 </span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">52 </span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">53 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">54 </span>    <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">55 </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 </code></pre></div>
 
 
