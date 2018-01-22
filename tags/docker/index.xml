@@ -13,10 +13,10 @@
     
     <item>
       <title>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
+      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
       <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
       <description>Resource资源链接汇总:
 我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
 我的个人主页Hugo代码: blog-hugo

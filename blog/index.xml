@@ -12,17 +12,33 @@
     
     
     <item>
-      <title>建立python虚拟环境</title>
-      <link>https://orianna-zzo.github.io/blog/%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+      <title>/bin/sh vs /bin/bash</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/bin/sh-vs-/bin/bash/</link>
+      <pubDate>Mon, 22 Jan 2018 11:20:32 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-01/bin/sh-vs-/bin/bash/</guid>
+      <description>问题背景 这里是一些关于为什么会发现这个问题的碎碎念……
+之前也提到我们组的环境有些乱，一些开发机布置在生产，一台有GPU的计算机也布置在生产，如果需要root权限需要找运营，而据我上次和同事沟通结果是木有运营（我觉得应该是他们不知道找谁）。由于没有root权限，不能使用docker，而公司的机子连开发环境都是无法执行pip等操作的，所以只能使用conda创建虚拟环境。
+然而，conda创建虚拟环境也需要注意版本问题，比如我手上是没有linux机子的，试验过mac就算conda创建成功也无法搬到服务器上。服务器的linux有以下3个版本，oracle linux6.7, mint 18, centos 6.7，保险起见还是为每个环境都建一个对应的conda环境。
+而这个问题就出在mint 18上……
+问题内容 我之前建立的docker文件中默认情况是启动 /bin/sh，基本都没有问题，这次也是这样操作。然而在mint 18中，如果在 /bin/sh 中无法使用 source 命令，提示 /bin/sh: 25: source: not found。
+问题原因 一开始我还以为是没有安装source命令，但经过查找发现，只要把 /bin/sh 改为 /bin/bash 即可。
+原因是，尽管很多linux的 /bin/sh 是建立一个指向 /bin/bash 的软连接（还是会有一些细节不同），但是仍有一些操作系统比如Debian系是用的 /bin/dash ，这两者的区别还是挺大的，但具体是什么我并没有仔细研究。总之以后shell编程如果确认是bash脚本的话还是直接用 bash 比较安全，用 sh 容易发生混淆。
+后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……</description>
+    </item>
+    
+    <item>
+      <title>在公司建立python虚拟环境</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
       <description>Resource资源链接汇总：
 conda github repo、conda用户手册
 前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
 复杂的版本问题可能在个人开发时并不会有很大影响 (除非有强迫症需要在一个干净的开发环境)，但是当多人需要在同一个开发机/测试机/生产机上跑应用或者模型时，对于各个环境依赖的隔离就急需找到解决方案。依赖隔离问题其实不仅仅在python环境中十分重要，在很多其他程序中也是如此，不过本文还是主要以python环境为主要出发点。
 python环境隔离方案 经过网上搜索，目前为止对于python的依赖隔离主要有以下几种主要方法：
- docker virtualenv venv conda  方案选择 docker 其实docker很不错。容器化是现在非常火的一个方案。docker容器崩溃也不会影响主机，而且环境镜像可移植性非常强，能非常方便地把环境移植到不同的主机上去而不需要重新配置。现在我自己电脑也尽量在docker中开发，希望能不扰乱电脑本身的环境。可惜的是，尽管网上有信息说新版的docker容器使用可以不使用root权限，也有教程说建立一个可以使用docker的用户组，但是docker的安装还是避免不了需要root权限，而对于公司的环境来说，主机系统环境版本较旧且需要运营安装配置，灵活度不够。（插一句吐槽，其实对于正常有运营的组来说非常正常，但现在新到的组十分不规范，虽然不使用生产数据库但开发机都放在生产环境，其他人都不知道怎么找人root安装软件。）所以在公司使用的场景下只能忍痛放弃。如果没有这个限制，我还是很推荐这个方案，具体使用方法可以参考我另外的docker系列文章。
+ docker virtualenv venv conda  方案选择 docker 其实docker很不错。容器化是现在非常火的一个方案。docker容器崩溃也不会影响主机，而且环境镜像可移植性非常强，能非常方便地把环境移植到不同的主机上去而不需要重新配置安装。现在我自己电脑也尽量在docker中开发，希望能不扰乱电脑本身的环境。可惜的是，尽管网上有信息说新版的docker容器使用可以不使用root权限，也有教程说建立一个可以使用docker的用户组，但是docker的安装还是避免不了需要root权限，而对于公司的环境来说，主机系统环境版本较旧且需要运营安装配置，灵活度不够。（插一句吐槽，其实对于正常有运营的组来说非常正常，但现在新到的组十分不规范，虽然不使用生产数据库但开发机都放在生产环境，其他人都不知道怎么找人root安装软件。）所以在公司使用的场景下只能忍痛放弃。如果没有这个限制，我还是很推荐这个方案，具体使用方法可以参考我另外的docker系列文章。
 virtualenv vs venv virtualenv是一个针对python建立定制的虚拟环境的工具，可以在虚拟环境中指定python版本并使用pip安装到激活的虚拟环境中。在使用virtualenv时，虚拟环境会依赖系统环境中的site-packages，可以添加 —no-site-packages 表明虚拟环境不依赖这些包建立一个干净的环境。默认情况下，virtualenv并不会复制一个环境，而是建立一个软连接到现有环境，因此若是需要完全独立的环境，需要添加 —always-copy 来说明。virtualenv存在时间已经很长了，网上有很多相关使用方法。
 venv在python3.3之后集成在python标准库中。在python3.4之后可以直接使用venv，而较早版本在venv外包了一层pyvenv，所以很多地方都会提及pyvenv而不是venv，但建议如果允许还是直接使用venv。（注意，pyvenv与pyenv并不同，不要混淆。）尽管一些细节上还是有所区别，venv的实现很大程度上基于virtualenv，因此如果使用python3.3之后的版本，完全可以使用venv替代virtualenv。当然如果你乐意还是依旧可以再装个virtualenv的。
 virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似度很大，就用virtualenv与conda进行比较了。
@@ -33,10 +49,10 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
     
     <item>
       <title>Blog养成记(4) 增加tags等分类</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
+      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
       <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
       <description>Resource资源链接汇总:
 我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
 我的个人主页Hugo代码: blog-hugo
@@ -53,10 +69,10 @@ date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quo
     
     <item>
       <title>Blog养成记(3) 语法高亮配置</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
+      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 09 Jan 2018 17:52:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
       <description>Resource资源链接汇总:
 我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
 我的个人主页Hugo代码: blog-hugo
@@ -78,10 +94,10 @@ pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里�
     
     <item>
       <title>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
+      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
       <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
       <description>Resource资源链接汇总:
 我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
 我的个人主页Hugo代码: blog-hugo
@@ -109,10 +125,10 @@ $ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest 
     
     <item>
       <title>Blog养成记(1) Preface</title>
-      <link>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</link>
+      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</link>
       <pubDate>Mon, 01 Jan 2018 16:05:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</guid>
       <description> 初始  养个Blog的想法从很早就有了，但是&amp;hellip;  从本科开始就一直想要一个自己的Blog，一直没有行动。本身我没有记日记的习惯，也没有需求和冲动写下什么，本科虽然有时想记下学下的内容，但笔记就够了，也没写什么技术博客的想法。除了很久之前偶尔在qq空间或者人人po两篇直抒胸臆的文章，也就没有其他了。此外，虽说博客最重要的是内容，但没有一个好的生态环境和前端界面设计，至少对于我来说，没有兴趣花时间在上面，原谅我还是外观主义者不够geek。当初选择qq空间和人人更多的是为了圈子和分享，记录的因素只占了很少的一部分，让我长久在这上面却不会满意，毕竟这两者的整体环境定位更偏大众。原谅我比较俗气。这就和你发邮件选择@qq.com还是@gmail.com或者@outlook.com感觉一样，后者给予更正式化的感觉，作为邮箱基础功能来说并没有实质性区别。对于界面设计，之前流行的CSDN或者博客园都是简洁风，不够美观现代化，但够用、功能强大、社区用户庞大，不过没让我提起兴趣。自建网站却止步于嫌整套网站建立使用Wordpress太重，嗯，还要租用服务器。我觉得我还要承认，当时作为本科生的我，太过局限于学校课堂，并未出去看看，对于网络信息的运用和挖掘也更多停留在看看答案、找找软件、翻翻视频的基础使用上，最多也就查看下算法之类的。
 近几年，特别从研究生开始，越来越多的都是自己查找信息，更多地接触了“世界”的信息和知识，拓宽了视野，也明白本科王建明老师所说的“语言定义了你的范围”这句话的含义。非常感谢导师王文敏教授和在北大的研究生生涯，研究生和本科生的学习方式上差别很多，真正开始“去林子里打鸟”，而这个林子也扩展为“世界的林子”。随着自我学习机会和时间愈多，碎片化学习和感想也愈多，加上虽然网上知识丰富，但内容庞杂，过段时间想再查找却需要对这些信息重新筛选略费时，再加上工作后发现个人体悟有些良多，人老了很多回忆开始忘却，想要记录的心情越发迫切，于是又一次萌生个人博客的想法。
 难产  选择恐惧症+控制狂的特质决定了我家Blog的难产&amp;hellip;  尽管现在有很多像知乎专栏这样有现代化的界面和良好的用户群的网站可以让人直接在上面写作发布更关心核心内容，但我还是更倾向于选择Github Pages，与Github非常紧密的关系是该倾向性很重要的原因（这对码农来说很有诱惑力），但仔细想想我的主要原因可能还是由于Github Pages中整个界面设计都可以自己定制，我自认控制欲还是挺强的（虽然界面设计是个头疼的问题）。

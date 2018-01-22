@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="ZHENG Zi&#39;ou">
+<meta name="description" content="Resource资源链接汇总:
+我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
+我的个人主页Hugo代码: blog-hugo
+Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
+自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
+分类taxonomy有3个概念：
+ Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
+ tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
+配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
+[taxonomies] tag = &quot;tags&quot; series = &quot;series&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
+date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog养成记(4)增加tags等分类&quot; tags: [&quot;hugo&quot;] series: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
+分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。">
+
+<meta property="og:title" content="Blog养成记(4) 增加tags等分类" />
+<meta property="og:description" content="Resource资源链接汇总:
+我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
+我的个人主页Hugo代码: blog-hugo
+Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
+自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
+分类taxonomy有3个概念：
+ Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
+ tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
+配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
+[taxonomies] tag = &quot;tags&quot; series = &quot;series&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
+date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog养成记(4)增加tags等分类&quot; tags: [&quot;hugo&quot;] series: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
+分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/" />
+
+
+
+<meta property="article:published_time" content="2018-01-09T18:22:25&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-09T18:22:25&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+<title>
+
+
+     Blog养成记(4) 增加tags等分类 
+
+</title>
+<link rel="canonical" href="https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-22%2006%3a37%3a36.2731497%20%2b0000%20UTC%20m%3d%2b11.328021301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-22%2006%3a37%3a36.2731497%20%2b0000%20UTC%20m%3d%2b11.328021301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-22%2006%3a37%3a36.2731497%20%2b0000%20UTC%20m%3d%2b11.328021301">
+    
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-22%2006%3a37%3a36.2731497%20%2b0000%20UTC%20m%3d%2b11.328021301">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://orianna-zzo.github.io/img/profile.png"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
+            
+            <a href="https://orianna-zzo.github.io/"><div class="name">ZHENG Zi&#39;ou</div></a>
+            
+              <h3 class="self-intro">Be myself. Love the wonderful world. Do the right things in the right way.</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://orianna-zzo.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://orianna-zzo.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:zhengziou@gmail.com"><img class="icon" src="https://orianna-zzo.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Blog养成记(4) 增加tags等分类
+
+</div>
+
+                    <div class="initials"><a href="https://orianna-zzo.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    <div style="display: flex">
+                        
+                        <div class="date" title='2018-01-09  Tuesday  18:22:25'>2018-01-09  Tuesday  18:22:25</div>
+                        
+  
+                        
+                        <div class="reading-time"><div class="middot"></div>3 minutes read</div>
+                        
+                    </div>
+                    <div style="display: flex;">
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">series:</div>
+                            
+                            <div class="page-tag" id="series">
+                                
+                                <a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0">Blog养成记</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">category: </div>
+                            
+                            <div class="page-tag" id="categories">
+                                
+                                <a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D">杂技浅尝</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    
+                    <div class="page-tag">
+                        <div class="page-tag">tags: </div>
+                        
+                        <div class="page-tag" id="tags">
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/hugo">hugo</a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p><strong>Resource资源链接汇总</strong>:</p>
+
+<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
+我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
+
+<p><a href="https://gohugo.io">Hugo官网</a>、<a href="https://gohugo.io/content-management/taxonomies/">关于Taxonomy分类说明</a>、<a href="https://gohugo.io/templates/">Hugo Template介绍</a></p>
+
+<h2 id="自定义分类">自定义分类</h2>
+
+<p>Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在<a href="https://gohugo.io/content-management/taxonomies/">这里</a>查看。</p>
+
+<p>分类taxonomy有3个概念：</p>
+
+<ul>
+<li><strong>Taxonomy 分类</strong>: 可以用来对内容进行分类的类别</li>
+<li><strong>Term 术语</strong>: 分类的一个键</li>
+<li><strong>Value 值</strong>: 分配给这个Term的具体内容</li>
+</ul>
+
+<p>例如我需要增加3个分类，分别是：</p>
+
+<ul>
+<li>tag：文章标签</li>
+<li>topic：文章主题/文章系列</li>
+<li>category：文章分类</li>
+</ul>
+
+<p>以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。</p>
+
+<h3 id="配置分类">配置分类</h3>
+
+<p>需要在 <code>config.toml</code> 中增加分类。还是这个例子，则需要增加如下内容：</p>
+
+<pre><code>[taxonomies]
+  tag = &quot;tags&quot;
+  series = &quot;series&quot;
+  category = &quot;categories&quot;
+</code></pre>
+
+<p>而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">date</span><span class="p p-Indicator">:</span> <span class="s">&quot;2018-01-09T16:22:25+08:00&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">draft</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Blog养成记(4)</span><span class="nv"> </span><span class="s">增加tags等分类&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;hugo&quot;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">series</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;Blog养成记&quot;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">categories</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;杂技浅尝&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<p>当然实际上，Hugo默认会产生 <code>tags</code> 和 <code>categories</code> 的分类，如果只需要这两个，可以不用在 <code>config.toml</code> 中声明就在post头部使用。</p>
+
+<h3 id="分类集合查看">分类集合查看</h3>
+
+<p>使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。</p>
+
+<p>还是以tag为例：</p>
+
+<p><code>example.com/tags/</code> 会列出tags中的所有术语；</p>
+
+<p><code>example.com/tags/docker</code> 会列出tags标为docker的所有网页列表。</p>
+
+<h3 id="分类排序">分类排序</h3>
+
+<blockquote>
+<p>分类排序还未正式尝试，无法确认正式效果，还需后面确认后再补充。</p>
+</blockquote>
+
+<p>在内容页头部中以 <code>术语名称_weight</code> 来标志权重，可在分类的查看野种按该权重进行排序。但暂时只支持默认情况下以日期作为权重排序标准。</p>
+
+<p>还是以这篇博文为例：</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">date</span><span class="p p-Indicator">:</span> <span class="s">&quot;2018-01-09T16:22:25+08:00&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">draft</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">title</span><span class="p p-Indicator">:</span> <span class="s">&quot;Blog养成记(4)</span><span class="nv"> </span><span class="s">增加tags、topics和categories&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;hugo&quot;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">tags_weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">66</span>
+<span class="l l-Scalar l-Scalar-Plain">series</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;Blog养成记&quot;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">series_weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">96</span>
+<span class="l l-Scalar l-Scalar-Plain">categories</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;浅尝杂技&quot;</span><span class="p p-Indicator">]</span>
+<span class="l l-Scalar l-Scalar-Plain">categoryes_weight</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">96</span>
+</code></pre></div>
+
+<h2 id="网页布局修改">网页布局修改</h2>
+
+<p>我的Hugo源码在<a href="https://github.com/orianna-zzo/blog-hugo">这里</a>，可以进行参考。</p>
+
+<p>我现在使用的是<a href="https://github.com/nishanths/cocoa-hugo-theme">cocoa主题</a>，该主题并不会显示tags等分类，因此对于网页布局需要进行覆盖。</p>
+
+<p>我先将 <code>themes/cocoa/layouts/blog</code> 中的 <code>single.html</code> 复制到 <code>layouts/blog</code> 中，只需要对主文件夹中 <code>layouts</code> 文件夹中进行修改，修改后的布局会自动覆盖主题中的布局。</p>
+
+<p>网页布局主要涉及到Hugo的模板，可对现有主题的布局进行的修改有很多，具体语法和教程可参考官网对于<a href="https://gohugo.io/templates/">模板的介绍</a>，现暂且从简单入手，只考虑对博客正文页增加tags、topics、categories，并增加table of contents作为目录导航，因此只需要考虑single page template单页模板，<a href="https://gohugo.io/templates/single-page-templates/">此处</a>有官网具体说明。</p>
+
+<h4 id="显示分类">显示分类</h4>
+
+<p>在显示文章的元信息块 (<code>&lt;div class=&quot;meta&quot;&gt;</code>) 中，在阅读时间下面 (<code>{{ if not .Site.Params.noshowreadtime }}...{{ end }}</code>)，增加显示tags、topics和categories的代码：</p>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span></span>{{ with .Params.tags }}
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;tags&quot;</span><span class="p">&gt;</span>
+  {{ range . }}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">tags</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">absURL</span> <span class="err">}}/{{</span> <span class="err">.</span> <span class="err">|</span> <span class="na">urlize</span> <span class="err">}}&quot;</span><span class="p">&gt;</span>{{ . }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  {{ end }}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+{{ end }}
+
+{{ with .Params.topics }}
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;topics&quot;</span><span class="p">&gt;</span>
+  {{ range . }}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">topics</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">absURL</span> <span class="err">}}/{{</span> <span class="err">.</span> <span class="err">|</span> <span class="na">urlize</span> <span class="err">}}&quot;</span><span class="p">&gt;</span>{{ . }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  {{ end }}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+{{ end }}
+
+{{ with .Params.categories }}
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;categories&quot;</span><span class="p">&gt;</span>
+  {{ range . }}
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;{{ &quot;</span><span class="na">categories</span><span class="err">&quot;</span> <span class="err">|</span> <span class="na">absURL</span><span class="err">}}/{{</span> <span class="err">.</span> <span class="err">|</span> <span class="na">urlize</span> <span class="err">}}&quot;</span><span class="p">&gt;</span>{{ . }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+  {{ end }}
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+{{ end }}
+</code></pre></div>
+
+<p>这样，这篇博文头部定义的tag、topic和category就都显示出来了。</p>
+
+<h4 id="增加page-tag-css类">增加page-tag CSS类</h4>
+
+<p>虽然显示出来了，但是显示格式需要通过css定义呀。在 <code>static/css</code> 文件夹中的 <code>override.css</code>中增加 <code>page-tag</code>的css类：</p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span></span><span class="p">.</span><span class="nc">page-tag</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">font-family</span><span class="p">:</span> <span class="s1">&#39;Raleway&#39;</span><span class="p">,</span> <span class="s1">&#39;Helvetica Neue&#39;</span><span class="p">,</span> <span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">;</span>
+    <span class="k">letter-spacing</span><span class="p">:</span> <span class="mf">-0.005</span><span class="kt">rem</span><span class="p">;</span>
+    <span class="k">font-weight</span><span class="p">:</span> <span class="mi">400</span><span class="p">;</span>
+    <span class="k">color</span><span class="p">:</span> <span class="mh">#666</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="k">font-style</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<p>将每一个显示分类的代码都放入一个div块，并使用page-tag作为css类。</p>
+
+<h4 id="布局修改">布局修改</h4>
+
+<p>虽然现在都显示出来了，但是都没有放在我想要的位置。我对前端一知半解，每次调试都耗费不少时间，如果你对这些很熟悉，完全可以自己试着玩玩，我更多的目的为了记录。</p>
+
+<p>首先，因为meta类中定义了 <code>display: flex</code>，所以这个div中的div都是浮动的，无法占有一行，所以先在自定义css中对meta的 <code>display</code> 重新定义：</p>
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span></span><span class="p">.</span><span class="nc">meta</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span><span class="kc">block</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>这样meta类的div中的所有div都占有一行，但是如此一来，显示post时间和显示阅读时间也分成了两行，所以对于这两部分，在外面也套一个div，定义style的 <code>display: flex</code>。同样的，我也希望topic和category也在一行，所以做同样的操作。</p>
+
+<p>再加上一些局部布局样式修改以及若标签内没有内容就不显示这部分内容，这一块代码现在应为：</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="lineno"> 1 </span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;meta&quot;</span><span class="o">&gt;</span>
+<span class="lineno"> 2 </span><span class="hll">    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display: flex&quot;</span><span class="o">&gt;</span>
+</span><span class="lineno"> 3 </span>        <span class="p">{{</span> <span class="k">if</span> <span class="ow">and</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">dateformfull</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">dateform</span> <span class="p">}}</span>
+<span class="lineno"> 4 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;date&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;{{ .Date.Format .Site.Params.dateformfull }}&#39;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">Format</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">dateformfull</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno"> 5 </span>        <span class="p">{{</span> <span class="k">else</span> <span class="p">}}</span>
+<span class="lineno"> 6 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;date&quot;</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;{{ .Date.Format &quot;Mon Jan 2 2006 15:04:05&quot; }}&#39;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">Format</span> <span class="s2">&quot;Jan 2, 2006&quot;</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno"> 7 </span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno"> 8 </span>      
+<span class="lineno"> 9 </span>        <span class="p">{{</span> <span class="k">if</span> <span class="ow">not</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">noshowreadtime</span> <span class="p">}}</span>
+<span class="lineno">10 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;reading-time&quot;</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;middot&quot;</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">i18n</span> <span class="s2">&quot;readingTime&quot;</span> <span class="o">.</span><span class="n">ReadingTime</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">11 </span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">12 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">13 </span><span class="hll">    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;display: flex;&quot;</span><span class="o">&gt;</span>
+</span><span class="lineno">14 </span><span class="hll">        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">series</span> <span class="p">}}</span>
+</span><span class="lineno">15 </span><span class="hll">        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+</span><span class="lineno">16 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">topic</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">17 </span><span class="hll">            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">series</span> <span class="p">}}</span>
+</span><span class="lineno">18 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;series&quot;</span><span class="o">&gt;</span>
+<span class="lineno">19 </span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="lineno">20 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">series</span><span class="s2">&quot; | absURL }}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
+<span class="lineno">21 </span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">22 </span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">23 </span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">24 </span><span class="hll">        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class="lineno">25 </span><span class="hll">        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="lineno">26 </span>
+<span class="lineno">27 </span><span class="hll">        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">categories</span> <span class="p">}}</span>
+</span><span class="lineno">28 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+<span class="lineno">29 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">category</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">30 </span>            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">categories</span> <span class="p">}}</span>
+<span class="lineno">31 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;categories&quot;</span><span class="o">&gt;</span>
+<span class="lineno">32 </span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="lineno">33 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">categories</span><span class="s2">&quot; | absURL}}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
+<span class="lineno">34 </span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">35 </span><span class="hll">            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class="lineno">36 </span><span class="hll">            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="lineno">37 </span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">38 </span><span class="hll">        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="lineno">39 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">40 </span><span class="hll">
+</span><span class="lineno">41 </span>    <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">tags</span> <span class="p">}}</span>
+<span class="lineno">42 </span>    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+<span class="lineno">43 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span><span class="n">tags</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">44 </span>        <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">tags</span> <span class="p">}}</span>
+<span class="lineno">45 </span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;tags&quot;</span><span class="o">&gt;</span>
+<span class="lineno">46 </span>            <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="lineno">47 </span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;page-tag&quot;</span><span class="o">&gt;</span>
+<span class="lineno">48 </span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ &quot;</span><span class="n">tags</span><span class="s2">&quot; | absURL }}/{{ . | urlize }}&quot;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="lineno">49 </span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">50 </span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">51 </span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">52 </span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">53 </span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="lineno">54 </span>    <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="lineno">55 </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</code></pre></div>
+
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-01-09</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>增加tag、网页布局、版本控制及资源汇总</td>
+<td>2018-01-17</td>
+</tr>
+</tbody>
+</table>
+
+                <br>
+                <p class="back-to-posts"><a href="https://orianna-zzo.github.io/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-90057853-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
+
