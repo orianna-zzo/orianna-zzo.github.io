@@ -12,19 +12,59 @@
     
     
     <item>
+      <title>慢学Docker(2) Docker初探</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</link>
+      <pubDate>Sat, 27 Jan 2018 15:04:18 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</guid>
+      <description>Resource资源链接汇总：
+docker官方文档、docker for mac下载页、docker for windows下载页、docer for linux下载页
+docker for Ubuntu安装说明、docker for Debian安装说明、docker for CentOS安装说明、docker for Fedora安装说明
+nvidia-docker github
+Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用部署带来的困难，更不用提多次部署这种重复劳动的麻烦事了。此外，容器使用了sandbox机制，容器与容器之间有较好的隔离性，不用担心。这是docker最通俗也是最广泛的应用。
+是不是觉得这个优点和应用很熟悉？当我们想要跨平台无视底层环境要求跑程序执行应用我们都会想到什么？对，就是虚拟机。在本机上装个虚拟机应用比如说virtual box或者vmware，然后再用操作系统镜像（比如说win7）建个虚拟机，就可以在虚拟机中安装各种应用了。在这里docker就相当于virtual box或者vmware，容器就相当于你建的虚拟机实例，docker中也有一个镜像的概念，就相当于你建虚拟机所使用的操作系统镜像（win7）。这样说是否更通俗易理解一些？
+docker容器 vs vm虚拟机 既然虚拟机也可以完成相似的功能，为什么要用docker呢？换句话来问，同样都是虚拟化技术，docker的容器技术和vm虚拟机有什么区别？docker官方网站也简单回答了这个疑问，可以在这里查看。我对于这些底层的架构知识并不是很了解，只能根据网上的信息以及最近这一个月的入门级使用谈及一下感受。
+相比vm虚拟机，docker的容器技术更为轻量级。直观上，这个轻量级体现在启动速度更快、占用资源更少。我并没有具体测试比较过，但在实际使用中感受是，我原本开一个虚拟机跑程序就已经很不错了，虚拟机开机还有个等待开机时间，而现在使用docker，容器载入速度很快，同时在机子上会运行几个不同的容器，从镜像重新生成容器也很快很方便。2014年开始，docker一直对外宣传的一个重点也是这个，“虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。
+不过docker容器和虚拟机尽管都是虚拟化技术，但是里面的技术细节有很多不同。下面两张docker官网上的图很清晰简单地表示了两者的区别：
+前者是虚拟机的架构图，后者是docker容器的架构图。最显然的区别是，每个虚拟机中都运行着各自的guest OS，而在docker容器架构中每个容器只包含了各自的应用和依赖包，并不包含独立的操作系统。也就是说容器采用kernel共享，同时使用cgroups和namespace等方法对容器所使用的命名空间和依赖包等进行区分以达到隔离效果。所以尽管各个容器都是独立在宿主机的操作系统上运行着的，但不可避免地，各个容器之间会共享一些通用运行库。这个区别会使得各个容器之间相互独立，但并没有虚拟机的隔离性好，但这也是使得docker容器能够快速启动并且资源占用少的一个重要原因。太复杂的我也不清楚细节，只是大致有个概念，这对我们简单应用了解也应该就足够了。
+嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了:smile:。
+docker并不万能 Docker真心很好用，才上手了1个多月的我特别喜欢。但是作为新兴技术，还有很多不完善的地方。有些问题可能作为个人使用者来说并不是很大的问题，但是对于生产来说都是非常重要需要考虑的问题，这里只是简单记录下到目前为止遇到的一些局限性，至于其他的，遇到再加吧：
+ docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的:joy:，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
+这里只是提一嘴，关注点还是在docker本身。毕竟现在用的mac可用的不是n卡，等有机会整个n卡玩并需要安装docker的时候再试试nvidia-docker。
+Installation Docker分为Community (CE) 和Enterprise (EE) 版本，个人使用用CE就够了，一些EE的高级功能用不上也不会用。Docker CE有分为stable版和edge版，前者每一个季度更新一个更reliable的更新，后者每个月都会提供一些新的特征。不爱折腾的我就直接选择stable版。更多关于docker安装的环境需求可以参考官网该页面，不同的环境还是有不同的需求的。
+网上有很多零散的安装教程，建议找最新的来看，很多实际上都过时了。最安全的当然直接上官网。
+Mac安装 Mac可以选择用Homebrew进行安装:
+$ brew cask install docker  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。</description>
+    </item>
+    
+    <item>
+      <title>慢学Docker(1) Preface</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</link>
+      <pubDate>Sat, 27 Jan 2018 12:32:58 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</guid>
+      <description> 初闻 作为一个一向不怎么关心各种资讯动态的人，我经常脱节于前沿新闻及热点，更何况对于非专业方向，我更是不会去主动关心，所以对于之前很火的容器和docker我是一点都不了解。第一次听说这个还是因为前人渣组长李想要求写份标书文档，什么技术热门可用就写进去。他听说了docker容器部署及环境配置的便利性，想利用到项目中的宣传中，更好地作为对外的卖点。不管怎么说，这是第一次听说并尝试了解docker和容器，不过这份了解仅限于网上科技软文宣传，毕竟文档要求紧、内容多，又是全新的概念。
+第二次听说docker是带的17届应届生詹辉小仓鼠在公司实验ocr时网上各个项目需要的环境和依赖都有略微不同，比如当时caffe还是基于python2.7，但gpu机子上配的python3环境等问题。还有一个最主要的问题在于，公司的服务器都无法联网，安装环境十分困难。其实连公司的电脑也是无法使用conda、pip等在线安装的，需要离线安装，而且公司电脑标裝windows，配置起来与服务器区别很大。某天小仓鼠过来说docker据说很好用，但是他遇到了些问题，解决后他也认为docker对于环境配置方便了很多。
+docker，你好 决定开始了解docker的契机是换了Mac，有心情来折腾一下电脑和环境，另外由于环境配置和管理的麻烦程度，我又有些强迫症地希望新电脑有一个更干净的环境，于是决定学习一下这个传说中的利器。
+这个系列开始于我已经使用docker一个月时间，在正常使用中开始渐渐步入正轨，融入我日常的工作以及学习中来。系列内容中对于docker的介绍可能不会很系统完整，只是对于我的学习过程和应用做一个记录。对于docker一些高级内容和使用方法也可能并不会涉及，毕竟只是“浅尝”、“慢学”罢了。
+版本控制    Version Action Time     1.0 Init 2018-01-27    </description>
+    </item>
+    
+    <item>
       <title>/bin/sh vs /bin/bash</title>
       <link>https://orianna-zzo.github.io/blog/2018-01/bin/sh-vs-/bin/bash/</link>
       <pubDate>Mon, 22 Jan 2018 11:20:32 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/bin/sh-vs-/bin/bash/</guid>
-      <description>问题背景 这里是一些关于为什么会发现这个问题的碎碎念……
+      <description> 问题背景 这里是一些关于为什么会发现这个问题的碎碎念……
 之前也提到我们组的环境有些乱，一些开发机布置在生产，一台有GPU的计算机也布置在生产，如果需要root权限需要找运营，而据我上次和同事沟通结果是木有运营（我觉得应该是他们不知道找谁）。由于没有root权限，不能使用docker，而公司的机子连开发环境都是无法执行pip等操作的，所以只能使用conda创建虚拟环境。
 然而，conda创建虚拟环境也需要注意版本问题，比如我手上是没有linux机子的，试验过mac就算conda创建成功也无法搬到服务器上。服务器的linux有以下3个版本，oracle linux6.7, mint 18, centos 6.7，保险起见还是为每个环境都建一个对应的conda环境。
 而这个问题就出在mint 18上……
 问题内容 我之前建立的docker文件中默认情况是启动 /bin/sh，基本都没有问题，这次也是这样操作。然而在mint 18中，如果在 /bin/sh 中无法使用 source 命令，提示 /bin/sh: 25: source: not found。
 问题原因 一开始我还以为是没有安装source命令，但经过查找发现，只要把 /bin/sh 改为 /bin/bash 即可。
 原因是，尽管很多linux的 /bin/sh 是建立一个指向 /bin/bash 的软连接（还是会有一些细节不同），但是仍有一些操作系统比如Debian系是用的 /bin/dash ，这两者的区别还是挺大的，但具体是什么我并没有仔细研究。总之以后shell编程如果确认是bash脚本的话还是直接用 bash 比较安全，用 sh 容易发生混淆。
-后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……</description>
+后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……
+版本控制    Version Action Time     1.0 Init 2018-01-22    </description>
     </item>
     
     <item>
