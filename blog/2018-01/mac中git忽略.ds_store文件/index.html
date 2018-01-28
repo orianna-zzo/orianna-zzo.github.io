@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="ZHENG Zi&#39;ou">
+<meta name="description" content="gitignore官方文档说明、gitignore文件模板参考、git config官方文档说明
+Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
+但这次用两个mac，一个mac提交了修改，第二个mac想要拉下来时居然遇到了.DS_Store文件被修改过需要提交再merge。什么？我没改过内容呀？所以这个.DS_Store是什么鬼？
+.DS_Store是Mac OS用来存储这个文件夹的显示属性的，被作为一种通用的有关显示设置的元数据（比如图标位置等设置）为Finder、Spotlight用。所以在不经意间就会修改这个文件。而文件共享时为了隐私关系将.DS_Store文件删除比较好，因为其中有一些信息在不经意间泄露出去。
+Git中处理方案 方案一：项目设置.gitignore 仅针对git的处理最naive的想法就是设置.gitignore文件。
+.gitignore文件用于忽略文件，官网介绍在这里，规范如下：
+ 所有空行或者以注释符号 ＃ 开头的行都会被 git 忽略，空行可以为了可读性分隔段落，# 表明注释。 以反斜杠 / 结尾说明需要忽略的是一个目录，包括该目录下所有内容，若有与该目录同名的其他文件并不会被忽略。 第一个 / 会匹配路径的根目录，举个栗子，&rdquo;/*.html&rdquo;会匹配&rdquo;index.html&rdquo;，而不是&rdquo;d/index.html&rdquo;。 通配符 * 匹配任意个任意字符，? 匹配一个任意字符。需要注意的是通配符不会匹配文件路径中的 /，举个栗子，&rdquo;d/*.html&rdquo;会匹配&rdquo;d/index.html&rdquo;，但不会匹配&rdquo;d/a/b/c/index.html&rdquo;。 两个连续的星号 ** 有特殊含义：  以 **/ 开头表示匹配所有的文件夹，例如 **/test.md 匹配所有的test.md文件。 以 /** 结尾表示匹配文件夹内所有内容，例如 a/** 匹配文件夹a中所有内容。 连续星号 ** 前后分别被 / 夹住表示匹配0或者多层文件夹，例如 a/**/b 匹配到 a/b 、a/x/b 、a/x/y/b 等。  前缀 ! 的模式表示如果前面匹配到被忽略，则重新添加回来。如果匹配到的父文件夹还是忽略状态，该文件还是保持忽略状态。如果路径名第一个字符为 ! ，则需要在前面增加 \ 进行转义。  对于一些常用的系统、工程文件的.gitignore文件可以参考这个网站进行设置，这里有很多模板。
+针对.DS_Store文件，在git工程文件夹中新建.gitignore文件，在文件中设置：
+.gitignore **/.DS_Store  对于已经提交的内容，希望git能够忽略，但同时并不会删除本地文件，需要在terminal输入以下命令：">
+
+<meta property="og:title" content="Mac中Git忽略.DS_Store文件" />
+<meta property="og:description" content="gitignore官方文档说明、gitignore文件模板参考、git config官方文档说明
+Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
+但这次用两个mac，一个mac提交了修改，第二个mac想要拉下来时居然遇到了.DS_Store文件被修改过需要提交再merge。什么？我没改过内容呀？所以这个.DS_Store是什么鬼？
+.DS_Store是Mac OS用来存储这个文件夹的显示属性的，被作为一种通用的有关显示设置的元数据（比如图标位置等设置）为Finder、Spotlight用。所以在不经意间就会修改这个文件。而文件共享时为了隐私关系将.DS_Store文件删除比较好，因为其中有一些信息在不经意间泄露出去。
+Git中处理方案 方案一：项目设置.gitignore 仅针对git的处理最naive的想法就是设置.gitignore文件。
+.gitignore文件用于忽略文件，官网介绍在这里，规范如下：
+ 所有空行或者以注释符号 ＃ 开头的行都会被 git 忽略，空行可以为了可读性分隔段落，# 表明注释。 以反斜杠 / 结尾说明需要忽略的是一个目录，包括该目录下所有内容，若有与该目录同名的其他文件并不会被忽略。 第一个 / 会匹配路径的根目录，举个栗子，&rdquo;/*.html&rdquo;会匹配&rdquo;index.html&rdquo;，而不是&rdquo;d/index.html&rdquo;。 通配符 * 匹配任意个任意字符，? 匹配一个任意字符。需要注意的是通配符不会匹配文件路径中的 /，举个栗子，&rdquo;d/*.html&rdquo;会匹配&rdquo;d/index.html&rdquo;，但不会匹配&rdquo;d/a/b/c/index.html&rdquo;。 两个连续的星号 ** 有特殊含义：  以 **/ 开头表示匹配所有的文件夹，例如 **/test.md 匹配所有的test.md文件。 以 /** 结尾表示匹配文件夹内所有内容，例如 a/** 匹配文件夹a中所有内容。 连续星号 ** 前后分别被 / 夹住表示匹配0或者多层文件夹，例如 a/**/b 匹配到 a/b 、a/x/b 、a/x/y/b 等。  前缀 ! 的模式表示如果前面匹配到被忽略，则重新添加回来。如果匹配到的父文件夹还是忽略状态，该文件还是保持忽略状态。如果路径名第一个字符为 ! ，则需要在前面增加 \ 进行转义。  对于一些常用的系统、工程文件的.gitignore文件可以参考这个网站进行设置，这里有很多模板。
+针对.DS_Store文件，在git工程文件夹中新建.gitignore文件，在文件中设置：
+.gitignore **/.DS_Store  对于已经提交的内容，希望git能够忽略，但同时并不会删除本地文件，需要在terminal输入以下命令：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/" />
+
+
+
+<meta property="article:published_time" content="2018-01-28T13:36:28&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-28T13:36:28&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+
+<title>
+
+
+     Mac中Git忽略.DS_Store文件 
+
+</title>
+<link rel="canonical" href="https://orianna-zzo.github.io/blog/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-28%2012%3a02%3a34.675180295%20%2b0000%20UTC%20m%3d%2b11.688076715">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-28%2012%3a02%3a34.675180295%20%2b0000%20UTC%20m%3d%2b11.688076715">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-28%2012%3a02%3a34.675180295%20%2b0000%20UTC%20m%3d%2b11.688076715">
+    
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-28%2012%3a02%3a34.675180295%20%2b0000%20UTC%20m%3d%2b11.688076715">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://orianna-zzo.github.io/img/profile.png"
+
+>
+
+
+
+
+
+
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
+            
+            <a href="https://orianna-zzo.github.io/"><div class="name">ZHENG Zi&#39;ou</div></a>
+            
+              <h3 class="self-intro">Be myself. Love the wonderful world. Do the right things in the right way.</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://orianna-zzo.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://orianna-zzo.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+	
+
+        
+
+        
+
+        
+            <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:zhengziou@gmail.com"><img class="icon" src="https://orianna-zzo.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Mac中Git忽略.DS_Store文件
+
+</div>
+
+                    <div class="initials"><a href="https://orianna-zzo.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    <div style="display: flex">
+                        
+                        <div class="date" title='2018-01-28  Sunday  13:36:28'>2018-01-28  Sunday  13:36:28</div>
+                        
+  
+                        
+                        <div class="reading-time"><div class="middot"></div>One minute read</div>
+                        
+                    </div>
+                    <div style="display: flex;">
+                        
+
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">category: </div>
+                            
+                            <div class="page-tag" id="categories">
+                                
+                                <a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D">杂技浅尝</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    
+                    <div class="page-tag">
+                        <div class="page-tag">tags: </div>
+                        
+                        <div class="page-tag" id="tags">
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/mac">mac</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/git">git</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/gitignore">gitignore</a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p><a href="https://git-scm.com/docs/gitignore">gitignore官方文档说明</a>、<a href="https://www.gitignore.io/">gitignore文件模板参考</a>、<a href="https://git-scm.com/docs/git-config">git config官方文档说明</a></p>
+
+<h2 id="git中多出来的-ds-store">Git中多出来的.DS_Store</h2>
+
+<p>虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。</p>
+
+<p>但这次用两个mac，一个mac提交了修改，第二个mac想要拉下来时居然遇到了.DS_Store文件被修改过需要提交再merge。什么？我没改过内容呀？所以这个.DS_Store是什么鬼？</p>
+
+<p>.DS_Store是Mac OS用来存储这个文件夹的显示属性的，被作为一种通用的有关显示设置的元数据（比如图标位置等设置）为Finder、Spotlight用。所以在不经意间就会修改这个文件。而文件共享时为了隐私关系将.DS_Store文件删除比较好，因为其中有一些信息在不经意间泄露出去。</p>
+
+<h2 id="git中处理方案">Git中处理方案</h2>
+
+<h3 id="方案一-项目设置-gitignore">方案一：项目设置.gitignore</h3>
+
+<p>仅针对git的处理最naive的想法就是设置.gitignore文件。</p>
+
+<p>.gitignore文件用于忽略文件，官网介绍在<a href="https://git-scm.com/docs/gitignore">这里</a>，规范如下：</p>
+
+<ul>
+<li>所有空行或者以注释符号 <code>＃</code> 开头的行都会被 git 忽略，空行可以为了可读性分隔段落，<code>#</code> 表明注释。</li>
+<li>以反斜杠 <code>/</code> 结尾说明需要忽略的是一个目录，包括该目录下所有内容，若有与该目录同名的其他文件并不会被忽略。</li>
+<li>第一个 <code>/</code> 会匹配路径的根目录，举个栗子，&rdquo;/*.html&rdquo;会匹配&rdquo;index.html&rdquo;，而不是&rdquo;d/index.html&rdquo;。</li>
+<li>通配符 <code>*</code> 匹配任意个任意字符，<code>?</code> 匹配一个任意字符。需要注意的是通配符不会匹配文件路径中的 <code>/</code>，举个栗子，&rdquo;d/*.html&rdquo;会匹配&rdquo;d/index.html&rdquo;，但不会匹配&rdquo;d/a/b/c/index.html&rdquo;。</li>
+<li>两个连续的星号 <code>**</code> 有特殊含义：
+
+<ul>
+<li>以 <code>**/</code> 开头表示匹配所有的文件夹，例如 <code>**/test.md</code> 匹配所有的test.md文件。</li>
+<li>以 <code>/**</code> 结尾表示匹配文件夹内所有内容，例如 <code>a/**</code> 匹配文件夹a中所有内容。</li>
+<li>连续星号 <code>**</code> 前后分别被 <code>/</code> 夹住表示匹配0或者多层文件夹，例如 <code>a/**/b</code> 匹配到 <code>a/b</code> 、<code>a/x/b</code> 、<code>a/x/y/b</code> 等。</li>
+</ul></li>
+<li>前缀 <code>!</code> 的模式表示如果前面匹配到被忽略，则重新添加回来。如果匹配到的父文件夹还是忽略状态，该文件还是保持忽略状态。如果路径名第一个字符为 <code>!</code> ，则需要在前面增加 <code>\</code> 进行转义。</li>
+</ul>
+
+<p>对于一些常用的系统、工程文件的.gitignore文件可以参考<a href="https://www.gitignore.io/">这个网站</a>进行设置，这里有很多模板。</p>
+
+<p>针对.DS_Store文件，在git工程文件夹中新建.gitignore文件，在文件中设置：</p>
+
+<pre><code>.gitignore
+**/.DS_Store
+</code></pre>
+
+<p>对于已经提交的内容，希望git能够忽略，但同时并不会删除本地文件，需要在terminal输入以下命令：</p>
+<div class="highlight"><pre><code class="language-Shell" data-lang="Shell"><span></span>$ git rm -r --cached <span class="nv">$file_path</span>
+</code></pre></div>
+
+<p>这个方案的优点就是方便、快捷、最容易想到，缺点就是每个git项目都要重复一遍。</p>
+
+<h3 id="方案二-全局设置忽略">方案二：全局设置忽略</h3>
+
+<p>虽然每个项目配.gitignore文件可以成功，但是每个项目都需要配，嗯，有点烦。我们可以在git的全局进行配置来忽略.DS_Store文件。</p>
+
+<p>设置之前我们先看下现在的git config配置情况（<a href="https://git-scm.com/docs/git-config">git config官方文档说明</a>）：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ git config --list
+</code></pre></div>
+
+<p>实际上git配置情况可以在 <code>~/.gitconfig</code> 文件中查看。</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ vi ~/.gitconfig
+</code></pre></div>
+
+<p>通过 <code>:q!</code> 退出后，我们需要建立一个文件，把需要全局忽略的文件路径写入其中。该文件起名为.gitignore_global：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ touch ~/.gitignore_global
+</code></pre></div>
+
+<p>然后对这个文件进行修改。</p>
+
+<pre><code># Mac OS
+**/.DS_Store
+</code></pre>
+
+<p>然后对git进行全局设置，让git忽略.gitignore_global中的所有文件：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ git config --global core.excludesfile ~/.gitignore_global
+</code></pre></div>
+
+<p>这样就不用每个git目录都设置忽略.DS_Store文件了！</p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-01-28</td>
+</tr>
+</tbody>
+</table>
+
+                <br>
+                <p class="back-to-posts"><a href="https://orianna-zzo.github.io/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-90057853-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
+

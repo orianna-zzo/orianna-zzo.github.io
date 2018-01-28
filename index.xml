@@ -6,10 +6,27 @@
     <description>Recent content on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 27 Jan 2018 15:04:18 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jan 2018 13:36:28 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mac中Git忽略.DS_Store文件</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Sun, 28 Jan 2018 13:36:28 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/</guid>
+      <description>gitignore官方文档说明、gitignore文件模板参考、git config官方文档说明
+Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
+但这次用两个mac，一个mac提交了修改，第二个mac想要拉下来时居然遇到了.DS_Store文件被修改过需要提交再merge。什么？我没改过内容呀？所以这个.DS_Store是什么鬼？
+.DS_Store是Mac OS用来存储这个文件夹的显示属性的，被作为一种通用的有关显示设置的元数据（比如图标位置等设置）为Finder、Spotlight用。所以在不经意间就会修改这个文件。而文件共享时为了隐私关系将.DS_Store文件删除比较好，因为其中有一些信息在不经意间泄露出去。
+Git中处理方案 方案一：项目设置.gitignore 仅针对git的处理最naive的想法就是设置.gitignore文件。
+.gitignore文件用于忽略文件，官网介绍在这里，规范如下：
+ 所有空行或者以注释符号 ＃ 开头的行都会被 git 忽略，空行可以为了可读性分隔段落，# 表明注释。 以反斜杠 / 结尾说明需要忽略的是一个目录，包括该目录下所有内容，若有与该目录同名的其他文件并不会被忽略。 第一个 / 会匹配路径的根目录，举个栗子，&amp;rdquo;/*.html&amp;rdquo;会匹配&amp;rdquo;index.html&amp;rdquo;，而不是&amp;rdquo;d/index.html&amp;rdquo;。 通配符 * 匹配任意个任意字符，? 匹配一个任意字符。需要注意的是通配符不会匹配文件路径中的 /，举个栗子，&amp;rdquo;d/*.html&amp;rdquo;会匹配&amp;rdquo;d/index.html&amp;rdquo;，但不会匹配&amp;rdquo;d/a/b/c/index.html&amp;rdquo;。 两个连续的星号 ** 有特殊含义：  以 **/ 开头表示匹配所有的文件夹，例如 **/test.md 匹配所有的test.md文件。 以 /** 结尾表示匹配文件夹内所有内容，例如 a/** 匹配文件夹a中所有内容。 连续星号 ** 前后分别被 / 夹住表示匹配0或者多层文件夹，例如 a/**/b 匹配到 a/b 、a/x/b 、a/x/y/b 等。  前缀 ! 的模式表示如果前面匹配到被忽略，则重新添加回来。如果匹配到的父文件夹还是忽略状态，该文件还是保持忽略状态。如果路径名第一个字符为 ! ，则需要在前面增加 \ 进行转义。  对于一些常用的系统、工程文件的.gitignore文件可以参考这个网站进行设置，这里有很多模板。
+针对.DS_Store文件，在git工程文件夹中新建.gitignore文件，在文件中设置：
+.gitignore **/.DS_Store  对于已经提交的内容，希望git能够忽略，但同时并不会删除本地文件，需要在terminal输入以下命令：</description>
+    </item>
     
     <item>
       <title>慢学Docker(2) Docker初探</title>
@@ -27,14 +44,14 @@ docker容器 vs vm虚拟机 既然虚拟机也可以完成相似的功能，为�
 相比vm虚拟机，docker的容器技术更为轻量级。直观上，这个轻量级体现在启动速度更快、占用资源更少。我并没有具体测试比较过，但在实际使用中感受是，我原本开一个虚拟机跑程序就已经很不错了，虚拟机开机还有个等待开机时间，而现在使用docker，容器载入速度很快，同时在机子上会运行几个不同的容器，从镜像重新生成容器也很快很方便。2014年开始，docker一直对外宣传的一个重点也是这个，“虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。
 不过docker容器和虚拟机尽管都是虚拟化技术，但是里面的技术细节有很多不同。下面两张docker官网上的图很清晰简单地表示了两者的区别：
 前者是虚拟机的架构图，后者是docker容器的架构图。最显然的区别是，每个虚拟机中都运行着各自的guest OS，而在docker容器架构中每个容器只包含了各自的应用和依赖包，并不包含独立的操作系统。也就是说容器采用kernel共享，同时使用cgroups和namespace等方法对容器所使用的命名空间和依赖包等进行区分以达到隔离效果。所以尽管各个容器都是独立在宿主机的操作系统上运行着的，但不可避免地，各个容器之间会共享一些通用运行库。这个区别会使得各个容器之间相互独立，但并没有虚拟机的隔离性好，但这也是使得docker容器能够快速启动并且资源占用少的一个重要原因。太复杂的我也不清楚细节，只是大致有个概念，这对我们简单应用了解也应该就足够了。
-嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了:smile:。
+嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了。
 docker并不万能 Docker真心很好用，才上手了1个多月的我特别喜欢。但是作为新兴技术，还有很多不完善的地方。有些问题可能作为个人使用者来说并不是很大的问题，但是对于生产来说都是非常重要需要考虑的问题，这里只是简单记录下到目前为止遇到的一些局限性，至于其他的，遇到再加吧：
- docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的:joy:，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
+ docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
 这里只是提一嘴，关注点还是在docker本身。毕竟现在用的mac可用的不是n卡，等有机会整个n卡玩并需要安装docker的时候再试试nvidia-docker。
 Installation Docker分为Community (CE) 和Enterprise (EE) 版本，个人使用用CE就够了，一些EE的高级功能用不上也不会用。Docker CE有分为stable版和edge版，前者每一个季度更新一个更reliable的更新，后者每个月都会提供一些新的特征。不爱折腾的我就直接选择stable版。更多关于docker安装的环境需求可以参考官网该页面，不同的环境还是有不同的需求的。
 网上有很多零散的安装教程，建议找最新的来看，很多实际上都过时了。最安全的当然直接上官网。
 Mac安装 Mac可以选择用Homebrew进行安装:
-$ brew cask install docker  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。</description>
+$ # stable channel $ brew cask install docker $ # edge channel $ brew cask install docker-edge  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。</description>
     </item>
     
     <item>
@@ -45,7 +62,7 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
       <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</guid>
       <description> 初闻 作为一个一向不怎么关心各种资讯动态的人，我经常脱节于前沿新闻及热点，更何况对于非专业方向，我更是不会去主动关心，所以对于之前很火的容器和docker我是一点都不了解。第一次听说这个还是因为前人渣组长李想要求写份标书文档，什么技术热门可用就写进去。他听说了docker容器部署及环境配置的便利性，想利用到项目中的宣传中，更好地作为对外的卖点。不管怎么说，这是第一次听说并尝试了解docker和容器，不过这份了解仅限于网上科技软文宣传，毕竟文档要求紧、内容多，又是全新的概念。
 第二次听说docker是带的17届应届生詹辉小仓鼠在公司实验ocr时网上各个项目需要的环境和依赖都有略微不同，比如当时caffe还是基于python2.7，但gpu机子上配的python3环境等问题。还有一个最主要的问题在于，公司的服务器都无法联网，安装环境十分困难。其实连公司的电脑也是无法使用conda、pip等在线安装的，需要离线安装，而且公司电脑标裝windows，配置起来与服务器区别很大。某天小仓鼠过来说docker据说很好用，但是他遇到了些问题，解决后他也认为docker对于环境配置方便了很多。
-docker，你好 决定开始了解docker的契机是换了Mac，有心情来折腾一下电脑和环境，另外由于环境配置和管理的麻烦程度，我又有些强迫症地希望新电脑有一个更干净的环境，于是决定学习一下这个传说中的利器。
+Docker，你好 决定开始了解docker的契机是换了Mac，有心情来折腾一下电脑和环境，另外由于环境配置和管理的麻烦程度，我又有些强迫症地希望新电脑有一个更干净的环境，于是决定学习一下这个传说中的利器。
 这个系列开始于我已经使用docker一个月时间，在正常使用中开始渐渐步入正轨，融入我日常的工作以及学习中来。系列内容中对于docker的介绍可能不会很系统完整，只是对于我的学习过程和应用做一个记录。对于docker一些高级内容和使用方法也可能并不会涉及，毕竟只是“浅尝”、“慢学”罢了。
 版本控制    Version Action Time     1.0 Init 2018-01-27    </description>
     </item>

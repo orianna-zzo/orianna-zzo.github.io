@@ -19,14 +19,14 @@ docker容器 vs vm虚拟机 既然虚拟机也可以完成相似的功能，为�
 相比vm虚拟机，docker的容器技术更为轻量级。直观上，这个轻量级体现在启动速度更快、占用资源更少。我并没有具体测试比较过，但在实际使用中感受是，我原本开一个虚拟机跑程序就已经很不错了，虚拟机开机还有个等待开机时间，而现在使用docker，容器载入速度很快，同时在机子上会运行几个不同的容器，从镜像重新生成容器也很快很方便。2014年开始，docker一直对外宣传的一个重点也是这个，“虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。
 不过docker容器和虚拟机尽管都是虚拟化技术，但是里面的技术细节有很多不同。下面两张docker官网上的图很清晰简单地表示了两者的区别：
 前者是虚拟机的架构图，后者是docker容器的架构图。最显然的区别是，每个虚拟机中都运行着各自的guest OS，而在docker容器架构中每个容器只包含了各自的应用和依赖包，并不包含独立的操作系统。也就是说容器采用kernel共享，同时使用cgroups和namespace等方法对容器所使用的命名空间和依赖包等进行区分以达到隔离效果。所以尽管各个容器都是独立在宿主机的操作系统上运行着的，但不可避免地，各个容器之间会共享一些通用运行库。这个区别会使得各个容器之间相互独立，但并没有虚拟机的隔离性好，但这也是使得docker容器能够快速启动并且资源占用少的一个重要原因。太复杂的我也不清楚细节，只是大致有个概念，这对我们简单应用了解也应该就足够了。
-嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了:smile:。
+嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了。
 docker并不万能 Docker真心很好用，才上手了1个多月的我特别喜欢。但是作为新兴技术，还有很多不完善的地方。有些问题可能作为个人使用者来说并不是很大的问题，但是对于生产来说都是非常重要需要考虑的问题，这里只是简单记录下到目前为止遇到的一些局限性，至于其他的，遇到再加吧：
- docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的:joy:，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
+ docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
 这里只是提一嘴，关注点还是在docker本身。毕竟现在用的mac可用的不是n卡，等有机会整个n卡玩并需要安装docker的时候再试试nvidia-docker。
 Installation Docker分为Community (CE) 和Enterprise (EE) 版本，个人使用用CE就够了，一些EE的高级功能用不上也不会用。Docker CE有分为stable版和edge版，前者每一个季度更新一个更reliable的更新，后者每个月都会提供一些新的特征。不爱折腾的我就直接选择stable版。更多关于docker安装的环境需求可以参考官网该页面，不同的环境还是有不同的需求的。
 网上有很多零散的安装教程，建议找最新的来看，很多实际上都过时了。最安全的当然直接上官网。
 Mac安装 Mac可以选择用Homebrew进行安装:
-$ brew cask install docker  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。">
+$ # stable channel $ brew cask install docker $ # edge channel $ brew cask install docker-edge  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。">
 
 <meta property="og:title" content="慢学Docker(2) Docker初探" />
 <meta property="og:description" content="Resource资源链接汇总：
@@ -39,14 +39,14 @@ docker容器 vs vm虚拟机 既然虚拟机也可以完成相似的功能，为�
 相比vm虚拟机，docker的容器技术更为轻量级。直观上，这个轻量级体现在启动速度更快、占用资源更少。我并没有具体测试比较过，但在实际使用中感受是，我原本开一个虚拟机跑程序就已经很不错了，虚拟机开机还有个等待开机时间，而现在使用docker，容器载入速度很快，同时在机子上会运行几个不同的容器，从镜像重新生成容器也很快很方便。2014年开始，docker一直对外宣传的一个重点也是这个，“虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。
 不过docker容器和虚拟机尽管都是虚拟化技术，但是里面的技术细节有很多不同。下面两张docker官网上的图很清晰简单地表示了两者的区别：
 前者是虚拟机的架构图，后者是docker容器的架构图。最显然的区别是，每个虚拟机中都运行着各自的guest OS，而在docker容器架构中每个容器只包含了各自的应用和依赖包，并不包含独立的操作系统。也就是说容器采用kernel共享，同时使用cgroups和namespace等方法对容器所使用的命名空间和依赖包等进行区分以达到隔离效果。所以尽管各个容器都是独立在宿主机的操作系统上运行着的，但不可避免地，各个容器之间会共享一些通用运行库。这个区别会使得各个容器之间相互独立，但并没有虚拟机的隔离性好，但这也是使得docker容器能够快速启动并且资源占用少的一个重要原因。太复杂的我也不清楚细节，只是大致有个概念，这对我们简单应用了解也应该就足够了。
-嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了:smile:。
+嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了。
 docker并不万能 Docker真心很好用，才上手了1个多月的我特别喜欢。但是作为新兴技术，还有很多不完善的地方。有些问题可能作为个人使用者来说并不是很大的问题，但是对于生产来说都是非常重要需要考虑的问题，这里只是简单记录下到目前为止遇到的一些局限性，至于其他的，遇到再加吧：
- docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的:joy:，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
+ docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
 这里只是提一嘴，关注点还是在docker本身。毕竟现在用的mac可用的不是n卡，等有机会整个n卡玩并需要安装docker的时候再试试nvidia-docker。
 Installation Docker分为Community (CE) 和Enterprise (EE) 版本，个人使用用CE就够了，一些EE的高级功能用不上也不会用。Docker CE有分为stable版和edge版，前者每一个季度更新一个更reliable的更新，后者每个月都会提供一些新的特征。不爱折腾的我就直接选择stable版。更多关于docker安装的环境需求可以参考官网该页面，不同的环境还是有不同的需求的。
 网上有很多零散的安装教程，建议找最新的来看，很多实际上都过时了。最安全的当然直接上官网。
 Mac安装 Mac可以选择用Homebrew进行安装:
-$ brew cask install docker  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。" />
+$ # stable channel $ brew cask install docker $ # edge channel $ brew cask install docker-edge  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/" />
 
@@ -93,11 +93,11 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-27%2014%3a35%3a51.2801919%20%2b0000%20UTC%20m%3d%2b44.395200901">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-27%2014%3a35%3a51.2801919%20%2b0000%20UTC%20m%3d%2b44.395200901">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-27%2014%3a35%3a51.2801919%20%2b0000%20UTC%20m%3d%2b44.395200901">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-28%2012%3a02%3a34.680602052%20%2b0000%20UTC%20m%3d%2b11.693498529">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-28%2012%3a02%3a34.680602052%20%2b0000%20UTC%20m%3d%2b11.693498529">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-28%2012%3a02%3a34.680602052%20%2b0000%20UTC%20m%3d%2b11.693498529">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-27%2014%3a35%3a51.2801919%20%2b0000%20UTC%20m%3d%2b44.395200901">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-28%2012%3a02%3a34.680602052%20%2b0000%20UTC%20m%3d%2b11.693498529">
     
 
 
@@ -136,8 +136,6 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -166,6 +164,8 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
         
 
         
+
+	
 
         
 
@@ -215,7 +215,7 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
                         
   
                         
-                        <div class="reading-time"><div class="middot"></div>One minute read</div>
+                        <div class="reading-time"><div class="middot"></div>2 minutes read</div>
                         
                     </div>
                     <div style="display: flex;">
@@ -295,7 +295,7 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
 
 <p>前者是虚拟机的架构图，后者是docker容器的架构图。最显然的区别是，每个虚拟机中都运行着各自的guest OS，而在docker容器架构中每个容器只包含了各自的应用和依赖包，并不包含独立的操作系统。也就是说容器采用kernel共享，同时使用cgroups和namespace等方法对容器所使用的命名空间和依赖包等进行区分以达到隔离效果。所以尽管各个容器都是独立在宿主机的操作系统上运行着的，但不可避免地，各个容器之间会共享一些通用运行库。这个区别会使得各个容器之间相互独立，但并没有虚拟机的隔离性好，但这也是使得docker容器能够快速启动并且资源占用少的一个重要原因。太复杂的我也不清楚细节，只是大致有个概念，这对我们简单应用了解也应该就足够了。</p>
 
-<p>嗯，再啰嗦一句。在查资料是看到了这篇知乎上的<a href="https://zhuanlan.zhihu.com/p/30594040?utm_source=weibo&amp;utm_medium=social">博文</a>，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了:smile:。</p>
+<p>嗯，再啰嗦一句。在查资料是看到了这篇知乎上的<a href="https://zhuanlan.zhihu.com/p/30594040?utm_source=weibo&amp;utm_medium=social">博文</a>，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了。</p>
 
 <h3 id="docker并不万能">docker并不万能</h3>
 
@@ -304,7 +304,7 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
 <ul>
 <li>docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。</li>
 <li>docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。</li>
-<li>windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的:joy:，我新的实习生电脑就装不上，公司的windows笔记本也装不上。</li>
+<li>windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的，我新的实习生电脑就装不上，公司的windows笔记本也装不上。</li>
 <li>截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。</li>
 <li>由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。</li>
 </ul>
@@ -324,7 +324,10 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
 <h3 id="mac安装">Mac安装</h3>
 
 <p>Mac可以选择用Homebrew进行安装:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install docker
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># stable channel</span>
+$ brew cask install docker
+$ <span class="c1"># edge channel</span>
+$ brew cask install docker-edge
 </code></pre></div>
 
 <p>也可以在<a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac">这里</a>选择stable或者edge进行下载，安装对应的dmg包即可。</p>
@@ -337,7 +340,7 @@ $ brew cask install docker  也可以在这里选择stable或者edge进行下载
 
 <h3 id="linux安装">Linux安装</h3>
 
-<p>Docker CE支持Ubuntu、Debian、CentOS、Fedora这几个Linux环境安装。，但基本思路一致。</p>
+<p>Docker CE支持Ubuntu、Debian、CentOS、Fedora这几个Linux环境安装。</p>
 
 <p>Linux安装分为2种：</p>
 
