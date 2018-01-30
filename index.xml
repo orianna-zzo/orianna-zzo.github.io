@@ -6,10 +6,55 @@
     <description>Recent content on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 28 Jan 2018 22:04:23 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 31 Jan 2018 01:56:13 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我的Mac所需安装软件</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/%E6%88%91%E7%9A%84mac%E6%89%80%E9%9C%80%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Wed, 31 Jan 2018 01:56:13 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%88%91%E7%9A%84mac%E6%89%80%E9%9C%80%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</guid>
+      <description>Resource资源链接汇总:
+Homebrew官网、Cask官网
+序 终于转到有terminal的电脑上了，既然换了Mac OS，需要重新开始找软件。Windows上的软件安装习惯是网上找软件exe，下载安装，基本一个版本能用很久，没有习惯更是懒得经常更新。Linux上倒是有包管理器，但用的不多，只在编程时用过，不过编程包依赖特别重要，一般不会修改，因此基本没有鼓捣过。这次准备换电脑，看着同事非常优雅自如地更新软件，有些羡慕呀，这样才能最大化开源/更新频繁的软件优势。App Store倒是可以随时更新，不过不是所有软件都发布在App Store上，所以这里记录下我需要的配置、计划安装的软件，以及安装方法。如果和我一样刚开始接触mac的小伙伴本，希望这篇能有所帮助。
+Mac系统配置 Finder配置 显示隐藏文件夹 Mac系统的/usr、/etc等文件夹都是隐藏文件，如果不进行设置用户是无法见到的。估计是因为mac用户并不是所有人都对linux的操作十分熟悉，所以把这些对于系统十分重要的文件夹都进行隐藏了，免得用户误删等操作把系统玩坏。
+在terminal中输入下面命令：
+$ defaults write com.apple.finder AppleShowAllFiles -bool true  然后重启Finder，在terminal 中输入：
+$ killall Finder  当当当当，隐藏的文件夹就显示出来了！
+显示工具栏 显示 &amp;gt; 显示标签页栏、路径栏、边栏、预览。
+对工具栏自定义：显示 &amp;gt; 自定义工具栏，增加新建文件夹，或者还可以添加其他想要添加工具栏。
+第三方软件安装 有些软件并没有在apple认可的开发者列表内，如果要安装，首先需要mac允许软件来自任何人，而这个估计因为安全问题，属于隐藏设置，需要先打开Terminal，输入：
+$ sudo spctl --master-disable  然后在设置&amp;gt;安全与隐私中选择“任何来源”。安装完毕后，为了安全考虑，最好能够再选择回来自可信任的开发者。
+包管理器 Homebrew Mac OS用户大多使用Homebrew作为包管理工具，据说相当于Ubuntu下的apt-get。官网上的一句话介绍是The missing package manager for macOS，也就是针对Mac OS所开发的包管理器。
+Homebrew官网给出了安装brew的方法，只要复制下面脚本在Terminal中粘贴执行就安装成功。
+$ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  而有了Homebrew后，包的管理和更新就方便了很多。
+Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装某包，比如git brew install git   卸载某包，比如git brew uninstall git   强制卸载某包所有版本，比如git brew uninstall git --force   Homebrew本身更新 brew update   查看那些包过期了 brew outdated   将所有包都更新 brew upgrade   指定某包更新，比如git brew upgrade git   锁定某包不让更新，比如git brew pin git   解锁某包可以继续更新，比如git brew unpin git   卸载所有过时的包 brew cleanup   卸载所有过时的包，并显示即将卸载的包 brew cleanup -n   卸载过时的包，比如git brew cleanup git   列出所有brew装的包 brew list   显示软件信息 brew info   显示已安装的包依赖 brew deps --installed   查看brew包下载缓存 brew --cache    具体可查看帮助文档。</description>
+    </item>
+    
+    <item>
+      <title>Pycharm vs Notebook</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/pycharm-vs-notebook/</link>
+      <pubDate>Tue, 30 Jan 2018 21:07:19 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-01/pycharm-vs-notebook/</guid>
+      <description> Resource资源链接汇总:
+stackoverflow: 如何更好地整理notebook中的代码
+严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
+缘起 说起来接触python也已经一年半的时间。去年7月，哦不，应该是前年7月，刚入职才开始因为工作学习的python，首先遇到的就是IDE的选择问题。比较流行的开发工具有JetBrain的Pycharm和Jupyter Notebook。
+初识 组长和组里新学习代码的小伙伴们偏爱notebook，不过我却更青睐相对于更像一个传统IDE 的Pycharm。
+Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual studio, eclipse)，集成各种调试工具，可以非常方便地在里面进行单步调试、变量监控，文档结构也非常明晰，而且也可以在pycharm里使用notebook（尽管我不在这里使用）。
+我对于notebook的印象是介于传统IDE和console中间，反馈速度很快，很灵活，可以将每次中间结果进行保留。但是由于太灵活了，经常看到同事给我的notebook顺序非常紊乱，根本无从下手，难以复现，这也是导致我对notebook印象并不好的原因。此外，不确定是使用的版本配置或是其他原因，小伙伴的notebook在数据量增大时很容易奔溃，但是pycharm跑普通的python程序却很正常。基于以上原因，我并不是很理解为什么notebook会这么火。在我看来，直接一个pycharm乖乖编写python程序就很ok，想即时得到结果就在pycharm里开个console或者设个断点单步调试，在监控窗口也可以尝试各种代码是否可行，甚至可以监控运行时变量的状态和结构，非常方便、功能强大。有人给我的理由是notebook即使可见结果，对于初学者更为友好，但我觉得对我来说并不会如此。
+初识，notebook很轻而易举地完败。
+再顾 再次考虑了解notebook是源于新来的实习生都喜欢使用notebook，不仅仅是转专业的实习生喜欢，cs的也喜欢，网上很多教程类也都是在notebook之上，因此让我很想了解notebook到底有什么魔力让这么多人喜欢并且选择。
+我问了cs专业的实习生，他给我的理由是可以很方便的记录各个小实验的方法过程和结果，notebook中可以添加markdown块，实验结果的数据和图片可以很方便进行显示，代码块和markdown块可以交叉存储，是一种更为灵活和方便的记录方式。
+我在查找资料时也发现了大家对于notebook的使用方法。Stackoverflow上也有人提问如何更好地整理notebook中的代码，非常有启发性，建议参考下。
+感觉上，notebook，顾名思义是记录本，也就是说它最大的功能是记录你的想法与尝试、零碎的小实验，并且notebook实际上并不简单局限于python。而使用notebook也有一些比较好的实践，我这里列举一些我觉得十分不错的，以便我后期查看：
+ Notebook的代码应该整洁，也就是说随时可以做到按顺序重跑全部代码并能复现结果，实验结束后notebook可能需要重构。 建立一个很多project能够通用的utils库。可以写一份setup.py，让其他组员可以方便安装。 将大的notebook分成多个小的notebook，每个notebook最好能够符合“假设-数据-结论”的模式。一个例子是分为data preparation、data validation、exploratory plotting、simple linear model、hierachical model、 playground等，将数据准备的记过都存成本地文件，便于其他notebook引入。 每个cell最好能符合“idea-execution-output”的模式。  思考 并没有完整意义上的完美的工具，每个工具都有其最优使用场景。在这个场景不尽如意，不等于这不是一个好的工具。Pycharm是各个意义上强大的工具，但并不等于notebook没有优秀的地方。尽管常规编程、调试、上线不是notebook的强项，但对于数据科学这个领域需要多种实验查看数据结构，notebook就十分适合记录实验结果，可以验证多种想法假设。想法初步验证后，再正式重构正规编程。
+版本控制    Version Action Time     1.0 Init 2018-01-30    </description>
+    </item>
     
     <item>
       <title>Blog养成记(5) 要让Github Pages被索引到</title>
