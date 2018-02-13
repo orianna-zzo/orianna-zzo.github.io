@@ -9,9 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="ZHENG Zi&#39;ou">
-<meta name="description" content=" Resource资源链接汇总:
-stackoverflow: 如何更好地整理notebook中的代码
-严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
+<meta name="description" content=" 严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
 缘起 说起来接触python也已经一年半的时间。去年7月，哦不，应该是前年7月，刚入职才开始因为工作学习的python，首先遇到的就是IDE的选择问题。比较流行的开发工具有JetBrain的Pycharm和Jupyter Notebook。
 初识 组长和组里新学习代码的小伙伴们偏爱notebook，不过我却更青睐相对于更像一个传统IDE 的Pycharm。
 Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual studio, eclipse)，集成各种调试工具，可以非常方便地在里面进行单步调试、变量监控，文档结构也非常明晰，而且也可以在pycharm里使用notebook（尽管我不在这里使用）。
@@ -22,12 +20,11 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
 我在查找资料时也发现了大家对于notebook的使用方法。Stackoverflow上也有人提问如何更好地整理notebook中的代码，非常有启发性，建议参考下。
 感觉上，notebook，顾名思义是记录本，也就是说它最大的功能是记录你的想法与尝试、零碎的小实验，并且notebook实际上并不简单局限于python。而使用notebook也有一些比较好的实践，我这里列举一些我觉得十分不错的，以便我后期查看：
  Notebook的代码应该整洁，也就是说随时可以做到按顺序重跑全部代码并能复现结果，实验结束后notebook可能需要重构。 建立一个很多project能够通用的utils库。可以写一份setup.py，让其他组员可以方便安装。 将大的notebook分成多个小的notebook，每个notebook最好能够符合“假设-数据-结论”的模式。一个例子是分为data preparation、data validation、exploratory plotting、simple linear model、hierachical model、 playground等，将数据准备的记过都存成本地文件，便于其他notebook引入。 每个cell最好能符合“idea-execution-output”的模式。  思考 并没有完整意义上的完美的工具，每个工具都有其最优使用场景。在这个场景不尽如意，不等于这不是一个好的工具。Pycharm是各个意义上强大的工具，但并不等于notebook没有优秀的地方。尽管常规编程、调试、上线不是notebook的强项，但对于数据科学这个领域需要多种实验查看数据结构，notebook就十分适合记录实验结果，可以验证多种想法假设。想法初步验证后，再正式重构正规编程。
+Resource资源链接汇总 stackoverflow: 如何更好地整理notebook中的代码
 版本控制    Version Action Time     1.0 Init 2018-01-30    ">
 
 <meta property="og:title" content="Pycharm vs Notebook" />
-<meta property="og:description" content=" Resource资源链接汇总:
-stackoverflow: 如何更好地整理notebook中的代码
-严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
+<meta property="og:description" content=" 严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
 缘起 说起来接触python也已经一年半的时间。去年7月，哦不，应该是前年7月，刚入职才开始因为工作学习的python，首先遇到的就是IDE的选择问题。比较流行的开发工具有JetBrain的Pycharm和Jupyter Notebook。
 初识 组长和组里新学习代码的小伙伴们偏爱notebook，不过我却更青睐相对于更像一个传统IDE 的Pycharm。
 Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual studio, eclipse)，集成各种调试工具，可以非常方便地在里面进行单步调试、变量监控，文档结构也非常明晰，而且也可以在pycharm里使用notebook（尽管我不在这里使用）。
@@ -38,6 +35,7 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
 我在查找资料时也发现了大家对于notebook的使用方法。Stackoverflow上也有人提问如何更好地整理notebook中的代码，非常有启发性，建议参考下。
 感觉上，notebook，顾名思义是记录本，也就是说它最大的功能是记录你的想法与尝试、零碎的小实验，并且notebook实际上并不简单局限于python。而使用notebook也有一些比较好的实践，我这里列举一些我觉得十分不错的，以便我后期查看：
  Notebook的代码应该整洁，也就是说随时可以做到按顺序重跑全部代码并能复现结果，实验结束后notebook可能需要重构。 建立一个很多project能够通用的utils库。可以写一份setup.py，让其他组员可以方便安装。 将大的notebook分成多个小的notebook，每个notebook最好能够符合“假设-数据-结论”的模式。一个例子是分为data preparation、data validation、exploratory plotting、simple linear model、hierachical model、 playground等，将数据准备的记过都存成本地文件，便于其他notebook引入。 每个cell最好能符合“idea-execution-output”的模式。  思考 并没有完整意义上的完美的工具，每个工具都有其最优使用场景。在这个场景不尽如意，不等于这不是一个好的工具。Pycharm是各个意义上强大的工具，但并不等于notebook没有优秀的地方。尽管常规编程、调试、上线不是notebook的强项，但对于数据科学这个领域需要多种实验查看数据结构，notebook就十分适合记录实验结果，可以验证多种想法假设。想法初步验证后，再正式重构正规编程。
+Resource资源链接汇总 stackoverflow: 如何更好地整理notebook中的代码
 版本控制    Version Action Time     1.0 Init 2018-01-30    " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-01/pycharm-vs-notebook/" />
@@ -81,11 +79,11 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2002%3a25%3a40.4368581%20%2b0000%20UTC%20m%3d%2b17.885620801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2002%3a25%3a40.4368581%20%2b0000%20UTC%20m%3d%2b17.885620801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2002%3a25%3a40.4368581%20%2b0000%20UTC%20m%3d%2b17.885620801">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2019%3a01%3a07.117930756%20%2b0000%20UTC%20m%3d%2b6.476319421">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2019%3a01%3a07.117930756%20%2b0000%20UTC%20m%3d%2b6.476319421">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2019%3a01%3a07.117930756%20%2b0000%20UTC%20m%3d%2b6.476319421">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2002%3a25%3a40.4368581%20%2b0000%20UTC%20m%3d%2b17.885620801">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2019%3a01%3a07.117930756%20%2b0000%20UTC%20m%3d%2b6.476319421">
     
 
 
@@ -124,8 +122,6 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -154,6 +150,8 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
         
 
         
+
+	
 
         
 
@@ -258,10 +256,6 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
             <div class="markdown">
                 
 
-<p><strong>Resource资源链接汇总</strong>:</p>
-
-<p><a href="https://stackoverflow.com/questions/36427747/scientific-computing-ipython-notebook-how-to-organize-code">stackoverflow: 如何更好地整理notebook中的代码</a></p>
-
 <p>严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。</p>
 
 <h2 id="缘起">缘起</h2>
@@ -298,6 +292,10 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
 <h2 id="思考">思考</h2>
 
 <p>并没有完整意义上的完美的工具，每个工具都有其最优使用场景。在这个场景不尽如意，不等于这不是一个好的工具。Pycharm是各个意义上强大的工具，但并不等于notebook没有优秀的地方。尽管常规编程、调试、上线不是notebook的强项，但对于数据科学这个领域需要多种实验查看数据结构，notebook就十分适合记录实验结果，可以验证多种想法假设。想法初步验证后，再正式重构正规编程。</p>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p><a href="https://stackoverflow.com/questions/36427747/scientific-computing-ipython-notebook-how-to-organize-code">stackoverflow: 如何更好地整理notebook中的代码</a></p>
 
 <h2 id="版本控制">版本控制</h2>
 

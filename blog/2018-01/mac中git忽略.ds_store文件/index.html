@@ -9,8 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="ZHENG Zi&#39;ou">
-<meta name="description" content="gitignore官方文档说明、gitignore文件模板参考、git config官方文档说明
-Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
+<meta name="description" content="Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
 但这次用两个mac，一个mac提交了修改，第二个mac想要拉下来时居然遇到了.DS_Store文件被修改过需要提交再merge。什么？我没改过内容呀？所以这个.DS_Store是什么鬼？
 .DS_Store是Mac OS用来存储这个文件夹的显示属性的，被作为一种通用的有关显示设置的元数据（比如图标位置等设置）为Finder、Spotlight用。所以在不经意间就会修改这个文件。而文件共享时为了隐私关系将.DS_Store文件删除比较好，因为其中有一些信息在不经意间泄露出去。
 Git中处理方案 方案一：项目设置.gitignore 仅针对git的处理最naive的想法就是设置.gitignore文件。
@@ -21,8 +20,7 @@ Git中处理方案 方案一：项目设置.gitignore 仅针对git的处理最na
 $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、最容易想到，缺点就是每个git项目都要重复一遍。">
 
 <meta property="og:title" content="Mac中Git忽略.DS_Store文件" />
-<meta property="og:description" content="gitignore官方文档说明、gitignore文件模板参考、git config官方文档说明
-Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
+<meta property="og:description" content="Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
 但这次用两个mac，一个mac提交了修改，第二个mac想要拉下来时居然遇到了.DS_Store文件被修改过需要提交再merge。什么？我没改过内容呀？所以这个.DS_Store是什么鬼？
 .DS_Store是Mac OS用来存储这个文件夹的显示属性的，被作为一种通用的有关显示设置的元数据（比如图标位置等设置）为Finder、Spotlight用。所以在不经意间就会修改这个文件。而文件共享时为了隐私关系将.DS_Store文件删除比较好，因为其中有一些信息在不经意间泄露出去。
 Git中处理方案 方案一：项目设置.gitignore 仅针对git的处理最naive的想法就是设置.gitignore文件。
@@ -73,11 +71,11 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2002%3a25%3a40.4692464%20%2b0000%20UTC%20m%3d%2b17.918010301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2002%3a25%3a40.4692464%20%2b0000%20UTC%20m%3d%2b17.918010301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2002%3a25%3a40.4692464%20%2b0000%20UTC%20m%3d%2b17.918010301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2019%3a01%3a07.129464287%20%2b0000%20UTC%20m%3d%2b6.487855350">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2019%3a01%3a07.129464287%20%2b0000%20UTC%20m%3d%2b6.487855350">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2019%3a01%3a07.129464287%20%2b0000%20UTC%20m%3d%2b6.487855350">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2002%3a25%3a40.4692464%20%2b0000%20UTC%20m%3d%2b17.918010301">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2019%3a01%3a07.129464287%20%2b0000%20UTC%20m%3d%2b6.487855350">
     
 
 
@@ -116,8 +114,6 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -146,6 +142,8 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
         
 
         
+
+	
 
         
 
@@ -242,8 +240,6 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
             <div class="markdown">
                 
 
-<p><a href="https://git-scm.com/docs/gitignore">gitignore官方文档说明</a>、<a href="https://www.gitignore.io/">gitignore文件模板参考</a>、<a href="https://git-scm.com/docs/git-config">git config官方文档说明</a></p>
-
 <h2 id="git中多出来的-ds-store">Git中多出来的.DS_Store</h2>
 
 <p>虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。</p>
@@ -315,6 +311,10 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 </code></pre></div>
 
 <p>这样就不用每个git目录都设置忽略.DS_Store文件了！</p>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p><a href="https://git-scm.com/docs/gitignore">gitignore官方文档说明</a>、<a href="https://www.gitignore.io/">gitignore文件模板参考</a>、<a href="https://git-scm.com/docs/git-config">git config官方文档说明</a></p>
 
 <h2 id="版本控制">版本控制</h2>
 

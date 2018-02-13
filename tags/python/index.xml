@@ -17,9 +17,7 @@
       <pubDate>Tue, 30 Jan 2018 21:07:19 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/pycharm-vs-notebook/</guid>
-      <description> Resource资源链接汇总:
-stackoverflow: 如何更好地整理notebook中的代码
-严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
+      <description> 严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
 缘起 说起来接触python也已经一年半的时间。去年7月，哦不，应该是前年7月，刚入职才开始因为工作学习的python，首先遇到的就是IDE的选择问题。比较流行的开发工具有JetBrain的Pycharm和Jupyter Notebook。
 初识 组长和组里新学习代码的小伙伴们偏爱notebook，不过我却更青睐相对于更像一个传统IDE 的Pycharm。
 Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual studio, eclipse)，集成各种调试工具，可以非常方便地在里面进行单步调试、变量监控，文档结构也非常明晰，而且也可以在pycharm里使用notebook（尽管我不在这里使用）。
@@ -30,6 +28,7 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
 我在查找资料时也发现了大家对于notebook的使用方法。Stackoverflow上也有人提问如何更好地整理notebook中的代码，非常有启发性，建议参考下。
 感觉上，notebook，顾名思义是记录本，也就是说它最大的功能是记录你的想法与尝试、零碎的小实验，并且notebook实际上并不简单局限于python。而使用notebook也有一些比较好的实践，我这里列举一些我觉得十分不错的，以便我后期查看：
  Notebook的代码应该整洁，也就是说随时可以做到按顺序重跑全部代码并能复现结果，实验结束后notebook可能需要重构。 建立一个很多project能够通用的utils库。可以写一份setup.py，让其他组员可以方便安装。 将大的notebook分成多个小的notebook，每个notebook最好能够符合“假设-数据-结论”的模式。一个例子是分为data preparation、data validation、exploratory plotting、simple linear model、hierachical model、 playground等，将数据准备的记过都存成本地文件，便于其他notebook引入。 每个cell最好能符合“idea-execution-output”的模式。  思考 并没有完整意义上的完美的工具，每个工具都有其最优使用场景。在这个场景不尽如意，不等于这不是一个好的工具。Pycharm是各个意义上强大的工具，但并不等于notebook没有优秀的地方。尽管常规编程、调试、上线不是notebook的强项，但对于数据科学这个领域需要多种实验查看数据结构，notebook就十分适合记录实验结果，可以验证多种想法假设。想法初步验证后，再正式重构正规编程。
+Resource资源链接汇总 stackoverflow: 如何更好地整理notebook中的代码
 版本控制    Version Action Time     1.0 Init 2018-01-30    </description>
     </item>
     
@@ -39,9 +38,7 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
       <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
-      <description>Resource资源链接汇总：
-conda github repo、conda用户手册
-前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
+      <description>前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
 复杂的版本问题可能在个人开发时并不会有很大影响 (除非有强迫症需要在一个干净的开发环境)，但是当多人需要在同一个开发机/测试机/生产机上跑应用或者模型时，对于各个环境依赖的隔离就急需找到解决方案。依赖隔离问题其实不仅仅在python环境中十分重要，在很多其他程序中也是如此，不过本文还是主要以python环境为主要出发点。
 python环境隔离方案 经过网上搜索，目前为止对于python的依赖隔离主要有以下几种主要方法：
  docker virtualenv venv conda  方案选择 docker 其实docker很不错。容器化是现在非常火的一个方案。docker容器崩溃也不会影响主机，而且环境镜像可移植性非常强，能非常方便地把环境移植到不同的主机上去而不需要重新配置安装。现在我自己电脑也尽量在docker中开发，希望能不扰乱电脑本身的环境。可惜的是，尽管网上有信息说新版的docker容器使用可以不使用root权限，也有教程说建立一个可以使用docker的用户组，但是docker的安装还是避免不了需要root权限，而对于公司的环境来说，主机系统环境版本较旧且需要运营安装配置，灵活度不够。（插一句吐槽，其实对于正常有运营的组来说非常正常，但现在新到的组十分不规范，虽然不使用生产数据库但开发机都放在生产环境，其他人都不知道怎么找人root安装软件。）所以在公司使用的场景下只能忍痛放弃。如果没有这个限制，我还是很推荐这个方案，具体使用方法可以参考我另外的docker系列文章。

@@ -9,13 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="ZHENG Zi&#39;ou">
-<meta name="description" content="Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、Hugo release版下载
-Docker官网、Docker下载
-Github Pages个人/项目主页设置
-Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
+<meta name="description" content="Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，更重要的是，最近对docker感兴趣，想实践一下。Docker是一个开源的应用容器引擎，可以方便地将不同容器间的环境进行隔离，但又比虚拟机更轻量化，能更快速启动。与Docker相关的内容我会在另一个Docker系列进行详细说明，这里主要还是与建立Blog相关的使用为主。
 网上使用Hugo写blog的内容很多，使用docker的也很多，但使用docker来搭建hugo编写环境并不多，我也是在一步步摸索中。那么，就跟着我一起开始尝试吧！
 Hugo的docker环境配置 Docker安装 在Mac中可以使用Homebrew进行安装：
@@ -31,16 +25,13 @@ $ docker images  你可以发现orianna/hugo-docker-dev只有94.9MB大小.
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
 除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .">
+$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
+接下去你就可以在终端输入下面这行命令来查看镜像信息：
+$ docker images  至此，你已经获得了Hugo的docker镜像了。
+尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：">
 
 <meta property="og:title" content="Blog养成记(2) Hugo&#43;Docker在Github上建立Blog" />
-<meta property="og:description" content="Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、Hugo release版下载
-Docker官网、Docker下载
-Github Pages个人/项目主页设置
-Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
+<meta property="og:description" content="Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，更重要的是，最近对docker感兴趣，想实践一下。Docker是一个开源的应用容器引擎，可以方便地将不同容器间的环境进行隔离，但又比虚拟机更轻量化，能更快速启动。与Docker相关的内容我会在另一个Docker系列进行详细说明，这里主要还是与建立Blog相关的使用为主。
 网上使用Hugo写blog的内容很多，使用docker的也很多，但使用docker来搭建hugo编写环境并不多，我也是在一步步摸索中。那么，就跟着我一起开始尝试吧！
 Hugo的docker环境配置 Docker安装 在Mac中可以使用Homebrew进行安装：
@@ -56,7 +47,10 @@ $ docker images  你可以发现orianna/hugo-docker-dev只有94.9MB大小.
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
 除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest ." />
+$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
+接下去你就可以在终端输入下面这行命令来查看镜像信息：
+$ docker images  至此，你已经获得了Hugo的docker镜像了。
+尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/" />
 
@@ -103,11 +97,11 @@ $ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest 
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2002%3a25%3a40.6984268%20%2b0000%20UTC%20m%3d%2b18.147191201">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2002%3a25%3a40.6984268%20%2b0000%20UTC%20m%3d%2b18.147191201">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2002%3a25%3a40.6984268%20%2b0000%20UTC%20m%3d%2b18.147191201">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2019%3a01%3a07.138386923%20%2b0000%20UTC%20m%3d%2b6.496767092">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2019%3a01%3a07.138386923%20%2b0000%20UTC%20m%3d%2b6.496767092">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2019%3a01%3a07.138386923%20%2b0000%20UTC%20m%3d%2b6.496767092">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2002%3a25%3a40.6984268%20%2b0000%20UTC%20m%3d%2b18.147191201">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2019%3a01%3a07.138386923%20%2b0000%20UTC%20m%3d%2b6.496767092">
     
 
 
@@ -146,8 +140,6 @@ $ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest 
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -176,6 +168,8 @@ $ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest 
         
 
         
+
+	
 
         
 
@@ -282,15 +276,6 @@ $ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest 
             </div>
             <div class="markdown">
                 
-
-<p><strong>Resource资源链接汇总</strong>:</p>
-
-<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
-我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
-
-<p><a href="https://gohugo.io">Hugo官网</a>、<a href="https://github.com/gohugoio/hugo/releases">Hugo release版下载</a><br />
-<a href="https://www.docker.com/">Docker官网</a>、<a href="https://www.docker.com/get-docker">Docker下载</a><br />
-<a href="https://help.github.com/articles/user-organization-and-project-pages/">Github Pages个人/项目主页设置</a></p>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -493,6 +478,15 @@ title: &quot;Blog&quot;
 <p>参考<a href="https://help.github.com/articles/user-organization-and-project-pages/">这里</a>，在Github Pages有四种类型，而对于非组织型用户来说有两种，一种是用户的个人网站，网页域名为 <code>username.github.io</code>，另一种为Project的主页，网页域名为 <code>username.github.io/projectname</code>。Github Pages对于Project主页的源码要求有了修改，现在也可以放置在master上，之前版本中必须放在<code>gh-pages</code> 分支上，不过这里暂且不提，主要还是关心用户个人主页。</p>
 
 <p>这就需要你在Github上建立一个以 <code>username.github.io</code> 为名称的repository，对于我来说就是 <code>orianna-zzo.github.io</code>。此外，需要将Hugo生成的所有静态网页push到这个repository的master分支上。现在就可以用这个域名打开个人网站了。</p>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
+我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
+
+<p><a href="https://gohugo.io">Hugo官网</a>、<a href="https://github.com/gohugoio/hugo/releases">Hugo release版下载</a><br />
+<a href="https://www.docker.com/">Docker官网</a>、<a href="https://www.docker.com/get-docker">Docker下载</a><br />
+<a href="https://help.github.com/articles/user-organization-and-project-pages/">Github Pages个人/项目主页设置</a></p>
 
 <h2 id="版本控制">版本控制</h2>
 

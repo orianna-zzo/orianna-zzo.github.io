@@ -6,30 +6,25 @@
     <description>Recent content in 软件安装 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 31 Jan 2018 01:56:13 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 14 Feb 2018 01:49:13 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>我的Mac所需安装软件</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/%E6%88%91%E7%9A%84mac%E6%89%80%E9%9C%80%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</link>
-      <pubDate>Wed, 31 Jan 2018 01:56:13 +0800</pubDate>
+      <title>我的Mac入门设置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-02/%E6%88%91%E7%9A%84mac%E5%85%A5%E9%97%A8%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Wed, 14 Feb 2018 01:49:13 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%88%91%E7%9A%84mac%E6%89%80%E9%9C%80%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</guid>
-      <description>Resource资源链接汇总:
-Homebrew官网、Cask官网
-序 终于转到有terminal的电脑上了，既然换了Mac OS，需要重新开始找软件。Windows上的软件安装习惯是网上找软件exe，下载安装，基本一个版本能用很久，没有习惯更是懒得经常更新。Linux上倒是有包管理器，但用的不多，只在编程时用过，不过编程包依赖特别重要，一般不会修改，因此基本没有鼓捣过。这次准备换电脑，看着同事非常优雅自如地更新软件，有些羡慕呀，这样才能最大化开源/更新频繁的软件优势。App Store倒是可以随时更新，不过不是所有软件都发布在App Store上，所以这里记录下我需要的配置、计划安装的软件，以及安装方法。如果和我一样刚开始接触mac的小伙伴本，希望这篇能有所帮助。
-Mac系统配置 Finder配置 显示隐藏文件夹 Mac系统的/usr、/etc等文件夹都是隐藏文件，如果不进行设置用户是无法见到的。估计是因为mac用户并不是所有人都对linux的操作十分熟悉，所以把这些对于系统十分重要的文件夹都进行隐藏了，免得用户误删等操作把系统玩坏。
-在terminal中输入下面命令：
-$ defaults write com.apple.finder AppleShowAllFiles -bool true  然后重启Finder，在terminal 中输入：
-$ killall Finder  当当当当，隐藏的文件夹就显示出来了！
-显示工具栏 显示 &amp;gt; 显示标签页栏、路径栏、边栏、预览。
-对工具栏自定义：显示 &amp;gt; 自定义工具栏，增加新建文件夹，或者还可以添加其他想要添加工具栏。
-第三方软件安装 有些软件并没有在apple认可的开发者列表内，如果要安装，首先需要mac允许软件来自任何人，而这个估计因为安全问题，属于隐藏设置，需要先打开Terminal，输入：
-$ sudo spctl --master-disable  然后在设置&amp;gt;安全与隐私中选择“任何来源”。安装完毕后，为了安全考虑，最好能够再选择回来自可信任的开发者。
-包管理器 Homebrew Mac OS用户大多使用Homebrew作为包管理工具，据说相当于Ubuntu下的apt-get。官网上的一句话介绍是The missing package manager for macOS，也就是针对Mac OS所开发的包管理器。
-Homebrew官网给出了安装brew的方法，只要复制下面脚本在Terminal中粘贴执行就安装成功。
+      <guid>https://orianna-zzo.github.io/blog/2018-02/%E6%88%91%E7%9A%84mac%E5%85%A5%E9%97%A8%E8%AE%BE%E7%BD%AE/</guid>
+      <description>序 终于转到有terminal的电脑上了，既然换了Mac OS，需要重新开始找软件。Windows上的软件安装习惯是网上找软件exe，下载安装，基本一个版本能用很久，没有习惯更是懒得经常更新。Linux上倒是有包管理器，但用的不多，只在编程时用过，不过编程包依赖特别重要，一般不会修改，因此基本没有鼓捣过。这次准备换电脑，看着同事非常优雅自如地更新软件，有些羡慕呀，这样才能最大化开源/更新频繁的软件优势。App Store倒是可以随时更新，不过不是所有软件都发布在App Store上，所以这里记录下我需要的配置、计划安装的软件，以及安装方法。如果和我一样刚开始接触mac的小伙伴们，希望这篇能有所帮助。
+首先说明下按键符号，如果第一次使用mac可能会有些混，因此这里说明一下：
+⌘ - command
+⌥ - option
+⌃ - control
+⇧ - shift
+包管理器 Homebrew Mac OS用户大多使用Homebrew作为包管理工具，据说相当于Ubuntu下的apt-get。官网上的一句话介绍是 ⌈The missing package manager for macOS⌋，也就是针对Mac OS所开发的包管理器。
+Homebrew官网给出了安装brew的方法，只要复制下面脚本在terminal中粘贴执行就安装成功。
 $ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  而有了Homebrew后，包的管理和更新就方便了很多。
 Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装某包，比如git brew install git   卸载某包，比如git brew uninstall git   强制卸载某包所有版本，比如git brew uninstall git --force   Homebrew本身更新 brew update   查看那些包过期了 brew outdated   将所有包都更新 brew upgrade   指定某包更新，比如git brew upgrade git   锁定某包不让更新，比如git brew pin git   解锁某包可以继续更新，比如git brew unpin git   卸载所有过时的包 brew cleanup   卸载所有过时的包，并显示即将卸载的包 brew cleanup -n   卸载过时的包，比如git brew cleanup git   列出所有brew装的包 brew list   显示软件信息 brew info   显示已安装的包依赖 brew deps --installed   查看brew包下载缓存 brew --cache    具体可查看帮助文档。</description>
     </item>

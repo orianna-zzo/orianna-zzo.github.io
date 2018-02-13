@@ -9,9 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="ZHENG Zi&#39;ou">
-<meta name="description" content="Resource资源链接汇总：
-conda github repo、conda用户手册
-前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
+<meta name="description" content="前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
 复杂的版本问题可能在个人开发时并不会有很大影响 (除非有强迫症需要在一个干净的开发环境)，但是当多人需要在同一个开发机/测试机/生产机上跑应用或者模型时，对于各个环境依赖的隔离就急需找到解决方案。依赖隔离问题其实不仅仅在python环境中十分重要，在很多其他程序中也是如此，不过本文还是主要以python环境为主要出发点。
 python环境隔离方案 经过网上搜索，目前为止对于python的依赖隔离主要有以下几种主要方法：
  docker virtualenv venv conda  方案选择 docker 其实docker很不错。容器化是现在非常火的一个方案。docker容器崩溃也不会影响主机，而且环境镜像可移植性非常强，能非常方便地把环境移植到不同的主机上去而不需要重新配置安装。现在我自己电脑也尽量在docker中开发，希望能不扰乱电脑本身的环境。可惜的是，尽管网上有信息说新版的docker容器使用可以不使用root权限，也有教程说建立一个可以使用docker的用户组，但是docker的安装还是避免不了需要root权限，而对于公司的环境来说，主机系统环境版本较旧且需要运营安装配置，灵活度不够。（插一句吐槽，其实对于正常有运营的组来说非常正常，但现在新到的组十分不规范，虽然不使用生产数据库但开发机都放在生产环境，其他人都不知道怎么找人root安装软件。）所以在公司使用的场景下只能忍痛放弃。如果没有这个限制，我还是很推荐这个方案，具体使用方法可以参考我另外的docker系列文章。
@@ -23,9 +21,7 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
    Task Conda package and environment manager command Pip package manager command Virtualenv environment manager command     Install a package conda install $PACKAGE_NAME pip install $PACKAGE_NAME X   Update a package conda update --name $ENVIRONMENT_NAME$PACKAGE_NAME pip install --upgrade $PACKAGE_NAME X   Update package manager conda update conda Linux/OSX： pip install -U pip Win： python -m pipinstall -U pip X   Uninstall a package conda remove --name $ENVIRONMENT_NAME$PACKAGE_NAME pip uninstall $PACKAGE_NAME X   Create an environment conda create --name $ENVIRONMENT_NAMEpython X cd $ENV_BASE_DIR; virtualenv$ENVIRONMENT_NAME   Activate an environment source activate $ENVIRONMENT_NAME X source$ENV_BASE_DIR/$ENVIRONMENT_NAME/bin/activate   Deactivate an environment source deactivate X deactivate   Search available packages conda search $SEARCH_TERM pip search $SEARCH_TERM X   Install package from specific source conda install --channel $URL$PACKAGE_NAME pip install --index-url $URL $PACKAGE_NAME X   List installed packages conda list --name $ENVIRONMENT_NAME pip list X   Create requirements file conda list --export pip freeze X   List all environments conda info --envs X Install virtualenv wrapper, then lsvirtualenv   Install other package manager conda install pip pip install conda X   Install Python conda install python=x.">
 
 <meta property="og:title" content="在公司建立python虚拟环境" />
-<meta property="og:description" content="Resource资源链接汇总：
-conda github repo、conda用户手册
-前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
+<meta property="og:description" content="前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
 复杂的版本问题可能在个人开发时并不会有很大影响 (除非有强迫症需要在一个干净的开发环境)，但是当多人需要在同一个开发机/测试机/生产机上跑应用或者模型时，对于各个环境依赖的隔离就急需找到解决方案。依赖隔离问题其实不仅仅在python环境中十分重要，在很多其他程序中也是如此，不过本文还是主要以python环境为主要出发点。
 python环境隔离方案 经过网上搜索，目前为止对于python的依赖隔离主要有以下几种主要方法：
  docker virtualenv venv conda  方案选择 docker 其实docker很不错。容器化是现在非常火的一个方案。docker容器崩溃也不会影响主机，而且环境镜像可移植性非常强，能非常方便地把环境移植到不同的主机上去而不需要重新配置安装。现在我自己电脑也尽量在docker中开发，希望能不扰乱电脑本身的环境。可惜的是，尽管网上有信息说新版的docker容器使用可以不使用root权限，也有教程说建立一个可以使用docker的用户组，但是docker的安装还是避免不了需要root权限，而对于公司的环境来说，主机系统环境版本较旧且需要运营安装配置，灵活度不够。（插一句吐槽，其实对于正常有运营的组来说非常正常，但现在新到的组十分不规范，虽然不使用生产数据库但开发机都放在生产环境，其他人都不知道怎么找人root安装软件。）所以在公司使用的场景下只能忍痛放弃。如果没有这个限制，我还是很推荐这个方案，具体使用方法可以参考我另外的docker系列文章。
@@ -77,11 +73,11 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2019%3a01%3a07.136117558%20%2b0000%20UTC%20m%3d%2b6.494511021">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2019%3a01%3a07.136117558%20%2b0000%20UTC%20m%3d%2b6.494511021">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2019%3a01%3a07.136117558%20%2b0000%20UTC%20m%3d%2b6.494511021">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2019%3a01%3a07.136117558%20%2b0000%20UTC%20m%3d%2b6.494511021">
     
 
 
@@ -120,8 +116,6 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -150,6 +144,8 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
         
 
         
+
+	
 
         
 
@@ -249,10 +245,6 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
             </div>
             <div class="markdown">
                 
-
-<p><strong>Resource资源链接汇总</strong>：</p>
-
-<p><a href="https://github.com/conda/conda">conda github repo</a>、<a href="https://conda.io/">conda用户手册</a></p>
 
 <h2 id="前言">前言</h2>
 
@@ -600,6 +592,10 @@ $ tar -czxf py3.6-tf_mint.tar.gzip py3.6-tf
 </code></pre></div>
 
 <p>之后只需要将该压缩文件在服务器对应的 <code>Anaconda/envs</code> 中解压缩即可。</p>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p><a href="https://github.com/conda/conda">conda github repo</a>、<a href="https://conda.io/">conda用户手册</a></p>
 
 <h2 id="版本控制">版本控制</h2>
 

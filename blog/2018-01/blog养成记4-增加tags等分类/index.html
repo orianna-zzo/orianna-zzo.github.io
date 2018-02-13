@@ -9,32 +9,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="ZHENG Zi&#39;ou">
-<meta name="description" content="Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
-自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
+<meta name="description" content="自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
 分类taxonomy有3个概念：
  Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
 [taxonomies] tag = &quot;tags&quot; series = &quot;series&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
 date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog养成记(4)增加tags等分类&quot; tags: [&quot;hugo&quot;] series: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
-分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。">
+分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。
+还是以tag为例：
+example.com/tags/ 会列出tags中的所有术语；
+example.com/tags/docker 会列出tags标为docker的所有网页列表。
+分类排序  分类排序还未正式尝试，无法确认正式效果，还需后面确认后再补充。">
 
 <meta property="og:title" content="Blog养成记(4) 增加tags等分类" />
-<meta property="og:description" content="Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
-自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
+<meta property="og:description" content="自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
 分类taxonomy有3个概念：
  Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
 [taxonomies] tag = &quot;tags&quot; series = &quot;series&quot; category = &quot;categories&quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
 date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog养成记(4)增加tags等分类&quot; tags: [&quot;hugo&quot;] series: [&quot;Blog养成记&quot;] categories: [&quot;杂技浅尝&quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
-分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。" />
+分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。
+还是以tag为例：
+example.com/tags/ 会列出tags中的所有术语；
+example.com/tags/docker 会列出tags标为docker的所有网页列表。
+分类排序  分类排序还未正式尝试，无法确认正式效果，还需后面确认后再补充。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/" />
 
@@ -81,11 +81,11 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2002%3a25%3a40.6723357%20%2b0000%20UTC%20m%3d%2b18.121099501">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2002%3a25%3a40.6723357%20%2b0000%20UTC%20m%3d%2b18.121099501">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2002%3a25%3a40.6723357%20%2b0000%20UTC%20m%3d%2b18.121099501">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2019%3a01%3a07.136317858%20%2b0000%20UTC%20m%3d%2b6.494699626">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2019%3a01%3a07.136317858%20%2b0000%20UTC%20m%3d%2b6.494699626">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2019%3a01%3a07.136317858%20%2b0000%20UTC%20m%3d%2b6.494699626">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2002%3a25%3a40.6723357%20%2b0000%20UTC%20m%3d%2b18.121099501">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2019%3a01%3a07.136317858%20%2b0000%20UTC%20m%3d%2b6.494699626">
     
 
 
@@ -124,8 +124,6 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog�
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -154,6 +152,8 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog�
         
 
         
+
+	
 
         
 
@@ -252,13 +252,6 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog�
             </div>
             <div class="markdown">
                 
-
-<p><strong>Resource资源链接汇总</strong>:</p>
-
-<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
-我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
-
-<p><a href="https://gohugo.io">Hugo官网</a>、<a href="https://gohugo.io/content-management/taxonomies/">关于Taxonomy分类说明</a>、<a href="https://gohugo.io/templates/">Hugo Template介绍</a></p>
 
 <h2 id="自定义分类">自定义分类</h2>
 
@@ -462,6 +455,13 @@ date: &quot;2018-01-09T16:22:25&#43;08:00&quot; draft: false title: &quot;Blog�
 <span class="lineno">55 </span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 </code></pre></div>
 
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
+我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
+
+<p><a href="https://gohugo.io">Hugo官网</a>、<a href="https://gohugo.io/content-management/taxonomies/">关于Taxonomy分类说明</a>、<a href="https://gohugo.io/templates/">Hugo Template介绍</a></p>
 
 <h2 id="版本控制">版本控制</h2>
 

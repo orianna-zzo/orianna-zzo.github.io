@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>我的Mac入门设置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-02/%E6%88%91%E7%9A%84mac%E5%85%A5%E9%97%A8%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Wed, 14 Feb 2018 01:49:13 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-02/%E6%88%91%E7%9A%84mac%E5%85%A5%E9%97%A8%E8%AE%BE%E7%BD%AE/</guid>
+      <description>序 终于转到有terminal的电脑上了，既然换了Mac OS，需要重新开始找软件。Windows上的软件安装习惯是网上找软件exe，下载安装，基本一个版本能用很久，没有习惯更是懒得经常更新。Linux上倒是有包管理器，但用的不多，只在编程时用过，不过编程包依赖特别重要，一般不会修改，因此基本没有鼓捣过。这次准备换电脑，看着同事非常优雅自如地更新软件，有些羡慕呀，这样才能最大化开源/更新频繁的软件优势。App Store倒是可以随时更新，不过不是所有软件都发布在App Store上，所以这里记录下我需要的配置、计划安装的软件，以及安装方法。如果和我一样刚开始接触mac的小伙伴们，希望这篇能有所帮助。
+首先说明下按键符号，如果第一次使用mac可能会有些混，因此这里说明一下：
+⌘ - command
+⌥ - option
+⌃ - control
+⇧ - shift
+包管理器 Homebrew Mac OS用户大多使用Homebrew作为包管理工具，据说相当于Ubuntu下的apt-get。官网上的一句话介绍是 ⌈The missing package manager for macOS⌋，也就是针对Mac OS所开发的包管理器。
+Homebrew官网给出了安装brew的方法，只要复制下面脚本在terminal中粘贴执行就安装成功。
+$ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  而有了Homebrew后，包的管理和更新就方便了很多。
+Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装某包，比如git brew install git   卸载某包，比如git brew uninstall git   强制卸载某包所有版本，比如git brew uninstall git --force   Homebrew本身更新 brew update   查看那些包过期了 brew outdated   将所有包都更新 brew upgrade   指定某包更新，比如git brew upgrade git   锁定某包不让更新，比如git brew pin git   解锁某包可以继续更新，比如git brew unpin git   卸载所有过时的包 brew cleanup   卸载所有过时的包，并显示即将卸载的包 brew cleanup -n   卸载过时的包，比如git brew cleanup git   列出所有brew装的包 brew list   显示软件信息 brew info   显示已安装的包依赖 brew deps --installed   查看brew包下载缓存 brew --cache    具体可查看帮助文档。</description>
+    </item>
+    
+    <item>
       <title>Docker for datascience: 从纠结到放弃</title>
       <link>https://orianna-zzo.github.io/blog/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</link>
       <pubDate>Tue, 13 Feb 2018 10:01:15 +0800</pubDate>
@@ -31,37 +49,12 @@
     </item>
     
     <item>
-      <title>我的Mac所需安装软件</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/%E6%88%91%E7%9A%84mac%E6%89%80%E9%9C%80%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</link>
-      <pubDate>Wed, 31 Jan 2018 01:56:13 +0800</pubDate>
-      
-      <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%88%91%E7%9A%84mac%E6%89%80%E9%9C%80%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/</guid>
-      <description>Resource资源链接汇总:
-Homebrew官网、Cask官网
-序 终于转到有terminal的电脑上了，既然换了Mac OS，需要重新开始找软件。Windows上的软件安装习惯是网上找软件exe，下载安装，基本一个版本能用很久，没有习惯更是懒得经常更新。Linux上倒是有包管理器，但用的不多，只在编程时用过，不过编程包依赖特别重要，一般不会修改，因此基本没有鼓捣过。这次准备换电脑，看着同事非常优雅自如地更新软件，有些羡慕呀，这样才能最大化开源/更新频繁的软件优势。App Store倒是可以随时更新，不过不是所有软件都发布在App Store上，所以这里记录下我需要的配置、计划安装的软件，以及安装方法。如果和我一样刚开始接触mac的小伙伴本，希望这篇能有所帮助。
-Mac系统配置 Finder配置 显示隐藏文件夹 Mac系统的/usr、/etc等文件夹都是隐藏文件，如果不进行设置用户是无法见到的。估计是因为mac用户并不是所有人都对linux的操作十分熟悉，所以把这些对于系统十分重要的文件夹都进行隐藏了，免得用户误删等操作把系统玩坏。
-在terminal中输入下面命令：
-$ defaults write com.apple.finder AppleShowAllFiles -bool true  然后重启Finder，在terminal 中输入：
-$ killall Finder  当当当当，隐藏的文件夹就显示出来了！
-显示工具栏 显示 &amp;gt; 显示标签页栏、路径栏、边栏、预览。
-对工具栏自定义：显示 &amp;gt; 自定义工具栏，增加新建文件夹，或者还可以添加其他想要添加工具栏。
-第三方软件安装 有些软件并没有在apple认可的开发者列表内，如果要安装，首先需要mac允许软件来自任何人，而这个估计因为安全问题，属于隐藏设置，需要先打开Terminal，输入：
-$ sudo spctl --master-disable  然后在设置&amp;gt;安全与隐私中选择“任何来源”。安装完毕后，为了安全考虑，最好能够再选择回来自可信任的开发者。
-包管理器 Homebrew Mac OS用户大多使用Homebrew作为包管理工具，据说相当于Ubuntu下的apt-get。官网上的一句话介绍是The missing package manager for macOS，也就是针对Mac OS所开发的包管理器。
-Homebrew官网给出了安装brew的方法，只要复制下面脚本在Terminal中粘贴执行就安装成功。
-$ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  而有了Homebrew后，包的管理和更新就方便了很多。
-Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装某包，比如git brew install git   卸载某包，比如git brew uninstall git   强制卸载某包所有版本，比如git brew uninstall git --force   Homebrew本身更新 brew update   查看那些包过期了 brew outdated   将所有包都更新 brew upgrade   指定某包更新，比如git brew upgrade git   锁定某包不让更新，比如git brew pin git   解锁某包可以继续更新，比如git brew unpin git   卸载所有过时的包 brew cleanup   卸载所有过时的包，并显示即将卸载的包 brew cleanup -n   卸载过时的包，比如git brew cleanup git   列出所有brew装的包 brew list   显示软件信息 brew info   显示已安装的包依赖 brew deps --installed   查看brew包下载缓存 brew --cache    具体可查看帮助文档。</description>
-    </item>
-    
-    <item>
       <title>Pycharm vs Notebook</title>
       <link>https://orianna-zzo.github.io/blog/2018-01/pycharm-vs-notebook/</link>
       <pubDate>Tue, 30 Jan 2018 21:07:19 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/pycharm-vs-notebook/</guid>
-      <description> Resource资源链接汇总:
-stackoverflow: 如何更好地整理notebook中的代码
-严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
+      <description> 严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。
 缘起 说起来接触python也已经一年半的时间。去年7月，哦不，应该是前年7月，刚入职才开始因为工作学习的python，首先遇到的就是IDE的选择问题。比较流行的开发工具有JetBrain的Pycharm和Jupyter Notebook。
 初识 组长和组里新学习代码的小伙伴们偏爱notebook，不过我却更青睐相对于更像一个传统IDE 的Pycharm。
 Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual studio, eclipse)，集成各种调试工具，可以非常方便地在里面进行单步调试、变量监控，文档结构也非常明晰，而且也可以在pycharm里使用notebook（尽管我不在这里使用）。
@@ -72,6 +65,7 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
 我在查找资料时也发现了大家对于notebook的使用方法。Stackoverflow上也有人提问如何更好地整理notebook中的代码，非常有启发性，建议参考下。
 感觉上，notebook，顾名思义是记录本，也就是说它最大的功能是记录你的想法与尝试、零碎的小实验，并且notebook实际上并不简单局限于python。而使用notebook也有一些比较好的实践，我这里列举一些我觉得十分不错的，以便我后期查看：
  Notebook的代码应该整洁，也就是说随时可以做到按顺序重跑全部代码并能复现结果，实验结束后notebook可能需要重构。 建立一个很多project能够通用的utils库。可以写一份setup.py，让其他组员可以方便安装。 将大的notebook分成多个小的notebook，每个notebook最好能够符合“假设-数据-结论”的模式。一个例子是分为data preparation、data validation、exploratory plotting、simple linear model、hierachical model、 playground等，将数据准备的记过都存成本地文件，便于其他notebook引入。 每个cell最好能符合“idea-execution-output”的模式。  思考 并没有完整意义上的完美的工具，每个工具都有其最优使用场景。在这个场景不尽如意，不等于这不是一个好的工具。Pycharm是各个意义上强大的工具，但并不等于notebook没有优秀的地方。尽管常规编程、调试、上线不是notebook的强项，但对于数据科学这个领域需要多种实验查看数据结构，notebook就十分适合记录实验结果，可以验证多种想法假设。想法初步验证后，再正式重构正规编程。
+Resource资源链接汇总 stackoverflow: 如何更好地整理notebook中的代码
 版本控制    Version Action Time     1.0 Init 2018-01-30    </description>
     </item>
     
@@ -81,9 +75,7 @@ Pycharm就像是我们经常使用的其他语言的IDE一样 (比如说visual s
       <pubDate>Sun, 28 Jan 2018 22:04:23 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/</guid>
-      <description>Resource资源链接汇总:
-Google网站管理、Bing网站管理、百度网站管理
-居然都找不到！ 其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。
+      <description>居然都找不到！ 其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。
 什么？所以百度搜索搜不到我的个人博客？不死心，尝试一下，找得到github、gist主页，但是就是找不到github.io后缀的网页。除了百度之外，我还尝试了Bing、Google，都没有，所以常用的三大搜索引擎都找不到我的博客，小小网站在浩瀚的网络世界中就像是一个孤岛，只有知道url才能达到。突然想到传说中的暗网是否也是加上了反爬，所以大众难以发现？
 话说回来，反爬也有反爬的好处，比如有时博客内容特别个人，只是想找个地方发泄一下、记录一下，不被搜索引擎索引到也降低了被他人发现的几率，就像是一个打开的日记本，但是不用担心被家长偷看的感觉。
 如何让搜索引擎索引到呢？ 发现流行的搜索引擎居然都找不到博客，那就需要赶紧找解决方法。Google和Bing还不清楚是怎么回事，但网上流传的email回复内容都点明了Github Pages禁止了百度爬虫的爬去，似乎原因是百度爬虫爬得太过于频繁，会严重影响服务器性能。针对百度爬虫的问题，大家找了很多方法。比较早期的有把放在GitHub上的代码同时push到国内的GitCafe上，但GitCafe已经被Coding.net收购，2017年6月前很多方案都是同步推送到Coding.net上，而8月开始免费的Coding.net用户会被强行加入5s等待页面，也会导致爬取失败。自建服务器托管博客、将博客放在Gitlab上或者CDN方法都不在我的选择范围内，因为暂时我还没有购买服务器或者域名的打算，所以决定放弃百度……但不管怎么样Bing和Google还是要设置好的！
@@ -112,6 +104,7 @@ Google基本过一天就能查到，但是Bing我总是很难搜索到，猛然�
 在“数据引入&amp;gt;链接提交”中的自动提交选择sitemap，并提交sitemap地址。
 状态转了很久显示抓取失败T^T。
 然后选择“数据监控&amp;gt;抓取诊断”，并输入博客网址进行抓取。然后发现，全部都抓取失败了，显示是“拒绝访问”。果然是真的屏蔽了百度爬虫了呀。
+Resource资源链接汇总 Google网站管理、Bing网站管理、百度网站管理
 版本控制    Version Action Time     1.</description>
     </item>
     
@@ -121,8 +114,7 @@ Google基本过一天就能查到，但是Bing我总是很难搜索到，猛然�
       <pubDate>Sun, 28 Jan 2018 13:36:28 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/</guid>
-      <description>gitignore官方文档说明、gitignore文件模板参考、git config官方文档说明
-Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
+      <description>Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。
 但这次用两个mac，一个mac提交了修改，第二个mac想要拉下来时居然遇到了.DS_Store文件被修改过需要提交再merge。什么？我没改过内容呀？所以这个.DS_Store是什么鬼？
 .DS_Store是Mac OS用来存储这个文件夹的显示属性的，被作为一种通用的有关显示设置的元数据（比如图标位置等设置）为Finder、Spotlight用。所以在不经意间就会修改这个文件。而文件共享时为了隐私关系将.DS_Store文件删除比较好，因为其中有一些信息在不经意间泄露出去。
 Git中处理方案 方案一：项目设置.gitignore 仅针对git的处理最naive的想法就是设置.gitignore文件。
@@ -139,11 +131,7 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
       <pubDate>Sat, 27 Jan 2018 15:04:18 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</guid>
-      <description>Resource资源链接汇总：
-docker官方文档、docker for mac下载页、docker for windows下载页、docer for linux下载页
-docker for Ubuntu安装说明、docker for Debian安装说明、docker for CentOS安装说明、docker for Fedora安装说明
-nvidia-docker github
-Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用部署带来的困难，更不用提多次部署这种重复劳动的麻烦事了。此外，容器使用了sandbox机制，容器与容器之间有较好的隔离性，不用担心。这是docker最通俗也是最广泛的应用。
+      <description>Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用部署带来的困难，更不用提多次部署这种重复劳动的麻烦事了。此外，容器使用了sandbox机制，容器与容器之间有较好的隔离性，不用担心。这是docker最通俗也是最广泛的应用。
 是不是觉得这个优点和应用很熟悉？当我们想要跨平台无视底层环境要求跑程序执行应用我们都会想到什么？对，就是虚拟机。在本机上装个虚拟机应用比如说virtual box或者vmware，然后再用操作系统镜像（比如说win7）建个虚拟机，就可以在虚拟机中安装各种应用了。在这里docker就相当于virtual box或者vmware，容器就相当于你建的虚拟机实例，docker中也有一个镜像的概念，就相当于你建虚拟机所使用的操作系统镜像（win7）。这样说是否更通俗易理解一些？
 docker容器 vs vm虚拟机 既然虚拟机也可以完成相似的功能，为什么要用docker呢？换句话来问，同样都是虚拟化技术，docker的容器技术和vm虚拟机有什么区别？docker官方网站也简单回答了这个疑问，可以在这里查看。我对于这些底层的架构知识并不是很了解，只能根据网上的信息以及最近这一个月的入门级使用谈及一下感受。
 相比vm虚拟机，docker的容器技术更为轻量级。直观上，这个轻量级体现在启动速度更快、占用资源更少。我并没有具体测试比较过，但在实际使用中感受是，我原本开一个虚拟机跑程序就已经很不错了，虚拟机开机还有个等待开机时间，而现在使用docker，容器载入速度很快，同时在机子上会运行几个不同的容器，从镜像重新生成容器也很快很方便。2014年开始，docker一直对外宣传的一个重点也是这个，“虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。
@@ -156,7 +144,8 @@ docker并不万能 Docker真心很好用，才上手了1个多月的我特别喜
 Installation Docker分为Community (CE) 和Enterprise (EE) 版本，个人使用用CE就够了，一些EE的高级功能用不上也不会用。Docker CE有分为stable版和edge版，前者每一个季度更新一个更reliable的更新，后者每个月都会提供一些新的特征。不爱折腾的我就直接选择stable版。更多关于docker安装的环境需求可以参考官网该页面，不同的环境还是有不同的需求的。
 网上有很多零散的安装教程，建议找最新的来看，很多实际上都过时了。最安全的当然直接上官网。
 Mac安装 Mac可以选择用Homebrew进行安装:
-$ # stable channel $ brew cask install docker $ # edge channel $ brew cask install docker-edge  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。</description>
+$ # stable channel $ brew cask install docker $ # edge channel $ brew cask install docker-edge  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。
+PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉可能是早期版本，官网这里给出了解释，没有仔细看，不过我认为无脑安装docker for mac就够用了。</description>
     </item>
     
     <item>
@@ -195,9 +184,7 @@ Docker，你好 决定开始了解docker的契机是换了Mac，有心情来折�
       <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
-      <description>Resource资源链接汇总：
-conda github repo、conda用户手册
-前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
+      <description>前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
 复杂的版本问题可能在个人开发时并不会有很大影响 (除非有强迫症需要在一个干净的开发环境)，但是当多人需要在同一个开发机/测试机/生产机上跑应用或者模型时，对于各个环境依赖的隔离就急需找到解决方案。依赖隔离问题其实不仅仅在python环境中十分重要，在很多其他程序中也是如此，不过本文还是主要以python环境为主要出发点。
 python环境隔离方案 经过网上搜索，目前为止对于python的依赖隔离主要有以下几种主要方法：
  docker virtualenv venv conda  方案选择 docker 其实docker很不错。容器化是现在非常火的一个方案。docker容器崩溃也不会影响主机，而且环境镜像可移植性非常强，能非常方便地把环境移植到不同的主机上去而不需要重新配置安装。现在我自己电脑也尽量在docker中开发，希望能不扰乱电脑本身的环境。可惜的是，尽管网上有信息说新版的docker容器使用可以不使用root权限，也有教程说建立一个可以使用docker的用户组，但是docker的安装还是避免不了需要root权限，而对于公司的环境来说，主机系统环境版本较旧且需要运营安装配置，灵活度不够。（插一句吐槽，其实对于正常有运营的组来说非常正常，但现在新到的组十分不规范，虽然不使用生产数据库但开发机都放在生产环境，其他人都不知道怎么找人root安装软件。）所以在公司使用的场景下只能忍痛放弃。如果没有这个限制，我还是很推荐这个方案，具体使用方法可以参考我另外的docker系列文章。
@@ -215,18 +202,18 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
       <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
-      <description>Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、关于Taxonomy分类说明、Hugo Template介绍
-自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
+      <description>自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
 分类taxonomy有3个概念：
  Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
 [taxonomies] tag = &amp;quot;tags&amp;quot; series = &amp;quot;series&amp;quot; category = &amp;quot;categories&amp;quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
 date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4)增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
-分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。</description>
+分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。
+还是以tag为例：
+example.com/tags/ 会列出tags中的所有术语；
+example.com/tags/docker 会列出tags标为docker的所有网页列表。
+分类排序  分类排序还未正式尝试，无法确认正式效果，还需后面确认后再补充。</description>
     </item>
     
     <item>
@@ -235,11 +222,7 @@ date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quo
       <pubDate>Tue, 09 Jan 2018 17:52:25 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
-      <description>Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、关于语法高亮说明
-前言 Hugo官网在这里给出了详细的语法高亮配置说明。
+      <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。
 一般有以下3种常见方法：
 1. 使用Hugo默认Chroma
 2. 使用Pygments
@@ -251,7 +234,7 @@ $ sudo apt-get install python3-pygments  Pygments配置 下面是我按官网在
 pygmentsCodeFences=true 使在code fence中的根据设置的语言标签进行语法高亮；
 pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里查看各高亮风格，选择最心仪的。
 我选择了 autumn，下面是在code fence中的高亮示例：
-#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.</description>
+#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.var = var self.run() def run(self): RunForrestRun() # run along!</description>
     </item>
     
     <item>
@@ -260,13 +243,7 @@ pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里�
       <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
-      <description>Resource资源链接汇总:
-我建立的docker for Hugo开发镜像: Docker Hub上的repo、Github上的repo。
-我的个人主页Hugo代码: blog-hugo
-Hugo官网、Hugo release版下载
-Docker官网、Docker下载
-Github Pages个人/项目主页设置
-Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
+      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，更重要的是，最近对docker感兴趣，想实践一下。Docker是一个开源的应用容器引擎，可以方便地将不同容器间的环境进行隔离，但又比虚拟机更轻量化，能更快速启动。与Docker相关的内容我会在另一个Docker系列进行详细说明，这里主要还是与建立Blog相关的使用为主。
 网上使用Hugo写blog的内容很多，使用docker的也很多，但使用docker来搭建hugo编写环境并不多，我也是在一步步摸索中。那么，就跟着我一起开始尝试吧！
 Hugo的docker环境配置 Docker安装 在Mac中可以使用Homebrew进行安装：
@@ -282,7 +259,10 @@ $ docker images  你可以发现orianna/hugo-docker-dev只有94.9MB大小.
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
 除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .</description>
+$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
+接下去你就可以在终端输入下面这行命令来查看镜像信息：
+$ docker images  至此，你已经获得了Hugo的docker镜像了。
+尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</description>
     </item>
     
     <item>
