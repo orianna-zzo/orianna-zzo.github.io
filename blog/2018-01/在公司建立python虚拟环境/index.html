@@ -77,11 +77,11 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-30%2018%3a05%3a11.565591752%20%2b0000%20UTC%20m%3d%2b7.313782412">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-30%2018%3a05%3a11.565591752%20%2b0000%20UTC%20m%3d%2b7.313782412">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-30%2018%3a05%3a11.565591752%20%2b0000%20UTC%20m%3d%2b7.313782412">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-30%2018%3a05%3a11.565591752%20%2b0000%20UTC%20m%3d%2b7.313782412">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2002%3a25%3a40.6567442%20%2b0000%20UTC%20m%3d%2b18.105507301">
     
 
 
@@ -120,6 +120,8 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
                 
                     
                 
+                    
+                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -148,8 +150,6 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
         
 
         
-
-	
 
         
 
@@ -459,8 +459,11 @@ $ conda update conda
 <h4 id="激活-失效conda虚拟环境">激活/失效conda虚拟环境</h4>
 
 <p>若要激活或者说切换到你建立的虚拟环境envname，需要在终端键入下面命令：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>Linux: $ <span class="nb">source</span> activate envname
-Windows: $ activate envname
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># Linux</span>
+$ <span class="nb">source</span> activate envname
+
+&gt; <span class="c1"># Windows</span>
+&gt; activate envname
 </code></pre></div>
 
 <p>激活后，终端的当前目录前会显示你的虚拟环境名称。此时执行的就是虚拟环境envname中的包依赖，这样就可以开始使用啦。可以用 <code>which python</code> 查看现在使用的python执行程序，就能发现已经不是使用系统路径下的python了。</p>

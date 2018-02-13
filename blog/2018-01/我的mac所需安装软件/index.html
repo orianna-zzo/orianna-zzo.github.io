@@ -83,11 +83,11 @@ Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-01-30%2018%3a05%3a11.547781919%20%2b0000%20UTC%20m%3d%2b7.295972572">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-01-30%2018%3a05%3a11.547781919%20%2b0000%20UTC%20m%3d%2b7.295972572">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-01-30%2018%3a05%3a11.547781919%20%2b0000%20UTC%20m%3d%2b7.295972572">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-02-13%2002%3a25%3a40.4327993%20%2b0000%20UTC%20m%3d%2b17.881562401">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-02-13%2002%3a25%3a40.4327993%20%2b0000%20UTC%20m%3d%2b17.881562401">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-02-13%2002%3a25%3a40.4327993%20%2b0000%20UTC%20m%3d%2b17.881562401">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-01-30%2018%3a05%3a11.547781919%20%2b0000%20UTC%20m%3d%2b7.295972572">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-02-13%2002%3a25%3a40.4327993%20%2b0000%20UTC%20m%3d%2b17.881562401">
     
 
 
@@ -126,6 +126,8 @@ Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装�
                 
                     
                 
+                    
+                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -154,8 +156,6 @@ Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装�
         
 
         
-
-	
 
         
 
@@ -547,6 +547,41 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 </ul>
 
 <h5 id="其他配置">其他配置</h5>
+
+<p><code>cmd + ,</code> 打开配置页面，在右侧用户自定义的页面中进行配置。</p>
+
+<ul>
+<li>修改默认打开形式：</li>
+</ul>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;open_files_in_new_window&quot;</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false,</span>
+</code></pre></div>
+
+<p>设置为false，默认tab形式打开；设置为true，默认新开一个窗口</p>
+
+<ul>
+<li>显示编码格式</li>
+</ul>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;show_encoding&quot;</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true,</span>
+</code></pre></div>
+
+<p>会在窗口底部显示现在使用的编码格式。</p>
+
+<ul>
+<li>显示空格占位符</li>
+</ul>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;draw_white_space&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;all&quot;</span><span class="err">,</span>
+  <span class="s">&quot;indent_guide_options&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;draw_active&quot;</span><span class="p p-Indicator">]</span><span class="err">,</span>
+</code></pre></div>
+
+<ul>
+<li>显示行末占位符格式</li>
+</ul>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;show_line_endings&quot;</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true,</span>
+</code></pre></div>
+
+<p>Windows行末占位符为 <code>\r\n</code>，而Unix行末占位符为 <code>\n</code>，在文字处理中需要注意。</p>
+
+<p>配置好后会在窗口底部显示行末占位符是Windows还是Unix。</p>
 
 <h3 id="ide">IDE</h3>
 
