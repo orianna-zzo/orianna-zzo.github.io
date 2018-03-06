@@ -6,27 +6,63 @@
     <description>Recent content in 杂技浅尝 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 14 Feb 2018 01:49:13 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Mar 2018 00:21:13 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>我的Mac入门设置</title>
-      <link>https://orianna-zzo.github.io/blog/2018-02/%E6%88%91%E7%9A%84mac%E5%85%A5%E9%97%A8%E8%AE%BE%E7%BD%AE/</link>
-      <pubDate>Wed, 14 Feb 2018 01:49:13 +0800</pubDate>
+      <title>Mac小白探索记(2) Finder设置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B02-finder%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Wed, 07 Mar 2018 00:21:13 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-02/%E6%88%91%E7%9A%84mac%E5%85%A5%E9%97%A8%E8%AE%BE%E7%BD%AE/</guid>
-      <description>序 终于转到有terminal的电脑上了，既然换了Mac OS，需要重新开始找软件。Windows上的软件安装习惯是网上找软件exe，下载安装，基本一个版本能用很久，没有习惯更是懒得经常更新。Linux上倒是有包管理器，但用的不多，只在编程时用过，不过编程包依赖特别重要，一般不会修改，因此基本没有鼓捣过。这次准备换电脑，看着同事非常优雅自如地更新软件，有些羡慕呀，这样才能最大化开源/更新频繁的软件优势。App Store倒是可以随时更新，不过不是所有软件都发布在App Store上，所以这里记录下我需要的配置、计划安装的软件，以及安装方法。如果和我一样刚开始接触mac的小伙伴们，希望这篇能有所帮助。
+      <guid>https://orianna-zzo.github.io/blog/2018-03/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B02-finder%E8%AE%BE%E7%BD%AE/</guid>
+      <description>Finder是mac的资源管理器，它的使用和配置与Windows区别还是挺多。习惯了Windows的使用使得Finder使用总觉得有些不便。配置好Finder能很大幅度提高我们的工作效率。
+我会从遇到的问题着手，查找可以解决问题提高效率的解决方案。
+Finder显示设置 显示隐藏文件夹 Mac系统Finder中的 /usr、/etc等文件夹都是隐藏文件，如果不进行设置用户是无法见到的。估计是因为mac用户并不是所有人都对linux的操作十分熟悉，所以把这些对于系统十分重要的文件夹都进行隐藏了，免得用户误删等操作把系统玩坏。
+在terminal中输入下面命令：
+$ defaults write com.apple.finder AppleShowAllFiles -bool true  然后重启Finder，在terminal 中输入：
+$ killall Finder  当当当当，隐藏的文件夹就显示出来了！
+显示工具栏 选择 ⌈显示⌋ &amp;gt; ⌈显示标签页栏⌋、⌈显示路径栏⌋、⌈显示边栏⌋、⌈显示预览⌋。
+对工具栏自定义：⌈显示⌋ &amp;gt; ⌈自定义工具栏⌋，增加⌈新建文件夹⌋，或者还可以添加其他想要添加工具栏。
+复制文件夹路径 直接快捷键 ⌘⌥C 即可。
+不过需要注意的是，如果有其他程序设置了相同的快捷键可能会导致无法复制。实践中我把Spectacle中把窗口放在中央的快捷键设置取消了，因为会冲突。
+快速打开Terminal 其实这部分应该算是效率工具，但是更像是针对Finder路径这一问题的解决方案，因此放在这里了。
+其实还可以打开Terminal打上cd 之后直接把文件夹拖进去，就会显示文件夹的路径，或者 ⌘⌥C 复制路径到terminal，但是这样十分繁琐。
+这里提供两个方案。方案一：设置快捷键，但是只能在上层文件夹中选择需要的路径的文件夹后才能打开Terminal。方案二：安装Go2Shell，可以在Finder的Toolbox中安装一个插件，非常方便。
+方案一：设置快捷键 ⌈系统偏好设置⌋ &amp;gt; ⌈键盘⌋ &amp;gt; ⌈快捷键⌋ &amp;gt; ⌈服务⌋ &amp;gt; ⌈新建位于文件夹位置的终端窗口⌋。
+这样在Finder中选中文件夹，双指右击，就可以在服务中看到打开终端的选项。
+还可以设置快捷键，我设置了 ⌘⌥⌃T，选中文件夹后使用快捷键后即可快速打开终端。
+方案二：安装Go2Shell 不要通过App Store安装，无法使用，直接通过Homebrew安装：
+$ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Finder⌋
+然后就可以在Finder的工具栏发现Go2Shell的图标了。点击这个图标就会打开一个在当前文件夹的Terminal，很方便。</description>
+    </item>
+    
+    <item>
+      <title>Mac小白探索记(1) 基本设置与常用软件</title>
+      <link>https://orianna-zzo.github.io/blog/2018-02/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B01-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Wed, 14 Feb 2018 15:04:48 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-02/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B01-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</guid>
+      <description>序 原本打算将所有相关内容只写在一篇博文里，但后面发现越加越多，内容越来越零散，最后决定进行拆分，也变为一个系列。我是2017年底才刚开始深入使用mac，算是mac小白一枚，在探索的过程中想将一些我觉得高效实用的信息记录下来，希望其他和我一样刚开始学习mac的小伙伴们能看了后有所帮助。
+第一篇主要介绍新入手mac后的基本设置与常用软件安装。终于转到有terminal的电脑上了，既然换了Mac OS，需要重新开始找软件。Windows上的软件安装习惯是网上找软件exe，下载安装，基本一个版本能用很久，没有习惯更是懒得经常更新。Linux上倒是有包管理器，但用的不多，只在编程时用过，不过编程包依赖特别重要，一般不会修改，因此基本没有鼓捣过。这次准备换电脑，看着同事非常优雅自如地更新软件，有些羡慕呀，这样才能最大化开源/更新频繁的软件优势。App Store倒是可以随时更新，不过不是所有软件都发布在App Store上，所以这里记录下我需要的配置、计划安装的软件，以及安装方法，以供参照。PS，不定期更新。
 首先说明下按键符号，如果第一次使用mac可能会有些混，因此这里说明一下：
 ⌘ - command
 ⌥ - option
 ⌃ - control
 ⇧ - shift
+␣ - space
+Windows平台上control在快捷键中使用频繁，而转到mac平台后很多通用快捷键设置需要替代为⌘command，比如⌘C复制、⌘V粘贴，快捷键会在其他文中详述。
+Mac系统基本配置 触摸板设置 触摸板是mac最常用的工具，更好地设置触摸板使用起来可以方便省力很多。
+⌈系统偏好设置⌋ &amp;gt; ⌈触控板⌋ ，建议将所有手势都选上，使用起来很方便，也可以节省快捷键。我常用的手势有：轻点代替点按、双指点按代表右击、三指点按选词查询词典、四指合拢打开Lauchpad、四指分开显示桌面 、三指向上划mission control。
+Touchbar设置 ⌈系统偏好设置⌋ &amp;gt; ⌈键盘⌋ &amp;gt; ⌈键盘⌋ &amp;gt; 点击⌈自定义控制条⌋ 即可进行设置。
+可以将一些找起来比较麻烦但常用的设置放在touchbar，移除默认设置touchbar中一些不常用的功能。我放了night shift、免打扰和屏幕保护程序。应用程序中的touchbar的功能和该应用程序本身功能有关，有些可以在程序中设置touchbar的功能。
+此外有很多人推荐的BetterTouchTool也可以，不过这款软件收费。
+第三方软件安装 有些软件并没有在apple认可的开发者列表内，如果要安装，首先需要mac允许软件来自任何人，而这个估计因为安全问题，属于隐藏设置，需要先打开terminal，输入：
+$ sudo spctl --master-disable  然后在⌈系统偏好设置⌋ &amp;gt; ⌈安全与隐私⌋ 中选择 ⌈任何来源⌋。安装完毕后，为了安全考虑，最好能够再选择回来自可信任的开发者。
 包管理器 Homebrew Mac OS用户大多使用Homebrew作为包管理工具，据说相当于Ubuntu下的apt-get。官网上的一句话介绍是 ⌈The missing package manager for macOS⌋，也就是针对Mac OS所开发的包管理器。
 Homebrew官网给出了安装brew的方法，只要复制下面脚本在terminal中粘贴执行就安装成功。
-$ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  而有了Homebrew后，包的管理和更新就方便了很多。
-Homebrew常用指令    指令内容 指令     帮助文档 brew help   安装某包，比如git brew install git   卸载某包，比如git brew uninstall git   强制卸载某包所有版本，比如git brew uninstall git --force   Homebrew本身更新 brew update   查看那些包过期了 brew outdated   将所有包都更新 brew upgrade   指定某包更新，比如git brew upgrade git   锁定某包不让更新，比如git brew pin git   解锁某包可以继续更新，比如git brew unpin git   卸载所有过时的包 brew cleanup   卸载所有过时的包，并显示即将卸载的包 brew cleanup -n   卸载过时的包，比如git brew cleanup git   列出所有brew装的包 brew list   显示软件信息 brew info   显示已安装的包依赖 brew deps --installed   查看brew包下载缓存 brew --cache    具体可查看帮助文档。</description>
+$ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.</description>
     </item>
     
     <item>
