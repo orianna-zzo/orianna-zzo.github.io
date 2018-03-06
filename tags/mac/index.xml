@@ -33,7 +33,7 @@ $ killall Finder  当当当当，隐藏的文件夹就显示出来了！
 方案一：设置快捷键 ⌈系统偏好设置⌋ &amp;gt; ⌈键盘⌋ &amp;gt; ⌈快捷键⌋ &amp;gt; ⌈服务⌋ &amp;gt; ⌈新建位于文件夹位置的终端窗口⌋。
 这样在Finder中选中文件夹，双指右击，就可以在服务中看到打开终端的选项。
 还可以设置快捷键，我设置了 ⌘⌥⌃T，选中文件夹后使用快捷键后即可快速打开终端。
-方案二：安装Go2Shell 不要通过App Store安装，无法使用，直接通过Homebrew安装：
+方案二：安装Go2Shell 相比方案一，这个还是要方便高效更多。注意不要通过App Store安装，无法使用，直接通过Homebrew安装：
 $ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Finder⌋
 然后就可以在Finder的工具栏发现Go2Shell的图标了。点击这个图标就会打开一个在当前文件夹的Terminal，很方便。</description>
     </item>
