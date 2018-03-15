@@ -6,19 +6,10 @@
     <description>Recent content in Tags on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 28 Jan 2018 22:04:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jan 2018 09:14:15 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Blog</title>
-      <link>https://orianna-zzo.github.io/tags/blog/</link>
-      <pubDate>Sun, 28 Jan 2018 22:04:23 +0800</pubDate>
-      
-      <guid>https://orianna-zzo.github.io/tags/blog/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Conda</title>
@@ -120,11 +111,11 @@
     </item>
     
     <item>
-      <title>Robots</title>
-      <link>https://orianna-zzo.github.io/tags/robots/</link>
+      <title>Seo</title>
+      <link>https://orianna-zzo.github.io/tags/seo/</link>
       <pubDate>Sun, 28 Jan 2018 22:04:23 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/tags/robots/</guid>
+      <guid>https://orianna-zzo.github.io/tags/seo/</guid>
       <description></description>
     </item>
     

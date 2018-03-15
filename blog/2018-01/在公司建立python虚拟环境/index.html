@@ -73,11 +73,11 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-06%2017%3a04%3a20.645541518%20%2b0000%20UTC%20m%3d%2b7.064220301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-06%2017%3a04%3a20.645541518%20%2b0000%20UTC%20m%3d%2b7.064220301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-06%2017%3a04%3a20.645541518%20%2b0000%20UTC%20m%3d%2b7.064220301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-06%2017%3a04%3a20.645541518%20%2b0000%20UTC%20m%3d%2b7.064220301">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
     
 
 
@@ -116,6 +116,8 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
                 
                     
                 
+                    
+                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -144,8 +146,6 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
         
 
         
-
-	
 
         
 
@@ -419,22 +419,27 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 <p>这部分不确定：</p>
 
 <p>网上有介绍说安装完成后，conda下的bin文件会添加到环境变量里面，这时候需要source一下bash文件：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span> $ <span class="nb">source</span> ~/.bashrc
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>&gt; $ <span class="nb">source</span> ~/.bashrc
+&gt; <span class="sb">```</span>
 </code></pre></div>
 </blockquote>
 
 <p>安装完成后可以通过下面的命令查看conda版本以及进行conda版本更新：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda -V
-$ conda update conda
-</code></pre></div>
 
-<h3 id="python项目虚拟环境使用">python项目虚拟环境使用</h3>
+<p>​```shell
+$ conda -V
+$ conda update conda</p>
 
-<h4 id="查看-创建-移除虚拟环境">查看、创建、移除虚拟环境</h4>
+<pre><code>
+### python项目虚拟环境使用
 
-<p>可通过在终端输入下面命令，查看已经存在的虚拟环境：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda env list
-</code></pre></div>
+#### 查看、创建、移除虚拟环境
+
+可通过在终端输入下面命令，查看已经存在的虚拟环境：
+
+```shell
+$ conda env list
+</code></pre>
 
 <p>若需要建立一个使用pythonx.x版本建立的虚拟环境，虚拟环境名为envname：</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda create -n envname <span class="nv">python</span><span class="o">=</span>x.x <span class="o">[</span>anaconda<span class="o">]</span>
@@ -490,19 +495,15 @@ Windows: $ deactivate
 <h2 id="实施流程">实施流程</h2>
 
 <ol>
-<li>自己电脑建立与服务器系统一致的docker环境镜像，以mint18为例：</li>
-</ol>
+<li><p>自己电脑建立与服务器系统一致的docker环境镜像，以mint18为例：</p>
 
 <p>用以下dockerfile建立以下镜像：</p>
 
 <pre><code>FROM vcatechnology/base-linux-mint
 MAINTAINER Zi'ou Zheng &lt;zhengziou@gmail.com&gt;
-
-
+    
 # Mount volume to host
 VOLUME /output
-
-
 CMD [&quot;/bin/bash&quot;]
 </code></pre>
 
@@ -510,11 +511,9 @@ CMD [&quot;/bin/bash&quot;]
 
 <p>镜像建立：</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker build -t orianna/mint:18 .
-</code></pre></div>
+</code></pre></div></li>
 
-<ol>
-<li>新建容器并配置环境</li>
-</ol>
+<li><p>新建容器并配置环境</p>
 
 <p>在当前文件夹新建文件夹python3.6来挂在在容器上，来与容器进行数据交流。网上下载需要的环境包，例如Anaconda3，并放在python3.6文件中。
 新建容器my-mint:</p>
@@ -565,18 +564,15 @@ $ <span class="nb">source</span> acivate py3.6-tf
 
 <p>退出该docker镜像:</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="nb">exit</span>
-</code></pre></div>
+</code></pre></div></li>
 
-<ol>
-<li>更新镜像，并将新建的虚拟环境导出
-更新镜像，并删除已有容器:
-<code>shell
-$ # 更新镜像
+<li><p>更新镜像，并将新建的虚拟环境导出
+更新镜像，并删除已有容器:</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># 更新镜像</span>
 $ docker commit my-mint orianna/mint:18
-$ # 删除该容器
+$ <span class="c1"># 删除该容器</span>
 $ docker rm my-mint
-</code></li>
-</ol>
+</code></pre></div>
 
 <p>新打开一个容器，这个容器关闭后会自动删除:</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker run -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/python3.6:/output --rm -it orianna/mint:18
@@ -591,7 +587,8 @@ $ tar -czxf py3.6-tf_mint.tar.gzip py3.6-tf
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ mv py3.6-tf_mint.tar.gzip /output/
 </code></pre></div>
 
-<p>之后只需要将该压缩文件在服务器对应的 <code>Anaconda/envs</code> 中解压缩即可。</p>
+<p>之后只需要将该压缩文件在服务器对应的 <code>Anaconda/envs</code> 中解压缩即可。</p></li>
+</ol>
 
 <h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
 
