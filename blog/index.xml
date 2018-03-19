@@ -12,6 +12,19 @@
     
     
     <item>
+      <title>Blog养成记(6) LaTeX渲染</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-latex%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Mon, 19 Mar 2018 22:33:45 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-latex%E6%B8%B2%E6%9F%93/</guid>
+      <description>前言 Hugo本身并不支持\(\LaTeX\)，但可以通过javascript进行渲染。Hugo官网提供了多种方法，由于这篇博客我决定选择\(\KaTeX\)，而不是MathJax。
+安装 在head.html的标签前加上以下语句：
+&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&amp;quot; integrity=&amp;quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&amp;quot; integrity=&amp;quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&amp;quot; integrity=&amp;quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  不过0.9.0版本似乎很难链接，还是从这里下载js和css，并放在static/js文件夹中，并将上面代码改为：
+&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/js/katex/katex.min.css&amp;quot; &amp;gt; &amp;lt;script src=&amp;quot;/js/katex/katex.min.js&amp;quot; &amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;/js/katex/contrib/auto-render.min.js&amp;quot; &amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  使用 KaTeX的github上是如下给出auto-render的默认值的：
+[ {left: &amp;quot;$$&amp;quot;, right: &amp;quot;$$&amp;quot;, display: true}, {left: &amp;quot;\\[&amp;quot;, right: &amp;quot;\\]&amp;quot;, display: true}, {left: &amp;quot;\\(&amp;quot;, right: &amp;quot;\\)&amp;quot;, display: false} ]  实际上，三种标识符都成立，其中前两种将数学公式以block形式展现，第三种以inline形式展现。使用中只需要将left和right放在数学公式两侧即可。</description>
+    </item>
+    
+    <item>
       <title>每周Paper精读(1) Understanding Deep Learning Requires Rethinking Generalization</title>
       <link>https://orianna-zzo.github.io/blog/2018-03/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB1-understanding-deep-learning-requires-rethinking-generalization/</link>
       <pubDate>Wed, 14 Mar 2018 10:40:55 +0800</pubDate>
@@ -20,7 +33,8 @@
       <description>前言 上周五小仓鼠说有篇论文很有意思，问我看过没，是ICLR 2017 的 Best Paper [Zhang et al. 2017]。汗颜的确很久没有关心会议论文，现在更多都是关心项目技术点方向的论文。这篇论文一看的确很有意思，而且在学术界引起了非常激烈的讨论。有些人认为论文深度不够，提出的观点在泛化的理论学界已经研究很久，更偏向于实验报告不足以Best Paper，有人说中间有些逻辑问题，也有不少人觉得是对传统理论发起进攻的flag。这引起了我的兴趣，于是替换了我最近打算实现的NER的论文作为精读系列第一篇。
 论文地址：https://arxiv.org/abs/1611.03530
 论文概要 作者通过一系列实验，展现出神经网络强大的拟合能力及现有的正则化方法的局限性，并提出传统机器学习中的泛化理论并不适用于深度学习，并说明即使在线性模型中，泛化理论实际上也没这么简单。
-Contributions  展现神经网络的强大拟合能力  通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability和训练数据的标签是独立的。
+Contributions  展现神经网络的强大拟合能力
+通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability和训练数据的标签是独立的。
 作者还提出不同于之前在&amp;rdquo;population level&amp;rdquo;对于特定function family在整个领域的表达能力，认为需要关注给定样本大小\(n\)情况下，也就是有限样本的网络的表达能力，并在文中证明2层使用ReLU作为激活函数并有\(2n+d\)参数的神经网络就已经有足够的capacity去表示\(d\)维的样本大小为\(n\)数据集。
  现有显式正则化方法的局限性
 通过在真实数据集和随机标签数据集(CIFAR10、ImageNet2012)上，分别对不同的显式正则化方法(explicit regularization)进行试验，发现(Table 1&amp;amp;2)：

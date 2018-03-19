@@ -12,7 +12,8 @@
 <meta name="description" content="前言 上周五小仓鼠说有篇论文很有意思，问我看过没，是ICLR 2017 的 Best Paper [Zhang et al. 2017]。汗颜的确很久没有关心会议论文，现在更多都是关心项目技术点方向的论文。这篇论文一看的确很有意思，而且在学术界引起了非常激烈的讨论。有些人认为论文深度不够，提出的观点在泛化的理论学界已经研究很久，更偏向于实验报告不足以Best Paper，有人说中间有些逻辑问题，也有不少人觉得是对传统理论发起进攻的flag。这引起了我的兴趣，于是替换了我最近打算实现的NER的论文作为精读系列第一篇。
 论文地址：https://arxiv.org/abs/1611.03530
 论文概要 作者通过一系列实验，展现出神经网络强大的拟合能力及现有的正则化方法的局限性，并提出传统机器学习中的泛化理论并不适用于深度学习，并说明即使在线性模型中，泛化理论实际上也没这么简单。
-Contributions  展现神经网络的强大拟合能力  通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability和训练数据的标签是独立的。
+Contributions  展现神经网络的强大拟合能力
+通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability和训练数据的标签是独立的。
 作者还提出不同于之前在&rdquo;population level&rdquo;对于特定function family在整个领域的表达能力，认为需要关注给定样本大小\(n\)情况下，也就是有限样本的网络的表达能力，并在文中证明2层使用ReLU作为激活函数并有\(2n&#43;d\)参数的神经网络就已经有足够的capacity去表示\(d\)维的样本大小为\(n\)数据集。
  现有显式正则化方法的局限性
 通过在真实数据集和随机标签数据集(CIFAR10、ImageNet2012)上，分别对不同的显式正则化方法(explicit regularization)进行试验，发现(Table 1&amp;2)：
@@ -30,7 +31,8 @@ Early stopping、Batch normalization尽管不是为了解决泛化问题，但�
 <meta property="og:description" content="前言 上周五小仓鼠说有篇论文很有意思，问我看过没，是ICLR 2017 的 Best Paper [Zhang et al. 2017]。汗颜的确很久没有关心会议论文，现在更多都是关心项目技术点方向的论文。这篇论文一看的确很有意思，而且在学术界引起了非常激烈的讨论。有些人认为论文深度不够，提出的观点在泛化的理论学界已经研究很久，更偏向于实验报告不足以Best Paper，有人说中间有些逻辑问题，也有不少人觉得是对传统理论发起进攻的flag。这引起了我的兴趣，于是替换了我最近打算实现的NER的论文作为精读系列第一篇。
 论文地址：https://arxiv.org/abs/1611.03530
 论文概要 作者通过一系列实验，展现出神经网络强大的拟合能力及现有的正则化方法的局限性，并提出传统机器学习中的泛化理论并不适用于深度学习，并说明即使在线性模型中，泛化理论实际上也没这么简单。
-Contributions  展现神经网络的强大拟合能力  通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability和训练数据的标签是独立的。
+Contributions  展现神经网络的强大拟合能力
+通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability和训练数据的标签是独立的。
 作者还提出不同于之前在&rdquo;population level&rdquo;对于特定function family在整个领域的表达能力，认为需要关注给定样本大小\(n\)情况下，也就是有限样本的网络的表达能力，并在文中证明2层使用ReLU作为激活函数并有\(2n&#43;d\)参数的神经网络就已经有足够的capacity去表示\(d\)维的样本大小为\(n\)数据集。
  现有显式正则化方法的局限性
 通过在真实数据集和随机标签数据集(CIFAR10、ImageNet2012)上，分别对不同的显式正则化方法(explicit regularization)进行试验，发现(Table 1&amp;2)：
@@ -89,11 +91,11 @@ Early stopping、Batch normalization尽管不是为了解决泛化问题，但�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-19%2016%3a04%3a02.870008812%20%2b0000%20UTC%20m%3d%2b7.388582301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-19%2016%3a04%3a02.870008812%20%2b0000%20UTC%20m%3d%2b7.388582301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-19%2016%3a04%3a02.870008812%20%2b0000%20UTC%20m%3d%2b7.388582301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-19%2016%3a54%3a31.115325405%20%2b0000%20UTC%20m%3d%2b7.646977632">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-19%2016%3a54%3a31.115325405%20%2b0000%20UTC%20m%3d%2b7.646977632">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-19%2016%3a54%3a31.115325405%20%2b0000%20UTC%20m%3d%2b7.646977632">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-19%2016%3a04%3a02.870008812%20%2b0000%20UTC%20m%3d%2b7.388582301">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-19%2016%3a54%3a31.115325405%20%2b0000%20UTC%20m%3d%2b7.646977632">
     
 
 
@@ -114,10 +116,10 @@ Early stopping、Batch normalization尽管不是为了解决泛化问题，但�
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://orianna-zzo.github.io/js/katex/katex.min.css" >
+<script src="https://orianna-zzo.github.io/js/katex/katex.min.js" > </script>
+<script src="https://orianna-zzo.github.io/js/katex/contrib/auto-render.min.js" ></script>
+ 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
       renderMathInElement(document.body);
@@ -291,14 +293,12 @@ Early stopping、Batch normalization尽管不是为了解决泛化问题，但�
 <h3 id="contributions">Contributions</h3>
 
 <ol>
-<li>展现神经网络的强大拟合能力</li>
-</ol>
+<li><p>展现神经网络的强大拟合能力</p>
 
 <p>通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)<strong>发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability和训练数据的标签是独立的</strong>。</p>
 
-<p>作者还提出不同于之前在&rdquo;population level&rdquo;对于特定function family在整个领域的表达能力，认为需要关注给定样本大小\(n\)情况下，也就是有限样本的网络的表达能力，并在文中证明<strong>2层使用ReLU作为激活函数并有\(2n+d\)参数的神经网络就已经有足够的capacity去表示\(d\)维的样本大小为\(n\)数据集</strong>。</p>
+<p>作者还提出不同于之前在&rdquo;population level&rdquo;对于特定function family在整个领域的表达能力，认为需要关注给定样本大小\(n\)情况下，也就是有限样本的网络的表达能力，并在文中证明<strong>2层使用ReLU作为激活函数并有\(2n+d\)参数的神经网络就已经有足够的capacity去表示\(d\)维的样本大小为\(n\)数据集</strong>。</p></li>
 
-<ol>
 <li><p>现有显式正则化方法的局限性</p>
 
 <p>通过在真实数据集和随机标签数据集(CIFAR10、ImageNet2012)上，分别对不同的显式正则化方法(explicit regularization)进行试验，发现(Table 1&amp;2)：</p>

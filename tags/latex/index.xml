@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Latex on 博客|ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/tags/latex/</link>
+    <description>Recent content in Latex on 博客|ZHENG Zi&#39;ou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 19 Mar 2018 22:33:45 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog养成记(6) LaTeX渲染</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-latex%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Mon, 19 Mar 2018 22:33:45 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-latex%E6%B8%B2%E6%9F%93/</guid>
+      <description>前言 Hugo本身并不支持\(\LaTeX\)，但可以通过javascript进行渲染。Hugo官网提供了多种方法，由于这篇博客我决定选择\(\KaTeX\)，而不是MathJax。
+安装 在head.html的标签前加上以下语句：
+&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&amp;quot; integrity=&amp;quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&amp;quot; integrity=&amp;quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&amp;quot; integrity=&amp;quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  不过0.9.0版本似乎很难链接，还是从这里下载js和css，并放在static/js文件夹中，并将上面代码改为：
+&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/js/katex/katex.min.css&amp;quot; &amp;gt; &amp;lt;script src=&amp;quot;/js/katex/katex.min.js&amp;quot; &amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;/js/katex/contrib/auto-render.min.js&amp;quot; &amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  使用 KaTeX的github上是如下给出auto-render的默认值的：
+[ {left: &amp;quot;$$&amp;quot;, right: &amp;quot;$$&amp;quot;, display: true}, {left: &amp;quot;\\[&amp;quot;, right: &amp;quot;\\]&amp;quot;, display: true}, {left: &amp;quot;\\(&amp;quot;, right: &amp;quot;\\)&amp;quot;, display: false} ]  实际上，三种标识符都成立，其中前两种将数学公式以block形式展现，第三种以inline形式展现。使用中只需要将left和right放在数学公式两侧即可。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-latex%E6%B8%B2%E6%9F%93/</loc>
+    <lastmod>2018-03-19T22:33:45+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/blog/2018-03/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB1-understanding-deep-learning-requires-rethinking-generalization/</loc>
     <lastmod>2018-03-14T10:40:55+08:00</lastmod>
   </url>
@@ -89,7 +94,7 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0/</loc>
-    <lastmod>2018-01-28T22:04:23+08:00</lastmod>
+    <lastmod>2018-03-19T22:33:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -147,6 +152,12 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/latex/</loc>
+    <lastmod>2018-03-19T22:33:45+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/tags/linux/</loc>
     <lastmod>2018-01-22T11:20:32+08:00</lastmod>
     <priority>0</priority>
@@ -190,7 +201,7 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/series/</loc>
-    <lastmod>2018-01-28T22:04:23+08:00</lastmod>
+    <lastmod>2018-03-19T22:33:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -220,7 +231,7 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/</loc>
-    <lastmod>2018-03-14T10:40:55+08:00</lastmod>
+    <lastmod>2018-03-19T22:33:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -244,7 +255,7 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</loc>
-    <lastmod>2018-02-06T10:01:15+08:00</lastmod>
+    <lastmod>2018-03-19T22:33:45+08:00</lastmod>
     <priority>0</priority>
   </url>
   
