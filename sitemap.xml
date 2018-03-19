@@ -3,23 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://orianna-zzo.github.io/blog/2018-03/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B02-finder%E8%AE%BE%E7%BD%AE/</loc>
-    <lastmod>2018-03-07T00:21:13+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://orianna-zzo.github.io/blog/2018-02/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B01-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2018-02-14T15:04:48+08:00</lastmod>
+    <loc>https://orianna-zzo.github.io/blog/2018-03/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB1-understanding-deep-learning-requires-rethinking-generalization/</loc>
+    <lastmod>2018-03-14T10:40:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://orianna-zzo.github.io/blog/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</loc>
-    <lastmod>2018-02-13T10:01:15+08:00</lastmod>
+    <lastmod>2018-02-06T10:01:15+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://orianna-zzo.github.io/blog/2018-01/pycharm-vs-notebook/</loc>
     <lastmod>2018-01-30T21:07:19+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/blog/2018-01/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B02-finder%E8%AE%BE%E7%BD%AE/</loc>
+    <lastmod>2018-01-30T20:21:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/blog/2018-01/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B01-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</loc>
+    <lastmod>2018-01-30T15:04:48+08:00</lastmod>
   </url>
   
   <url>
@@ -100,14 +105,26 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/deep-learning/</loc>
+    <lastmod>2018-03-14T10:40:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/tags/docker/</loc>
-    <lastmod>2018-02-13T10:01:15+08:00</lastmod>
+    <lastmod>2018-02-06T10:01:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://orianna-zzo.github.io/tags/dockerfile/</loc>
-    <lastmod>2018-02-13T10:01:15+08:00</lastmod>
+    <lastmod>2018-02-06T10:01:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/tags/generalization/</loc>
+    <lastmod>2018-03-14T10:40:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -137,13 +154,13 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/tags/mac/</loc>
-    <lastmod>2018-03-07T00:21:13+08:00</lastmod>
+    <lastmod>2018-01-30T20:21:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://orianna-zzo.github.io/series/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B0/</loc>
-    <lastmod>2018-03-07T00:21:13+08:00</lastmod>
+    <lastmod>2018-01-30T20:21:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -203,7 +220,7 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/</loc>
-    <lastmod>2018-03-07T00:21:13+08:00</lastmod>
+    <lastmod>2018-03-14T10:40:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -227,19 +244,31 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</loc>
-    <lastmod>2018-03-07T00:21:13+08:00</lastmod>
+    <lastmod>2018-02-06T10:01:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/series/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB/</loc>
+    <lastmod>2018-03-14T10:40:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2018-02-13T10:01:15+08:00</lastmod>
+    <lastmod>2018-02-06T10:01:15+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/</loc>
+    <lastmod>2018-03-14T10:40:55+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://orianna-zzo.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/</loc>
-    <lastmod>2018-02-14T15:04:48+08:00</lastmod>
+    <lastmod>2018-01-30T15:04:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -73,11 +73,11 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-19%2015%3a10%3a13.332941972%20%2b0000%20UTC%20m%3d%2b7.082588506">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-19%2015%3a10%3a13.332941972%20%2b0000%20UTC%20m%3d%2b7.082588506">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-19%2015%3a10%3a13.332941972%20%2b0000%20UTC%20m%3d%2b7.082588506">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-15%2007%3a32%3a49.1867125%20%2b0000%20UTC%20m%3d%2b19.778810601">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-19%2015%3a10%3a13.332941972%20%2b0000%20UTC%20m%3d%2b7.082588506">
     
 
 
@@ -96,6 +96,12 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 
 
 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+
 </head>
 
 
@@ -109,8 +115,6 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
                 
                 
                 
-                
-                    
                 
                     
                 
@@ -146,6 +150,8 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
         
 
         
+
+	
 
         
 
@@ -415,31 +421,24 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ bash Miniconda_file_name.sh
 </code></pre></div>
 
-<blockquote>
 <p>这部分不确定：</p>
 
 <p>网上有介绍说安装完成后，conda下的bin文件会添加到环境变量里面，这时候需要source一下bash文件：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>&gt; $ <span class="nb">source</span> ~/.bashrc
-&gt; <span class="sb">```</span>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="nb">source</span> ~/.bashrc
 </code></pre></div>
-</blockquote>
 
 <p>安装完成后可以通过下面的命令查看conda版本以及进行conda版本更新：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda -V
+$ conda update conda
+</code></pre></div>
 
-<p>​```shell
-$ conda -V
-$ conda update conda</p>
+<h3 id="python项目虚拟环境使用">python项目虚拟环境使用</h3>
 
-<pre><code>
-### python项目虚拟环境使用
+<h4 id="查看-创建-移除虚拟环境">查看、创建、移除虚拟环境</h4>
 
-#### 查看、创建、移除虚拟环境
-
-可通过在终端输入下面命令，查看已经存在的虚拟环境：
-
-```shell
-$ conda env list
-</code></pre>
+<p>可通过在终端输入下面命令，查看已经存在的虚拟环境：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda env list
+</code></pre></div>
 
 <p>若需要建立一个使用pythonx.x版本建立的虚拟环境，虚拟环境名为envname：</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda create -n envname <span class="nv">python</span><span class="o">=</span>x.x <span class="o">[</span>anaconda<span class="o">]</span>
@@ -458,9 +457,9 @@ $ conda env list
 <p>若要激活或者说切换到你建立的虚拟环境envname，需要在终端键入下面命令：</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># Linux</span>
 $ <span class="nb">source</span> activate envname
-
-&gt; <span class="c1"># Windows</span>
-&gt; activate envname
+$
+$ <span class="c1"># Windows</span>
+$ activate envname
 </code></pre></div>
 
 <p>激活后，终端的当前目录前会显示你的虚拟环境名称。此时执行的就是虚拟环境envname中的包依赖，这样就可以开始使用啦。可以用 <code>which python</code> 查看现在使用的python执行程序，就能发现已经不是使用系统路径下的python了。</p>

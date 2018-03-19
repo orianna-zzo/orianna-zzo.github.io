@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>每周paper精读 on 博客|ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/series/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB/</link>
+    <description>Recent content in 每周paper精读 on 博客|ZHENG Zi&#39;ou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 14 Mar 2018 10:40:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/series/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>每周Paper精读(1) Understanding Deep Learning Requires Rethinking Generalization</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB1-understanding-deep-learning-requires-rethinking-generalization/</link>
+      <pubDate>Wed, 14 Mar 2018 10:40:55 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-03/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB1-understanding-deep-learning-requires-rethinking-generalization/</guid>
+      <description>前言 上周五小仓鼠说有篇论文很有意思，问我看过没，是ICLR 2017 的 Best Paper [Zhang et al. 2017]。汗颜的确很久没有关心会议论文，现在更多都是关心项目技术点方向的论文。这篇论文一看的确很有意思，而且在学术界引起了非常激烈的讨论。有些人认为论文深度不够，提出的观点在泛化的理论学界已经研究很久，更偏向于实验报告不足以Best Paper，有人说中间有些逻辑问题，也有不少人觉得是对传统理论发起进攻的flag。这引起了我的兴趣，于是替换了我最近打算实现的NER的论文作为精读系列第一篇。
+论文地址：https://arxiv.org/abs/1611.03530
+论文概要 作者通过一系列实验，展现出神经网络强大的拟合能力及现有的正则化方法的局限性，并提出传统机器学习中的泛化理论并不适用于深度学习，并说明即使在线性模型中，泛化理论实际上也没这么简单。
+Contributions  展现神经网络的强大拟合能力  通过不同程度随机或根据一定规则修改数据集标签（部分错误的标签数据集、随机标签的数据集）及修改数据集图片（图片的像素点打乱的数据集(shuffled、random，前者根据打乱一部分像素，后者完全打乱)、根据高斯分布生成的新数据集）两种方式来进行实验，使用随机梯度下降SGD并使用相同的超参，(Figure 1)发现Inception模型在CIFAR10的各种数据集上都能100%拟合，只是不同噪声的数据集收敛速度有所不同（但也相差并没有太多），而一旦开始收敛，都能很快拟合。随机标签被认为是对数据的一次transformation，也就是说学习算法的uniform stability 和训练数据的标签是独立的。
+作者还提出不同于之前在&amp;rdquo;population level&amp;rdquo;对于特定function family在整个领域的表达能力，认为需要关注给定样本大小$n$情况下，也就是有限样本的网络的表达能力，并在文中证明2层使用ReLU作为激活函数并有$2n+d$参数的神经网络就已经有足够的capacity去表示$d$维的样本大小为$n$的数据集。
+ 现有显式正则化方法的局限性
+通过在真实数据集和随机标签数据集(CIFAR10、ImageNet2012)上，分别对不同的显式正则化方法(explicit regularization)进行试验，发现(Table 1&amp;amp;2)：
+ random crop的数据增强方法在CIFAR10中使用不同网结构络(Inception、Alexnet)的试验中基本都能提高3%~4%的测试准确率，在ImageNet中能提高10%甚至以上。 Weight decay(l2正则化)在CIFAR10中能提高1%左右测试准确率，但有时会降低0.1% ~ 0.3%（Inception使用数据增强、MLP1层），在ImageNet中提高了6% ~ 8%（没有CIFAR10降低的对比情况）。 dropout并没有控制变量的对比试验。 即使加入了显式正则化方法(explicit regularization)，随机标签的数据集一样能有很高的拟合程度，CIFAR10都能达到99%以上，ImageNet中最低的也有87%，其他也都在90%以上。  基于以上发现，作者认为在CIFAR10上explicit regularization只提高了4% ~ 5%，在ImageNet上也只提高了18%，不算数据增强部分，在CIFAR10上提高1%，在ImageNet也有9% ~12%的提高。相比于改进网络结构，explicit regularization提高并不明显、不是必须步骤，而有些网络模型本身就具有了一定的泛化能力。此外，即使加入了正则化方法，训练集上的error还是能保持在很低的水平，作者认为显式正则化可能提高了模型的泛化能力，但对控制泛化误差不是必要的也并不足够。
+ 隐式正则化
+Early stopping、Batch normalization尽管不是为了解决泛化问题，但都对模型的泛化有一定帮助(Figure 2)，被作者认为是implicit regularizer。通过对于线性模型中的随机梯度下降算法的研究分析及在MNIST和CIFAR10上的实验，作者提出SGD本身也是一种implicit regularizer。
+但不管是显式正则化还是隐式正则化在合适地调参后能帮助提高泛化能力，但都移去后模型依旧有不错的泛化能力，所以并不是泛化的基本原因。
+  争议点  泛化理论研究角度来说并无亮点贡献
+主要引起研究泛化理论学者不满的主要是作者提出的对于传统机器学习算法中的泛化理论的研究实际上在泛化理论界已经有广泛的研究了（尽管作者在论文中有提到这点），而作者对于这个并没有提出更为进一步研究和思考。这也是很多人反对这篇论文作为Best Paper，甚至觉得只是一篇实验报告的原因。
+ 对于深度学习模型来说，显式正则化并非效果不如模型结构改进这一观点有些武断。
+就如作者的实验来说，在ImageNet中所有显式正则化效果提升了18%，在CIFAR10上也有5%，这两者上的提高程度还是很巨大的，并不能得出正则化效果微弱，更无证据支撑模型结构的改进更为重要这一个结论。
+  疑惑之处  到底怎样的机制可以被称为正则化？</description>
+    </item>
+    
+  </channel>
+</rss>
