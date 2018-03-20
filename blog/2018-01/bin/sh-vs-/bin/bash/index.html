@@ -16,8 +16,10 @@
 问题内容 我之前建立的docker文件中默认情况是启动 /bin/sh，基本都没有问题，这次也是这样操作。然而在mint 18中，如果在 /bin/sh 中无法使用 source 命令，提示 /bin/sh: 25: source: not found。
 问题原因 一开始我还以为是没有安装source命令，但经过查找发现，只要把 /bin/sh 改为 /bin/bash 即可。
 原因是，尽管很多linux的 /bin/sh 是建立一个指向 /bin/bash 的软连接（还是会有一些细节不同），但是仍有一些操作系统比如Debian系是用的 /bin/dash ，这两者的区别还是挺大的，但具体是什么我并没有仔细研究。总之以后shell编程如果确认是bash脚本的话还是直接用 bash 比较安全，用 sh 容易发生混淆。
-后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……
-版本控制    Version Action Time     1.0 Init 2018-01-22    ">
+后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……(2018-03-20 Update)
+发现不是所有系统都有bash，因此盲目将所有sh都改成/bin/bash是不行的，最好使用前先了解所用的操作系统。
+比如说alpine中用的不是dash也不是bash，而是ash，如果要用bash，需要先下载bash相关包再重建sh-&gt;bash的软连接。可以参考我关于alpine中使用bash的github
+版本控制    Version Action Time     1.0 Init 2018-01-22   1.1 Bash is not everywhere 2018-03-20    ">
 
 <meta property="og:title" content="/bin/sh vs /bin/bash" />
 <meta property="og:description" content=" 问题背景 这里是一些关于为什么会发现这个问题的碎碎念……
@@ -27,8 +29,10 @@
 问题内容 我之前建立的docker文件中默认情况是启动 /bin/sh，基本都没有问题，这次也是这样操作。然而在mint 18中，如果在 /bin/sh 中无法使用 source 命令，提示 /bin/sh: 25: source: not found。
 问题原因 一开始我还以为是没有安装source命令，但经过查找发现，只要把 /bin/sh 改为 /bin/bash 即可。
 原因是，尽管很多linux的 /bin/sh 是建立一个指向 /bin/bash 的软连接（还是会有一些细节不同），但是仍有一些操作系统比如Debian系是用的 /bin/dash ，这两者的区别还是挺大的，但具体是什么我并没有仔细研究。总之以后shell编程如果确认是bash脚本的话还是直接用 bash 比较安全，用 sh 容易发生混淆。
-后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……
-版本控制    Version Action Time     1.0 Init 2018-01-22    " />
+后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……(2018-03-20 Update)
+发现不是所有系统都有bash，因此盲目将所有sh都改成/bin/bash是不行的，最好使用前先了解所用的操作系统。
+比如说alpine中用的不是dash也不是bash，而是ash，如果要用bash，需要先下载bash相关包再重建sh-&gt;bash的软连接。可以参考我关于alpine中使用bash的github
+版本控制    Version Action Time     1.0 Init 2018-01-22   1.1 Bash is not everywhere 2018-03-20    " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-01/bin/sh-vs-/bin/bash/" />
 
@@ -71,11 +75,11 @@
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-19%2016%3a54%3a31.136801547%20%2b0000%20UTC%20m%3d%2b7.668453778">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-19%2016%3a54%3a31.136801547%20%2b0000%20UTC%20m%3d%2b7.668453778">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-19%2016%3a54%3a31.136801547%20%2b0000%20UTC%20m%3d%2b7.668453778">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-20%2011%3a55%3a24.846721%20%2b0000%20UTC%20m%3d%2b37.140438201">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-20%2011%3a55%3a24.846721%20%2b0000%20UTC%20m%3d%2b37.140438201">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-20%2011%3a55%3a24.846721%20%2b0000%20UTC%20m%3d%2b37.140438201">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-19%2016%3a54%3a31.136801547%20%2b0000%20UTC%20m%3d%2b7.668453778">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-20%2011%3a55%3a24.846721%20%2b0000%20UTC%20m%3d%2b37.140438201">
     
 
 
@@ -127,6 +131,8 @@
                 
                     
                 
+                    
+                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -155,8 +161,6 @@
         
 
         
-
-	
 
         
 
@@ -240,6 +244,14 @@
                                 <a href="https://orianna-zzo.github.io/tags/shell">shell</a>
                             </div>
                             
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/bash">bash</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/alpine">alpine</a>
+                            </div>
+                            
                         </div>
                         
                     </div>
@@ -271,7 +283,11 @@
 
 <h2 id="后续">后续</h2>
 
-<p>所以，赶紧把dockerfile里的都改为 <code>/bin/bash</code> 了……</p>
+<p><del>所以，赶紧把dockerfile里的都改为 <code>/bin/bash</code> 了……</del>(2018-03-20 Update)</p>
+
+<p>发现不是所有系统都有bash，因此盲目将所有sh都改成<code>/bin/bash</code>是不行的，最好使用前先了解所用的操作系统。</p>
+
+<p>比如说alpine中用的不是dash也不是bash，而是ash，如果要用bash，需要先下载bash相关包再重建sh-&gt;bash的软连接。可以参考我关于<a href="https://github.com/orianna-zzo/dockerfile-repo/tree/master/alpine-bash-docker">alpine中使用bash的github</a></p>
 
 <h2 id="版本控制">版本控制</h2>
 
@@ -289,6 +305,12 @@
 <td>1.0</td>
 <td>Init</td>
 <td>2018-01-22</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>Bash is not everywhere</td>
+<td>2018-03-20</td>
 </tr>
 </tbody>
 </table>

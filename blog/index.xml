@@ -12,16 +12,34 @@
     
     
     <item>
-      <title>Blog养成记(6) LaTeX渲染</title>
-      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-latex%E6%B8%B2%E6%9F%93/</link>
+      <title>Blog养成记(7) Hugo中Nested Listed怎么无法显示? —— Markdown小bug合集</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E4%B8%ADnested-listed%E6%80%8E%E4%B9%88%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--markdown%E5%B0%8Fbug%E5%90%88%E9%9B%86/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E4%B8%ADnested-listed%E6%80%8E%E4%B9%88%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--markdown%E5%B0%8Fbug%E5%90%88%E9%9B%86/</guid>
+      <description>前言 又一次开始折腾Markdown了，不过这一次是因为好好的md文件，在typora中显示的好好的，但在Hugo渲染后格式就不对了，引起我这次探究主要问题在多级列表。考虑到毕竟两个软件的markdown渲染引擎不同，我并没有用到很特别的语法。之前在引用上也碰到了问题，typora中能很好地识别我想要的引用段落，但是Hugo不行。所以这次探究下是哪里出了问题，以及对应的解决方案。
+既然已经提到了markdown，在针对问题之前也记录下现在hugo的markdown解析引擎。Markdown解析器有很多，最广泛应用的是GitHub Flavored Markdown的解析器(GFM)，基于CommonMark进行了拓展。Hugo现在默认使用Blackfriday作为Markdown解析引擎，只要日志文件是以.md或者.markdown结尾即可，可以参考这里在配置文件中配置相关参数。除了Blackfriday这个使用最广泛的引擎之外，hugo还支持mmark，mmark是一个基于Blackfriday之上增加了更多拓展语法的解析器。有两种方式可以声明使用mmark，一种是日志文件以.mmark结尾，另一种在日志文件的头部增加markup: mmark声明使用mmark进行解析。
+问题列表 以下是问题列表：
+ 无序列表的多级列表无法显示层级，即应表现为:
+  have a try  first second  another     却表现为(空心应为实心)：
+  have a try  first second another    有序列表下的无序列表表现为有序列表，即应表现为:
+  have a try  first second    却表现为：
+  have a try  first second    引用中的代码段无法识别正确结束位置，即应表现为:
+  In the quote
+ $ This is code fence   Out the quote</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(6) Hugo中的LaTeX渲染</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</link>
       <pubDate>Mon, 19 Mar 2018 22:33:45 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-latex%E6%B8%B2%E6%9F%93/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</guid>
       <description>前言 Hugo本身并不支持\(\LaTeX\)，但可以通过javascript进行渲染。Hugo官网提供了多种方法，由于这篇博客我决定选择\(\KaTeX\)，而不是MathJax。
 安装 在head.html的标签前加上以下语句：
 &amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&amp;quot; integrity=&amp;quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&amp;quot; integrity=&amp;quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&amp;quot; integrity=&amp;quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  不过0.9.0版本似乎很难链接，还是从这里下载js和css，并放在static/js文件夹中，并将上面代码改为：
-&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/js/katex/katex.min.css&amp;quot; &amp;gt; &amp;lt;script src=&amp;quot;/js/katex/katex.min.js&amp;quot; &amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;/js/katex/contrib/auto-render.min.js&amp;quot; &amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  使用 KaTeX的github上是如下给出auto-render的默认值的：
-[ {left: &amp;quot;$$&amp;quot;, right: &amp;quot;$$&amp;quot;, display: true}, {left: &amp;quot;\\[&amp;quot;, right: &amp;quot;\\]&amp;quot;, display: true}, {left: &amp;quot;\\(&amp;quot;, right: &amp;quot;\\)&amp;quot;, display: false} ]  实际上，三种标识符都成立，其中前两种将数学公式以block形式展现，第三种以inline形式展现。使用中只需要将left和right放在数学公式两侧即可。</description>
+&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/js/katex/katex.min.css&amp;quot; &amp;gt; &amp;lt;script src=&amp;quot;/js/katex/katex.min.js&amp;quot; &amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;/js/katex/contrib/auto-render.min.js&amp;quot; &amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  使用 尽管KaTeX的github上是如下给出auto-render的默认值的：
+[ {left: &amp;quot;$$&amp;quot;, right: &amp;quot;$$&amp;quot;, display: true}, {left: &amp;quot;\\[&amp;quot;, right: &amp;quot;\\]&amp;quot;, display: true}, {left: &amp;quot;\\(&amp;quot;, right: &amp;quot;\\)&amp;quot;, display: false} ]  但实际上，三种标识符都成立，其中前两种将数学公式以block形式展现，第三种以inline形式展现。使用中只需要将left和right放在数学公式两侧即可。</description>
     </item>
     
     <item>
@@ -248,8 +266,10 @@ Docker，你好 决定开始了解docker的契机是换了Mac，有心情来折�
 问题内容 我之前建立的docker文件中默认情况是启动 /bin/sh，基本都没有问题，这次也是这样操作。然而在mint 18中，如果在 /bin/sh 中无法使用 source 命令，提示 /bin/sh: 25: source: not found。
 问题原因 一开始我还以为是没有安装source命令，但经过查找发现，只要把 /bin/sh 改为 /bin/bash 即可。
 原因是，尽管很多linux的 /bin/sh 是建立一个指向 /bin/bash 的软连接（还是会有一些细节不同），但是仍有一些操作系统比如Debian系是用的 /bin/dash ，这两者的区别还是挺大的，但具体是什么我并没有仔细研究。总之以后shell编程如果确认是bash脚本的话还是直接用 bash 比较安全，用 sh 容易发生混淆。
-后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……
-版本控制    Version Action Time     1.0 Init 2018-01-22    </description>
+后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……(2018-03-20 Update)
+发现不是所有系统都有bash，因此盲目将所有sh都改成/bin/bash是不行的，最好使用前先了解所用的操作系统。
+比如说alpine中用的不是dash也不是bash，而是ash，如果要用bash，需要先下载bash相关包再重建sh-&amp;gt;bash的软连接。可以参考我关于alpine中使用bash的github
+版本控制    Version Action Time     1.0 Init 2018-01-22   1.1 Bash is not everywhere 2018-03-20    </description>
     </item>
     
     <item>
@@ -271,11 +291,11 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
     </item>
     
     <item>
-      <title>Blog养成记(4) 增加tags等分类</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
+      <title>Blog养成记(4) Hugo中增加tags等分类</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
       <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
       <description>自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
 分类taxonomy有3个概念：
  Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
@@ -291,11 +311,11 @@ example.com/tags/docker 会列出tags标为docker的所有网页列表。
     </item>
     
     <item>
-      <title>Blog养成记(3) 语法高亮配置</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
+      <title>Blog养成记(3) Hugo的语法高亮配置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 09 Jan 2018 17:52:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
       <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。
 一般有以下3种常见方法：
 1. 使用Hugo默认Chroma

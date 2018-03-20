@@ -24,8 +24,10 @@
 问题内容 我之前建立的docker文件中默认情况是启动 /bin/sh，基本都没有问题，这次也是这样操作。然而在mint 18中，如果在 /bin/sh 中无法使用 source 命令，提示 /bin/sh: 25: source: not found。
 问题原因 一开始我还以为是没有安装source命令，但经过查找发现，只要把 /bin/sh 改为 /bin/bash 即可。
 原因是，尽管很多linux的 /bin/sh 是建立一个指向 /bin/bash 的软连接（还是会有一些细节不同），但是仍有一些操作系统比如Debian系是用的 /bin/dash ，这两者的区别还是挺大的，但具体是什么我并没有仔细研究。总之以后shell编程如果确认是bash脚本的话还是直接用 bash 比较安全，用 sh 容易发生混淆。
-后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……
-版本控制    Version Action Time     1.0 Init 2018-01-22    </description>
+后续 所以，赶紧把dockerfile里的都改为 /bin/bash 了……(2018-03-20 Update)
+发现不是所有系统都有bash，因此盲目将所有sh都改成/bin/bash是不行的，最好使用前先了解所用的操作系统。
+比如说alpine中用的不是dash也不是bash，而是ash，如果要用bash，需要先下载bash相关包再重建sh-&amp;gt;bash的软连接。可以参考我关于alpine中使用bash的github
+版本控制    Version Action Time     1.0 Init 2018-01-22   1.1 Bash is not everywhere 2018-03-20    </description>
     </item>
     
   </channel>

@@ -6,10 +6,46 @@
     <description>Recent content in Tags on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jan 2018 09:14:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jan 2018 11:20:32 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Alpine</title>
+      <link>https://orianna-zzo.github.io/tags/alpine/</link>
+      <pubDate>Mon, 22 Jan 2018 11:20:32 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/alpine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://orianna-zzo.github.io/tags/bash/</link>
+      <pubDate>Mon, 22 Jan 2018 11:20:32 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blog</title>
+      <link>https://orianna-zzo.github.io/tags/blog/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bug</title>
+      <link>https://orianna-zzo.github.io/tags/bug/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/bug/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Conda</title>
@@ -77,7 +113,7 @@
     <item>
       <title>Hugo</title>
       <link>https://orianna-zzo.github.io/tags/hugo/</link>
-      <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/hugo/</guid>
       <description></description>
@@ -107,6 +143,24 @@
       <pubDate>Tue, 30 Jan 2018 20:21:13 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://orianna-zzo.github.io/tags/markdown/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nested List</title>
+      <link>https://orianna-zzo.github.io/tags/nested-list/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/nested-list/</guid>
       <description></description>
     </item>
     
@@ -165,6 +219,24 @@
     </item>
     
     <item>
+      <title>Tag</title>
+      <link>https://orianna-zzo.github.io/tags/tag/</link>
+      <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/tag/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typora</title>
+      <link>https://orianna-zzo.github.io/tags/typora/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/typora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>公司</title>
       <link>https://orianna-zzo.github.io/tags/%E5%85%AC%E5%8F%B8/</link>
       <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
@@ -197,6 +269,15 @@
       <pubDate>Tue, 06 Feb 2018 10:01:15 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>语法高亮</title>
+      <link>https://orianna-zzo.github.io/tags/%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE/</link>
+      <pubDate>Tue, 09 Jan 2018 17:52:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE/</guid>
       <description></description>
     </item>
     

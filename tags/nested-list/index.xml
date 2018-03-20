@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nested List on 博客|ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/tags/nested-list/</link>
+    <description>Recent content in Nested List on 博客|ZHENG Zi&#39;ou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 20 Mar 2018 16:46:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/tags/nested-list/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog养成记(7) Hugo中Nested Listed怎么无法显示? —— Markdown小bug合集</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E4%B8%ADnested-listed%E6%80%8E%E4%B9%88%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--markdown%E5%B0%8Fbug%E5%90%88%E9%9B%86/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E4%B8%ADnested-listed%E6%80%8E%E4%B9%88%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--markdown%E5%B0%8Fbug%E5%90%88%E9%9B%86/</guid>
+      <description>前言 又一次开始折腾Markdown了，不过这一次是因为好好的md文件，在typora中显示的好好的，但在Hugo渲染后格式就不对了，引起我这次探究主要问题在多级列表。考虑到毕竟两个软件的markdown渲染引擎不同，我并没有用到很特别的语法。之前在引用上也碰到了问题，typora中能很好地识别我想要的引用段落，但是Hugo不行。所以这次探究下是哪里出了问题，以及对应的解决方案。
+既然已经提到了markdown，在针对问题之前也记录下现在hugo的markdown解析引擎。Markdown解析器有很多，最广泛应用的是GitHub Flavored Markdown的解析器(GFM)，基于CommonMark进行了拓展。Hugo现在默认使用Blackfriday作为Markdown解析引擎，只要日志文件是以.md或者.markdown结尾即可，可以参考这里在配置文件中配置相关参数。除了Blackfriday这个使用最广泛的引擎之外，hugo还支持mmark，mmark是一个基于Blackfriday之上增加了更多拓展语法的解析器。有两种方式可以声明使用mmark，一种是日志文件以.mmark结尾，另一种在日志文件的头部增加markup: mmark声明使用mmark进行解析。
+问题列表 以下是问题列表：
+ 无序列表的多级列表无法显示层级，即应表现为:
+  have a try  first second  another     却表现为(空心应为实心)：
+  have a try  first second another    有序列表下的无序列表表现为有序列表，即应表现为:
+  have a try  first second    却表现为：
+  have a try  first second    引用中的代码段无法识别正确结束位置，即应表现为:
+  In the quote
+ $ This is code fence   Out the quote</description>
+    </item>
+    
+  </channel>
+</rss>
