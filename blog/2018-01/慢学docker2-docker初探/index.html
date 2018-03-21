@@ -87,11 +87,11 @@ PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-20%2018%3a04%3a08.934611159%20%2b0000%20UTC%20m%3d%2b8.939224006">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-20%2018%3a04%3a08.934611159%20%2b0000%20UTC%20m%3d%2b8.939224006">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-20%2018%3a04%3a08.934611159%20%2b0000%20UTC%20m%3d%2b8.939224006">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-21%2005%3a19%3a18.024009114%20%2b0000%20UTC%20m%3d%2b23.031207611">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-21%2005%3a19%3a18.024009114%20%2b0000%20UTC%20m%3d%2b23.031207611">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-21%2005%3a19%3a18.024009114%20%2b0000%20UTC%20m%3d%2b23.031207611">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-20%2018%3a04%3a08.934611159%20%2b0000%20UTC%20m%3d%2b8.939224006">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-21%2005%3a19%3a18.024009114%20%2b0000%20UTC%20m%3d%2b23.031207611">
     
 
 
@@ -143,6 +143,8 @@ PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉�
                 
                     
                 
+                    
+                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -171,8 +173,6 @@ PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉�
         
 
         
-
-	
 
         
 
@@ -339,13 +339,46 @@ $ brew cask install docker-edge
 
 <h3 id="linux安装">Linux安装</h3>
 
-<p>Docker CE支持Ubuntu、Debian、CentOS、Fedora这几个Linux环境安装。</p>
+<p>Docker CE支持Ubuntu、Debian、CentOS、Fedora这几个Linux环境安装。
+以下主要作为介绍及资料汇总，来源为官网(<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>、<a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>、<a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS</a>、<a href="https://docs.docker.com/install/linux/docker-ce/fedora/">Fedora</a>)。</p>
+
+<p>Linux的版本要求如下：
+* Ubuntu
+    * Artful 17.10 (仅Docker CE 17.11 Edge 或更高版本)
+    * Xenial 16.04 (LTS)
+    * Trusty 14.04 (LTS)
+* Debian
+    * Buster 10 (Docker CE 17.11 Edge only)
+    * Stretch 9 (stable) / Raspbian Stretch
+    * Jessie 8 (LTS) / Raspbian Jessie
+    * Wheezy 7.7 (LTS) (需要升级内核，版本至少为3.10)
+* CentOS
+    * CentOS7 maintained version<br />
+* Fedora
+    * 64位 version 26
+    * 64位 version 27</p>
+
+<p>安装前需要先卸载以前的旧版本的docker或者docker-engine。</p>
 
 <p>Linux安装分为2种：</p>
 
 <ul>
-<li>一种是在<a href="https://download.docker.com/linux/">这里</a>选择对应的linux发行版本下载安装包，然后再通过安装包进行安装，并通过下面命令启动docker。</li>
+<li><p>一种是在<a href="https://download.docker.com/linux/">这里</a>选择对应的linux发行版本下载安装包。</p>
+
+<ul>
+<li>Ubuntu<br />
+在<a href="https://download.docker.com/linux/ubuntu/dists/">https://download.docker.com/linux/ubuntu/dists/</a>选择Ubuntu版本，然后进入pool/stable文件夹，选择计算机架构并下载.deb包。<br /></li>
+<li>Debian<br />
+在<a href="https://download.docker.com/linux/debian/dists/">https://download.docker.com/linux/debian/dists/</a>选择Debian版本，然后进入pool/stable文件夹，选择计算机架构并下载.deb包。<br /></li>
+<li>CentOS<br />
+在<a href="https://download.docker.com/linux/centos/7/x86_64/stable/Packages/">https://download.docker.com/linux/centos/7/x86_64/stable/Packages/</a>下载.rpm包。</li>
+<li>Fedora<br />
+在<a href="https://download.docker.com/linux/fedora/">https://download.docker.com/linux/fedora/</a>选择Fedora版本，然后进入x86_64/stable/Packages文件夹，选择计算机架构并下载.rpm包。
+<br /></li>
+</ul></li>
 </ul>
+
+<p>然后再通过安装包进行安装，并通过下面命令启动docker。</p>
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>  $ <span class="c1"># Ubuntu &amp; Debian</span>
   $ sudo dpkg -i /path/to/package.deb    <span class="c1"># start docker automatically</span>
   $ <span class="c1"># CentOS</span>
@@ -357,7 +390,7 @@ $ brew cask install docker-edge
 </code></pre></div>
 
 <ul>
-<li>另一种需要先配置包管理器（apt-get/yum/dnf）的repository，再通过对应包管理器下载。不同的发行版本，具体的操作也不同，详情这里就不列举了，到官网对应的安装说明页（<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>、<a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>、<a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS</a>、<a href="https://docs.docker.com/install/linux/docker-ce/fedora/">Fedora</a>）去查看即可。</li>
+<li>另一种需要先配置包管理器（apt-get/yum/dnf）的repository，再通过对应包管理器下载。不同的发行版本，具体的操作也不同，详情这里就不列举了，到官网对应的安装说明页（<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>、<a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>、<a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS</a>、<a href="https://docs.docker.com/install/linux/docker-ce/fedora/">Fedora</a>）去查看。</li>
 </ul>
 
 <h3 id="查看安装版本">查看安装版本</h3>
@@ -442,6 +475,12 @@ $ docker-machine --version
 <td>1.0</td>
 <td>Init</td>
 <td>2018-01-27</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>Update Linux Installation</td>
+<td>2018-03-21</td>
 </tr>
 </tbody>
 </table>
