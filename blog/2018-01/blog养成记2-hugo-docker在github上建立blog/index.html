@@ -97,11 +97,11 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-21%2009%3a23%3a37.5320205%20%2b0000%20UTC%20m%3d%2b29.079148301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-21%2009%3a23%3a37.5320205%20%2b0000%20UTC%20m%3d%2b29.079148301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-21%2009%3a23%3a37.5320205%20%2b0000%20UTC%20m%3d%2b29.079148301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-03-21%2017%3a13%3a14.764892624%20%2b0000%20UTC%20m%3d%2b10.272676335">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-03-21%2017%3a13%3a14.764892624%20%2b0000%20UTC%20m%3d%2b10.272676335">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-03-21%2017%3a13%3a14.764892624%20%2b0000%20UTC%20m%3d%2b10.272676335">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-21%2009%3a23%3a37.5320205%20%2b0000%20UTC%20m%3d%2b29.079148301">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-03-21%2017%3a13%3a14.764892624%20%2b0000%20UTC%20m%3d%2b10.272676335">
     
 
 
@@ -153,8 +153,6 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -183,6 +181,8 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
         
 
         
+
+	
 
         
 
@@ -490,6 +490,32 @@ title: &quot;Blog&quot;
 <div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker run --name my-hugo -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/hugo-site -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/public:/static-site -p <span class="m">1313</span>:1313 --rm -it orianna/hugo-docker-dev:latest
 </code></pre></div>
 
+<h3 id="配置alias简化命令">配置alias简化命令</h3>
+
+<p>每次都需要翻blog找上述命令复制到terminal中总是有些繁琐，于是决定给上述命令配置别名。</p>
+
+<p>配置需要写到配置文件，有两个选择：</p>
+
+<ul>
+<li>对全部用户生效：修改 <code>/etc/profile</code>文件</li>
+<li>对当前用户生效：修改 <code>~/.profile</code>文件 （仅针对Mac，linux大多数情况下修改 <code>~/.bashrc</code>）</li>
+</ul>
+
+<p>我将用户自定义部分还是放入了<code>~/.profile</code>文件：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ vi ~/.profile
+</code></pre></div>
+
+<p>增加以下内容，给起个别称 <code>docker-hugo-dev</code>：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span><span class="c1"># config alias</span>
+<span class="nb">alias</span> docker-hugo-dev<span class="o">=</span><span class="s1">&#39;docker run --name my-hugo -v /Users/orianna/Projects/homepage/blog-hugo:/hugo-site -v /Users/orianna/Projects/homepage/blog-hugo/public:/static-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest&#39;</span>
+</code></pre></div>
+
+<p>记得source一下，使配置文件立即生效：</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="nb">source</span> ~/.profile
+</code></pre></div>
+
+<p>现在开始就可以直接使用 <code>docker-hugo-dev</code> 来启动hugo的docker镜像了。</p>
+
 <h2 id="github-pages部署">Github Pages部署</h2>
 
 <p>参考<a href="https://help.github.com/articles/user-organization-and-project-pages/">这里</a>，在Github Pages有四种类型，而对于非组织型用户来说有两种，一种是用户的个人网站，网页域名为 <code>username.github.io</code>，另一种为Project的主页，网页域名为 <code>username.github.io/projectname</code>。Github Pages对于Project主页的源码要求有了修改，现在也可以放置在master上，之前版本中必须放在<code>gh-pages</code> 分支上，不过这里暂且不提，主要还是关心用户个人主页。</p>
@@ -527,6 +553,12 @@ title: &quot;Blog&quot;
 <td>1.1</td>
 <td>增加tag、版本控制及资源链接</td>
 <td>2018-01-17</td>
+</tr>
+
+<tr>
+<td>1.2</td>
+<td>Config alias</td>
+<td>2018-03-21</td>
 </tr>
 </tbody>
 </table>
