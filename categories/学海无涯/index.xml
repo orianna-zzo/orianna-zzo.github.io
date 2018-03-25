@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学海无涯 on 博客|ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/categories/%E5%AD%A6%E6%B5%B7%E6%97%A0%E6%B6%AF/</link>
+    <description>Recent content in 学海无涯 on 博客|ZHENG Zi&#39;ou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 25 Mar 2018 23:48:35 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/categories/%E5%AD%A6%E6%B5%B7%E6%97%A0%E6%B6%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Computer Graphics资源整理</title>
+      <link>https://orianna-zzo.github.io/blog/2018-03/computer-graphics%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sun, 25 Mar 2018 23:48:35 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-03/computer-graphics%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</guid>
+      <description>主要是针对Computer Animation，但现在还未入门，调研的是Computer Graphics大方向。
+公开课 这里就只放有视频的课程了：
+ 2017 Spring (MIT) 6.837 Computer Graphics - Justin Solomon Materials 2017 Spring (MIT) 6.838 Shape Analysis - Justin Solomon Materials 2017 Spring (Utah) CS 6660 Physics-based Animation - Ladislav Kavan
+ 2013 Fall (Stanford) CS 205A Mathematical Methods for Robotics, Vision, and Graphics - Justin Solomon Materials 2013 Spring (Stanford) CS 468 Differential Geometry for Computer Science - Justin Solomon Materials在每个视频下面有写地址 2012 (Utah) CS 5600 Introduction To Computer Graphics - Matt Stoker 2012 Fall (UCB) CS184 Computer Graphics - Ravi Ramamoorthi Materials</description>
+    </item>
+    
+  </channel>
+</rss>

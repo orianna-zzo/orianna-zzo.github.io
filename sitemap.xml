@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://orianna-zzo.github.io/blog/2018-03/computer-graphics%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2018-03-25T23:48:35+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/blog/2018-03/%E6%85%A2%E5%AD%A6docker3-docker-hub%E9%80%9F%E5%BA%A6%E8%9C%97%E7%89%9B%E7%88%AC%E6%80%8E%E4%B9%88%E5%8A%9E/</loc>
     <lastmod>2018-03-20T23:47:17+08:00</lastmod>
   </url>
@@ -186,6 +191,12 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/graphics/</loc>
+    <lastmod>2018-03-25T23:48:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/tags/hugo/</loc>
     <lastmod>2018-03-20T16:46:17+08:00</lastmod>
     <priority>0</priority>
@@ -295,7 +306,13 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/</loc>
-    <lastmod>2018-03-20T23:47:17+08:00</lastmod>
+    <lastmod>2018-03-25T23:48:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/categories/%E5%AD%A6%E6%B5%B7%E6%97%A0%E6%B6%AF/</loc>
+    <lastmod>2018-03-25T23:48:35+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -344,6 +361,12 @@
   <url>
     <loc>https://orianna-zzo.github.io/tags/%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE/</loc>
     <lastmod>2018-01-09T17:52:25+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/tags/%E8%B5%84%E6%BA%90/</loc>
+    <lastmod>2018-03-25T23:48:35+08:00</lastmod>
     <priority>0</priority>
   </url>
   
