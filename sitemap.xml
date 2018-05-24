@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://orianna-zzo.github.io/blog/2018-05/%E7%88%B1%E5%B0%94%E5%85%B0%E8%B8%A2%E8%B8%8F%E8%88%9E%E7%8E%8B%E8%80%85%E4%B9%8B%E8%88%9E%E5%8D%B1%E9%99%A9%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/blog/2018-05/%E7%8E%B0%E5%AE%9E%E4%B8%8E%E5%B9%BB%E6%83%B3%E7%9A%84%E8%B7%9D%E7%A6%BB%E8%A7%82%E6%B7%B1%E5%A4%9C%E5%B0%8F%E7%8B%97%E7%A6%BB%E5%A5%87%E4%BA%8B%E4%BB%B6repo%E6%84%9F%E6%83%B3/</loc>
+    <lastmod>2018-05-24T10:17:35+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/blog/2018-03/2018fall%E7%94%B3%E8%AF%B7%E5%AD%A3%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2018-03-26T23:58:45+08:00</lastmod>
   </url>
@@ -250,6 +260,12 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/nt/</loc>
+    <lastmod>2018-05-24T10:17:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/tags/phd/</loc>
     <lastmod>2018-03-26T23:58:45+08:00</lastmod>
     <priority>0</priority>
@@ -317,7 +333,13 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/</loc>
-    <lastmod>2018-03-26T23:58:45+08:00</lastmod>
+    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/categories/%E5%93%81%E9%89%B4%E8%AF%84%E8%AE%BA/</loc>
+    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -352,6 +374,18 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/%E6%96%87%E5%B9%BF/</loc>
+    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/tags/%E6%9C%9F%E5%BE%85%E7%9A%84show/</loc>
+    <lastmod>2018-05-24T10:17:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/</loc>
     <lastmod>2018-03-20T23:47:17+08:00</lastmod>
     <priority>0</priority>
@@ -376,8 +410,20 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/series/%E8%A7%82%E5%90%8Erepo/</loc>
+    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/</loc>
     <lastmod>2018-03-14T10:40:55+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/tags/%E8%AF%9D%E5%89%A7/</loc>
+    <lastmod>2018-05-24T10:17:35+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -390,6 +436,12 @@
   <url>
     <loc>https://orianna-zzo.github.io/tags/%E8%B5%84%E6%BA%90/</loc>
     <lastmod>2018-03-25T23:48:35+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://orianna-zzo.github.io/tags/%E8%B8%A2%E8%B8%8F%E8%88%9E/</loc>
+    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
     <priority>0</priority>
   </url>
   
