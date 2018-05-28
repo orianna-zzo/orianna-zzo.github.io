@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://orianna-zzo.github.io/blog/2018-05/%E4%B8%AD%E6%96%87%E7%89%88%E9%9F%B3%E4%B9%90%E5%89%A7%E9%95%BF%E8%85%BF%E5%8F%94%E5%8F%94/</loc>
+    <lastmod>2018-05-26T16:37:59+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/blog/2018-05/%E7%88%B1%E5%B0%94%E5%85%B0%E8%B8%A2%E8%B8%8F%E8%88%9E%E7%8E%8B%E8%80%85%E4%B9%8B%E8%88%9E%E5%8D%B1%E9%99%A9%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2018-05-24T20:22:13+08:00</lastmod>
   </url>
@@ -248,6 +253,12 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/musical/</loc>
+    <lastmod>2018-05-26T16:37:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/tags/nested-list/</loc>
     <lastmod>2018-03-20T16:46:17+08:00</lastmod>
     <priority>0</priority>
@@ -326,20 +337,32 @@
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/%E4%B8%AD%E6%96%87/</loc>
+    <lastmod>2018-05-26T16:37:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/tags/%E5%85%AC%E5%8F%B8/</loc>
     <lastmod>2018-01-18T09:14:15+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://orianna-zzo.github.io/tags/%E5%85%B0%E5%BF%83/</loc>
+    <lastmod>2018-05-26T16:37:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://orianna-zzo.github.io/</loc>
-    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
+    <lastmod>2018-05-26T16:37:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://orianna-zzo.github.io/categories/%E5%93%81%E9%89%B4%E8%AF%84%E8%AE%BA/</loc>
-    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
+    <lastmod>2018-05-26T16:37:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -411,7 +434,7 @@
   
   <url>
     <loc>https://orianna-zzo.github.io/series/%E8%A7%82%E5%90%8Erepo/</loc>
-    <lastmod>2018-05-24T20:22:13+08:00</lastmod>
+    <lastmod>2018-05-26T16:37:59+08:00</lastmod>
     <priority>0</priority>
   </url>
   
