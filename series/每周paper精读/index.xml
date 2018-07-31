@@ -6,10 +6,25 @@
     <description>Recent content in 每周paper精读 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 14 Mar 2018 10:40:55 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jul 2018 17:41:23 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/series/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>每周Paper精读(2) Sentence Representation系列泛读</title>
+      <link>https://orianna-zzo.github.io/blog/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/</link>
+      <pubDate>Mon, 30 Jul 2018 17:41:23 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/</guid>
+      <description>前言 原本计划是每周一篇论文精读，然而实际上由于项目上安排较紧，距离上一次论文精读已经过了几个月。现在项目算是告一段落，在项目中也算是找到一些问题所在，正在看感兴趣的论文（这期是赶不上了）。正好媛源的实习生肖风顺正在做关于句向量的调研，找了些相关论文，我也旁听了两次，顺便就把这两次旁听的结果记录一下，顺便也对其中内容也简要的过一遍大概思路，虽然这样算不上什么“论文精读”，但本来精读和泛读就要结合么😄。PS，写着写着其实和精读也差不多了😅。
+媛源这里主要是想将法院文书中的诉请语句和判决语句能够做一个分类，比较偏向于句子分类问题，因此会比较关注于Sentence Repre的生成，这一系列论文基本都是与此相关。
+论文列表与Contribution简述 [1]. Kim, Yoon. “Convolutional Neural Networks for Sentence Classification.” Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP), 2014, pp. 1746–1751.
+据说是第一篇在NLP领域使用CNN的论文，算是将CNN从图像识别领域延伸到了NLP来，并取得了不错的效果。
+[2]. Zhang, Ye, and Byron C. Wallace. “A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification.” International Joint Conference on Natural Language Processing(IJCNLP), vol. 1, 2017, pp. 253–263.
+对在句子分类层面使用CNN进行了详细的实验，对初学者的CNN调参有一定指导意义，可以帮助理解各参数对CNN的影响，但实质上的帮助并不会很大，算是给些经验性的参考吧。
+[3]. Zhang, Xiang, et al.</description>
+    </item>
     
     <item>
       <title>每周Paper精读(1) Understanding Deep Learning Requires Rethinking Generalization</title>
