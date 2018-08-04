@@ -23,7 +23,7 @@
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
 [taxonomies] tag = &amp;quot;tags&amp;quot; series = &amp;quot;series&amp;quot; category = &amp;quot;categories&amp;quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
-date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4)增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
+date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4) 增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
 分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。
 还是以tag为例：
 example.com/tags/ 会列出tags中的所有术语；

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>前端 on 博客|ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
+    <description>Recent content in 前端 on 博客|ZHENG Zi&#39;ou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 02 Aug 2018 15:49:22 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>前端试水(1) 使用docker镜像的Sass配置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。
+Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助css的组织结构变得更合理和优雅，或者说更像一门编程语言，从而提高开发和维护效率。通俗说，就是在css上再套层更结构化的语法，帮助对样式进行组织和管理，再通过编译得到最终的css样式。
+与sass对标的是less，具体哪个更好对于初学者来说难以分辨和选择，但Bootstrap4抛弃了less转而选择sass和sass更大的社群都提供了选择了sass的理由。
+Sass选择 Sass vs Scss Sass实际上有两种语法，针对不同的后缀名称.sass和.scss。
+.sass是最早的语法，使用缩进而不是{}来表示嵌套，用换行而不是;来分隔属性，如下：
+$font-stack: Helvetica, sans-serif $primary-color: #333 body font: 100% $font-stack color: $primary-color  另一种.scss的格式仅在css3的语法基础上进行扩展，如下：
+$font-stack: Helvetica, sans-serif; $primary-color: #333; body { font: 100% $font-stack; color: $primary-color; }  对于码农来说，.scss相对更符合习惯一些，所以之后会选择后者。
+Ruby Sass vs Libsass vs Dart Sass 在官网最下方可以看到三个不同的Sass实现。
+Ruby Sass是最早的Sass，网上很多资料都是基于ruby的，不过这个实现版本作者之后不会再更新维护了。
+Libsass是使用C进行实现的版本，所以这个版本速度最快，Sassc就是在Libsass外套了一层wrapper。不过该版本的更新相对没有那么频繁和活跃，毕竟不是主要更新的实现版本。
+Dart Sass是替代Ruby Sass的实现版本，也是现在最主要的开发版本，新的功能也会主要在该实现版本中先进行集成。
+编译环境配置 估计很少有人像我这样折腾又莫名对一些点特别执着（或者说钻牛角尖）。当初一心想用docker把所有和开发环境配置相关的整理起来，折腾node-sass的dockerfile好久以失败告终。这次终于找到一个可以用的sass环境镜像，并根据此建立了自己的docker镜像，具体配置及使用方法在Libsass Docker。但由于该镜像基于libsass，一些功能并没有集成（比如--watch），所以又基于dart sass生成一版镜像，具体方法在Dart Sass Docker。
+两种镜像的比较如下：
+    Libsass Docker Dart Sass Docker     Size 8.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -71,11 +71,11 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-07-31%2013%3a59%3a58.7271664%20%2b0000%20UTC%20m%3d%2b26.128228301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-07-31%2013%3a59%3a58.7271664%20%2b0000%20UTC%20m%3d%2b26.128228301">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-07-31%2013%3a59%3a58.7271664%20%2b0000%20UTC%20m%3d%2b26.128228301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-04%2017%3a54%3a21.494753521%20%2b0000%20UTC%20m%3d%2b0.289836351">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-04%2017%3a54%3a21.494753521%20%2b0000%20UTC%20m%3d%2b0.289836351">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-04%2017%3a54%3a21.494753521%20%2b0000%20UTC%20m%3d%2b0.289836351">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-07-31%2013%3a59%3a58.7271664%20%2b0000%20UTC%20m%3d%2b26.128228301">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-04%2017%3a54%3a21.494753521%20%2b0000%20UTC%20m%3d%2b0.289836351">
     
 
 
@@ -127,8 +127,6 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -158,6 +156,8 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 
         
 
+	
+
         
 
         
@@ -184,7 +184,6 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
         </div>
     </div>
 </section>
-
 
 <section class="main post non-narrow zero-top-spacing">
     <div class="container">
@@ -292,8 +291,9 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 </code></pre>
 
 <p>对于已经提交的内容，希望git能够忽略，但同时并不会删除本地文件，需要在terminal输入以下命令：</p>
-<div class="highlight"><pre><code class="language-Shell" data-lang="Shell"><span></span>$ git rm -r --cached <span class="nv">$file_path</span>
-</code></pre></div>
+
+<pre><code class="language-Shell">$ git rm -r --cached $file_path
+</code></pre>
 
 <p>这个方案的优点就是方便、快捷、最容易想到，缺点就是每个git项目都要重复一遍。</p>
 
@@ -302,16 +302,19 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 <p>虽然每个项目配.gitignore文件可以成功，但是每个项目都需要配，嗯，有点烦。我们可以在git的全局进行配置来忽略.DS_Store文件。</p>
 
 <p>设置之前我们先看下现在的git config配置情况（<a href="https://git-scm.com/docs/git-config">git config官方文档说明</a>）：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ git config --list
-</code></pre></div>
+
+<pre><code class="language-shell">$ git config --list
+</code></pre>
 
 <p>实际上git配置情况可以在 <code>~/.gitconfig</code> 文件中查看。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ vi ~/.gitconfig
-</code></pre></div>
+
+<pre><code class="language-shell">$ vi ~/.gitconfig
+</code></pre>
 
 <p>通过 <code>:q!</code> 退出后，我们需要建立一个文件，把需要全局忽略的文件路径写入其中。该文件起名为.gitignore_global：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ touch ~/.gitignore_global
-</code></pre></div>
+
+<pre><code class="language-shell">$ touch ~/.gitignore_global
+</code></pre>
 
 <p>然后对这个文件进行修改。</p>
 
@@ -320,8 +323,9 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 </code></pre>
 
 <p>然后对git进行全局设置，让git忽略.gitignore_global中的所有文件：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ git config --global core.excludesfile ~/.gitignore_global
-</code></pre></div>
+
+<pre><code class="language-shell">$ git config --global core.excludesfile ~/.gitignore_global
+</code></pre>
 
 <p>这样就不用每个git目录都设置忽略.DS_Store文件了！</p>
 
@@ -363,13 +367,6 @@ $ git rm -r --cached $file_path  这个方案的优点就是方便、快捷、�
 
 
 
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-90057853-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
 

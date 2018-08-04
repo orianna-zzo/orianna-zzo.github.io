@@ -83,11 +83,11 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-07-31%2013%3a59%3a58.901069%20%2b0000%20UTC%20m%3d%2b26.302053001">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-07-31%2013%3a59%3a58.901069%20%2b0000%20UTC%20m%3d%2b26.302053001">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-07-31%2013%3a59%3a58.901069%20%2b0000%20UTC%20m%3d%2b26.302053001">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-04%2017%3a54%3a21.530697714%20%2b0000%20UTC%20m%3d%2b0.325780568">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-04%2017%3a54%3a21.530697714%20%2b0000%20UTC%20m%3d%2b0.325780568">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-04%2017%3a54%3a21.530697714%20%2b0000%20UTC%20m%3d%2b0.325780568">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-07-31%2013%3a59%3a58.901069%20%2b0000%20UTC%20m%3d%2b26.302053001">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-04%2017%3a54%3a21.530697714%20%2b0000%20UTC%20m%3d%2b0.325780568">
     
 
 
@@ -139,8 +139,6 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -170,6 +168,8 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 
         
 
+	
+
         
 
         
@@ -196,7 +196,6 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
         </div>
     </div>
 </section>
-
 
 <section class="main post non-narrow zero-top-spacing">
     <div class="container">
@@ -293,8 +292,9 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 <h3 id="pygments安装">Pygments安装</h3>
 
 <p>我在建立Hugo镜像时已经安装了Pygments，不然需要先安装Pygments。如果在Debian和Ubuntu系统中可以用下面语句安装，其他系统也可参考：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ sudo apt-get install python3-pygments
-</code></pre></div>
+
+<pre><code class="language-shell">$ sudo apt-get install python3-pygments
+</code></pre>
 
 <h3 id="pygments配置">Pygments配置</h3>
 
@@ -312,20 +312,21 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 <code>pygmentsStyle=&quot;autumn&quot;</code> 设置高亮的风格,可以在<a href="https://help.farbox.com/pygments.html">这里</a>查看各高亮风格，选择最心仪的。</p>
 
 <p>我选择了 <code>autumn</code>，下面是在code fence中的高亮示例：</p>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="ch">#!/usr/bin/python3</span>
 
-<span class="kn">from</span> <span class="nn">engine</span> <span class="kn">import</span> <span class="n">RunForrestRun</span>
+<pre><code class="language-python">#!/usr/bin/python3
 
-<span class="sd">&quot;&quot;&quot;Test code for syntax highlighting!&quot;&quot;&quot;</span>
+from engine import RunForrestRun
 
-<span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
-	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">var</span>
-		<span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+&quot;&quot;&quot;Test code for syntax highlighting!&quot;&quot;&quot;
 
-	<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-		<span class="n">RunForrestRun</span><span class="p">()</span>  <span class="c1"># run along!</span>
-</code></pre></div>
+class Foo:
+	def __init__(self, var):
+		self.var = var
+		self.run()
+
+	def run(self):
+		RunForrestRun()  # run along!
+</code></pre>
 
 <p>除了可以使用code fence高亮代码，还可使用下面的语法：</p>
 
@@ -336,21 +337,19 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 
 <p>其中，<code>linenos=inline</code>或者<code>linenos=table</code>提示显示代码前的行数，<code>hl_lines</code>设置高亮代码，<code>linenostart</code>设置代码行数的起始数字。</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="lineno">199 </span><span class="ch">#!/usr/bin/python3</span>
-<span class="lineno">200 </span>
-<span class="lineno">201 </span><span class="hll"><span class="kn">from</span> <span class="nn">engine</span> <span class="kn">import</span> <span class="n">RunForrestRun</span>
-</span><span class="lineno">202 </span>
-<span class="lineno">203 </span><span class="sd">&quot;&quot;&quot;Test code for syntax highlighting!&quot;&quot;&quot;</span>
-<span class="lineno">204 </span>
-<span class="lineno">205 </span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
-<span class="lineno">206 </span><span class="hll">	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
-</span><span class="lineno">207 </span>		<span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">var</span>
-<span class="lineno">208 </span>		<span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="lineno">209 </span>
-<span class="lineno">210 </span><span class="hll">	<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class="lineno">211 </span>		<span class="n">RunForrestRun</span><span class="p">()</span>  <span class="c1"># run along!</span>
-</code></pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">199</span><span style="color:#75715e">#!/usr/bin/python3</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">200</span>
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">201</span><span style="color:#f92672">from</span> engine <span style="color:#f92672">import</span> RunForrestRun
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">202</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">203</span><span style="color:#e6db74">&#34;&#34;&#34;Test code for syntax highlighting!&#34;&#34;&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">204</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">205</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Foo</span>:
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">206</span>	<span style="color:#66d9ef">def</span> __init__(self, var):
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">207</span>		self<span style="color:#f92672">.</span>var <span style="color:#f92672">=</span> var
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">208</span>		self<span style="color:#f92672">.</span>run()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">209</span>
+<span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">210</span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>(self):
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">211</span>		RunForrestRun()  <span style="color:#75715e"># run along!</span></code></pre></div>
 
 <p>由于语法高亮渲染需要时间，因此语法高亮默认是放在缓存的，如果需要查看则需要清空缓存。</p>
 
@@ -414,13 +413,6 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 
 
 
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-90057853-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
 

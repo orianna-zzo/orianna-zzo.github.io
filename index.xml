@@ -6,10 +6,32 @@
     <description>Recent content on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 30 Jul 2018 17:41:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 15:49:22 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>前端试水(1) 使用docker镜像的Sass配置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。
+Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助css的组织结构变得更合理和优雅，或者说更像一门编程语言，从而提高开发和维护效率。通俗说，就是在css上再套层更结构化的语法，帮助对样式进行组织和管理，再通过编译得到最终的css样式。
+与sass对标的是less，具体哪个更好对于初学者来说难以分辨和选择，但Bootstrap4抛弃了less转而选择sass和sass更大的社群都提供了选择了sass的理由。
+Sass选择 Sass vs Scss Sass实际上有两种语法，针对不同的后缀名称.sass和.scss。
+.sass是最早的语法，使用缩进而不是{}来表示嵌套，用换行而不是;来分隔属性，如下：
+$font-stack: Helvetica, sans-serif $primary-color: #333 body font: 100% $font-stack color: $primary-color  另一种.scss的格式仅在css3的语法基础上进行扩展，如下：
+$font-stack: Helvetica, sans-serif; $primary-color: #333; body { font: 100% $font-stack; color: $primary-color; }  对于码农来说，.scss相对更符合习惯一些，所以之后会选择后者。
+Ruby Sass vs Libsass vs Dart Sass 在官网最下方可以看到三个不同的Sass实现。
+Ruby Sass是最早的Sass，网上很多资料都是基于ruby的，不过这个实现版本作者之后不会再更新维护了。
+Libsass是使用C进行实现的版本，所以这个版本速度最快，Sassc就是在Libsass外套了一层wrapper。不过该版本的更新相对没有那么频繁和活跃，毕竟不是主要更新的实现版本。
+Dart Sass是替代Ruby Sass的实现版本，也是现在最主要的开发版本，新的功能也会主要在该实现版本中先进行集成。
+编译环境配置 估计很少有人像我这样折腾又莫名对一些点特别执着（或者说钻牛角尖）。当初一心想用docker把所有和开发环境配置相关的整理起来，折腾node-sass的dockerfile好久以失败告终。这次终于找到一个可以用的sass环境镜像，并根据此建立了自己的docker镜像，具体配置及使用方法在Libsass Docker。但由于该镜像基于libsass，一些功能并没有集成（比如--watch），所以又基于dart sass生成一版镜像，具体方法在Dart Sass Docker。
+两种镜像的比较如下：
+    Libsass Docker Dart Sass Docker     Size 8.</description>
+    </item>
     
     <item>
       <title>每周Paper精读(2) Sentence Representation系列泛读</title>
@@ -19,9 +41,9 @@
       <guid>https://orianna-zzo.github.io/blog/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/</guid>
       <description>前言 原本计划是每周一篇论文精读，然而实际上由于项目上安排较紧，距离上一次论文精读已经过了几个月。现在项目算是告一段落，在项目中也算是找到一些问题所在，正在看感兴趣的论文（这期是赶不上了）。正好媛源的实习生肖风顺正在做关于句向量的调研，找了些相关论文，我也旁听了两次，顺便就把这两次旁听的结果记录一下，顺便也对其中内容也简要的过一遍大概思路，虽然这样算不上什么“论文精读”，但本来精读和泛读就要结合么😄。PS，写着写着其实和精读也差不多了😅。
 媛源这里主要是想将法院文书中的诉请语句和判决语句能够做一个分类，比较偏向于句子分类问题，因此会比较关注于Sentence Repre的生成，这一系列论文基本都是与此相关。
-论文列表与Contribution简述 [1]. Kim, Yoon. “Convolutional Neural Networks for Sentence Classification.” Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP), 2014, pp. 1746–1751.
+论文列表与Contribution简述 [1]. Kim, Yoon. “Convolutional Neural Networks for Sentence Classification.” Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP), 2014, pp. 1746–1751. 下载
 据说是第一篇在NLP领域使用CNN的论文，算是将CNN从图像识别领域延伸到了NLP来，并取得了不错的效果。
-[2]. Zhang, Ye, and Byron C. Wallace. “A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification.” International Joint Conference on Natural Language Processing(IJCNLP), vol. 1, 2017, pp. 253–263.
+[2]. Zhang, Ye, and Byron C. Wallace. “A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification.” International Joint Conference on Natural Language Processing(IJCNLP), vol. 1, 2017, pp. 253–263. 下载
 对在句子分类层面使用CNN进行了详细的实验，对初学者的CNN调参有一定指导意义，可以帮助理解各参数对CNN的影响，但实质上的帮助并不会很大，算是给些经验性的参考吧。
 [3]. Zhang, Xiang, et al.</description>
     </item>
@@ -215,7 +237,7 @@ Resource资源链接汇总： docker国内官方镜像、阿里云镜像、知�
   have a try  first second    却表现为：
   have a try  first second    引用中的代码段无法识别正确结束位置，即应表现为:
   In the quote
- $ This is code fence   Out the quote</description>
+$ This is code fence   Out the quote</description>
     </item>
     
     <item>
@@ -483,7 +505,7 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
 [taxonomies] tag = &amp;quot;tags&amp;quot; series = &amp;quot;series&amp;quot; category = &amp;quot;categories&amp;quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
-date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4)增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
+date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4) 增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
 分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。
 还是以tag为例：
 example.com/tags/ 会列出tags中的所有术语；
@@ -529,12 +551,12 @@ $ docker pull orianna/hugo-docker-dev  该镜像可以在docker hub中找到，�
 接下去在终端输入下面这行命令可以查看你现在有的镜像信息：
 $ docker images  你可以发现orianna/hugo-docker-dev只有94.9MB大小.
 自建镜像 或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。
-我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.3版，只有94.9MB大小的镜像，后续随着开发可能会有新的变化。
+我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.3MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
 除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
+$ docker build -t orianna/hugo-docker-dev:0.46 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。
 尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</description>

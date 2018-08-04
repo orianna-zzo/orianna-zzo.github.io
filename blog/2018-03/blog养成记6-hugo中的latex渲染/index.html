@@ -67,11 +67,11 @@
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-07-31%2013%3a59%3a58.4571975%20%2b0000%20UTC%20m%3d%2b25.858197901">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-07-31%2013%3a59%3a58.4571975%20%2b0000%20UTC%20m%3d%2b25.858197901">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-07-31%2013%3a59%3a58.4571975%20%2b0000%20UTC%20m%3d%2b25.858197901">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-04%2017%3a54%3a21.466019035%20%2b0000%20UTC%20m%3d%2b0.261101854">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-04%2017%3a54%3a21.466019035%20%2b0000%20UTC%20m%3d%2b0.261101854">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-04%2017%3a54%3a21.466019035%20%2b0000%20UTC%20m%3d%2b0.261101854">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-07-31%2013%3a59%3a58.4571975%20%2b0000%20UTC%20m%3d%2b25.858197901">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-04%2017%3a54%3a21.466019035%20%2b0000%20UTC%20m%3d%2b0.261101854">
     
 
 
@@ -123,8 +123,6 @@
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -154,6 +152,8 @@
 
         
 
+	
+
         
 
         
@@ -180,7 +180,6 @@
         </div>
     </div>
 </section>
-
 
 <section class="main post non-narrow zero-top-spacing">
     <div class="container">
@@ -267,40 +266,43 @@
 <h2 id="安装">安装</h2>
 
 <p>在head.html的</head>标签前加上以下语句：</p>
-<div class="highlight"><pre><code class="language-Html" data-lang="Html"><span></span><span class="c">&lt;!-- KaTeX --&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&quot;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&quot;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&quot;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&quot;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&quot;</span> <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&quot;</span> <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">renderMathInElement</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-    <span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+<pre><code class="language-Html">&lt;!-- KaTeX --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&quot; integrity=&quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&quot; crossorigin=&quot;anonymous&quot;&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&quot; integrity=&quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&quot; integrity=&quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+      renderMathInElement(document.body);
+    });
+&lt;/script&gt;
+</code></pre>
 
 <p>不过0.9.0版本似乎很难链接，还是从<a href="https://github.com/Khan/KaTeX/releases">这里</a>下载js和css，并放在<code>static/js</code>文件夹中，并将上面代码改为：</p>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span></span><span class="c">&lt;!-- KaTeX --&gt;</span>
-<span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/js/katex/katex.min.css&quot;</span> <span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/js/katex/katex.min.js&quot;</span> <span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/js/katex/contrib/auto-render.min.js&quot;</span> <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<pre><code class="language-html">&lt;!-- KaTeX --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/js/katex/katex.min.css&quot; &gt;
+&lt;script src=&quot;/js/katex/katex.min.js&quot; &gt; &lt;/script&gt;
+&lt;script src=&quot;/js/katex/contrib/auto-render.min.js&quot; &gt;&lt;/script&gt;
  
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nx">renderMathInElement</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
-    <span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div>
+&lt;script&gt;
+    document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+      renderMathInElement(document.body);
+    });
+&lt;/script&gt;
+</code></pre>
 
 <h2 id="使用">使用</h2>
 
 <p>尽管<a href="https://github.com/Khan/KaTeX/blob/master/contrib/auto-render/README.md">KaTeX的github</a>上是如下给出auto-render的默认值的：</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="p p-Indicator">[</span>
-  <span class="p p-Indicator">{</span><span class="nv">left</span><span class="p p-Indicator">:</span> <span class="s">&quot;$$&quot;</span><span class="p p-Indicator">,</span> <span class="nv">right</span><span class="p p-Indicator">:</span> <span class="s">&quot;$$&quot;</span><span class="p p-Indicator">,</span> <span class="nv">display</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">},</span>
-  <span class="p p-Indicator">{</span><span class="nv">left</span><span class="p p-Indicator">:</span> <span class="s">&quot;\\[&quot;</span><span class="p p-Indicator">,</span> <span class="nv">right</span><span class="p p-Indicator">:</span> <span class="s">&quot;\\]&quot;</span><span class="p p-Indicator">,</span> <span class="nv">display</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">},</span>
-  <span class="p p-Indicator">{</span><span class="nv">left</span><span class="p p-Indicator">:</span> <span class="s">&quot;\\(&quot;</span><span class="p p-Indicator">,</span> <span class="nv">right</span><span class="p p-Indicator">:</span> <span class="s">&quot;\\)&quot;</span><span class="p p-Indicator">,</span> <span class="nv">display</span><span class="p p-Indicator">:</span> <span class="nv">false</span><span class="p p-Indicator">}</span>
-<span class="p p-Indicator">]</span>
-</code></pre></div>
+
+<pre><code class="language-yaml">[
+  {left: &quot;$$&quot;, right: &quot;$$&quot;, display: true},
+  {left: &quot;\\[&quot;, right: &quot;\\]&quot;, display: true},
+  {left: &quot;\\(&quot;, right: &quot;\\)&quot;, display: false}
+]
+</code></pre>
 
 <p>但实际上，三种标识符都成立，其中前两种将数学公式以block形式展现，第三种以inline形式展现。使用中只需要将left和right放在数学公式两侧即可。</p>
 
@@ -344,13 +346,6 @@
 
 
 
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-90057853-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
 
