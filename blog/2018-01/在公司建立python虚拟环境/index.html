@@ -73,11 +73,11 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-07-31%2013%3a59%3a58.8397852%20%2b0000%20UTC%20m%3d%2b26.240773801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-07-31%2013%3a59%3a58.8397852%20%2b0000%20UTC%20m%3d%2b26.240773801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-07-31%2013%3a59%3a58.8397852%20%2b0000%20UTC%20m%3d%2b26.240773801">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-07%2008%3a29%3a00.6867722%20%2b0000%20UTC%20m%3d%2b1.627620201">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-07%2008%3a29%3a00.6867722%20%2b0000%20UTC%20m%3d%2b1.627620201">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-07%2008%3a29%3a00.6867722%20%2b0000%20UTC%20m%3d%2b1.627620201">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-07-31%2013%3a59%3a58.8397852%20%2b0000%20UTC%20m%3d%2b26.240773801">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-07%2008%3a29%3a00.6867722%20%2b0000%20UTC%20m%3d%2b1.627620201">
     
 
 
@@ -186,7 +186,6 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
         </div>
     </div>
 </section>
-
 
 <section class="main post non-narrow zero-top-spacing">
     <div class="container">
@@ -421,82 +420,96 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
 <p>一般如果通过Anaconda安装的python，conda就已经默认安装好了。</p>
 
 <p>也可以在<a href="https://github.com/conda/conda">github的repo</a>上下载发行版的源码仅安装conda及其依赖 (称之为Miniconda)。源码下载后解压缩，进入文件夹后在终端输入：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ python setup.py install
-</code></pre></div>
+
+<pre><code class="language-shell">$ python setup.py install
+</code></pre>
 
 <p>或者在<a href="https://conda.io/miniconda.html">这里</a>下载对应版本的bash文件，在终端执行：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ bash Miniconda_file_name.sh
-</code></pre></div>
+
+<pre><code class="language-shell">$ bash Miniconda_file_name.sh
+</code></pre>
 
 <blockquote>
 <p>这部分不确定：</p>
 
 <p>网上有介绍说安装完成后，conda下的bin文件会添加到环境变量里面，这时候需要source一下bash文件：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="nb">source</span> ~/.bashrc
-</code></pre></div>
+
+<pre><code class="language-shell">$ source ~/.bashrc
+</code></pre>
 </blockquote>
 
 <p>安装完成后可以通过下面的命令查看conda版本以及进行conda版本更新：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda -V
+
+<pre><code class="language-shell">$ conda -V
 $ conda update conda
-</code></pre></div>
+</code></pre>
 
 <h3 id="python项目虚拟环境使用">python项目虚拟环境使用</h3>
 
 <h4 id="查看-创建-移除虚拟环境">查看、创建、移除虚拟环境</h4>
 
 <p>可通过在终端输入下面命令，查看已经存在的虚拟环境：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda env list
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda env list
+</code></pre>
 
 <p>若需要建立一个使用pythonx.x版本建立的虚拟环境，虚拟环境名为envname：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda create -n envname <span class="nv">python</span><span class="o">=</span>x.x <span class="o">[</span>anaconda<span class="o">]</span>
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda create -n envname python=x.x [anaconda]
+</code></pre>
 
 <p>这回在你anaconda目录下 <code>envs/envname</code> 中安装对应版本的python及相关的[anaconda]包 (可省略或者换成其他包)。如果需要复制现在系统python的环境可以用下面的命令：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda create -n envname --clone root
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda create -n envname --clone root
+</code></pre>
 
 <p>若是这个虚拟环境envname你不再需要，想要移除整个环境，可以通过下面命令进行移除：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda remove -n envname --all
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda remove -n envname --all
+</code></pre>
 
 <h4 id="激活-失效conda虚拟环境">激活/失效conda虚拟环境</h4>
 
 <p>若要激活或者说切换到你建立的虚拟环境envname，需要在终端键入下面命令：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># Linux</span>
-$ <span class="nb">source</span> activate envname
+
+<pre><code class="language-shell">$ # Linux
+$ source activate envname
 $
-$ <span class="c1"># Windows</span>
+$ # Windows
 $ activate envname
-</code></pre></div>
+</code></pre>
 
 <p>激活后，终端的当前目录前会显示你的虚拟环境名称。此时执行的就是虚拟环境envname中的包依赖，这样就可以开始使用啦。可以用 <code>which python</code> 查看现在使用的python执行程序，就能发现已经不是使用系统路径下的python了。</p>
 
 <p>使用结束后，可以通过下面命令来关闭当前环境：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>Linux: $ <span class="nb">source</span> deactivate
+
+<pre><code class="language-shell">Linux: $ source deactivate
 Windows: $ deactivate
-</code></pre></div>
+</code></pre>
 
 <h4 id="conda虚拟环境包管理">conda虚拟环境包管理</h4>
 
 <p>添加包：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda install -n envname <span class="o">[</span>package<span class="o">]</span>
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda install -n envname [package]
+</code></pre>
 
 <p>如果没有 <code>-n envname</code>，则会安装到系统的python目录里。</p>
 
 <p>查看已安装的包：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda list
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda list
+</code></pre>
 
 <p>移除包：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda remove --name envname package
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda remove --name envname package
+</code></pre>
 
 <p>查找需要安装的包，比如说tensorflow：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda search tensorflow
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda search tensorflow
+</code></pre>
 
 <p>在实际使用中发现conda search得到的版本不够新，因此在激活虚拟环境后使用 <code>pip install</code> 或者<code>python setup.py install</code> 来安装包。</p>
 
@@ -518,82 +531,97 @@ CMD [&quot;/bin/bash&quot;]
 <p>若为其他系统，base image最好为official image。</p>
 
 <p>镜像建立：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker build -t orianna/mint:18 .
-</code></pre></div></li>
+
+<pre><code class="language-shell">$ docker build -t orianna/mint:18 .
+</code></pre></li>
 
 <li><p>新建容器并配置环境</p>
 
 <p>在当前文件夹新建文件夹python3.6来挂在在容器上，来与容器进行数据交流。网上下载需要的环境包，例如Anaconda3，并放在python3.6文件中。
 新建容器my-mint:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker run --name <span class="s2">&quot;my-mint&quot;</span> -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/python3.6:/output -it orianna/mint:18
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker run --name &quot;my-mint&quot; -v $(pwd)/python3.6:/output -it orianna/mint:18
+</code></pre>
 
 <p>进入 <code>/output</code> 后，根据指示安装Anaconda3:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ sh Anaconda3-5.0.1-Linux-x86_64.sh
-</code></pre></div>
+
+<pre><code class="language-shell">$ sh Anaconda3-5.0.1-Linux-x86_64.sh
+</code></pre>
 
 <p>查看python是否安装完成:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ python
-</code></pre></div>
+
+<pre><code class="language-shell">$ python
+</code></pre>
 
 <p>如果显示的不是 <code>Python 3.6.3 |Anaconda, Inc.|</code>，则还需要输入以下命令 (具体路径需要参考安装Anaconda3时给出的提示)，使 <code>.bashrc</code>中能正常使用</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="nb">source</span> /root/.bashrc
-</code></pre></div>
+
+<pre><code class="language-shell">$ source /root/.bashrc
+</code></pre>
 
 <p>新建conda虚拟环境 <code>py3.6-tf</code>，虚拟环境以现有python3环境作为基础:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ conda create -n py3.6-tf --clone root
-</code></pre></div>
+
+<pre><code class="language-shell">$ conda create -n py3.6-tf --clone root
+</code></pre>
 
 <p>在虚拟环境中安装其他需要的包:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># 进入虚拟环境</span>
-$ <span class="nb">source</span> acivate py3.6-tf
-<span class="o">(</span>py3.6-tf<span class="o">)</span>$ <span class="c1"># 安装其他包</span>
-<span class="o">(</span>py3.6-tf<span class="o">)</span>$ pip install tensorflow
-<span class="o">(</span>py3.6-tf<span class="o">)</span>$ pip install jieba
-<span class="o">(</span>py3.6-tf<span class="o">)</span>$ pip install gensim
-<span class="o">(</span>py3.6-tf<span class="o">)</span>$ pip install tqdm
-</code></pre></div>
+
+<pre><code class="language-shell">$ # 进入虚拟环境
+$ source acivate py3.6-tf
+(py3.6-tf)$ # 安装其他包
+(py3.6-tf)$ pip install tensorflow
+(py3.6-tf)$ pip install jieba
+(py3.6-tf)$ pip install gensim
+(py3.6-tf)$ pip install tqdm
+</code></pre>
 
 <p>安装完成后进行查看:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span><span class="o">(</span>py3.6-tf<span class="o">)</span>$ python
-<span class="o">(</span>py3.6-tf<span class="o">)</span>&gt; import tensorflow
-<span class="o">(</span>py3.6-tf<span class="o">)</span>&gt; import jieba
-<span class="o">(</span>py3.6-tf<span class="o">)</span>&gt; import gensim
-<span class="o">(</span>py3.6-tf<span class="o">)</span>&gt; import tqdm
-</code></pre></div>
+
+<pre><code class="language-shell">(py3.6-tf)$ python
+(py3.6-tf)&gt; import tensorflow
+(py3.6-tf)&gt; import jieba
+(py3.6-tf)&gt; import gensim
+(py3.6-tf)&gt; import tqdm
+
+</code></pre>
 
 <p>如果能够正常引入，则安装成功。
 可以退出python和虚拟环境:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span><span class="o">(</span>py3.6-tf<span class="o">)</span>&gt; <span class="c1"># 退出python</span>
-<span class="o">(</span>py3.6-tf<span class="o">)</span>&gt; exit<span class="o">()</span>
-<span class="o">(</span>py3.6-tf<span class="o">)</span>$ <span class="c1"># 退出虚拟环境</span>
-<span class="o">(</span>py3.6-tf<span class="o">)</span>$ <span class="nb">source</span> deactivate
-</code></pre></div>
+
+<pre><code class="language-shell">(py3.6-tf)&gt; # 退出python
+(py3.6-tf)&gt; exit()
+(py3.6-tf)$ # 退出虚拟环境
+(py3.6-tf)$ source deactivate
+</code></pre>
 
 <p>退出该docker镜像:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="nb">exit</span>
-</code></pre></div></li>
+
+<pre><code class="language-shell">$ exit
+</code></pre></li>
 
 <li><p>更新镜像，并将新建的虚拟环境导出
 更新镜像，并删除已有容器:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># 更新镜像</span>
+
+<pre><code class="language-shell">$ # 更新镜像
 $ docker commit my-mint orianna/mint:18
-$ <span class="c1"># 删除该容器</span>
+$ # 删除该容器
 $ docker rm my-mint
-</code></pre></div>
+</code></pre>
 
 <p>新打开一个容器，这个容器关闭后会自动删除:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker run -v <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/python3.6:/output --rm -it orianna/mint:18
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker run -v $(pwd)/python3.6:/output --rm -it orianna/mint:18
+</code></pre>
 
 <p>进入 <code>Anaconda3/envs</code> 文件夹，并对py3.6-tf进行打包:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="nb">cd</span> /root/Anaconda3/envs
+
+<pre><code class="language-shell">$ cd /root/Anaconda3/envs
 $ tar -czxf py3.6-tf_mint.tar.gzip py3.6-tf
-</code></pre></div>
+</code></pre>
 
 <p>将压缩文件移到output文件夹，可在宿主机中直接访问:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ mv py3.6-tf_mint.tar.gzip /output/
-</code></pre></div>
+
+<pre><code class="language-shell">$ mv py3.6-tf_mint.tar.gzip /output/
+</code></pre>
 
 <p>之后只需要将该压缩文件在服务器对应的 <code>Anaconda/envs</code> 中解压缩即可。</p></li>
 </ol>
@@ -648,13 +676,6 @@ $ tar -czxf py3.6-tf_mint.tar.gzip py3.6-tf
 
 
 
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-90057853-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
 

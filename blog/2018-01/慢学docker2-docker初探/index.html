@@ -87,11 +87,11 @@ PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-07-31%2013%3a59%3a58.747695%20%2b0000%20UTC%20m%3d%2b26.148679201">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-07-31%2013%3a59%3a58.747695%20%2b0000%20UTC%20m%3d%2b26.148679201">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-07-31%2013%3a59%3a58.747695%20%2b0000%20UTC%20m%3d%2b26.148679201">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-07%2008%3a29%3a00.4600278%20%2b0000%20UTC%20m%3d%2b1.400871601">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-07%2008%3a29%3a00.4600278%20%2b0000%20UTC%20m%3d%2b1.400871601">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-07%2008%3a29%3a00.4600278%20%2b0000%20UTC%20m%3d%2b1.400871601">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-07-31%2013%3a59%3a58.747695%20%2b0000%20UTC%20m%3d%2b26.148679201">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-07%2008%3a29%3a00.4600278%20%2b0000%20UTC%20m%3d%2b1.400871601">
     
 
 
@@ -200,7 +200,6 @@ PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉�
         </div>
     </div>
 </section>
-
 
 <section class="main post non-narrow zero-top-spacing">
     <div class="container">
@@ -323,11 +322,12 @@ PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉�
 <h3 id="mac安装">Mac安装</h3>
 
 <p>Mac可以选择用Homebrew进行安装:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ <span class="c1"># stable channel</span>
+
+<pre><code class="language-shell">$ # stable channel
 $ brew cask install docker
-$ <span class="c1"># edge channel</span>
+$ # edge channel
 $ brew cask install docker-edge
-</code></pre></div>
+</code></pre>
 
 <p>也可以在<a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac">这里</a>选择stable或者edge进行下载，安装对应的dmg包即可。</p>
 
@@ -394,15 +394,16 @@ $ brew cask install docker-edge
 </ul>
 
 <p>然后再通过安装包进行安装，并通过下面命令启动docker。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>  $ <span class="c1"># Ubuntu &amp; Debian</span>
-  $ sudo dpkg -i /path/to/package.deb    <span class="c1"># start docker automatically</span>
-  $ <span class="c1"># CentOS</span>
+
+<pre><code class="language-shell">  $ # Ubuntu &amp; Debian
+  $ sudo dpkg -i /path/to/package.deb    # start docker automatically
+  $ # CentOS
   $ sudo yum install /path/to/package.rpm
-  $ sudo systemctl start docker    <span class="c1"># start docker</span>
-  $ <span class="c1"># Fedora</span>
+  $ sudo systemctl start docker    # start docker
+  $ # Fedora
   $ sudo dnf -y install /path/to/package.rpm
-  $ sudo systemctl start docker    <span class="c1"># start docker</span>
-</code></pre></div>
+  $ sudo systemctl start docker    # start docker
+</code></pre>
 
 <ul>
 <li>另一种需要先配置包管理器（apt-get/yum/dnf）的repository，再通过对应包管理器下载。不同的发行版本，具体的操作也不同，详情这里就不列举了，到官网对应的安装说明页（<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>、<a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>、<a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS</a>、<a href="https://docs.docker.com/install/linux/docker-ce/fedora/">Fedora</a>）去查看。</li>
@@ -411,10 +412,11 @@ $ brew cask install docker-edge
 <h3 id="查看安装版本">查看安装版本</h3>
 
 <p>安装完毕后可以检查Docker Engine, Docker Compose和Docker Machine版本</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker --version
+
+<pre><code class="language-shell">$ docker --version
 $ docker-compose --version
 $ docker-machine --version
-</code></pre></div>
+</code></pre>
 
 <p>这样docker就安装成功了！</p>
 
@@ -423,48 +425,56 @@ $ docker-machine --version
 <p>安装完docker后，可以通过一个简单的实例了解docker的一些基础操作，这样就可以快速开始上手玩了。更为复杂的操作以及基本概念会在后续内容中介绍。</p>
 
 <p>首先，我们需要获得一个镜像，例如alpine：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker pull alpine
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker pull alpine
+</code></pre>
 
 <p>这样我们就从docker的仓库中获得了latest版本的alpine镜像（默认latest版本），通过下面命令查看电脑中所有的docker镜像及镜像信息：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker images
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker images
+</code></pre>
 
 <p>alpine镜像已经下载成功，接下去我们就运行一个alpine的容器：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker run --name my-docker -it alpine
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker run --name my-docker -it alpine
+</code></pre>
 
 <p><code>—name</code> 给这个容器赋一个名字， <code>-it</code> 表示使用一个可交互的终端。</p>
 
 <p>这时就已经在一个alpine容器中了。可以进行你想做的操作，比如说 <code>ls</code>，<code>cd</code>等。操作完成后可以键入 <code>exit</code> 离开容器。</p>
 
 <p>我们看一下现在运行的容器：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker ps
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker ps
+</code></pre>
 
 <p>嗯，看不到my-docker了，这个容器已经关掉了。</p>
 
 <p>那现在一共有哪些容器呢？</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker ps -a
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker ps -a
+</code></pre>
 
 <p>这会显示所有的容器，包括并未在运行的容器。</p>
 
 <p>我们可以继续打开这个容器继续上次未完的操作：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker start -i my-docker
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker start -i my-docker
+</code></pre>
 
 <p><code>-i</code> 表示使用可交互式的方式。</p>
 
 <p>这样可以继续上次的操作，并以 <code>exit</code>退出。</p>
 
 <p>这个容器后面不再会使用的话，可以删除：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker rm my-docker
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker rm my-docker
+</code></pre>
 
 <p>alpine这个镜像如果不使用的话也可以删除了：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ docker rmi alpine
-</code></pre></div>
+
+<pre><code class="language-shell">$ docker rmi alpine
+</code></pre>
 
 <h2 id="resource资源链接汇总">Resource资源链接汇总：</h2>
 
@@ -514,13 +524,6 @@ $ docker-machine --version
 
 
 
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-90057853-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
 

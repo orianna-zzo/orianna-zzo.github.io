@@ -95,11 +95,11 @@ $ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Fin
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-07-31%2013%3a59%3a58.5400139%20%2b0000%20UTC%20m%3d%2b25.940998701">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-07-31%2013%3a59%3a58.5400139%20%2b0000%20UTC%20m%3d%2b25.940998701">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-07-31%2013%3a59%3a58.5400139%20%2b0000%20UTC%20m%3d%2b25.940998701">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-07%2008%3a29%3a00.2917147%20%2b0000%20UTC%20m%3d%2b1.232559601">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-07%2008%3a29%3a00.2917147%20%2b0000%20UTC%20m%3d%2b1.232559601">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-07%2008%3a29%3a00.2917147%20%2b0000%20UTC%20m%3d%2b1.232559601">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-07-31%2013%3a59%3a58.5400139%20%2b0000%20UTC%20m%3d%2b25.940998701">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-07%2008%3a29%3a00.2917147%20%2b0000%20UTC%20m%3d%2b1.232559601">
     
 
 
@@ -209,7 +209,6 @@ $ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Fin
     </div>
 </section>
 
-
 <section class="main post non-narrow zero-top-spacing">
     <div class="container">
         <div class="content">
@@ -291,12 +290,14 @@ $ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Fin
 <p>Mac系统Finder中的 <code>/usr</code>、<code>/etc</code>等文件夹都是隐藏文件，如果不进行设置用户是无法见到的。估计是因为mac用户并不是所有人都对linux的操作十分熟悉，所以把这些对于系统十分重要的文件夹都进行隐藏了，免得用户误删等操作把系统玩坏。</p>
 
 <p>在terminal中输入下面命令：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ defaults write com.apple.finder AppleShowAllFiles -bool <span class="nb">true</span>
-</code></pre></div>
+
+<pre><code class="language-shell">$ defaults write com.apple.finder AppleShowAllFiles -bool true
+</code></pre>
 
 <p>然后重启Finder，在terminal 中输入：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ killall Finder
-</code></pre></div>
+
+<pre><code class="language-shell">$ killall Finder
+</code></pre>
 
 <p>当当当当，隐藏的文件夹就显示出来了！</p>
 
@@ -341,8 +342,9 @@ $ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Fin
 <p><img name="Go2Shell" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/2/Go2Shell.png" width='100px'/></p>
 
 <p>相比方案一，这个还是要方便高效更多。注意不要通过App Store安装，无法使用，直接通过Homebrew安装：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install go2shell
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install go2shell
+</code></pre>
 
 <p>安装后打开，点击⌈Install Go2Shell to Finder⌋</p>
 
@@ -375,15 +377,16 @@ $ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Fin
 <p><img src="https://orianna-zzo.github.io/images/series/Mac小白探索记/2/run-script.png" alt="run-script" /></p>
 
 <p>新建文件代码如下：</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span></span><span class="nx">on</span> <span class="nx">run</span> <span class="p">{</span><span class="nx">input</span><span class="p">,</span> <span class="nx">parameters</span><span class="p">}</span>
 
-	<span class="nx">tell</span> <span class="nx">application</span> <span class="s2">&quot;Finder&quot;</span>
-	<span class="nx">set</span> <span class="nx">selection</span> <span class="nx">to</span> <span class="nx">make</span> <span class="k">new</span> <span class="nx">file</span> <span class="nx">at</span> <span class="p">(</span><span class="nx">get</span> <span class="nx">insertion</span> <span class="nx">location</span><span class="p">)</span>
-	<span class="nx">end</span> <span class="nx">tell</span>
+<pre><code class="language-javascript">on run {input, parameters}
 
-	<span class="k">return</span> <span class="nx">input</span>
-<span class="nx">end</span> <span class="nx">run</span>
-</code></pre></div>
+	tell application &quot;Finder&quot;
+	set selection to make new file at (get insertion location)
+	end tell
+
+	return input
+end run
+</code></pre>
 
 <p>按 <code>⌘S</code> 保存脚本，修改app名称和存放位置。</p>
 
@@ -447,13 +450,6 @@ $ brew cask install go2shell  安装后打开，点击⌈Install Go2Shell to Fin
 
 
 
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-90057853-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
 

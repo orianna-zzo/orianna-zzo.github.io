@@ -26,7 +26,7 @@
   have a try  first second    却表现为：
   have a try  first second    引用中的代码段无法识别正确结束位置，即应表现为:
   In the quote
- $ This is code fence   Out the quote</description>
+$ This is code fence   Out the quote</description>
     </item>
     
   </channel>

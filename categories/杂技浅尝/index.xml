@@ -6,10 +6,53 @@
     <description>Recent content in 杂技浅尝 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Mar 2018 23:47:17 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Aug 2018 15:49:22 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>前端试水(2) 使用docker镜像的Sass配置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。
+Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助css的组织结构变得更合理和优雅，或者说更像一门编程语言，从而提高开发和维护效率。通俗说，就是在css上再套层更结构化的语法，帮助对样式进行组织和管理，再通过编译得到最终的css样式。
+与sass对标的是less，具体哪个更好对于初学者来说难以分辨和选择，但Bootstrap4抛弃了less转而选择sass和sass更大的社群都提供了选择了sass的理由。
+Sass选择 Sass vs Scss Sass实际上有两种语法，针对不同的后缀名称.sass和.scss。
+.sass是最早的语法，使用缩进而不是{}来表示嵌套，用换行而不是;来分隔属性，如下：
+$font-stack: Helvetica, sans-serif $primary-color: #333 body font: 100% $font-stack color: $primary-color  另一种.scss的格式仅在css3的语法基础上进行扩展，如下：
+$font-stack: Helvetica, sans-serif; $primary-color: #333; body { font: 100% $font-stack; color: $primary-color; }  对于码农来说，.scss相对更符合习惯一些，所以之后会选择后者。
+Ruby Sass vs Libsass vs Dart Sass 在官网最下方可以看到三个不同的Sass实现。
+Ruby Sass是最早的Sass，网上很多资料都是基于ruby的，不过这个实现版本作者之后不会再更新维护了。
+Libsass是使用C进行实现的版本，所以这个版本速度最快，Sassc就是在Libsass外套了一层wrapper。不过该版本的更新相对没有那么频繁和活跃，毕竟不是主要更新的实现版本。
+Dart Sass是替代Ruby Sass的实现版本，也是现在最主要的开发版本，新的功能也会主要在该实现版本中先进行集成。
+编译环境配置 估计很少有人像我这样折腾又莫名对一些点特别执着（或者说钻牛角尖）。当初一心想用docker把所有和开发环境配置相关的整理起来，折腾node-sass的dockerfile好久以失败告终。这次终于找到一个可以用的sass环境镜像，并根据此建立了自己的docker镜像，具体配置及使用方法在Libsass Docker。但由于该镜像基于libsass，一些功能并没有集成（比如--watch），所以又基于dart sass生成一版镜像，具体方法在Dart Sass Docker。
+两种镜像的比较如下：
+    Libsass Docker Dart Sass Docker     Size 8.</description>
+    </item>
+    
+    <item>
+      <title>前端试水(1) 前端技术路线</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</link>
+      <pubDate>Wed, 01 Aug 2018 10:23:48 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</guid>
+      <description> 前言 对于前端的了解欲望实际上是从想对博客主题进行修改开始的。但是前端这部分一直对我来说是个谜，虽然这些名词都能搜索到，但一直傻傻的不得其门而入。总算在一年后的今天，尽管还有很多地方暂时是迷雾状态，但貌似略了解一点前端的整体框架。现在算是开了新的一个系列，在此算是记录一下我了解的前端的技术路线，如果那些和我一样的前端小白们能通过这个也大概了解一点到底现在需要学的、用的是什么，就再好不过了。
+对了，先声明下，这篇是作为非前端工程师不负责任的认知，个人觉得对于一个外行，且也并没有打算在这一行进行深入，仅作为快速了解、应用的人来说应该是个不错的交流。
+技术分工 既然说到前端技术路线，那就需要先确定下前端是什么。
+前端，通俗来说是和后端所对应的，通常指用户所能看到的网页以及交互的部分。一般来说，和用户直接打交道的都是前端，前端向后端请求数据以及提交数据，后端对用户提交的数据进行解析、服务器调度与功能操作，再返回数据给前端。所以我理解的前端的部分主要分成以下几个部分：前端的界面UI及交互UX，前端数据获取request与解析，前端数据提交返回。
+通常，前端UI大多涉及静态页面html及css样式，但若需要一些动态交互和动作，一般都离不开js的开发。对于数据获取、提交等数据绑定的功能，更是离不开js大法。一般常说的vue.js、react.js都提供了不少相关的功能组件，便于前端工程师快速开发。
+此外常听到的工具还有gulp、webpack等主要针对自动化、打包的工具，针对的功能点会有些不同，但具体还未深入研究。
+静态页面分工 一般网上大多数都在讨论和学习js大法，毕竟通过上段对于简单技术分工和技能点来说，js占据了非常重要的位置。但对于初学者来说，一般接触最多的是静态页面，毕竟很多时候只需要做个简单demo，或者是搭建博客界面之类的简单网页，需要的是轻量级的敏捷开发即可，而静态页面是与用户最直接的窗口。比如我来说，开始需要接触也是因为对想生成自己的博客主题，这就不能不开始学习这一部分。
+虽然说起来css和html不难，语法真不难，但就是因为它们太简单，中间的样式调整、覆盖、冲突的逻辑实在是难以捉摸，调整起来拆东墙补西墙，一点也不够结构化成体系。所以对于静态页面也可以分成css样式定义和html静态页面生成这两部分。
+css样式 css比较难以结构化，可以使用css的预编译器来编写，可以使之更易于管理。常用的预编译器有sass和less。
+除了有css预编译的利器外，对于敏捷开发来说，还有一些css样式库，比如大名鼎鼎的bootstrap，虽然bootstrap也集成了一些js和组件，但基本主要用作css布局用的样式库。尽管bootstrap也被称为前端框架，但是和vue以及react等的框架并不是一个含义，bootstrap更多是css样式层面的。
+html静态页面生成 有了css样式总是要生成静态页面的，这就需要生成html静态页面。最简单的就是直接写html，确定html布局，但是这样会很繁琐。因此有了不少静态页面生成器，比如我使用的hugo，还有jekyll、hexo。有了这些生成器，只需要定义html模板，然后使用模板，以后对于内容进行删减也不需要对html直接进行修改。生成了静态页面后就可以托管在服务器上。
+网页的生成也并不是总需要生成最重的静态页面的，比如python的轻量级网页应用框架flask，只要运行，可以自动调用html模板生成网页。
+版本控制    Version Action Time     1.0 Init 静态页面路线 2018-08-05    </description>
+    </item>
     
     <item>
       <title>慢学Docker(3) Docker Hub速度蜗牛爬怎么办?</title>
@@ -50,7 +93,7 @@ Resource资源链接汇总： docker国内官方镜像、阿里云镜像、知�
   have a try  first second    却表现为：
   have a try  first second    引用中的代码段无法识别正确结束位置，即应表现为:
   In the quote
- $ This is code fence   Out the quote</description>
+$ This is code fence   Out the quote</description>
     </item>
     
     <item>
@@ -301,7 +344,7 @@ virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似�
  tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
 配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
 [taxonomies] tag = &amp;quot;tags&amp;quot; series = &amp;quot;series&amp;quot; category = &amp;quot;categories&amp;quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
-date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4)增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
+date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4) 增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
 分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。
 还是以tag为例：
 example.com/tags/ 会列出tags中的所有术语；
@@ -342,17 +385,16 @@ pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里�
 Hugo的docker环境配置 Docker安装 在Mac中可以使用Homebrew进行安装：
 $ brew cask install docker  若是Windows或者其他操作系统，可以在这里选择你的操作系统下载相应版本进行安装并配置环境变量。
 获得Hugo开发镜像 我在docker hub上查找了下，截止目前并没有官方镜像，都是用户自己建立并上传的镜像。Hugo的Github中的确有建立docker镜像的Dockerfile，但是我试了几次都未成功，最后决定建立自己的Hugo docker镜像，顺便学习下Dockerfile。
-直接获得镜像 如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有32MB，只需要在终端中输入下面的命令即可：
-$ docker pull orianna/hugo-docker-dev  该镜像可以在docker hub中找到，点这里是在docker hub上的repo。
+直接获得镜像 如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有33MB，只需要在终端中输入下面的命令即可：
+$ docker pull orianna/hugo  该镜像可以在docker hub中找到，点这里是在docker hub上的repo。
 接下去在终端输入下面这行命令可以查看你现在有的镜像信息：
-$ docker images  你可以发现orianna/hugo-docker-dev只有94.9MB大小.
+$ docker images  你可以发现orianna/hugo只有85.7MB大小.
 自建镜像 或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。
-我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.3版，只有94.9MB大小的镜像，后续随着开发可能会有新的变化。
+我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
-在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo-docker-dev:0.3 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
+除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
+$ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。
 尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</description>

@@ -95,11 +95,11 @@ $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw." />
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-07-31%2013%3a59%3a58.5410811%20%2b0000%20UTC%20m%3d%2b25.942065801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-07-31%2013%3a59%3a58.5410811%20%2b0000%20UTC%20m%3d%2b25.942065801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-07-31%2013%3a59%3a58.5410811%20%2b0000%20UTC%20m%3d%2b25.942065801">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-07%2008%3a29%3a00.3288006%20%2b0000%20UTC%20m%3d%2b1.269647701">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-07%2008%3a29%3a00.3288006%20%2b0000%20UTC%20m%3d%2b1.269647701">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-07%2008%3a29%3a00.3288006%20%2b0000%20UTC%20m%3d%2b1.269647701">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-07-31%2013%3a59%3a58.5410811%20%2b0000%20UTC%20m%3d%2b25.942065801">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-07%2008%3a29%3a00.3288006%20%2b0000%20UTC%20m%3d%2b1.269647701">
     
 
 
@@ -208,7 +208,6 @@ $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw." />
         </div>
     </div>
 </section>
-
 
 <section class="main post non-narrow zero-top-spacing">
     <div class="container">
@@ -325,8 +324,9 @@ $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw." />
 <h3 id="第三方软件安装">第三方软件安装</h3>
 
 <p>有些软件并没有在apple认可的开发者列表内，如果要安装，首先需要mac允许软件来自任何人，而这个估计因为安全问题，属于隐藏设置，需要先打开terminal，输入：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ sudo spctl --master-disable
-</code></pre></div>
+
+<pre><code class="language-shell">$ sudo spctl --master-disable
+</code></pre>
 
 <p>然后在⌈系统偏好设置⌋ &gt; ⌈安全与隐私⌋ 中选择 ⌈任何来源⌋。安装完毕后，为了安全考虑，最好能够再选择回来自可信任的开发者。</p>
 
@@ -339,8 +339,9 @@ $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw." />
 <p>Mac OS用户大多使用Homebrew作为包管理工具，据说相当于Ubuntu下的apt-get。官网上的一句话介绍是 ⌈The missing package manager for macOS⌋，也就是针对Mac OS所开发的包管理器。</p>
 
 <p><a href="https://brew.sh/">Homebrew官网</a>给出了安装brew的方法，只要复制下面脚本在terminal中粘贴执行就安装成功。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div>
+
+<pre><code class="language-shell">$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
 
 <p>而有了Homebrew后，包的管理和更新就方便了很多。</p>
 
@@ -445,8 +446,9 @@ $ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw." />
 <p>具体可查看帮助文档。</p>
 
 <p>如需卸载Homebrew，复制下面指令到Terminal执行：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall<span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div>
+
+<pre><code class="language-shell">$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;
+</code></pre>
 
 <p><strong>遇到的问题</strong>：</p>
 
@@ -466,16 +468,18 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 </code></pre>
 
 <p>​   如果报错，使用terminal执行：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew upgrade git
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew upgrade git
+</code></pre>
 
 <h3 id="homebrew-cask">Homebrew Cask</h3>
 
 <p><a href="http://caskroom.github.io/">Cask</a>扩展了Homebrew，Homebrew针对包，而cask针对应用。在实际使用中，可以不使用 <code>brew cask xxx</code> 的样式，而是先用 <code>brew search xxx</code> 进行搜索，可以发现软件会在caskroom/cask的路径下，猜想 <code>brew cask install xxx</code> 应该与 <code>brew install caskroom/cask/xxx</code> 一样。</p>
 
 <p>如果想将使用Cask安装的包(软件)都进行更新，使用：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask upgrade
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask upgrade
+</code></pre>
 
 <h2 id="常用效率工具">常用效率工具</h2>
 
@@ -484,8 +488,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <h4 id="搜狗输入法">搜狗输入法</h4>
 
 <p>还是最习惯使用搜狗输入法。使用Homebrew安装。打开terminal，输入：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install sogouinput
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install sogouinput
+</code></pre>
 
 <p>就安装完毕。切换输入法使用快捷键 <code>⌘␣</code> 或者在menu bar切换输入法都可以。</p>
 
@@ -504,8 +509,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="Spectacle" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/Spectacle.png" width='100px'/></p>
 
 <p>可用Homebrew进行安装。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install spectacle
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install spectacle
+</code></pre>
 
 <p>Spectacle完全开源免费，不支持拖拽，需要使用快捷键。此外，Spectacle的布局较为简单，左右双屏仅支持对半开，但基本都够用，若对布局要求较高可试试Sizeup。</p>
 
@@ -530,16 +536,18 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p>经常我们希望mac合屏后也能继续工作，比如晚上下载时避免光污染。对我来说在确认安全不会离开座位的情况下，合盖并不希望休眠，继续工作时并不想再次输入密码。NoSleep 就是专为合盖放休眠设计的。</p>
 
 <p>NoSleep可在Homebrew下载安装卸载：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install nosleep
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install nosleep
+</code></pre>
 
 <p>NoSleep的设置比较简单，除去指定在电源适配器或者电池下启用外，其余选项都只是关于图标和自启动的附加选项。</p>
 
 <h3 id="cheatsheet-查看快捷键">Cheatsheet 查看快捷键</h3>
 
 <p><img name="Cheatsheet" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/Cheatsheet.png" width='100px'/></p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install cheatsheet
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install cheatsheet
+</code></pre>
 
 <p>长按 <code>⌘</code> 会显示快捷键表。</p>
 
@@ -550,8 +558,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="unarchiver" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/unarchiver.png" width='100px'/></p>
 
 <p>The Unarchiver 支持解压 <strong>RAR</strong>、<strong>7-zip</strong>、<strong>Tar</strong>等常用压缩格式的文件，同时也可以打开<strong>ISO</strong>、<strong>EXE</strong>等类型的文件，功能齐全并且免费。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install the-unarchiver
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install the-unarchiver
+</code></pre>
 
 <h3 id="下载器">下载器</h3>
 
@@ -560,8 +569,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="vuze" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/vuze.png" width='100px'/></p>
 
 <p>这个是PT需要的软件，linux环境下一般推荐这个。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install vuze
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install vuze
+</code></pre>
 
 <h3 id="播放器">播放器</h3>
 
@@ -570,16 +580,18 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="SPlayerX" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/SPlayerX.png" width='100px'/></p>
 
 <p>尽管射手播放器并不是在播放器中口碑最好的，而且射手播放器已经停止更新维护好几年了，但由于射手播放器自动搜索字幕并下载实在太好用太方便，不忍舍弃。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install splayerx
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install splayerx
+</code></pre>
 
 <h4 id="vlc">VLC</h4>
 
 <p><img name="vlc" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/vlc.png" width='100px'/></p>
 
 <p>vlc应该是linux上最著名的开源播放器，口碑非常好。不过鉴于射手太好用，估计只有在射手实在hold不住时才会打开吧。PS，iphone/ipad上用这个看影片很不错，特别是rmvb格式的影片。</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install vlc
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install vlc
+</code></pre>
 
 <h3 id="tuxera-ntfs-for-mac-2015">Tuxera NTFS for Mac 2015</h3>
 
@@ -600,8 +612,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="Docker" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/Docker.png" width='100px'/></p>
 
 <p>Terminal安装稳定版：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install docker
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install docker
+</code></pre>
 
 <p>使用方面，可以参考我的<a href="https://orianna-zzo.github.io/series/%E6%85%A2%E5%AD%A6docker/">docker系列</a>。</p>
 
@@ -612,8 +625,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="Sublime" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/Sublime-Text.png" width='100px'/></p>
 
 <p>可以在官网下载安装，但是为了便于更新，还是使用Homebrew安装</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install sublime-text
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install sublime-text
+</code></pre>
 
 <p>sublime3安装插件需要先安装Package Control:</p>
 
@@ -651,31 +665,35 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <ul>
 <li>修改默认打开形式：</li>
 </ul>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;open_files_in_new_window&quot;</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false,</span>
-</code></pre></div>
+
+<pre><code class="language-yaml">  &quot;open_files_in_new_window&quot;: false,
+</code></pre>
 
 <p>设置为false，默认tab形式打开；设置为true，默认新开一个窗口</p>
 
 <ul>
 <li>显示编码格式</li>
 </ul>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;show_encoding&quot;</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true,</span>
-</code></pre></div>
+
+<pre><code class="language-yaml">  &quot;show_encoding&quot;: true,
+</code></pre>
 
 <p>会在窗口底部显示现在使用的编码格式。</p>
 
 <ul>
 <li>显示空格占位符</li>
 </ul>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;draw_white_space&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;all&quot;</span><span class="err">,</span>
-  <span class="s">&quot;indent_guide_options&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;draw_active&quot;</span><span class="p p-Indicator">]</span><span class="err">,</span>
-</code></pre></div>
+
+<pre><code class="language-yaml">  &quot;draw_white_space&quot;: &quot;all&quot;,
+  &quot;indent_guide_options&quot;: [&quot;draw_active&quot;],
+</code></pre>
 
 <ul>
 <li>显示行末占位符格式</li>
 </ul>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="s">&quot;show_line_endings&quot;</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true,</span>
-</code></pre></div>
+
+<pre><code class="language-yaml">  &quot;show_line_endings&quot;: true,
+</code></pre>
 
 <p>Windows行末占位符为 <code>\r\n</code>，而Unix行末占位符为 <code>\n</code>，在文字处理中需要注意。</p>
 
@@ -686,8 +704,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="Code" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/Code.png" width='100px'/></p>
 
 <p>这是微软出品免费的文本编辑器，主要针对前端开发，真心很好用。同样Homebrew安装：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install visual-studio-code
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install visual-studio-code
+</code></pre>
 
 <p>有时在使用到某一类型文件时，会自动提醒你有这个插件，询问是否需要安装。使用Git时有conflict，也会用颜色提示，询问保留的部分。可能缺点就是开启速度没有Sublime快，但真心很强大。</p>
 
@@ -698,8 +717,9 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 <p><img name="Pycharm" src="https://orianna-zzo.github.io/images/series/Mac小白探索记/1/PyCharm.png" width='100px'/></p>
 
 <p>下载Professional版，需要输入key：</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew cask install pycharm
-</code></pre></div>
+
+<pre><code class="language-shell">$ brew cask install pycharm
+</code></pre>
 
 <h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
 
@@ -751,13 +771,6 @@ Error: Failure while executing: git config --local --replace-all homebrew.privat
 
 
 
-
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-90057853-1', 'auto');
-ga('send', 'pageview');
-</script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
 
