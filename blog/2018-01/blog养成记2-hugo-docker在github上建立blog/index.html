@@ -20,20 +20,11 @@ $ docker pull orianna/hugo  该镜像可以在docker hub中找到，点这里是
 接下去在终端输入下面这行命令可以查看你现在有的镜像信息：
 $ docker images  你可以发现orianna/hugo只有85.7MB大小.
 自建镜像 或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。
-<<<<<<< HEAD
 我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
 除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
-=======
-我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.3MB大小的镜像，后续随着开发可能会有新的变化。
-将所有内容clone到当前目录：
-$ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
-在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo-docker-dev:0.46 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。
 尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：">
@@ -50,20 +41,11 @@ $ docker pull orianna/hugo  该镜像可以在docker hub中找到，点这里是
 接下去在终端输入下面这行命令可以查看你现在有的镜像信息：
 $ docker images  你可以发现orianna/hugo只有85.7MB大小.
 自建镜像 或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。
-<<<<<<< HEAD
 我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
 除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
-=======
-我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.3MB大小的镜像，后续随着开发可能会有新的变化。
-将所有内容clone到当前目录：
-$ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。
-在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo-docker-dev:0.46 -t orianna/hugo-docker-dev:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。
 尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：" />
@@ -113,19 +95,11 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 
     
-<<<<<<< HEAD
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-07%2008%3a29%3a00.7717639%20%2b0000%20UTC%20m%3d%2b1.712609101">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-07%2008%3a29%3a00.7717639%20%2b0000%20UTC%20m%3d%2b1.712609101">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-07%2008%3a29%3a00.7717639%20%2b0000%20UTC%20m%3d%2b1.712609101">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-08%2008%3a03%3a49.6847676%20%2b0000%20UTC%20m%3d%2b1.913708301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-08%2008%3a03%3a49.6847676%20%2b0000%20UTC%20m%3d%2b1.913708301">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-08%2008%3a03%3a49.6847676%20%2b0000%20UTC%20m%3d%2b1.913708301">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-07%2008%3a29%3a00.7717639%20%2b0000%20UTC%20m%3d%2b1.712609101">
-=======
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-04%2019%3a24%3a08.893528246%20%2b0000%20UTC%20m%3d%2b0.288846442">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-04%2019%3a24%3a08.893528246%20%2b0000%20UTC%20m%3d%2b0.288846442">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-04%2019%3a24%3a08.893528246%20%2b0000%20UTC%20m%3d%2b0.288846442">
-    
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-04%2019%3a24%3a08.893528246%20%2b0000%20UTC%20m%3d%2b0.288846442">
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-08%2008%3a03%3a49.6847676%20%2b0000%20UTC%20m%3d%2b1.913708301">
     
 
 
@@ -177,6 +151,8 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
                 
                     
                 
+                    
+                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -205,8 +181,6 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
         
 
         
-
-	
 
         
 
@@ -342,26 +316,14 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 <h4 id="直接获得镜像">直接获得镜像</h4>
 
-<<<<<<< HEAD
 <p>如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有33MB，只需要在终端中输入下面的命令即可：</p>
 
 <pre><code class="language-shell">$ docker pull orianna/hugo
-=======
-<p>如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有32MB，只需要在终端中输入下面的命令即可：</p>
-
-<pre><code class="language-shell">$ docker pull orianna/hugo-docker-dev
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>该镜像可以在docker hub中找到，点<a href="https://hub.docker.com/r/orianna/hugo/">这里</a>是在docker hub上的repo。</p>
 
 <p>接下去在终端输入下面这行命令可以查看你现在有的镜像信息：</p>
-<<<<<<< HEAD
-=======
-
-<pre><code class="language-shell">$ docker images
-</code></pre>
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 
 <pre><code class="language-shell">$ docker images
 </code></pre>
@@ -372,11 +334,7 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 <p>或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。</p>
 
-<<<<<<< HEAD
 <p>我建立Hugo docker的Dockerfile放在<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github</a>上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。</p>
-=======
-<p>我建立Hugo docker的Dockerfile放在<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github</a>上，大家可以去参考试试。现在是v0.46版，只有85.3MB大小的镜像，后续随着开发可能会有新的变化。</p>
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 
 <p>将所有内容clone到当前目录：</p>
 
@@ -393,11 +351,7 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 <p>在这个repo的文件夹中打开终端，输入下面命令以建立镜像：</p>
 
-<<<<<<< HEAD
 <pre><code class="language-shell">$ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .
-=======
-<pre><code class="language-shell">$ docker build -t orianna/hugo-docker-dev:0.46 -t orianna/hugo-docker-dev:latest .
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>其中<code>-t</code>给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为<code>你的docker-name/镜像名称</code>，<code>:</code>后为该镜像的tag。<code>-t</code>可以有多个。注意不要忘记最后的<code>.</code>，它表示使用该文件夹中除了<code>.dockerignore</code> 中的其他内容作为建立镜像的上下文内容。</p>
@@ -413,11 +367,7 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 <p>假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</p>
 
-<<<<<<< HEAD
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd)/site-sample:/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest
-=======
-<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd)/site-sample:/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>其中，<code>—name</code> 给该容器起了名字（可省略）；</p>
@@ -439,7 +389,6 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 <h3 id="blog文件夹结构">Blog文件夹结构</h3>
 
 <p>在本地建立文件夹 <code>blog-hugo</code> 以存放Hugo源码，进入该文件夹，打开docker容器并将之挂载到Hugo的docker容器中。</p>
-<<<<<<< HEAD
 
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest COMMAND [-flag]
 </code></pre>
@@ -453,15 +402,6 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 <p>如执行<code>hugo new site.</code>，Hugo就会自动生成一个博客的目录结构，则需要输入：</p>
 
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest new site .
-=======
-
-<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest
-</code></pre>
-
-<p>此时，因为 <code>blog-hugo</code> 文件夹中并未有 <code>run.sh</code> ，所以会打开一个交互终端，并位于 <code>/hugo-site</code> 文件夹下。执行下面命令，Hugo就会自动生成一个博客的目录结构：</p>
-
-<pre><code class="language-shell">$ hugo new site .
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>Hugo的文件夹结构一般如下所示：</p>
@@ -531,7 +471,6 @@ title: &quot;Blog&quot;
 
 <h3 id="查看网页">查看网页</h3>
 
-<<<<<<< HEAD
 
     <span style="color: #cbcbcb" >
         <del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)
@@ -541,11 +480,6 @@ title: &quot;Blog&quot;
 <p>通过<code>hugo server -b http://localhost:1313 --bind=0.0.0.0</code>来即使查看静态网页情况：</p>
 
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest server -b http://localhost:1313 --bind=0.0.0.0
-=======
-<p>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</p>
-
-<pre><code class="language-shell">$ hugo server -b http://localhost:1313 --bind=0.0.0.0
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>即可在<a href="http://localhost:1313">http://localhost:1313</a>查看你编写的网页了。</p>
@@ -554,7 +488,6 @@ title: &quot;Blog&quot;
 
 <h3 id="生成静态页面">生成静态页面</h3>
 
-<<<<<<< HEAD
 
     <span style="color: #cbcbcb" >
         <del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)
@@ -564,35 +497,20 @@ title: &quot;Blog&quot;
 <p>通过<code>hugo --baseUrl=&quot;https://orianna-zzo.github.io/&quot;</code>来生成静态网页，需要明确静态网页url：</p>
 
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; 
-=======
-<p>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</p>
-
-<pre><code class="language-shell">$ hugo --baseUrl=&quot;https://orianna-zzo.github.io/&quot; 
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>将上述命令中网站的url替换成你网站的url。该命令会在文件夹中生成 <code>public</code> 文件夹，并将静态网页生成在该文件夹中。</p>
 
-<<<<<<< HEAD
 <p>在v0.3版的Hugo镜像之后中，可以将想要将镜像网站生成的文件夹挂载在容器中，可用下面命令执行容器：</p>
 
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -v ~/Documents/WorkingProject/orianna-zzo.github.io:/static-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; 
-=======
-<p>在v0.3版的Hugo镜像中，可以将想要将镜像网站生成的文件夹挂载在容器中，可用下面命令执行容器：</p>
-
-<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -v ~/Documents/WorkingProject/orianna-zzo.github.io:/static-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>可将上面 <code>~/Documents/WorkingProject/orianna-zzo.github.io</code> 的路径替换成自己的文件夹。</p>
 
 <p>然后在执行容器后执行下面命令，则会将静态网页生成到指定文件夹中：</p>
 
-<<<<<<< HEAD
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; -d /static-site
-=======
-<pre><code class="language-shell">$ hugo --baseUrl=&quot;https://orianna-zzo.github.io/&quot; -d /static-site
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <p>若要部署在Github Pages上，需要将生成的静态网页push到Github上。</p>
@@ -604,11 +522,7 @@ title: &quot;Blog&quot;
 
 <p>软连接建立后，只需要用下面命令生成容器即可，感觉如此生成静态网页方便很多：</p>
 
-<<<<<<< HEAD
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; -d /static-site
-=======
-<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </code></pre>
 
 <h3 id="配置alias简化命令">配置alias简化命令</h3>
@@ -627,7 +541,6 @@ title: &quot;Blog&quot;
 <pre><code class="language-shell">$ vi ~/.profile
 </code></pre>
 
-<<<<<<< HEAD
 <p>增加以下内容，给起个别称 <code>hugo</code>，这样就可以将<code>hugo</code>命令当做本地命令使用了：</p>
 
 <pre><code class="language-shell"># config alias
@@ -635,20 +548,12 @@ alias hugo=&quot;docker run -v \$(pwd):/hugo-site -v \$(pwd)/public:/static-site
 </code></pre>
 
 <p>注意，该命令需要注意执行命令所在的位置，且静态页面生成的文件夹就为<code>./public</code>。</p>
-=======
-<p>增加以下内容，给起个别称 <code>docker-hugo-dev</code>，注意，需要所在目录路径：</p>
-
-<pre><code class="language-shell"># config alias
-alias hugo-docker=&quot;docker run -v \$(pwd):/hugo-site -v \$(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest&quot;
-</code></pre>
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 
 <p>记得source一下，使配置文件立即生效：</p>
 
 <pre><code class="language-shell">$ source ~/.profile
 </code></pre>
 
-<<<<<<< HEAD
 <p>现在开始就可以直接使用 <code>hugo</code> 来启动hugo的docker镜像了。</p>
 
 <p>除了以上简化hugo内容之外，还可以有以下别名配置：</p>
@@ -668,9 +573,6 @@ alias hugo-run='docker run -v $(pwd):/hugo-site -v $(pwd)/public:/static-site -p
 </code></pre>
 
 <p>这样我最常用的就是<code>hugo-dev</code>和<code>hugo-dev-gen</code>了</p>
-=======
-<p>现在开始就可以直接使用 <code>hugo-docker</code> 来启动hugo的docker镜像了。</p>
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 
 <h2 id="github-pages部署">Github Pages部署</h2>
 
@@ -722,15 +624,12 @@ alias hugo-run='docker run -v $(pwd):/hugo-site -v $(pwd)/public:/static-site -p
 <td>hugo-docker-dev v0.46 + 修改alias用法</td>
 <td>2018-08-03</td>
 </tr>
-<<<<<<< HEAD
 
 <tr>
 <td>2.0</td>
 <td>hugo修改为ENTRYPOINT + 修改alias用法</td>
 <td>2018-08-05</td>
 </tr>
-=======
->>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 </tbody>
 </table>
 
