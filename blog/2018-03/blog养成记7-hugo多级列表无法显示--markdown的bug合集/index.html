@@ -77,11 +77,19 @@ $ This is code fence   Out the quote" />
 
 
     
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-07%2008%3a29%3a00.1526552%20%2b0000%20UTC%20m%3d%2b1.093500401">
     <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-07%2008%3a29%3a00.1526552%20%2b0000%20UTC%20m%3d%2b1.093500401">
     <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-07%2008%3a29%3a00.1526552%20%2b0000%20UTC%20m%3d%2b1.093500401">
     
         <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-07%2008%3a29%3a00.1526552%20%2b0000%20UTC%20m%3d%2b1.093500401">
+=======
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-04%2019%3a24%3a08.815608603%20%2b0000%20UTC%20m%3d%2b0.210926815">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-04%2019%3a24%3a08.815608603%20%2b0000%20UTC%20m%3d%2b0.210926815">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-04%2019%3a24%3a08.815608603%20%2b0000%20UTC%20m%3d%2b0.210926815">
+    
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-04%2019%3a24%3a08.815608603%20%2b0000%20UTC%20m%3d%2b0.210926815">
+>>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
     
 
 
@@ -133,8 +141,6 @@ $ This is code fence   Out the quote" />
                 
                     
                 
-                    
-                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -163,6 +169,8 @@ $ This is code fence   Out the quote" />
         
 
         
+
+	
 
         
 
@@ -393,6 +401,7 @@ $ This is code fence   Out the quote" />
 对于第二个问题，受<a href="https://discourse.gohugo.io/t/markdown-nested-list-renders-flat-solved/6392">这个解答</a>提示，发现是cocoa这个主题的css设置。在<code>static/css/override.css</code>中增加：</p>
 
 <pre><code class="language-css">/* Nested Unordered List */
+<<<<<<< HEAD
 
 section.main .content .markdown ul &gt; li {
     list-style-type: disc;
@@ -402,6 +411,17 @@ section.main .content .markdown ul &gt; li &gt; ul &gt; li {
     list-style-type: circle;
 }
 
+=======
+
+section.main .content .markdown ul &gt; li {
+    list-style-type: disc;
+}
+
+section.main .content .markdown ul &gt; li &gt; ul &gt; li {
+    list-style-type: circle;
+}
+
+>>>>>>> e6a48362a1180c81980f4be101412cb506c9c553
 section.main .content .markdown ul &gt; li &gt; ul &gt; li &gt; ul &gt; li {
     list-style-type: square;
 }
