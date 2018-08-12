@@ -5,11 +5,49 @@
     <link>https://orianna-zzo.github.io/tags/css/</link>
     <description>Recent content in Css on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Thu, 02 Aug 2018 15:49:22 +0800</lastBuildDate>
+    <language>zh-cmn-Hans</language>
+    <lastBuildDate>Mon, 13 Aug 2018 00:40:13 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blog养成记(12) 给网页的图片加个蒙版</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</link>
+      <pubDate>Mon, 13 Aug 2018 00:40:13 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</guid>
+      <description> 上一期说到想给网站图标的图片加个蒙版，然而没有成功。那么网页中的图片么？经常看到个人图片都是圆形的，然而实际上上传的原图是方的。如果使用了蒙版功能，就可以对同一张图想怎么变形状就怎么变了。
+首先，定义一个类，比如avatar，在css文件中定义该类使用了某长图片蒙版：
+.avatar { border-radius: 50%; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); max-width: 50px; -webkit-mask-image: url(/img/mask/circle.svg); mask-image: url(/img/mask/circle.svg); } 其中高亮的两句定义了蒙版的图片。在这里，蒙版我使用的是font awesome里的圆形图，就长下面这个样子：
+在实际使用时，只需要在&amp;lt;img&amp;gt;标签中使用该类即可，如：
+&amp;lt;img class=&amp;quot;avatar&amp;quot; src=&amp;quot;img/avatar.png&amp;quot; width=&amp;quot;40&amp;quot; height=&amp;quot;40&amp;quot; class=&amp;quot;d-inline-block align-top&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;  版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(11) 给网站加个小icon</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</link>
+      <pubDate>Mon, 13 Aug 2018 00:14:19 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</guid>
+      <description> 这部分其实很简单，只需要在index.html的&amp;lt;head&amp;gt;部分增加以下一句话就好：
+&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;/img/aviconfile.ico&amp;quot; &amp;gt;  不过，既然是要做主题，肯定是要用模板变量的么。因此，在模板中的增加以下内容：
+&amp;lt;!-- Icon --&amp;gt; &amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; {{ if .Site.Params.faviconfile }} href=&amp;quot;/{{ .Site.Params.faviconfile }}&amp;quot; {{ else if.Site.Params.avatar}} href=&amp;quot;/{{ .Site.Params.avatar }}&amp;quot; {{ end }} &amp;gt;  其中faviconfile是在config.toml中定义的网站图标的路径，avatar是在其中定义的个人头像照片的路径。这句话就是如果定义了网站图标就使用网站图标，如果不存在网站图标就使用个人头像。
+原本想尝试在网站图标上加个蒙版的，但是好像只能有已有的图片。方的一张图感觉太死板，于是我就将之前画画的签名截了一个姓下来抠了下图，感觉还不错。
+版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(10) Bootstrap4实现幻灯片(轮播)效果</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-bootstrap4%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Sun, 12 Aug 2018 01:41:43 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-bootstrap4%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
+      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在github上的js插件，这次使用bootstrap4发现这已经集成进bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。
+Carousel 基础版 在Bootstrap4中轮播组件称为carousel，在官网就有对其使用的简单介绍。
+简单说来，该组件分为四块：indicator(显示第几页)、control(控制上一页和下一页)、caption(每一页上显示的字)和slide(显示的图片)。这几部分中，除了slide是必须要有的（不然用这个控件干嘛），其他都可以不用。基本的格式如下，基本包含了所有的基础用法，还有一些参数比如间隔时间等可以调整：
+&amp;lt;!-- Carousel --&amp;gt; &amp;lt;div id=&amp;quot;example&amp;quot; class=&amp;quot;carousel slide carousel-fade&amp;quot; data-ride=&amp;quot;carousel&amp;quot; data-interval=&amp;quot;3000&amp;quot;&amp;gt; &amp;lt;!-- Indicator --&amp;gt; &amp;lt;!-- data-target=外面div的id --&amp;gt; &amp;lt;ol class=&amp;quot;carousel-indicators&amp;quot;&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;0&amp;quot; class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;1&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;2&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;!-- /.Indicator --&amp;gt; &amp;lt;!-- Slides --&amp;gt; &amp;lt;div class=&amp;quot;carousel-inner&amp;quot;&amp;gt; &amp;lt;!-- First Slide --&amp;gt; &amp;lt;div class=&amp;quot;carousel-item active&amp;quot;&amp;gt; &amp;lt;img class=&amp;quot;d-block w-100&amp;quot; src=&amp;quot;path/to/img1.jpg&amp;quot; alt=&amp;quot;First slide&amp;quot;&amp;gt; &amp;lt;!-- First Caption --&amp;gt; &amp;lt;div class=&amp;quot;carousel-caption d-none d-md-block&amp;quot;&amp;gt; &amp;lt;h5&amp;gt;Caption 1&amp;lt;/h5&amp;gt; &amp;lt;p&amp;gt;Content of caption 1&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!</description>
+    </item>
     
     <item>
       <title>前端试水(2) 使用docker镜像的Sass配置</title>

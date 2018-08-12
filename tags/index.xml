@@ -5,7 +5,7 @@
     <link>https://orianna-zzo.github.io/tags/</link>
     <description>Recent content in Tags on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
+    <language>zh-cmn-Hans</language>
     <lastBuildDate>Mon, 22 Jan 2018 11:20:32 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -32,9 +32,18 @@
     <item>
       <title>Blog</title>
       <link>https://orianna-zzo.github.io/tags/blog/</link>
-      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      <pubDate>Mon, 13 Aug 2018 00:40:13 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bootstrap</title>
+      <link>https://orianna-zzo.github.io/tags/bootstrap/</link>
+      <pubDate>Sun, 12 Aug 2018 01:41:43 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/bootstrap/</guid>
       <description></description>
     </item>
     
@@ -59,7 +68,7 @@
     <item>
       <title>Css</title>
       <link>https://orianna-zzo.github.io/tags/css/</link>
-      <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
+      <pubDate>Mon, 13 Aug 2018 00:40:13 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/css/</guid>
       <description></description>
@@ -185,9 +194,18 @@
     <item>
       <title>Musical</title>
       <link>https://orianna-zzo.github.io/tags/musical/</link>
-      <pubDate>Fri, 27 Jul 2018 18:25:30 +0800</pubDate>
+      <pubDate>Sun, 12 Aug 2018 23:03:12 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/musical/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>National Theatre</title>
+      <link>https://orianna-zzo.github.io/tags/national-theatre/</link>
+      <pubDate>Thu, 24 May 2018 10:17:35 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/national-theatre/</guid>
       <description></description>
     </item>
     
@@ -215,15 +233,6 @@
       <pubDate>Tue, 30 Jan 2018 21:07:19 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/notebook/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Nt</title>
-      <link>https://orianna-zzo.github.io/tags/nt/</link>
-      <pubDate>Thu, 24 May 2018 10:17:35 +0800</pubDate>
-      
-      <guid>https://orianna-zzo.github.io/tags/nt/</guid>
       <description></description>
     </item>
     
@@ -347,9 +356,18 @@
     <item>
       <title>前端</title>
       <link>https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
-      <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
+      <pubDate>Mon, 13 Aug 2018 00:40:13 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大剧院</title>
+      <link>https://orianna-zzo.github.io/tags/%E5%A4%A7%E5%89%A7%E9%99%A2/</link>
+      <pubDate>Sun, 12 Aug 2018 23:03:12 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/%E5%A4%A7%E5%89%A7%E9%99%A2/</guid>
       <description></description>
     </item>
     
@@ -392,7 +410,7 @@
     <item>
       <title>环境配置</title>
       <link>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
-      <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
+      <pubDate>Sat, 11 Aug 2018 19:00:35 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
       <description></description>
@@ -413,6 +431,15 @@
       <pubDate>Fri, 27 Jul 2018 18:25:30 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/%E7%99%BE%E8%80%81%E6%B1%87/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>设计</title>
+      <link>https://orianna-zzo.github.io/tags/%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sat, 11 Aug 2018 17:27:55 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/%E8%AE%BE%E8%AE%A1/</guid>
       <description></description>
     </item>
     
@@ -467,6 +494,15 @@
       <pubDate>Tue, 20 Mar 2018 23:47:17 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/tags/%E9%95%9C%E5%83%8F%E8%AE%BE%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>项目结构</title>
+      <link>https://orianna-zzo.github.io/tags/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Sat, 11 Aug 2018 19:00:35 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/tags/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/</guid>
       <description></description>
     </item>
     

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cmn-Hans">
 
 <head>
 <meta charset="utf-8">
@@ -83,11 +83,11 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 
 
     
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-08%2008%3a03%3a49.6703018%20%2b0000%20UTC%20m%3d%2b1.899243801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-08%2008%3a03%3a49.6703018%20%2b0000%20UTC%20m%3d%2b1.899243801">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-08%2008%3a03%3a49.6703018%20%2b0000%20UTC%20m%3d%2b1.899243801">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-12%2019%3a07%3a24.305852006%20%2b0000%20UTC%20m%3d%2b0.385935851">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-12%2019%3a07%3a24.305852006%20%2b0000%20UTC%20m%3d%2b0.385935851">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-12%2019%3a07%3a24.305852006%20%2b0000%20UTC%20m%3d%2b0.385935851">
     
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-08%2008%3a03%3a49.6703018%20%2b0000%20UTC%20m%3d%2b1.899243801">
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-12%2019%3a07%3a24.305852006%20%2b0000%20UTC%20m%3d%2b0.385935851">
     
 
 
@@ -95,7 +95,7 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
 
 <link rel="shortcut icon"
 
-    href="https://orianna-zzo.github.io/img/profile.png"
+    href="https://orianna-zzo.github.io/img/zheng.png"
 
 >
 
@@ -141,6 +141,8 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
                 
                     
                 
+                    
+                
                 
                 <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
             
@@ -169,6 +171,8 @@ pygmentsStyle=&quot;autumn&quot; 设置高亮的风格,可以在这里查看各�
         
 
         
+
+	
 
         
 
@@ -362,6 +366,16 @@ class Foo:
 <li>对toml文件无法识别</li>
 </ol>
 
+<h4 id="2018-8-13-highlight-shortcode-颜色渲染问题修正">2018.8.13 <code>Highlight shortcode</code>颜色渲染问题修正</h4>
+
+<p>如题，突然发现颜色渲染有问题，所以只能逐个看到底用了那个css。发现我的主页用了<code>highlight shortcode</code>的css样式和官网的不一样。鉴于不想花太多时间，只要能看就要，因此在<code>override.css</code>中加了强制的css样式，于是问题暂时打个不怎么好看的补丁，但至少<code>highlight shortcode</code>还是勉强可看了。</p>
+
+<pre><code class="language-css">.highlight pre {
+    background-color: #f7f7f7 !important;
+    color: rgb(194, 192, 192) !important;
+}
+</code></pre>
+
 <h2 id="使用css进行高亮">使用CSS进行高亮</h2>
 
 <p>感觉使用CSS进行语法高亮会相对更灵活、可定制。但是暂时还未尝试，若后续尝试则在此处补充。</p>
@@ -371,7 +385,7 @@ class Foo:
 <p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
 我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
 
-<p><a href="https://gohugo.io">Hugo官网</a>、<a href="http://gohugo.io/content-management/syntax-highlighting/">关于语法高亮说明</a></p>
+<p><a href="https://gohugo.io">Hugo官网</a>、<a href="http://gohugo.io/content-management/syntax-highlighting/">关于语法高亮说明</a>、<a href="https://help.farbox.com/pygments.html">pygments主题配色</a></p>
 
 <h2 id="版本控制">版本控制</h2>
 
@@ -395,6 +409,12 @@ class Foo:
 <td>1.1</td>
 <td>增加tag、版本控制及资源链接</td>
 <td>2018-01-17</td>
+</tr>
+
+<tr>
+<td>1.2</td>
+<td>highlight颜色修正</td>
+<td>2018-08-13</td>
 </tr>
 </tbody>
 </table>

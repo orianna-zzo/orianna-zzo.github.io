@@ -5,11 +5,88 @@
     <link>https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0/</link>
     <description>Recent content in Blog养成记 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Mar 2018 16:46:17 +0800</lastBuildDate>
+    <language>zh-cmn-Hans</language>
+    <lastBuildDate>Mon, 13 Aug 2018 00:40:13 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blog养成记(12) 给网页的图片加个蒙版</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</link>
+      <pubDate>Mon, 13 Aug 2018 00:40:13 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</guid>
+      <description> 上一期说到想给网站图标的图片加个蒙版，然而没有成功。那么网页中的图片么？经常看到个人图片都是圆形的，然而实际上上传的原图是方的。如果使用了蒙版功能，就可以对同一张图想怎么变形状就怎么变了。
+首先，定义一个类，比如avatar，在css文件中定义该类使用了某长图片蒙版：
+.avatar { border-radius: 50%; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); max-width: 50px; -webkit-mask-image: url(/img/mask/circle.svg); mask-image: url(/img/mask/circle.svg); } 其中高亮的两句定义了蒙版的图片。在这里，蒙版我使用的是font awesome里的圆形图，就长下面这个样子：
+在实际使用时，只需要在&amp;lt;img&amp;gt;标签中使用该类即可，如：
+&amp;lt;img class=&amp;quot;avatar&amp;quot; src=&amp;quot;img/avatar.png&amp;quot; width=&amp;quot;40&amp;quot; height=&amp;quot;40&amp;quot; class=&amp;quot;d-inline-block align-top&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;  版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(11) 给网站加个小icon</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</link>
+      <pubDate>Mon, 13 Aug 2018 00:14:19 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</guid>
+      <description> 这部分其实很简单，只需要在index.html的&amp;lt;head&amp;gt;部分增加以下一句话就好：
+&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;/img/aviconfile.ico&amp;quot; &amp;gt;  不过，既然是要做主题，肯定是要用模板变量的么。因此，在模板中的增加以下内容：
+&amp;lt;!-- Icon --&amp;gt; &amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; {{ if .Site.Params.faviconfile }} href=&amp;quot;/{{ .Site.Params.faviconfile }}&amp;quot; {{ else if.Site.Params.avatar}} href=&amp;quot;/{{ .Site.Params.avatar }}&amp;quot; {{ end }} &amp;gt;  其中faviconfile是在config.toml中定义的网站图标的路径，avatar是在其中定义的个人头像照片的路径。这句话就是如果定义了网站图标就使用网站图标，如果不存在网站图标就使用个人头像。
+原本想尝试在网站图标上加个蒙版的，但是好像只能有已有的图片。方的一张图感觉太死板，于是我就将之前画画的签名截了一个姓下来抠了下图，感觉还不错。
+版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(10) Bootstrap4实现幻灯片(轮播)效果</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-bootstrap4%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Sun, 12 Aug 2018 01:41:43 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-bootstrap4%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
+      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在github上的js插件，这次使用bootstrap4发现这已经集成进bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。
+Carousel 基础版 在Bootstrap4中轮播组件称为carousel，在官网就有对其使用的简单介绍。
+简单说来，该组件分为四块：indicator(显示第几页)、control(控制上一页和下一页)、caption(每一页上显示的字)和slide(显示的图片)。这几部分中，除了slide是必须要有的（不然用这个控件干嘛），其他都可以不用。基本的格式如下，基本包含了所有的基础用法，还有一些参数比如间隔时间等可以调整：
+&amp;lt;!-- Carousel --&amp;gt; &amp;lt;div id=&amp;quot;example&amp;quot; class=&amp;quot;carousel slide carousel-fade&amp;quot; data-ride=&amp;quot;carousel&amp;quot; data-interval=&amp;quot;3000&amp;quot;&amp;gt; &amp;lt;!-- Indicator --&amp;gt; &amp;lt;!-- data-target=外面div的id --&amp;gt; &amp;lt;ol class=&amp;quot;carousel-indicators&amp;quot;&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;0&amp;quot; class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;1&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;2&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;!-- /.Indicator --&amp;gt; &amp;lt;!-- Slides --&amp;gt; &amp;lt;div class=&amp;quot;carousel-inner&amp;quot;&amp;gt; &amp;lt;!-- First Slide --&amp;gt; &amp;lt;div class=&amp;quot;carousel-item active&amp;quot;&amp;gt; &amp;lt;img class=&amp;quot;d-block w-100&amp;quot; src=&amp;quot;path/to/img1.jpg&amp;quot; alt=&amp;quot;First slide&amp;quot;&amp;gt; &amp;lt;!-- First Caption --&amp;gt; &amp;lt;div class=&amp;quot;carousel-caption d-none d-md-block&amp;quot;&amp;gt; &amp;lt;h5&amp;gt;Caption 1&amp;lt;/h5&amp;gt; &amp;lt;p&amp;gt;Content of caption 1&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(9) 项目结构&amp;前端环境配置</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sat, 11 Aug 2018 19:00:35 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>其实如果只是对静态页面进行修改，不需要配什么环境，只需要对html进行修改就好。
+哦，不对，因为还是会使用hugo来生成静态页面，hugo还是要配置的，配置的方法详见这个系列的第2篇Hugo+Docker在Github上建立Blog。所以重点就在如何自己生成自己喜欢的hugo模板了。
+由于仅使用hugo静态页面，所以也不计划使用gulp之类的工具，可能出了hugo外唯一考虑要使用的是sass。这是因为css的结构化有些糟，而sass作为css的预编译器，有更好的结构性，更像一门编程语言，修改起来会更得心应手，(我猜😶)不会有改了A不知道会不会影响B的囧状。sass具体的配置详见前端试水系列第2篇使用docker镜像的sass配置。
+项目结构 参考Hugo的其他theme和官网对各个文件夹的介绍，对新建主题的文件结构如下：
+MyNewTheme ├── archetypes/ ├── exampleSite/ ├── i18n/ ├── layouts/ ⎮	├── _default/ ⎮	├── partials/ ⎮	├── page ⎮	├── post ⎮	├── shortcodes/ ⎮	├── 404.html ⎮	├── index.html ⎮	└── robots.txt ├── static/ ⎮	├── css/ ⎮	├── js/ ⎮	├── scss/ ⎮	├── font/ ⎮	└── img/ └── theme.toml  其中archetypes定义了如果使用hugo new，默认生成的md的文件头；exampleSite提供一个网站实例；i18n提供多语言的翻译；layouts提供主题的布局；static存放静态文件；theme.toml提供主题的信息。
+Hugo官网对于每个模板都会有简单的介绍，可以借鉴一下。
+其中scss主要参考Sass目录层次，建立以下scss的项目结构：
+scss ├── abstracts/ ├── base/ ├── components/ ├── layout/ ├── pages/ ├── vendors/ ⎮	└── bootstrap4/ └── main.</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(8) 页面设计demo</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</link>
+      <pubDate>Sat, 11 Aug 2018 17:27:55 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</guid>
+      <description>实际上前几个月就已经将页面原型设计完成，中间经过需求梳理和页面demo两个部分，不过设计完后就停滞了不少时间。最近才又开始折腾静态页面，在公司也尝试搭一个简单网站（尝试了flask，最后还是回归hugo生成静态页面），所以为了能将之后的部分继续，所以赶紧补上。
+需求梳理 首先需要将应用场景进行梳理，细化需求，还特地做了对应的思维导图明确所需要的功能。
+需求场景方面主要是以下几个点：
+ 生活类：能满足基本的博客需求，写一些生活感悟、观演感想、事件评论、心情日记之类的内容，能将之前的一些不错的游记（大多半途而废😂）、照片也能安置就更好了，这一部分越现代越好，更需要设计感一些； 技术类：能满足技术文档、学习记录的需求，记录一些小技巧和学习过程，主要是分为科研类、学习类和尝试类，这一部分越简约越好，能帮助聚焦，也会显得更专业； 专题类：主要是一些内容并不是孤立的，是围绕一个核心的； 个人简介：当然还是需要有个人介绍的，不过专业性cv类还是偏设计感可能需要看最后的需求。  页面设计 针对以上的需求场景，将分成了以下几类：
+ 首页 Sci &amp;amp; Tech 赛先生  Papers 论文精读：论文精读 Learning 学海无涯：网课、知识点梳理、读书笔记 Tech 杂技浅尝：eg.前端、docker之类不会太深入研究的部分，主要针对快速掌握并应用  Project 课题组：项目情况 Blog 随想录  Thoughts 对酒当歌：人生感悟 Critique 品鉴评论 Travel 御风而行：游记 Moment 时光碎片：短内容的心情日记 Gallery 光影长廊：照片集  ArXiv 荟萃集 Profile 档案处：个人介绍  网上找了不少静态页面的模板参考，还有各个博客的设计，参考他们的设计和功能，列了不少设想，所有的内容汇集在下面的思维导图中。
+Demo出炉 向认识的产品的同事咨询了下，开始尝试墨刀，可以在上面做原型设计和简单交互。这个在线工具很方便，我也只用了最简单的设计部分，几乎是傻瓜式的。
+Duang~设计稿暂时定版如下，后续很有可能会修改，毕竟现在十分的粗糙。
+主页 赛先生 list:
+single:
+课题组 list:
+single:
+随想录 list:
+single - default:
+single - moment:
+single - gallery:</description>
+    </item>
     
     <item>
       <title>Blog养成记(7) Hugo多级列表无法显示? —— Markdown的bug合集</title>
