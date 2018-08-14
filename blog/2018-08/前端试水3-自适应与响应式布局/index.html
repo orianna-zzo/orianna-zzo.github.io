@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="ZHENG Zi&#39;ou">
+<meta name="description" content="前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。
+自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。
+自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是不会变。响应式布局是最近几年随着Bootstrap开源流行起来的概念，不仅包括了自适应布局的概念，而且还增加对布局变化。
+实现方式 定义viewport viewport 是用户网页的可视区域(&ldquo;视区&rdquo;)，viewport可能比浏览器的可视区域小，也可能比浏览器的可视区域大（此时就需要移动网页或者使用滚动条）。
+对于viewport的部分，特别涉及到移动设备，实际上并没有这么简单。这里就不深入探究了，有时间可兴趣可以看下移动前端开发之viewport的深入理解，这里简单阐述对于移动设备的三种viewport，分别是layout viewport、visual viewport和ideal viewport。而ideal viewport是最适合移动设备的viewport，因为无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。
+移动设备默认的viewport是layout viewport，因此要在网页代码的头部，加入一行viewport元标签，将viewport定义为ideal viewport：
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot; /&gt;  viewport是网页默认的宽度和高度，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%，`shrink-to-fit=no解决iOS9中不起作用的问题。
+除了以上几个外，还有下面表格中的参数：
+   参数 含义     minimum-scale 允许用户的最小缩放值，为一个数字，可以带小数   maximum-scale 允许用户的最大缩放值，为一个数字，可以带小数   height 设置layout viewport的高度，这个属性很少使用   user-scalable 是否允许用户进行缩放，值为&rdquo;no&rdquo;或&rdquo;yes&rdquo;, no 代表不允许，yes代表允许    尽量应用相对高度/宽度/字体/图片 尽量不指定绝对像素px，而是用相对的单位：
+width: 80%; width: 80vw; /* vw: 视窗宽度的百分比（1vw 代表视窗的宽度为1%） */ width: 80vh; /* vh: 视窗高度的百分比 */ width: 80vmin; /* vmin: 当前vw和vh中较小的一个值 */ width: 80vmax; /* vmax: 当前vw和vh中较大的一个值 */ width: auto; font-size: 1.">
+
+<meta property="og:title" content="前端试水(3) 自适应与响应式布局" />
+<meta property="og:description" content="前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。
+自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。
+自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是不会变。响应式布局是最近几年随着Bootstrap开源流行起来的概念，不仅包括了自适应布局的概念，而且还增加对布局变化。
+实现方式 定义viewport viewport 是用户网页的可视区域(&ldquo;视区&rdquo;)，viewport可能比浏览器的可视区域小，也可能比浏览器的可视区域大（此时就需要移动网页或者使用滚动条）。
+对于viewport的部分，特别涉及到移动设备，实际上并没有这么简单。这里就不深入探究了，有时间可兴趣可以看下移动前端开发之viewport的深入理解，这里简单阐述对于移动设备的三种viewport，分别是layout viewport、visual viewport和ideal viewport。而ideal viewport是最适合移动设备的viewport，因为无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。
+移动设备默认的viewport是layout viewport，因此要在网页代码的头部，加入一行viewport元标签，将viewport定义为ideal viewport：
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot; /&gt;  viewport是网页默认的宽度和高度，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%，`shrink-to-fit=no解决iOS9中不起作用的问题。
+除了以上几个外，还有下面表格中的参数：
+   参数 含义     minimum-scale 允许用户的最小缩放值，为一个数字，可以带小数   maximum-scale 允许用户的最大缩放值，为一个数字，可以带小数   height 设置layout viewport的高度，这个属性很少使用   user-scalable 是否允许用户进行缩放，值为&rdquo;no&rdquo;或&rdquo;yes&rdquo;, no 代表不允许，yes代表允许    尽量应用相对高度/宽度/字体/图片 尽量不指定绝对像素px，而是用相对的单位：
+width: 80%; width: 80vw; /* vw: 视窗宽度的百分比（1vw 代表视窗的宽度为1%） */ width: 80vh; /* vh: 视窗高度的百分比 */ width: 80vmin; /* vmin: 当前vw和vh中较小的一个值 */ width: 80vmax; /* vmax: 当前vw和vh中较大的一个值 */ width: auto; font-size: 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" />
+
+
+
+<meta property="article:published_time" content="2018-08-14T22:03:03&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-08-14T22:03:03&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+    
+  
+    <meta property="og:see_also" content="https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/" />
+  
+    <meta property="og:see_also" content="https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/" />
+  
+
+
+
+
+
+
+
+
+<title>
+
+
+     前端试水(3) 自适应与响应式布局 
+
+</title>
+<link rel="canonical" href="https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-14%2017%3a50%3a36.530521013%20%2b0000%20UTC%20m%3d%2b0.241728834">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-14%2017%3a50%3a36.530521013%20%2b0000%20UTC%20m%3d%2b0.241728834">
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-14%2017%3a50%3a36.530521013%20%2b0000%20UTC%20m%3d%2b0.241728834">
+    
+        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-14%2017%3a50%3a36.530521013%20%2b0000%20UTC%20m%3d%2b0.241728834">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="https://orianna-zzo.github.io/img/zheng.png"
+
+>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://orianna-zzo.github.io/js/katex/katex.min.css" >
+<script src="https://orianna-zzo.github.io/js/katex/katex.min.js" > </script>
+<script src="https://orianna-zzo.github.io/js/katex/contrib/auto-render.min.js" ></script>
+ 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body);
+    });
+</script>
+ 
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
+            
+            <a href="https://orianna-zzo.github.io/"><div class="name">ZHENG Zi&#39;ou</div></a>
+            
+              <h3 class="self-intro">Be myself. Love the wonderful world. Do the right things in the right way.</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://orianna-zzo.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://orianna-zzo.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+
+	
+
+        
+
+        
+
+        
+            <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:zhengziou@gmail.com"><img class="icon" src="https://orianna-zzo.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    前端试水(3) 自适应与响应式布局
+
+</div>
+
+                    <div class="initials"><a href="https://orianna-zzo.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    <div style="display: flex">
+                        
+                        <div class="date" title='2018-08-14  Tuesday  22:03:03'>2018-08-14  Tuesday  22:03:03</div>
+                        
+  
+                        
+                        <div class="reading-time"><div class="middot"></div>2 minutes read</div>
+                        
+                    </div>
+                    <div style="display: flex;">
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">series:</div>
+                            
+                            <div class="page-tag" id="series">
+                                
+                                <a href="https://orianna-zzo.github.io/series/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B4">前端试水</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">category: </div>
+                            
+                            <div class="page-tag" id="categories">
+                                
+                                <a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D">杂技浅尝</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    
+                    <div class="page-tag">
+                        <div class="page-tag">tags: </div>
+                        
+                        <div class="page-tag" id="tags">
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF">前端</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/css">css</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80">响应式布局</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/viewport">viewport</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/blog">blog</a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<h2 id="前言">前言</h2>
+
+<p>其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。</p>
+
+<h2 id="自适应布局与响应式布局">自适应布局与响应式布局</h2>
+
+<p>自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。</p>
+
+<p>自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是不会变。响应式布局是最近几年随着Bootstrap开源流行起来的概念，不仅包括了自适应布局的概念，而且还增加对布局变化。</p>
+
+<h2 id="实现方式">实现方式</h2>
+
+<h3 id="定义viewport">定义viewport</h3>
+
+<p>viewport 是用户网页的可视区域(&ldquo;视区&rdquo;)，viewport可能比浏览器的可视区域小，也可能比浏览器的可视区域大（此时就需要移动网页或者使用滚动条）。</p>
+
+<p>对于viewport的部分，特别涉及到移动设备，实际上并没有这么简单。这里就不深入探究了，有时间可兴趣可以看下<a href="https://www.cnblogs.com/2050/p/3877280.html">移动前端开发之viewport的深入理解</a>，这里简单阐述对于移动设备的三种viewport，分别是layout viewport、visual viewport和ideal viewport。而ideal viewport是最适合移动设备的viewport，因为无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。</p>
+
+<p>移动设备默认的viewport是layout viewport，因此要在网页代码的头部，加入一行viewport元标签，将viewport定义为ideal viewport：</p>
+
+<pre><code class="language-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot; /&gt; 
+</code></pre>
+
+<p>viewport是网页默认的宽度和高度，网页宽度默认等于屏幕宽度（<code>width=device-width</code>），原始缩放比例（<code>initial-scale=1</code>）为1.0，即网页初始大小占屏幕面积的100%，`shrink-to-fit=no解决iOS9中不起作用的问题。</p>
+
+<p>除了以上几个外，还有下面表格中的参数：</p>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>minimum-scale</td>
+<td>允许用户的最小缩放值，为一个数字，可以带小数</td>
+</tr>
+
+<tr>
+<td>maximum-scale</td>
+<td>允许用户的最大缩放值，为一个数字，可以带小数</td>
+</tr>
+
+<tr>
+<td>height</td>
+<td>设置layout viewport的高度，这个属性很少使用</td>
+</tr>
+
+<tr>
+<td>user-scalable</td>
+<td>是否允许用户进行缩放，值为&rdquo;no&rdquo;或&rdquo;yes&rdquo;, no 代表不允许，yes代表允许</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="尽量应用相对高度-宽度-字体-图片">尽量应用相对高度/宽度/字体/图片</h3>
+
+<p>尽量不指定绝对像素<code>px</code>，而是用相对的单位：</p>
+
+<pre><code class="language-css">width: 80%;
+width: 80vw;      /* vw: 视窗宽度的百分比（1vw 代表视窗的宽度为1%） */
+width: 80vh;      /* vh: 视窗高度的百分比 */
+width: 80vmin;    /* vmin: 当前vw和vh中较小的一个值 */
+width: 80vmax;    /* vmax: 当前vw和vh中较大的一个值 */
+width: auto;
+
+font-size: 1.5em; /* 父元素font-size的1.5倍，仅可用于font-size */
+font-size: 2rem;  /* 根元素的2倍，还可用于width */
+</code></pre>
+
+<h4 id="vw-vh与-百分比的区别">vw、vh与%百分比的区别</h4>
+
+<ol>
+<li>%是相对于父元素的大小设定的比率，vw、vh是视窗大小决定的。</li>
+<li>vw、vh优势在于能够直接获取高度，而用%在没有设置body高度的情况下，是无法正确获得可视区域的高度的。</li>
+</ol>
+
+<h4 id="vmin-vmax的用处">vmin、vmax的用处</h4>
+
+<p>做移动页面开发时，如果使用vw、wh 设置字体大小（比如 5vw），在竖屏和横屏状态下显示的字体大小是不一样的。由于vmin和vmax是当前较小的vw和vh和当前较大的vw和vh。这里就可以用到vmin和vmax。使得文字大小在横竖屏下保持一致。</p>
+
+<h3 id="流式布局-fluid-grid">流式布局(fluid grid)</h3>
+
+<p>流式布局就是每个区块都是浮动的，如果宽度太小，超出的元素自动到下方，不会在水平方向溢出，避免水平滚动条。可以使用<code>float</code>实现，eg: <code>float: left</code>。</p>
+
+<p>或者直接使用Bootstrap的<a href="https://getbootstrap.com/docs/4.1/layout/grid/">栅格布局Grid Layout</a>。Bootstrap将每一行分为12个格子，针对不同的屏幕大小在不同的断点位置进行换行。有了12个格子，也可以更好的将一行按比例分配。</p>
+
+<h3 id="选择加载css">选择加载css</h3>
+
+<h4 id="html标签-head-中自适应加载css">html标签&lt;head&gt;中自适应加载css</h4>
+
+<p>css3引入Media Jquery模块，可以自动探测屏幕宽度，然后加载相应的CSS文件。</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype and|not|only (media feature)&quot; href=&quot;mystylesheet.css&quot;&gt;
+</code></pre>
+
+<p>具体例子：</p>
+
+<pre><code class="language-html">&lt;!-- 如果屏幕宽度小于400像素(max-device-width: 400px)，就加载tinyScreen.css --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; 
+      media=&quot;screen and (max-device-width: 400px)&quot; 
+      href=&quot;tinyScreen.css&quot; /&gt;
+
+&lt;!-- 如果屏幕宽度在400像素到600像素之间，则加载smallScreen.css --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;
+      media=&quot;screen and (min-width: 400px) and (max-device-width: 600px)&quot;
+      href=&quot;smallScreen.css&quot; /&gt;
+</code></pre>
+
+<h4 id="css文件中自适应加载css">css文件中自适应加载css</h4>
+
+<p>除了用html标签加载CSS文件，还可以在现有CSS文件中加载。</p>
+
+<pre><code class="language-css">@import  url(&quot;tinyScreen.css&quot;) screen and (max-device-width: 400px);
+</code></pre>
+
+<h4 id="css中-media自适应应用css">css中@media自适应应用css</h4>
+
+<p>同一个CSS文件中，也可以根据不同的屏幕分辨率，选择应用不同的CSS规则，这个选择是最常看到的。</p>
+
+<pre><code class="language-css">@media mediatype and|not|only (media feature) {
+    CSS-Code;
+}
+</code></pre>
+
+<p>比如说在css中<code>@media (min-width: 768px)</code>表示最小是768也就是&gt;=768，而<code>@media (max-width: 767.98px)</code>表示最大的是767.98也就是&lt;=767.98。</p>
+
+<p>下面的几组是Bootstrap中的css框架，可以用来参考学习。</p>
+
+<p>从上面我们可以看出有几个临界点的分辨率，那么我们就可以轻松的来写自己的自适应代码了</p>
+
+<pre><code class="language-css">  @media (min-width: 576px) { //&gt;=576的设备 }
+  @media (min-width: 768px) { //&gt;=768的设备 }
+  @media (min-width: 992px) { //&gt;=992的设备 }
+  @media (min-width: 1200px){ //&gt;=1200的设备 }
+  
+  @media (max-width: 1199.98px){ //&lt;=1199.98的设备 }
+  @media (max-width: 991.98px) { //&lt;=991.98的设备 }
+  @media (max-width: 767.98px) { //&lt;=768.98的设备 }
+  @media (max-width: 575.98px) { //&lt;=575.98的设备 }
+</code></pre>
+
+<p>这里需要注意下顺序，最后面的会覆盖前面的css。如果倒过来的顺序，那么写在了下面那么很悲剧。比如1440的宽度，由于1440&gt;576，那么1200的样式就会失效。所以用min-width时，小的放上面大的在下面，同理如果是用max-width那么就是大的在上面，小的在下面。</p>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p><a href="https://www.cnblogs.com/2050/p/3877280.html">移动前端开发之viewport的深入理解</a>、<a href="https://getbootstrap.com/docs/4.1/layout/grid/">Bootstrap栅格布局Grid Layout</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-08-14</td>
+</tr>
+</tbody>
+</table>
+
+                <br>
+                <p class="back-to-posts"><a href="https://orianna-zzo.github.io/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+

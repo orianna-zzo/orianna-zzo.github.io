@@ -6,10 +6,28 @@
     <description>Recent content in 前端 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cmn-Hans</language>
-    <lastBuildDate>Mon, 13 Aug 2018 00:40:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Aug 2018 22:03:03 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>前端试水(3) 自适应与响应式布局</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Tue, 14 Aug 2018 22:03:03 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</guid>
+      <description>前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。
+自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。
+自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是不会变。响应式布局是最近几年随着Bootstrap开源流行起来的概念，不仅包括了自适应布局的概念，而且还增加对布局变化。
+实现方式 定义viewport viewport 是用户网页的可视区域(&amp;ldquo;视区&amp;rdquo;)，viewport可能比浏览器的可视区域小，也可能比浏览器的可视区域大（此时就需要移动网页或者使用滚动条）。
+对于viewport的部分，特别涉及到移动设备，实际上并没有这么简单。这里就不深入探究了，有时间可兴趣可以看下移动前端开发之viewport的深入理解，这里简单阐述对于移动设备的三种viewport，分别是layout viewport、visual viewport和ideal viewport。而ideal viewport是最适合移动设备的viewport，因为无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。
+移动设备默认的viewport是layout viewport，因此要在网页代码的头部，加入一行viewport元标签，将viewport定义为ideal viewport：
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1, shrink-to-fit=no&amp;quot; /&amp;gt;  viewport是网页默认的宽度和高度，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%，`shrink-to-fit=no解决iOS9中不起作用的问题。
+除了以上几个外，还有下面表格中的参数：
+   参数 含义     minimum-scale 允许用户的最小缩放值，为一个数字，可以带小数   maximum-scale 允许用户的最大缩放值，为一个数字，可以带小数   height 设置layout viewport的高度，这个属性很少使用   user-scalable 是否允许用户进行缩放，值为&amp;rdquo;no&amp;rdquo;或&amp;rdquo;yes&amp;rdquo;, no 代表不允许，yes代表允许    尽量应用相对高度/宽度/字体/图片 尽量不指定绝对像素px，而是用相对的单位：
+width: 80%; width: 80vw; /* vw: 视窗宽度的百分比（1vw 代表视窗的宽度为1%） */ width: 80vh; /* vh: 视窗高度的百分比 */ width: 80vmin; /* vmin: 当前vw和vh中较小的一个值 */ width: 80vmax; /* vmax: 当前vw和vh中较大的一个值 */ width: auto; font-size: 1.</description>
+    </item>
     
     <item>
       <title>Blog养成记(12) 给网页的图片加个蒙版</title>
