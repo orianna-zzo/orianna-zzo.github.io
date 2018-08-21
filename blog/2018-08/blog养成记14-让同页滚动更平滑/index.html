@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="ZHENG Zi&#39;ou">
+<meta name="description" content="上一期说到增加toc侧边栏，但是直接跳转非常突兀，因此特地找了让同页跳转滚动更平滑的插件。使用步骤如下：
+配置smooth-scroll插件 首先下载smooth-scroll插件，将其中jquery.smooth-scroll.js放入js文件夹中。
+再在&lt;script&gt;中引入该js：
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/vendors/jquery.smooth-scroll.js&quot;&gt;&lt;/script&gt;  基础使用 可以在自己的js文件中加入下面的代码
+// Bind the hashchange event listener $(window).bind(&#39;hashchange&#39;, function (event) { $.smoothScroll({ // Replace &#39;#/&#39; with &#39;#&#39; to go to the correct target scrollTarget: location.hash.replace(/^\#\/?/, &#39;#&#39;) }); }); $(&#39;a[href*=&quot;#&quot;]&#39;) .bind(&#39;click&#39;, function (event) { // Remove &#39;#&#39; from the hash. var hash = this.hash.replace(/^#/, &#39;&#39;) if (this.pathname === location.pathname &amp;&amp; hash) { event.preventDefault(); // Change &#39;#&#39; (removed above) to &#39;#/&#39; so it doesn&#39;t jump without the smooth scrolling location.">
+
+<meta property="og:title" content="Blog养成记(14) 让同页滚动更平滑" />
+<meta property="og:description" content="上一期说到增加toc侧边栏，但是直接跳转非常突兀，因此特地找了让同页跳转滚动更平滑的插件。使用步骤如下：
+配置smooth-scroll插件 首先下载smooth-scroll插件，将其中jquery.smooth-scroll.js放入js文件夹中。
+再在&lt;script&gt;中引入该js：
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/vendors/jquery.smooth-scroll.js&quot;&gt;&lt;/script&gt;  基础使用 可以在自己的js文件中加入下面的代码
+// Bind the hashchange event listener $(window).bind(&#39;hashchange&#39;, function (event) { $.smoothScroll({ // Replace &#39;#/&#39; with &#39;#&#39; to go to the correct target scrollTarget: location.hash.replace(/^\#\/?/, &#39;#&#39;) }); }); $(&#39;a[href*=&quot;#&quot;]&#39;) .bind(&#39;click&#39;, function (event) { // Remove &#39;#&#39; from the hash. var hash = this.hash.replace(/^#/, &#39;&#39;) if (this.pathname === location.pathname &amp;&amp; hash) { event.preventDefault(); // Change &#39;#&#39; (removed above) to &#39;#/&#39; so it doesn&#39;t jump without the smooth scrolling location." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/" />
+
+
+
+<meta property="article:published_time" content="2018-08-18T20:14:59&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-08-18T20:14:59&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+<title>
+
+
+     Blog养成记(14) 让同页滚动更平滑 
+
+</title>
+<link rel="canonical" href="https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+ 
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-21%2019%3a16%3a36.470747798%20%2b0000%20UTC%20m%3d%2b0.208558052">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-21%2019%3a16%3a36.470747798%20%2b0000%20UTC%20m%3d%2b0.208558052">
+  
+  
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-21%2019%3a16%3a36.470747798%20%2b0000%20UTC%20m%3d%2b0.208558052"> 
+   
+
+
+
+<link rel="shortcut icon" 
+   
+    href="https://orianna-zzo.github.io/img/zheng.png" 
+  >
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://orianna-zzo.github.io/js/katex/katex.min.css">
+
+
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/highlight/github-gist.css">
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
+            
+            <a href="https://orianna-zzo.github.io/"><div class="name">ZHENG Zi&#39;ou</div></a>
+            
+              <h3 class="self-intro">Be myself. Love the wonderful world. Do the right things in the right way.</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://orianna-zzo.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://orianna-zzo.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+
+	
+
+        
+
+        
+
+        
+            <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:zhengziou@gmail.com"><img class="icon" src="https://orianna-zzo.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Blog养成记(14) 让同页滚动更平滑
+
+</div>
+
+                    <div class="initials"><a href="https://orianna-zzo.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    <div style="display: flex">
+                        
+                        <div class="date" title='2018-08-18  Saturday  20:14:59'>2018-08-18  Saturday  20:14:59</div>
+                        
+  
+                        
+                        <div class="reading-time"><div class="middot"></div>One minute read</div>
+                        
+                    </div>
+                    <div style="display: flex;">
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">series:</div>
+                            
+                            <div class="page-tag" id="series">
+                                
+                                <a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0">Blog养成记</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">category: </div>
+                            
+                            <div class="page-tag" id="categories">
+                                
+                                <a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D">杂技浅尝</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    
+                    <div class="page-tag">
+                        <div class="page-tag">tags: </div>
+                        
+                        <div class="page-tag" id="tags">
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF">前端</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/js">js</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/blog">blog</a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p>上一期说到增加toc侧边栏，但是直接跳转非常突兀，因此特地找了让同页跳转滚动更平滑的插件。使用步骤如下：</p>
+
+<h2 id="配置smooth-scroll插件">配置smooth-scroll插件</h2>
+
+<p>首先<a href="https://github.com/kswedberg/jquery-smooth-scroll/releases">下载smooth-scroll插件</a>，将其中<code>jquery.smooth-scroll.js</code>放入<code>js</code>文件夹中。</p>
+
+<p>再在&lt;script&gt;中引入该js：</p>
+
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;/js/vendors/jquery.smooth-scroll.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<h2 id="基础使用">基础使用</h2>
+
+<p>可以在自己的js文件中加入下面的代码</p>
+
+<pre><code class="language-js">// Bind the hashchange event listener
+$(window).bind('hashchange', function (event) {
+    $.smoothScroll({
+        // Replace '#/' with '#' to go to the correct target
+        scrollTarget: location.hash.replace(/^\#\/?/, '#')
+    });
+});
+
+$('a[href*=&quot;#&quot;]')
+    .bind('click', function (event) {
+        // Remove '#' from the hash.
+        var hash = this.hash.replace(/^#/, '')
+        if (this.pathname === location.pathname &amp;&amp; hash) {
+            event.preventDefault();
+            // Change '#' (removed above) to '#/' so it doesn't jump without the smooth scrolling
+            location.hash = '#/' + hash;
+        }
+    });
+
+// Trigger hashchange event on page load if there is a hash in the URL.
+if (location.hash) {
+    $(window).trigger('hashchange');
+}
+</code></pre>
+
+<p>上面的代码基本就可以直接使用了。它将<code>.smoothScroll</code>与<code>hashchange</code>进行绑定，将&lt;a&gt;的<code>href</code>的<code>hash</code>传入。</p>
+
+<p>smoothScroll可以设置网页偏移量，但是有一个问题不够灵活，如果我网站的网页偏移量不一致怎么办？</p>
+
+<h2 id="进一步传入offset">进一步传入offset</h2>
+
+<p>主要是将第一个与<code>hashchange</code>绑定的函数中增加一行：</p>
+
+<pre><code class="language-javascript">
+// Bind the hashchange event listener
+$(window).bind('hashchange', function (event) {
+    $.smoothScroll({
+         <mark style="background: #eeb4ff;">offset: $(&lsquo;body&rsquo;).attr(&lsquo;data-offset&rsquo;)? -$(&lsquo;body&rsquo;).attr(&lsquo;data-offset&rsquo;):0 ,</mark>
+        // Replace '#/' with '#' to go to the correct target
+        scrollTarget: location.hash.replace(/^\#\/?/, '#')
+    });
+});
+
+$('a[href*=&quot;#&quot;]')
+    .bind('click', function (event) {
+        // Remove '#' from the hash.
+        var hash = this.hash.replace(/^#/, '')
+        if (this.pathname === location.pathname &amp;&amp; hash) {
+            event.preventDefault();
+            // Change '#' (removed above) to '#/' so it doesn't jump without the smooth scrolling
+            location.hash = '#/' + hash;
+        }
+    });
+
+// Trigger hashchange event on page load if there is a hash in the URL.
+if (location.hash) {
+    $(window).trigger('hashchange');
+}
+
+</code></pre>
+
+<p>这句话通过<code>body</code>标签找<code>data-offset</code>属性，将该属性中的值赋给smoothScroll，从而获得该网页的偏移量。</p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-08-18</td>
+</tr>
+</tbody>
+</table>
+
+                <br>
+                <p class="back-to-posts"><a href="https://orianna-zzo.github.io/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
+

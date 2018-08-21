@@ -6,10 +6,26 @@
     <description>Recent content in Hugo on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cmn-Hans</language>
-    <lastBuildDate>Tue, 20 Mar 2018 16:46:17 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Aug 2018 21:59:02 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blog养成记(15) 创建shortcode模板便捷高亮内容</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</link>
+      <pubDate>Tue, 21 Aug 2018 21:59:02 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</guid>
+      <description>为什么使用shortcode 由于Hugo支持在文本内容中使用html标签，因此在文本中的文字如果需要高亮可以直接使用&amp;lt;mark&amp;gt;标签即可。但是code fence中的代码如何进行高亮呢？直接在code fence中使用html标签会被默认为文本（理应有办法转义，但暂时还不了解）。
+之前我的方案是使用highlight shortcode(参见Hugo的语法高亮配置)，但是由于highlight渲染的风格难以调整的关系，对于这个使用起来非常不灵活。而且使用hightlight shortcode只能一行一行地高亮，不够灵活，有时只想高亮代码段中部分代码怎么办？
+什么是shortcode模板 Hugo官网对Shortcode介绍为出现在内容文件中可以自定义的代码片段(snippets)，可以减少作者在Markdown的内容中增加大段html的标签内容。Hugo本身提供了一些内建的shortcode，比如我之前使用的highlight就是其中一个，还有一些其他常用的片段内容。
+Shortcode不会在Hugo模板(template)中起作用，对应在Hugo模板中的片段应放在partial文件夹中作为partial模板。
+新建shortcode改变背景色 在/layouts/shortcodes/文件夹中新建一个html文件，文件名是shortcode的代码名。
+在这个场景中，我想要改变选中文字的背景色，因此我新建了bgstyle.html文件。
+在该文件中写shortcode的内容：
+{{- if eq (.Get 0) &amp;quot;yellow&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #ffeb92fd;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;red&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #fa9494;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;blue&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #9ccaff;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;green&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #acffea;&amp;quot;&amp;gt; {{- .</description>
+    </item>
     
     <item>
       <title>Blog养成记(7) Hugo多级列表无法显示? —— Markdown的bug合集</title>
@@ -69,18 +85,19 @@ example.com/tags/docker 会列出tags标为docker的所有网页列表。
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
       <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。
-一般有以下3种常见方法：
-1. 使用Hugo默认Chroma
-2. 使用Pygments
-3. 使用CSS
-使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
+一般有以下几种常见方法：
+1. 使用Hugo默认Chroma (弃，一些代码无法高亮)
+ 使用Pygments (弃，一些代码无法高亮)
+ 使用Highlight Shortcode (弃，高亮颜色渲染问题)
+ 使用Highlight.js ✔️
+  使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
 Pygments安装 我在建立Hugo镜像时已经安装了Pygments，不然需要先安装Pygments。如果在Debian和Ubuntu系统中可以用下面语句安装，其他系统也可参考：
 $ sudo apt-get install python3-pygments  Pygments配置 下面是我按官网在 config.toml 中配置的参数：
 [highlighting] pygmentsUseClassic = true pygmentsCodeFences = true pygmentsStyle = &amp;quot;autumn&amp;quot;  其中， pygmentsUseClassic=true 说明使用Pygments来进行语法高亮；
 pygmentsCodeFences=true 使在code fence中的根据设置的语言标签进行语法高亮；
 pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里查看各高亮风格，选择最心仪的。
 我选择了 autumn，下面是在code fence中的高亮示例：
-#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.var = var self.run() def run(self): RunForrestRun() # run along!</description>
+#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.</description>
     </item>
     
     <item>
@@ -103,7 +120,7 @@ $ docker images  你可以发现orianna/hugo只有85.7MB大小.
 我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
+除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。

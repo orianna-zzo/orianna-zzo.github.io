@@ -106,7 +106,7 @@ $ docker images  你可以发现orianna/hugo只有85.7MB大小.
 我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
+除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。

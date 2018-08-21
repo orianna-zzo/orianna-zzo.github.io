@@ -18,18 +18,19 @@
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
       <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。
-一般有以下3种常见方法：
-1. 使用Hugo默认Chroma
-2. 使用Pygments
-3. 使用CSS
-使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
+一般有以下几种常见方法：
+1. 使用Hugo默认Chroma (弃，一些代码无法高亮)
+ 使用Pygments (弃，一些代码无法高亮)
+ 使用Highlight Shortcode (弃，高亮颜色渲染问题)
+ 使用Highlight.js ✔️
+  使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
 Pygments安装 我在建立Hugo镜像时已经安装了Pygments，不然需要先安装Pygments。如果在Debian和Ubuntu系统中可以用下面语句安装，其他系统也可参考：
 $ sudo apt-get install python3-pygments  Pygments配置 下面是我按官网在 config.toml 中配置的参数：
 [highlighting] pygmentsUseClassic = true pygmentsCodeFences = true pygmentsStyle = &amp;quot;autumn&amp;quot;  其中， pygmentsUseClassic=true 说明使用Pygments来进行语法高亮；
 pygmentsCodeFences=true 使在code fence中的根据设置的语言标签进行语法高亮；
 pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里查看各高亮风格，选择最心仪的。
 我选择了 autumn，下面是在code fence中的高亮示例：
-#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.var = var self.run() def run(self): RunForrestRun() # run along!</description>
+#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.</description>
     </item>
     
   </channel>

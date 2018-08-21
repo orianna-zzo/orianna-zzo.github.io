@@ -6,10 +6,55 @@
     <description>Recent content in Blog养成记 on 博客|ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cmn-Hans</language>
-    <lastBuildDate>Mon, 13 Aug 2018 00:40:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 21 Aug 2018 21:59:02 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blog养成记(15) 创建shortcode模板便捷高亮内容</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</link>
+      <pubDate>Tue, 21 Aug 2018 21:59:02 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</guid>
+      <description>为什么使用shortcode 由于Hugo支持在文本内容中使用html标签，因此在文本中的文字如果需要高亮可以直接使用&amp;lt;mark&amp;gt;标签即可。但是code fence中的代码如何进行高亮呢？直接在code fence中使用html标签会被默认为文本（理应有办法转义，但暂时还不了解）。
+之前我的方案是使用highlight shortcode(参见Hugo的语法高亮配置)，但是由于highlight渲染的风格难以调整的关系，对于这个使用起来非常不灵活。而且使用hightlight shortcode只能一行一行地高亮，不够灵活，有时只想高亮代码段中部分代码怎么办？
+什么是shortcode模板 Hugo官网对Shortcode介绍为出现在内容文件中可以自定义的代码片段(snippets)，可以减少作者在Markdown的内容中增加大段html的标签内容。Hugo本身提供了一些内建的shortcode，比如我之前使用的highlight就是其中一个，还有一些其他常用的片段内容。
+Shortcode不会在Hugo模板(template)中起作用，对应在Hugo模板中的片段应放在partial文件夹中作为partial模板。
+新建shortcode改变背景色 在/layouts/shortcodes/文件夹中新建一个html文件，文件名是shortcode的代码名。
+在这个场景中，我想要改变选中文字的背景色，因此我新建了bgstyle.html文件。
+在该文件中写shortcode的内容：
+{{- if eq (.Get 0) &amp;quot;yellow&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #ffeb92fd;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;red&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #fa9494;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;blue&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #9ccaff;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;green&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #acffea;&amp;quot;&amp;gt; {{- .</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(14) 让同页滚动更平滑</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</link>
+      <pubDate>Sat, 18 Aug 2018 20:14:59 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</guid>
+      <description>上一期说到增加toc侧边栏，但是直接跳转非常突兀，因此特地找了让同页跳转滚动更平滑的插件。使用步骤如下：
+配置smooth-scroll插件 首先下载smooth-scroll插件，将其中jquery.smooth-scroll.js放入js文件夹中。
+再在&amp;lt;script&amp;gt;中引入该js：
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/js/vendors/jquery.smooth-scroll.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  基础使用 可以在自己的js文件中加入下面的代码
+// Bind the hashchange event listener $(window).bind(&#39;hashchange&#39;, function (event) { $.smoothScroll({ // Replace &#39;#/&#39; with &#39;#&#39; to go to the correct target scrollTarget: location.hash.replace(/^\#\/?/, &#39;#&#39;) }); }); $(&#39;a[href*=&amp;quot;#&amp;quot;]&#39;) .bind(&#39;click&#39;, function (event) { // Remove &#39;#&#39; from the hash. var hash = this.hash.replace(/^#/, &#39;&#39;) if (this.pathname === location.pathname &amp;amp;&amp;amp; hash) { event.preventDefault(); // Change &#39;#&#39; (removed above) to &#39;#/&#39; so it doesn&#39;t jump without the smooth scrolling location.</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(13) 增加一个toc侧边栏</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</link>
+      <pubDate>Fri, 17 Aug 2018 21:01:32 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</guid>
+      <description>想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
+Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。
+Bootstrap基础版 scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将data-target设为后者的id，并设置data-spy=&amp;quot;scroll&amp;quot;，后者需要连接的href设为在前者内连接的id。
+在bootstrap提供的样例中，使用.nav或者.list-group来实现，动画效果也是基于这两者。由于.list-group只是一级目录，而在nested nav中，如果一个内部的.nav是.active的，那么它上级的.nav也是.active的，比较符合我的期望，因此放弃了.list-group的方法，具体可详见官网的教程。
+此外，需要在Spied Element中增加position: relative;。当监听对象Spied Element不是&amp;lt;body&amp;gt;时，还需要增加overflow-y: scroll;。如果希望监听菜单Scrollspy能够浮动在该元素中，而不是随着页面滚动消失的话，可以在监听菜单部分增加以下样式position: sticky;
+Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效果，甚至我担心是js冲突仅适用Bootstrap的框架，但还是无法达到监听的效果。我还怀疑过是否是Hugo的原因，但事实上即使不适用hugo，直接写一个index.html也无法达到监听的效果。后来直接将这些网站的源码都贴过来尝试，最后发现是因为如果监控对象不是&amp;lt;body&amp;gt;的话，监控对象的height必须有个数值，不能是auto或者100%
+基于nested nav的scrollspy的样例如下，重点部分进行高亮：
+&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-4&amp;quot;&amp;gt; &amp;lt;!-- Scrollspy --&amp;gt; &amp;lt;nav id=&amp;ldquo;navbar-example3&amp;quot; class=&amp;quot;navbar navbar-light bg-light flex-column&amp;quot; style=&amp;quot;position: sticky; top:6rem;&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;Navbar&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;ldquo;nav-link&amp;rdquo; href=&amp;quot;#item-1&amp;quot;&amp;gt;Item 1&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-1-1&amp;quot;&amp;gt;Item 1-1&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-1-2&amp;quot;&amp;gt;Item 1-2&amp;lt;/a&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;a class=&amp;quot;nav-link&amp;quot; href=&amp;quot;#item-2&amp;quot;&amp;gt;Item 2&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link&amp;quot; href=&amp;quot;#item-3&amp;quot;&amp;gt;Item 3&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-3-1&amp;quot;&amp;gt;Item 3-1&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1 active&amp;quot; href=&amp;quot;#item-3-2&amp;quot;&amp;gt;Item 3-2&amp;lt;/a&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-8&amp;quot;&amp;gt; &amp;lt;!</description>
+    </item>
     
     <item>
       <title>Blog养成记(12) 给网页的图片加个蒙版</title>
@@ -19,7 +64,8 @@
       <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</guid>
       <description> 上一期说到想给网站图标的图片加个蒙版，然而没有成功。那么网页中的图片么？经常看到个人图片都是圆形的，然而实际上上传的原图是方的。如果使用了蒙版功能，就可以对同一张图想怎么变形状就怎么变了。
 首先，定义一个类，比如avatar，在css文件中定义该类使用了某长图片蒙版：
-.avatar { border-radius: 50%; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); max-width: 50px; -webkit-mask-image: url(/img/mask/circle.svg); mask-image: url(/img/mask/circle.svg); } 其中高亮的两句定义了蒙版的图片。在这里，蒙版我使用的是font awesome里的圆形图，就长下面这个样子：
+.avatar { border-radius: 50%; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); max-width: 50px; -webkit-mask-image: url(/img/mask/circle.svg); mask-image: url(/img/mask/circle.svg);
+ }  其中高亮的两句定义了蒙版的图片。在这里，蒙版我使用的是font awesome里的圆形图，就长下面这个样子：
 在实际使用时，只需要在&amp;lt;img&amp;gt;标签中使用该类即可，如：
 &amp;lt;img class=&amp;quot;avatar&amp;quot; src=&amp;quot;img/avatar.png&amp;quot; width=&amp;quot;40&amp;quot; height=&amp;quot;40&amp;quot; class=&amp;quot;d-inline-block align-top&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;  版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
     </item>
@@ -38,13 +84,13 @@
     </item>
     
     <item>
-      <title>Blog养成记(10) Bootstrap4实现幻灯片(轮播)效果</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-bootstrap4%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
+      <title>Blog养成记(10) 实现幻灯片(轮播)效果</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
       <pubDate>Sun, 12 Aug 2018 01:41:43 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-bootstrap4%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
-      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在github上的js插件，这次使用bootstrap4发现这已经集成进bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。
-Carousel 基础版 在Bootstrap4中轮播组件称为carousel，在官网就有对其使用的简单介绍。
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
+      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在Github上的js插件，这次使用Bootstrap4发现这已经集成进Bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。
+Carousel 基础版 在Bootstrap4中轮播组件称为Carousel，在官网就有对其使用的简单介绍。
 简单说来，该组件分为四块：indicator(显示第几页)、control(控制上一页和下一页)、caption(每一页上显示的字)和slide(显示的图片)。这几部分中，除了slide是必须要有的（不然用这个控件干嘛），其他都可以不用。基本的格式如下，基本包含了所有的基础用法，还有一些参数比如间隔时间等可以调整：
 &amp;lt;!-- Carousel --&amp;gt; &amp;lt;div id=&amp;quot;example&amp;quot; class=&amp;quot;carousel slide carousel-fade&amp;quot; data-ride=&amp;quot;carousel&amp;quot; data-interval=&amp;quot;3000&amp;quot;&amp;gt; &amp;lt;!-- Indicator --&amp;gt; &amp;lt;!-- data-target=外面div的id --&amp;gt; &amp;lt;ol class=&amp;quot;carousel-indicators&amp;quot;&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;0&amp;quot; class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;1&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;2&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;!-- /.Indicator --&amp;gt; &amp;lt;!-- Slides --&amp;gt; &amp;lt;div class=&amp;quot;carousel-inner&amp;quot;&amp;gt; &amp;lt;!-- First Slide --&amp;gt; &amp;lt;div class=&amp;quot;carousel-item active&amp;quot;&amp;gt; &amp;lt;img class=&amp;quot;d-block w-100&amp;quot; src=&amp;quot;path/to/img1.jpg&amp;quot; alt=&amp;quot;First slide&amp;quot;&amp;gt; &amp;lt;!-- First Caption --&amp;gt; &amp;lt;div class=&amp;quot;carousel-caption d-none d-md-block&amp;quot;&amp;gt; &amp;lt;h5&amp;gt;Caption 1&amp;lt;/h5&amp;gt; &amp;lt;p&amp;gt;Content of caption 1&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!</description>
     </item>
@@ -185,18 +231,19 @@ example.com/tags/docker 会列出tags标为docker的所有网页列表。
       
       <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
       <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。
-一般有以下3种常见方法：
-1. 使用Hugo默认Chroma
-2. 使用Pygments
-3. 使用CSS
-使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
+一般有以下几种常见方法：
+1. 使用Hugo默认Chroma (弃，一些代码无法高亮)
+ 使用Pygments (弃，一些代码无法高亮)
+ 使用Highlight Shortcode (弃，高亮颜色渲染问题)
+ 使用Highlight.js ✔️
+  使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
 Pygments安装 我在建立Hugo镜像时已经安装了Pygments，不然需要先安装Pygments。如果在Debian和Ubuntu系统中可以用下面语句安装，其他系统也可参考：
 $ sudo apt-get install python3-pygments  Pygments配置 下面是我按官网在 config.toml 中配置的参数：
 [highlighting] pygmentsUseClassic = true pygmentsCodeFences = true pygmentsStyle = &amp;quot;autumn&amp;quot;  其中， pygmentsUseClassic=true 说明使用Pygments来进行语法高亮；
 pygmentsCodeFences=true 使在code fence中的根据设置的语言标签进行语法高亮；
 pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里查看各高亮风格，选择最心仪的。
 我选择了 autumn，下面是在code fence中的高亮示例：
-#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.var = var self.run() def run(self): RunForrestRun() # run along!</description>
+#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.</description>
     </item>
     
     <item>
@@ -219,7 +266,7 @@ $ docker images  你可以发现orianna/hugo只有85.7MB大小.
 我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
+除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。

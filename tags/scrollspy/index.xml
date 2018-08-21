@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scrollspy on 博客|ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/tags/scrollspy/</link>
+    <description>Recent content in Scrollspy on 博客|ZHENG Zi&#39;ou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cmn-Hans</language>
+    <lastBuildDate>Fri, 17 Aug 2018 21:01:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/tags/scrollspy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog养成记(13) 增加一个toc侧边栏</title>
+      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</link>
+      <pubDate>Fri, 17 Aug 2018 21:01:32 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</guid>
+      <description>想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
+Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。
+Bootstrap基础版 scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将data-target设为后者的id，并设置data-spy=&amp;quot;scroll&amp;quot;，后者需要连接的href设为在前者内连接的id。
+在bootstrap提供的样例中，使用.nav或者.list-group来实现，动画效果也是基于这两者。由于.list-group只是一级目录，而在nested nav中，如果一个内部的.nav是.active的，那么它上级的.nav也是.active的，比较符合我的期望，因此放弃了.list-group的方法，具体可详见官网的教程。
+此外，需要在Spied Element中增加position: relative;。当监听对象Spied Element不是&amp;lt;body&amp;gt;时，还需要增加overflow-y: scroll;。如果希望监听菜单Scrollspy能够浮动在该元素中，而不是随着页面滚动消失的话，可以在监听菜单部分增加以下样式position: sticky;
+Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效果，甚至我担心是js冲突仅适用Bootstrap的框架，但还是无法达到监听的效果。我还怀疑过是否是Hugo的原因，但事实上即使不适用hugo，直接写一个index.html也无法达到监听的效果。后来直接将这些网站的源码都贴过来尝试，最后发现是因为如果监控对象不是&amp;lt;body&amp;gt;的话，监控对象的height必须有个数值，不能是auto或者100%
+基于nested nav的scrollspy的样例如下，重点部分进行高亮：
+&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-4&amp;quot;&amp;gt; &amp;lt;!-- Scrollspy --&amp;gt; &amp;lt;nav id=&amp;ldquo;navbar-example3&amp;quot; class=&amp;quot;navbar navbar-light bg-light flex-column&amp;quot; style=&amp;quot;position: sticky; top:6rem;&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;Navbar&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;ldquo;nav-link&amp;rdquo; href=&amp;quot;#item-1&amp;quot;&amp;gt;Item 1&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-1-1&amp;quot;&amp;gt;Item 1-1&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-1-2&amp;quot;&amp;gt;Item 1-2&amp;lt;/a&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;a class=&amp;quot;nav-link&amp;quot; href=&amp;quot;#item-2&amp;quot;&amp;gt;Item 2&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link&amp;quot; href=&amp;quot;#item-3&amp;quot;&amp;gt;Item 3&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-3-1&amp;quot;&amp;gt;Item 3-1&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1 active&amp;quot; href=&amp;quot;#item-3-2&amp;quot;&amp;gt;Item 3-2&amp;lt;/a&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-8&amp;quot;&amp;gt; &amp;lt;!</description>
+    </item>
+    
+  </channel>
+</rss>

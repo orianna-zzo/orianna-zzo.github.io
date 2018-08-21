@@ -23,7 +23,7 @@ $ docker images  你可以发现orianna/hugo只有85.7MB大小.
 我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
+除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。
@@ -44,7 +44,7 @@ $ docker images  你可以发现orianna/hugo只有85.7MB大小.
 我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
 将所有内容clone到当前目录：
 $ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0)  在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
+除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
 $ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
 接下去你就可以在终端输入下面这行命令来查看镜像信息：
 $ docker images  至此，你已经获得了Hugo的docker镜像了。
@@ -88,48 +88,40 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 
 
-
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
-
-
-
-    
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-14%2017%3a50%3a36.719548277%20%2b0000%20UTC%20m%3d%2b0.430756101">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-14%2017%3a50%3a36.719548277%20%2b0000%20UTC%20m%3d%2b0.430756101">
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/pygments.css?t=2018-08-14%2017%3a50%3a36.719548277%20%2b0000%20UTC%20m%3d%2b0.430756101">
-    
-        <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-14%2017%3a50%3a36.719548277%20%2b0000%20UTC%20m%3d%2b0.430756101">
-    
-
-
-
-
-<link rel="shortcut icon"
-
-    href="https://orianna-zzo.github.io/img/zheng.png"
-
->
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="https://orianna-zzo.github.io/js/katex/katex.min.css" >
-<script src="https://orianna-zzo.github.io/js/katex/katex.min.js" > </script>
-<script src="https://orianna-zzo.github.io/js/katex/contrib/auto-render.min.js" ></script>
  
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body);
-    });
-</script>
- 
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-21%2019%3a16%3a36.68642399%20%2b0000%20UTC%20m%3d%2b0.424234225">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-21%2019%3a16%3a36.68642399%20%2b0000%20UTC%20m%3d%2b0.424234225">
+  
+  
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-21%2019%3a16%3a36.68642399%20%2b0000%20UTC%20m%3d%2b0.424234225"> 
+   
+
+
+
+<link rel="shortcut icon" 
+   
+    href="https://orianna-zzo.github.io/img/zheng.png" 
+  >
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://orianna-zzo.github.io/js/katex/katex.min.css">
+
+
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/highlight/github-gist.css">
+
 
 </head>
 
@@ -349,11 +341,7 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 
 <p>打开Dockerfile，其中HUGO_VERSION是<a href="https://github.com/gohugoio/hugo">Hugo</a>官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是<code>/hugo-site</code>用来挂载你的Hugo源码，另一个是<code>static-site</code>用来定义Hugo生成静态网页的输出文件夹。</p>
 
-
-    <span style="color: #cbcbcb" >
-        <del>除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行<code>start.sh</code>。该shell脚本只有一个作用，如果在当前文件夹中包含<code>run.sh</code>文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。<code>run.sh</code>的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例<code>run.sh</code>。</del>(v2.0)
-    </span>
-
+<mark style="color: #cbcbcb;"><del>除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行<code>start.sh</code>。该shell脚本只有一个作用，如果在当前文件夹中包含<code>run.sh</code>文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。<code>run.sh</code>的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例<code>run.sh</code>。</del>(v2.0)</mark>
 
 <p>在这个repo的文件夹中打开终端，输入下面命令以建立镜像：</p>
 
@@ -399,11 +387,7 @@ $ docker images  至此，你已经获得了Hugo的docker镜像了。
 <pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest COMMAND [-flag]
 </code></pre>
 
-
-    <span style="color: #cbcbcb" >
-        <del>此时，因为 <code>blog-hugo</code> 文件夹中并未有 <code>run.sh</code> ，所以会打开一个交互终端，并位于 <code>/hugo-site</code> 文件夹下。</del>(v2.0)
-    </span>
-
+<mark style="color: #cbcbcb;"><del>此时，因为 <code>blog-hugo</code> 文件夹中并未有 <code>run.sh</code> ，所以会打开一个交互终端，并位于 <code>/hugo-site</code> 文件夹下。</del>(v2.0)</mark>
 
 <p>如执行<code>hugo new site.</code>，Hugo就会自动生成一个博客的目录结构，则需要输入：</p>
 
@@ -477,11 +461,7 @@ title: &quot;Blog&quot;
 
 <h3 id="查看网页">查看网页</h3>
 
-
-    <span style="color: #cbcbcb" >
-        <del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)
-    </span>
-
+<mark style="color: #cbcbcb;"><del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)</mark>
 
 <p>通过<code>hugo server -b http://localhost:1313 --bind=0.0.0.0</code>来即使查看静态网页情况：</p>
 
@@ -494,11 +474,7 @@ title: &quot;Blog&quot;
 
 <h3 id="生成静态页面">生成静态页面</h3>
 
-
-    <span style="color: #cbcbcb" >
-        <del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)
-    </span>
-
+<mark style="color: #cbcbcb;"><del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)</mark>
 
 <p>通过<code>hugo --baseUrl=&quot;https://orianna-zzo.github.io/&quot;</code>来生成静态网页，需要明确静态网页url：</p>
 
@@ -653,6 +629,30 @@ alias hugo-run='docker run -v $(pwd):/hugo-site -v $(pwd)/public:/static-site -p
 
 
 
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
 
 
 

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="ZHENG Zi&#39;ou">
+<meta name="description" content="想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
+Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。
+Bootstrap基础版 scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将data-target设为后者的id，并设置data-spy=&quot;scroll&quot;，后者需要连接的href设为在前者内连接的id。
+在bootstrap提供的样例中，使用.nav或者.list-group来实现，动画效果也是基于这两者。由于.list-group只是一级目录，而在nested nav中，如果一个内部的.nav是.active的，那么它上级的.nav也是.active的，比较符合我的期望，因此放弃了.list-group的方法，具体可详见官网的教程。
+此外，需要在Spied Element中增加position: relative;。当监听对象Spied Element不是&lt;body&gt;时，还需要增加overflow-y: scroll;。如果希望监听菜单Scrollspy能够浮动在该元素中，而不是随着页面滚动消失的话，可以在监听菜单部分增加以下样式position: sticky;
+Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效果，甚至我担心是js冲突仅适用Bootstrap的框架，但还是无法达到监听的效果。我还怀疑过是否是Hugo的原因，但事实上即使不适用hugo，直接写一个index.html也无法达到监听的效果。后来直接将这些网站的源码都贴过来尝试，最后发现是因为如果监控对象不是&lt;body&gt;的话，监控对象的height必须有个数值，不能是auto或者100%
+基于nested nav的scrollspy的样例如下，重点部分进行高亮：
+&lt;div class=&quot;row&quot;&gt; &lt;div class=&quot;col-4&quot;&gt; &lt;!-- Scrollspy --&gt; &lt;nav id=&ldquo;navbar-example3&quot; class=&quot;navbar navbar-light bg-light flex-column&quot; style=&quot;position: sticky; top:6rem;&quot;&gt; &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&ldquo;nav-link&rdquo; href=&quot;#item-1&quot;&gt;Item 1&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-1&quot;&gt;Item 1-1&lt;/a&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-2&quot;&gt;Item 1-2&lt;/a&gt; &lt;/nav&gt; &lt;a class=&quot;nav-link&quot; href=&quot;#item-2&quot;&gt;Item 2&lt;/a&gt; &lt;a class=&quot;nav-link&quot; href=&quot;#item-3&quot;&gt;Item 3&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-3-1&quot;&gt;Item 3-1&lt;/a&gt; &lt;a class=&quot;nav-link ml-3 my-1 active&quot; href=&quot;#item-3-2&quot;&gt;Item 3-2&lt;/a&gt; &lt;/nav&gt; &lt;/nav&gt; &lt;/nav&gt; &lt;/div&gt; &lt;div class=&quot;col-8&quot;&gt; &lt;!">
+
+<meta property="og:title" content="Blog养成记(13) 增加一个toc侧边栏" />
+<meta property="og:description" content="想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
+Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。
+Bootstrap基础版 scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将data-target设为后者的id，并设置data-spy=&quot;scroll&quot;，后者需要连接的href设为在前者内连接的id。
+在bootstrap提供的样例中，使用.nav或者.list-group来实现，动画效果也是基于这两者。由于.list-group只是一级目录，而在nested nav中，如果一个内部的.nav是.active的，那么它上级的.nav也是.active的，比较符合我的期望，因此放弃了.list-group的方法，具体可详见官网的教程。
+此外，需要在Spied Element中增加position: relative;。当监听对象Spied Element不是&lt;body&gt;时，还需要增加overflow-y: scroll;。如果希望监听菜单Scrollspy能够浮动在该元素中，而不是随着页面滚动消失的话，可以在监听菜单部分增加以下样式position: sticky;
+Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效果，甚至我担心是js冲突仅适用Bootstrap的框架，但还是无法达到监听的效果。我还怀疑过是否是Hugo的原因，但事实上即使不适用hugo，直接写一个index.html也无法达到监听的效果。后来直接将这些网站的源码都贴过来尝试，最后发现是因为如果监控对象不是&lt;body&gt;的话，监控对象的height必须有个数值，不能是auto或者100%
+基于nested nav的scrollspy的样例如下，重点部分进行高亮：
+&lt;div class=&quot;row&quot;&gt; &lt;div class=&quot;col-4&quot;&gt; &lt;!-- Scrollspy --&gt; &lt;nav id=&ldquo;navbar-example3&quot; class=&quot;navbar navbar-light bg-light flex-column&quot; style=&quot;position: sticky; top:6rem;&quot;&gt; &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&ldquo;nav-link&rdquo; href=&quot;#item-1&quot;&gt;Item 1&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-1&quot;&gt;Item 1-1&lt;/a&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-2&quot;&gt;Item 1-2&lt;/a&gt; &lt;/nav&gt; &lt;a class=&quot;nav-link&quot; href=&quot;#item-2&quot;&gt;Item 2&lt;/a&gt; &lt;a class=&quot;nav-link&quot; href=&quot;#item-3&quot;&gt;Item 3&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-3-1&quot;&gt;Item 3-1&lt;/a&gt; &lt;a class=&quot;nav-link ml-3 my-1 active&quot; href=&quot;#item-3-2&quot;&gt;Item 3-2&lt;/a&gt; &lt;/nav&gt; &lt;/nav&gt; &lt;/nav&gt; &lt;/div&gt; &lt;div class=&quot;col-8&quot;&gt; &lt;!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/" />
+
+
+
+<meta property="article:published_time" content="2018-08-17T21:01:32&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-08-17T21:01:32&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+<title>
+
+
+     Blog养成记(13) 增加一个toc侧边栏 
+
+</title>
+<link rel="canonical" href="https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+ 
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-21%2019%3a16%3a36.48046805%20%2b0000%20UTC%20m%3d%2b0.218278332">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-21%2019%3a16%3a36.48046805%20%2b0000%20UTC%20m%3d%2b0.218278332">
+  
+  
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-21%2019%3a16%3a36.48046805%20%2b0000%20UTC%20m%3d%2b0.218278332"> 
+   
+
+
+
+<link rel="shortcut icon" 
+   
+    href="https://orianna-zzo.github.io/img/zheng.png" 
+  >
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://orianna-zzo.github.io/js/katex/katex.min.css">
+
+
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/highlight/github-gist.css">
+
+
+</head>
+
+
+<body lang="">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="https://orianna-zzo.github.io/"><img class="avatar" src="https://orianna-zzo.github.io/img/profile.png" srcset="https://orianna-zzo.github.io/img/profile.png 1x"></a>
+            
+            <a href="https://orianna-zzo.github.io/"><div class="name">ZHENG Zi&#39;ou</div></a>
+            
+              <h3 class="self-intro">Be myself. Love the wonderful world. Do the right things in the right way.</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-blog"><a href="https://orianna-zzo.github.io/blog/"><span>Blog</span></a></li>
+                    
+                        <li class="nav-about"><a href="https://orianna-zzo.github.io/about/"><span>About</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+        
+            <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/github.svg" alt="github" /></a>
+        
+
+        
+
+        
+
+	
+
+        
+
+        
+
+        
+            <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><img class="icon" src="https://orianna-zzo.github.io/img/linkedin.svg" alt="linkedin" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+            <a href="mailto:zhengziou@gmail.com"><img class="icon" src="https://orianna-zzo.github.io/img/email.svg" alt="email" /></a>
+        
+
+        
+
+        
+        </div>
+    </div>
+</section>
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Blog养成记(13) 增加一个toc侧边栏
+
+</div>
+
+                    <div class="initials"><a href="https://orianna-zzo.github.io/"></a></div>
+                </div>
+                <div class="meta">
+                    <div style="display: flex">
+                        
+                        <div class="date" title='2018-08-17  Friday  21:01:32'>2018-08-17  Friday  21:01:32</div>
+                        
+  
+                        
+                        <div class="reading-time"><div class="middot"></div>4 minutes read</div>
+                        
+                    </div>
+                    <div style="display: flex;">
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">series:</div>
+                            
+                            <div class="page-tag" id="series">
+                                
+                                <a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0">Blog养成记</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+
+                        
+                        <div class="page-tag">
+                            <div class="page-tag">category: </div>
+                            
+                            <div class="page-tag" id="categories">
+                                
+                                <a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D">杂技浅尝</a> 
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+
+                    
+                    <div class="page-tag">
+                        <div class="page-tag">tags: </div>
+                        
+                        <div class="page-tag" id="tags">
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF">前端</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/css">css</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/blog">blog</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/scrollspy">scrollspy</a>
+                            </div>
+                            
+                            <div class="page-tag">
+                                <a href="https://orianna-zzo.github.io/tags/bootstrap">bootstrap</a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="markdown">
+                
+
+<p>想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。</p>
+
+<h2 id="scrollspy">Scrollspy</h2>
+
+<p>这个插件bootstrap中有，起名叫<a href="https://getbootstrap.com/docs/4.1/components/scrollspy">scrollspy滚动监听</a>，但是原版的实在不是我想要的样式。之前在<a href="https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/">blog养成记10-实现幻灯片轮播效果</a>中使用的<a href="https://mdbootstrap.com/javascript/scrollspy/#mdb-scrollspy">mdb的这个插件</a>有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。</p>
+
+<h3 id="bootstrap基础版">Bootstrap基础版</h3>
+
+<p>scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将<code>data-target</code>设为后者的id，并设置<code>data-spy=&quot;scroll&quot;</code>，后者需要连接的<code>href</code>设为在前者内连接的id。</p>
+
+<p>在bootstrap提供的样例中，使用<code>.nav</code>或者<code>.list-group</code>来实现，动画效果也是基于这两者。由于<code>.list-group</code>只是一级目录，而在nested nav中，如果一个内部的<code>.nav</code>是<code>.active</code>的，那么它上级的<code>.nav</code>也是<code>.active</code>的，比较符合我的期望，因此放弃了<code>.list-group</code>的方法，具体可详见官网的教程。</p>
+
+<p>此外，需要在Spied Element中增加<code>position: relative;</code>。当监听对象Spied Element不是&lt;body&gt;时，还需要增加<code>overflow-y: scroll;</code>。如果希望监听菜单Scrollspy能够浮动在该元素中，而不是随着页面滚动消失的话，可以在监听菜单部分增加以下样式<code>position: sticky;</code></p>
+
+<p>Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效果，甚至我担心是js冲突仅适用Bootstrap的框架，但还是无法达到监听的效果。我还怀疑过是否是Hugo的原因，但事实上即使不适用hugo，直接写一个index.html也无法达到监听的效果。后来直接将这些网站的源码都贴过来尝试，最后发现是因为如果监控对象不是&lt;body&gt;的话，监控对象的height必须有个数值，不能是auto或者100%</p>
+
+<p>基于nested nav的scrollspy的样例如下，重点部分进行高亮：</p>
+
+<pre><code class="language-html">
+&lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-4&quot;&gt;
+        &lt;!-- Scrollspy --&gt;
+        &lt;nav <mark style="background: #eeb4ff;">id=&ldquo;navbar-example3</mark>&quot; class=&quot;navbar navbar-light bg-light flex-column&quot;  style=&quot;<mark style="background: #eeb4ff;">position: sticky;</mark> top:6rem;&quot;&gt;
+          &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;
+          &lt;nav class=&quot;<mark style="background: #eeb4ff;">nav nav-pills</mark> flex-column&quot;&gt;
+            &lt;<mark style="background: #eeb4ff;">a class=&ldquo;nav-link&rdquo;</mark> href=&quot;#item-1&quot;&gt;Item 1&lt;/a&gt;
+            &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt;
+              &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-1&quot;&gt;Item 1-1&lt;/a&gt;
+              &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-2&quot;&gt;Item 1-2&lt;/a&gt;
+            &lt;/nav&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#item-2&quot;&gt;Item 2&lt;/a&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#item-3&quot;&gt;Item 3&lt;/a&gt;
+            &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt;
+              &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-3-1&quot;&gt;Item 3-1&lt;/a&gt;
+              &lt;a class=&quot;nav-link ml-3 my-1 active&quot; href=&quot;#item-3-2&quot;&gt;Item 3-2&lt;/a&gt;
+            &lt;/nav&gt;
+          &lt;/nav&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+      
+      &lt;div class=&quot;col-8&quot;&gt;
+        &lt;!-- Spied Element --&gt;
+        &lt;!-- data-target=Scrollspy的id --&gt; 
+        &lt;div <mark style="background: #eeb4ff;">data-spy=&ldquo;scroll&rdquo; data-target=&ldquo;#navbar-example3&rdquo; data-offset=&ldquo;0&rdquo;</mark> style=&quot;<mark style="background: #eeb4ff;">position: relative; height: 500px; overflow: auto;</mark>&quot;&gt;
+          &lt;h4 id=&quot;item-1&quot;&gt;Item 1&lt;/h4&gt;
+          &lt;p&gt;Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu. Do aute ipsum ipsum ullamco cillum consectetur ut et aute consectetur labore. Fugiat laborum incididunt tempor eu consequat enim dolore proident. Qui laborum do non excepteur nulla magna eiusmod consectetur in. Aliqua et aliqua officia quis et incididunt voluptate non anim reprehenderit adipisicing dolore ut consequat deserunt mollit dolore. Aliquip nulla enim veniam non fugiat id cupidatat nulla elit cupidatat commodo velit ut eiusmod cupidatat elit dolore.&lt;/p&gt;
+          &lt;h5 id=&quot;item-1-1&quot;&gt;Item 1-1&lt;/h5&gt;
+          &lt;p&gt;Amet tempor mollit aliquip pariatur excepteur commodo do ea cillum commodo Lorem et occaecat elit qui et. Aliquip labore ex ex esse voluptate occaecat Lorem ullamco deserunt. Aliqua cillum excepteur irure consequat id quis ea. Sit proident ullamco aute magna pariatur nostrud labore. Reprehenderit aliqua commodo eiusmod aliquip est do duis amet proident magna consectetur consequat eu commodo fugiat non quis. Enim aliquip exercitation ullamco adipisicing voluptate excepteur minim exercitation minim minim commodo adipisicing exercitation officia nisi adipisicing. Anim id duis qui consequat labore adipisicing sint dolor elit cillum anim et fugiat.&lt;/p&gt;
+          &lt;h5 id=&quot;item-1-2&quot;&gt;Item 1-2&lt;/h5&gt;
+          &lt;p&gt;Cillum nisi deserunt magna eiusmod qui eiusmod velit voluptate pariatur laborum sunt enim. Irure laboris mollit consequat incididunt sint et culpa culpa incididunt adipisicing magna magna occaecat. Nulla ipsum cillum eiusmod sint elit excepteur ea labore enim consectetur in labore anim. Proident ullamco ipsum esse elit ut Lorem eiusmod dolor et eiusmod. Anim occaecat nulla in non consequat eiusmod velit incididunt.&lt;/p&gt;
+          &lt;h4 id=&quot;item-2&quot;&gt;Item 2&lt;/h4&gt;
+          &lt;p&gt;Quis magna Lorem anim amet ipsum do mollit sit cillum voluptate ex nulla tempor. Laborum consequat non elit enim exercitation cillum aliqua consequat id aliqua. Esse ex consectetur mollit voluptate est in duis laboris ad sit ipsum anim Lorem. Incididunt veniam velit elit elit veniam Lorem aliqua quis ullamco deserunt sit enim elit aliqua esse irure. Laborum nisi sit est tempor laborum mollit labore officia laborum excepteur commodo non commodo dolor excepteur commodo. Ipsum fugiat ex est consectetur ipsum commodo tempor sunt in proident.&lt;/p&gt;
+          &lt;h4 id=&quot;item-3&quot;&gt;Item 3&lt;/h4&gt;
+          &lt;p&gt;Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco est ex ullamco excepteur.&lt;/p&gt;
+          &lt;h5 id=&quot;item-3-1&quot;&gt;Item 3-1&lt;/h5&gt;
+          &lt;p&gt;Deserunt quis elit Lorem eiusmod amet enim enim amet minim Lorem proident nostrud. Ea id dolore anim exercitation aute fugiat labore voluptate cillum do laboris labore. Ex velit exercitation nisi enim labore reprehenderit labore nostrud ut ut. Esse officia sunt duis aliquip ullamco tempor eiusmod deserunt irure nostrud irure. Ullamco proident veniam laboris ea consectetur magna sunt ex exercitation aliquip minim enim culpa occaecat exercitation. Est tempor excepteur aliquip laborum consequat do deserunt laborum esse eiusmod irure proident ipsum esse qui.&lt;/p&gt;
+          &lt;h5 id=&quot;item-3-2&quot;&gt;Item 3-2&lt;/h5&gt;
+          &lt;p&gt;Labore sit culpa commodo elit adipisicing sit aliquip elit proident voluptate minim mollit nostrud aute reprehenderit do. Mollit excepteur eu Lorem ipsum anim commodo sint labore Lorem in exercitation velit incididunt. Occaecat consectetur nisi in occaecat proident minim enim sunt reprehenderit exercitation cupidatat et do officia. Aliquip consequat ad labore labore mollit ut amet. Sit pariatur tempor proident in veniam culpa aliqua excepteur elit magna fugiat eiusmod amet officia.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+</code></pre>
+
+<h3 id="参考mdb最后采用版">参考mdb最后采用版</h3>
+
+<p>就如上一节所说的，如果监控的不是&lt;body&gt;就一定需要定义height，而定义了height就会出现一个内部的滚动窗口，这与我设想的不一致。于是决定到<code>baseof.html</code>中修改&lt;body&gt;，并规定id为<code>page-scrollspy</code>的是全页的滚动监听菜单。</p>
+
+<pre><code class="language-html">&lt;body class=&quot;bg-light&quot; data-spy=&quot;scroll&quot; data-target=&quot;#page-scrollspy&quot; data-offset=&quot;90&quot;&gt;
+</code></pre>
+
+<p>所使用的滚动监听菜单部分如下。基本外层确定id为<code>page-scrollspy</code>并使用<code>.toc-nav</code>，里面使用无序列表，最外层&lt;ul&gt;使用<code>.nav</code>和<code>.nav-pills</code>类，每个子项都是&lt;li class=&ldquo;nav-item&rdquo;&gt;里面再套&lt;a class=&ldquo;nav-link&rdquo;&gt;，若还存在子列表，使用&lt;ul class=&ldquo;nav&rdquo;&gt;并加上缩进<code>.ml-3</code>。</p>
+
+<pre><code class="language-html">&lt;!--Scrollspy--&gt;
+&lt;div <mark style="background: #eeb4ff;">id=&ldquo;page-scrollspy&rdquo; class=&ldquo;toc-nav&rdquo;</mark>&gt;
+
+  &lt;!-- Links --&gt;
+  &lt;<mark style="background: #eeb4ff;">ul class=&ldquo;nav nav-pills&rdquo;</mark>&gt;
+    &lt;<mark style="background: #eeb4ff;">li class=&ldquo;nav-item&rdquo;</mark>&gt;
+      &lt;<mark style="background: #eeb4ff;">a class=&ldquo;nav-link&rdquo;</mark> href=&quot;#section1&quot;&gt;Section 1&lt;/a&gt;
+      &lt;ul class=&quot;nav ml-3&quot;&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; href=&quot;#subsection1A&quot;&gt;Subsection 1A&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; href=&quot;#subsection1B&quot;&gt;Subsection 1B&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; href=&quot;#subsection1C&quot;&gt;Subsection 1C&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+
+    &lt;li class=&quot;nav-item&quot;&gt;
+      &lt;a class=&quot;nav-link&quot; href=&quot;#section2&quot;&gt;Section 2&lt;/a&gt;
+
+      &lt;ul class=&quot;nav ml-3&quot;&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; href=&quot;#subsection2A&quot;&gt;Subsection 2A&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; href=&quot;#subsection2B&quot;&gt;Subsection 2B&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;nav-item&quot;&gt;
+          &lt;a class=&quot;nav-link&quot; href=&quot;#subsection2C&quot;&gt;Subsection 2C&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;!-- Links --&gt;
+
+&lt;/div&gt;
+&lt;!--Scrollspy--&gt;
+</code></pre>
+
+<p>对应的，需要在css文件中增加以下内容来确定滚动监听菜单的样式，包括菜单的位置、显示的字号颜色等：</p>
+
+<pre><code class="language-css">.toc-nav {
+  position: -webkit-sticky!important;
+  position: sticky!important;
+  top: 6rem;
+  overflow-y: auto;
+
+  -ms-flex-order: 2;
+  order: 2;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: .875rem; 
+}
+
+.toc-nav .nav-item {
+  width: 100%;
+}
+
+.toc-nav a.nav-link {
+  font-size: .8rem;
+  font-weight: 400;
+  line-height: 1.1rem;
+  padding: 0 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color: #666;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+</code></pre>
+
+<p>另外，我希望<code>.activate</code>及<code>a:activate</code>时不仅仅是加粗，还能在左边有条边线，希望鼠标滑过时能也能有条细的边线。因此css增加：</p>
+
+<pre><code class="language-css">.toc-nav a.nav-link:hover {
+  background-color: transparent;
+  border-left: .025rem solid #45526e;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #45526e; 
+}
+
+.toc-nav a.nav-link.active, .toc-nav a.nav-link:active {
+  background-color: transparent;
+  color: black; 
+  border-left: .125rem solid #45526e;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-weight: 500;
+} 
+
+</code></pre>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p><a href="https://mdbootstrap.com/javascript/scrollspy/#mdb-scrollspy">mdb关于scrollspyl的教程</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-08-17</td>
+</tr>
+</tbody>
+</table>
+
+                <br>
+                <p class="back-to-posts"><a href="https://orianna-zzo.github.io/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/jquery/jquery-3.3.1.min.js"></script>
+
+
+
+
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
+
