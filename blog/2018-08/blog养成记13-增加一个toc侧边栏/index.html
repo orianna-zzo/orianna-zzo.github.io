@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
 <meta name="author" content="ZHENG Zi&#39;ou">
-<meta name="description" content="想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
+<meta name="description" content="想在页面右侧保留一个固定在屏幕上的TOC导航栏(Table Of Content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
 Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。
 Bootstrap基础版 scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将data-target设为后者的id，并设置data-spy=&quot;scroll&quot;，后者需要连接的href设为在前者内连接的id。
 在bootstrap提供的样例中，使用.nav或者.list-group来实现，动画效果也是基于这两者。由于.list-group只是一级目录，而在nested nav中，如果一个内部的.nav是.active的，那么它上级的.nav也是.active的，比较符合我的期望，因此放弃了.list-group的方法，具体可详见官网的教程。
@@ -18,8 +18,8 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
 基于nested nav的scrollspy的样例如下，重点部分进行高亮：
 &lt;div class=&quot;row&quot;&gt; &lt;div class=&quot;col-4&quot;&gt; &lt;!-- Scrollspy --&gt; &lt;nav id=&ldquo;navbar-example3&quot; class=&quot;navbar navbar-light bg-light flex-column&quot; style=&quot;position: sticky; top:6rem;&quot;&gt; &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&ldquo;nav-link&rdquo; href=&quot;#item-1&quot;&gt;Item 1&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-1&quot;&gt;Item 1-1&lt;/a&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-1-2&quot;&gt;Item 1-2&lt;/a&gt; &lt;/nav&gt; &lt;a class=&quot;nav-link&quot; href=&quot;#item-2&quot;&gt;Item 2&lt;/a&gt; &lt;a class=&quot;nav-link&quot; href=&quot;#item-3&quot;&gt;Item 3&lt;/a&gt; &lt;nav class=&quot;nav nav-pills flex-column&quot;&gt; &lt;a class=&quot;nav-link ml-3 my-1&quot; href=&quot;#item-3-1&quot;&gt;Item 3-1&lt;/a&gt; &lt;a class=&quot;nav-link ml-3 my-1 active&quot; href=&quot;#item-3-2&quot;&gt;Item 3-2&lt;/a&gt; &lt;/nav&gt; &lt;/nav&gt; &lt;/nav&gt; &lt;/div&gt; &lt;div class=&quot;col-8&quot;&gt; &lt;!">
 
-<meta property="og:title" content="Blog养成记(13) 增加一个toc侧边栏" />
-<meta property="og:description" content="想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
+<meta property="og:title" content="Blog养成记(13) 增加一个TOC侧边栏" />
+<meta property="og:description" content="想在页面右侧保留一个固定在屏幕上的TOC导航栏(Table Of Content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
 Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。
 Bootstrap基础版 scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将data-target设为后者的id，并设置data-spy=&quot;scroll&quot;，后者需要连接的href设为在前者内连接的id。
 在bootstrap提供的样例中，使用.nav或者.list-group来实现，动画效果也是基于这两者。由于.list-group只是一级目录，而在nested nav中，如果一个内部的.nav是.active的，那么它上级的.nav也是.active的，比较符合我的期望，因此放弃了.list-group的方法，具体可详见官网的教程。
@@ -54,7 +54,7 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
 <title>
 
 
-     Blog养成记(13) 增加一个toc侧边栏 
+     Blog养成记(13) 增加一个TOC侧边栏 
 
 </title>
 <link rel="canonical" href="https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/">
@@ -69,11 +69,11 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
  
   
-  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-25%2018%3a05%3a29.69560061%20%2b0000%20UTC%20m%3d%2b0.238731334">
-  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-25%2018%3a05%3a29.69560061%20%2b0000%20UTC%20m%3d%2b0.238731334">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-31%2016%3a31%3a02.87041164%20%2b0000%20UTC%20m%3d%2b0.218572332">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-31%2016%3a31%3a02.87041164%20%2b0000%20UTC%20m%3d%2b0.218572332">
   
   
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-25%2018%3a05%3a29.69560061%20%2b0000%20UTC%20m%3d%2b0.238731334"> 
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-31%2016%3a31%3a02.87041164%20%2b0000%20UTC%20m%3d%2b0.218572332"> 
    
 
 
@@ -192,7 +192,7 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
                 <div class="title-container">
                     <div class="page-heading">
 
-    Blog养成记(13) 增加一个toc侧边栏
+    Blog养成记(13) 增加一个TOC侧边栏
 
 </div>
 
@@ -271,7 +271,7 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
             <div class="markdown">
                 
 
-<p>想在页面右侧保留一个固定在屏幕上的toc导航栏(table of content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。</p>
+<p>想在页面右侧保留一个固定在屏幕上的TOC导航栏(Table Of Content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。</p>
 
 <h2 id="scrollspy">Scrollspy</h2>
 
