@@ -69,11 +69,11 @@ Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
  
   
-  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-31%2016%3a31%3a02.868413837%20%2b0000%20UTC%20m%3d%2b0.216574540">
-  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-31%2016%3a31%3a02.868413837%20%2b0000%20UTC%20m%3d%2b0.216574540">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-08-31%2016%3a57%3a51.403961588%20%2b0000%20UTC%20m%3d%2b0.243111511">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-08-31%2016%3a57%3a51.403961588%20%2b0000%20UTC%20m%3d%2b0.243111511">
   
   
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-31%2016%3a31%3a02.868413837%20%2b0000%20UTC%20m%3d%2b0.216574540"> 
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-08-31%2016%3a57%3a51.403961588%20%2b0000%20UTC%20m%3d%2b0.243111511"> 
    
 
 
@@ -374,39 +374,58 @@ Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参
       },
 </code></pre>
 
-<p>另一个是<code>scrollspy</code>中<code>_activate</code>函数。由于是需要根据<code>href</code>的内容获取selector，因此需要将<code>id</code>进行编码获得真实的<code>href</code>值。</p>
+<p>另一个是<code>scrollspy</code>中<code>_activate</code>函数。由于是需要根据<code>href</code>的内容获取selector，因此需要将<code>id</code>进行编码获得真实的<code>href</code>值。另外，为了能够与<code>href</code>正常中文的进行兼容，增加了判断。</p>
 
-<pre><code class="language-javascript">_proto._activate = function _activate(target) {
-    this._activeTarget = target;
+<p>```javascript
+_proto._activate = function _activate(target) {
+        this._activeTarget = target;</p>
 
-    this._clear();
+<pre><code>    this._clear();
 
     var queries = this._selector.split(','); // eslint-disable-next-line arrow-body-style
 
 
     queries = queries.map(function (selector) {
-        return selector + &quot;[data-target=\&quot;&quot; + target + &quot;\&quot;],&quot; + (selector + &quot;[href=\&quot;&quot; + <mark style="background: #eeb4ff;">encodeURI(target).toLowerCase()</mark> + &quot;\&quot;]&quot;);
+      return selector + &quot;[data-target=\&quot;&quot; + target + &quot;\&quot;],&quot; + (selector + &quot;[href=\&quot;&quot; + target + &quot;\&quot;]&quot;);
     });
     var $link = $$$1([].slice.call(document.querySelectorAll(queries.join(','))));
 
-    if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
-        $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
-        $link.addClass(ClassName.ACTIVE);
-    } else {
-        // Set triggered link as active
-        $link.addClass(ClassName.ACTIVE); // Set triggered links parents as active
-        // With both &lt;ul&gt; and &lt;nav&gt; markup a parent is the previous sibling of any nav ancestor
+    <mark style="background: #eeb4ff;"><p>if ($link.length==0)<mark style="background: .Get 0 ;"><p>{</p></p>
 
-        $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_LINKS + &quot;, &quot; + Selector.LIST_ITEMS).addClass(ClassName.ACTIVE); // Handle special case when .nav-link is inside .nav-item
-
-        $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_ITEMS).children(Selector.NAV_LINKS).addClass(ClassName.ACTIVE);
-    }
-
-    $$$1(this._scrollElement).trigger(Event.ACTIVATE, {
-        relatedTarget: target
-    });
-};
+<pre><code>      queries = this._selector.split(',');
+      queries = queries.map(function (selector) {
+        return selector + &quot;[data-target=\&quot;&quot; + target + &quot;\&quot;],&quot; + (selector + &quot;[href=\&quot;&quot; + &lt;mark style=&quot;background: #eeb4ff;&quot;&gt;&lt;p&gt;encodeURI(target).toLowerCase()&lt;mark style=&quot;background: .Get 0 ;&quot;&gt;&lt;ul&gt;
 </code></pre>
+
+<p><li><p>&ldquo;&amp;ldquo;]&rdquo;);
+      });
+      var $link = $$$1([].slice.call(document.querySelectorAll(queries.join(&lsquo;,&rsquo;))));</p></p></p>
+
+<pre><code>}
+
+
+
+if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
+  $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
+  $link.addClass(ClassName.ACTIVE);
+} else {
+  // Set triggered link as active
+  $link.addClass(ClassName.ACTIVE); // Set triggered links parents as active
+  // With both &lt;ul&gt; and &lt;nav&gt; markup a parent is the previous sibling of any nav ancestor
+
+  $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_LINKS + &quot;, &quot; + Selector.LIST_ITEMS).addClass(ClassName.ACTIVE); // Handle special case when .nav-link is inside .nav-item
+
+  $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_ITEMS).children(Selector.NAV_LINKS).addClass(ClassName.ACTIVE);
+}
+
+$$$1(this._scrollElement).trigger(Event.ACTIVATE, {
+  relatedTarget: target
+});
+</code></pre>
+
+<p>};
+```</p></li>
+</ul>
 
 <h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
 
@@ -414,16 +433,16 @@ Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参
 
 <h2 id="版本控制">版本控制</h2>
 
-<table>
+<p><table>
 <thead>
 <tr>
 <th>Version</th>
 <th>Action</th>
 <th>Time</th>
 </tr>
-</thead>
+</thead></p>
 
-<tbody>
+<p><p><p><tbody>
 <tr>
 <td>1.0</td>
 <td>Init</td>
@@ -431,6 +450,11 @@ Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参
 </tr>
 </tbody>
 </table>
+</mark></p>
+</mark></p>
+</mark></p>
+</mark>
+</code></pre>
 
                 <br>
                 <p class="back-to-posts"><a href="https://orianna-zzo.github.io/blog/">Back to posts</a></p>
