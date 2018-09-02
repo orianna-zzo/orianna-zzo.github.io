@@ -69,11 +69,11 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
  
   
-  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-09-01%2003%3a00%3a16.934049868%20%2b0000%20UTC%20m%3d%2b0.258877603">
-  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-09-01%2003%3a00%3a16.934049868%20%2b0000%20UTC%20m%3d%2b0.258877603">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/reset.css?t=2018-09-02%2017%3a19%3a56.209050762%20%2b0000%20UTC%20m%3d%2b0.226935591">
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/css/main.css?t=2018-09-02%2017%3a19%3a56.209050762%20%2b0000%20UTC%20m%3d%2b0.226935591">
   
   
-    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-09-01%2003%3a00%3a16.934049868%20%2b0000%20UTC%20m%3d%2b0.258877603"> 
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/override.css?t=2018-09-02%2017%3a19%3a56.209050762%20%2b0000%20UTC%20m%3d%2b0.226935591"> 
    
 
 
@@ -205,7 +205,7 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
                         
   
                         
-                        <div class="reading-time"><div class="middot"></div>4 minutes read</div>
+                        <div class="reading-time"><div class="middot"></div>5 minutes read</div>
                         
                     </div>
                     <div style="display: flex;">
@@ -401,11 +401,17 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
   font-size: .875rem; 
 }
 
-.toc-nav .nav-item {
+.toc-nav ul {
+  list-style: none;
+  margin-left: 1rem;
+  padding-left: 0;
+}
+
+.toc-nav li, .toc-nav ul {
   width: 100%;
 }
 
-.toc-nav a.nav-link {
+.toc-nav .nav-item, .toc-nav .nav-link {
   font-size: .8rem;
   font-weight: 400;
   line-height: 1.1rem;
@@ -422,16 +428,16 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
 
 <pre><code class="language-css">.toc-nav a.nav-link:hover {
   background-color: transparent;
-  border-left: .025rem solid #45526e;
+  border-left: .025rem solid #38849e;
   -webkit-box-shadow: none;
   box-shadow: none;
-  color: #45526e; 
+  color: #38849e; 
 }
 
 .toc-nav a.nav-link.active, .toc-nav a.nav-link:active {
   background-color: transparent;
   color: black; 
-  border-left: .125rem solid #45526e;
+  border-left: .125rem solid #38849e;
   -webkit-box-shadow: none;
   box-shadow: none;
   font-weight: 500;
@@ -459,6 +465,12 @@ Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效�
 <td>1.0</td>
 <td>Init</td>
 <td>2018-08-17</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>fix bugs</td>
+<td>2018-09-02</td>
 </tr>
 </tbody>
 </table>

@@ -66,8 +66,7 @@ width: 80%; width: 80vw; /* vw: 视窗宽度的百分比（1vw 代表视窗的�
       <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</guid>
       <description> 上一期说到想给网站图标的图片加个蒙版，然而没有成功。那么网页中的图片么？经常看到个人图片都是圆形的，然而实际上上传的原图是方的。如果使用了蒙版功能，就可以对同一张图想怎么变形状就怎么变了。
 首先，定义一个类，比如avatar，在css文件中定义该类使用了某长图片蒙版：
-.avatar { border-radius: 50%; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); max-width: 50px; -webkit-mask-image: url(/img/mask/circle.svg); mask-image: url(/img/mask/circle.svg);
- }  其中高亮的两句定义了蒙版的图片。在这里，蒙版我使用的是font awesome里的圆形图，就长下面这个样子：
+.avatar { border-radius: 50%; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); max-width: 50px; -webkit-mask-image: url(/img/mask/circle.svg); mask-image: url(/img/mask/circle.svg); }  其中高亮的两句定义了蒙版的图片。在这里，蒙版我使用的是font awesome里的圆形图，就长下面这个样子：
 在实际使用时，只需要在&amp;lt;img&amp;gt;标签中使用该类即可，如：
 &amp;lt;img class=&amp;quot;avatar&amp;quot; src=&amp;quot;img/avatar.png&amp;quot; width=&amp;quot;40&amp;quot; height=&amp;quot;40&amp;quot; class=&amp;quot;d-inline-block align-top&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;  版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
     </item>

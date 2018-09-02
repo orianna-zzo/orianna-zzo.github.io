@@ -17,14 +17,14 @@
       <pubDate>Sat, 25 Aug 2018 22:59:59 +0800</pubDate>
       
       <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/</guid>
-      <description>Table Of Content是一个十分常用的功能，这个系列的第13篇增加一个TOC侧边栏就是为了这个做准备，只不过是在静态页面上尝试想要的样式。
+      <description>Table Of Content是一个十分常用的功能，这个系列的第13篇增加一个TOC侧边栏就是为了这个做准备，只不过是在静态页面上尝试想要的样式。本文用到的样式都基于第13篇中增加的css样式。
 Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参考这里。
 在正文部分，Markdown正文中所有的标题都会自动建一个id，id为标题内容，也可以用{#your-id}来重新定义。TOC目录部分，Hugo对于这一部分渲染为&amp;lt;nav id=&amp;quot;TableOfContents&amp;quot;&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;/nav&amp;gt;，目录会连接到对应的id上。
 我建立的partial模板如下：
 {{ if .Params.toc }} &amp;lt;!--Grid column--&amp;gt; &amp;lt;div class=&amp;quot;col-md-2&amp;quot;&amp;gt; &amp;lt;!--Scrollspy--&amp;gt; &amp;lt;div id=&amp;quot;page-scrollspy&amp;quot; class=&amp;quot;toc-nav&amp;quot;&amp;gt; {{ .TableOfContents }} &amp;lt;/div&amp;gt; &amp;lt;!--Scrollspy--&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!--Grid column--&amp;gt; {{- end -}}  存在问题 其中，正如第13篇增加一个TOC侧边栏说的，我在baseof.html模板中规定了&amp;lt;body&amp;gt;的样式，想使用滚动监听，同样也配置了第14篇让同页滚动更平滑。
 &amp;lt;body class=&amp;quot;bg-light&amp;quot; data-spy=&amp;quot;scroll&amp;quot; data-target=&amp;quot;#page-scrollspy&amp;quot; data-offset=&amp;quot;90&amp;quot;&amp;gt;  但可惜的是，由于Hugo自动渲染的html代码中缺少滚动监听所必须的类，因此无法实现滚动监听的功能。此外，Hugo的TOC对1~6级标题都包括了进来，这样光1级和6级之间的缩进空间就占了不少。因此不得不自己重新写TOC的模板。
-自建TOC模板 在Github的Issue中找到了对于这些问题的一个方法，因此决定参考着也定制化地写一个我自己的TOC模板。模板中我并没有选择监听所有的标题，而只选择了&amp;lt;h1&amp;gt;~&amp;lt;h4&amp;gt;。
-{{ if .Params.toc }} &amp;lt;!-- ignore empty links with + --&amp;gt; {{ $headers := findRE &amp;quot;&amp;lt;h[1-4].*?&amp;gt;(.|\n])+?&amp;lt;/h[1-4]&amp;gt;&amp;quot; .Content }} &amp;lt;!-- at least one header to link to --&amp;gt; {{ if ge (len $headers) 1 }} &amp;lt;!</description>
+自建TOC模板 在Github的Issue中找到了对于这些问题的一个方法，因此决定参考着也定制化地写一个我自己的TOC模板。模板中我并没有选择监听所有的标题，而只选择了&amp;lt;h1&amp;gt;~&amp;lt;h4&amp;gt;。此外，由于一些post中并不存在&amp;lt;h1&amp;gt;，对这种情况作了额外处理，避免TOC目录右移太多。
+{{ if .Params.toc }} &amp;lt;!-- ignore empty links with + --&amp;gt; {{ $headers := findRE &amp;quot;&amp;lt;h[1-4].*?&amp;gt;(.|\n])+?&amp;lt;/h[1-4]&amp;gt;&amp;quot; .Content }} &amp;lt;!-- at least one header to link to --&amp;gt; {{ if ge (len $headers) 1 }} {{ $h1_n := len (findRE &amp;ldquo;(.</description>
     </item>
     
     <item>
