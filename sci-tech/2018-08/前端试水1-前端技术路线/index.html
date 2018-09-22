@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="前言 对于前端的了解欲望实际上是从想对博客主题进行修改开始的。但是前端这部分一直对我来说是个谜，虽然这些名词都能搜索到，但一直傻傻的不得其门而入。总算在一年后的今天，尽管还有很多地方暂时是迷雾状态，但貌似略了解一点前端的整体框架。现在算是开了新的一个系列，在此算是记录一下我了解的前端的技术路线，如果那些和我一样的前端小白们能通过这个也大概了解一点到底现在需要学的、用的是什么，就再好不过了。 对了，先声">
+  
+  <meta property="og:title" content="前端试水(1) 前端技术路线" />
+<meta property="og:description" content="前言 对于前端的了解欲望实际上是从想对博客主题进行修改开始的。但是前端这部分一直对我来说是个谜，虽然这些名词都能搜索到，但一直傻傻的不得其门而入。总算在一年后的今天，尽管还有很多地方暂时是迷雾状态，但貌似略了解一点前端的整体框架。现在算是开了新的一个系列，在此算是记录一下我了解的前端的技术路线，如果那些和我一样的前端小白们能通过这个也大概了解一点到底现在需要学的、用的是什么，就再好不过了。 对了，先声" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/" />
+
+
+
+<meta property="article:published_time" content="2018-08-04T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-07T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+  
+  
+    <meta property="og:see_also" content="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" />
+  
+    <meta property="og:see_also" content="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/" />
+  
+    
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       前端试水(1) 前端技术路线 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B4"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>前端试水</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">前端试水(1) 前端技术路线</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Aug 1, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>3 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="前言">前言</h2>
+
+<p>对于前端的了解欲望实际上是从想对博客主题进行修改开始的。但是前端这部分一直对我来说是个谜，虽然这些名词都能搜索到，但一直傻傻的不得其门而入。总算在一年后的今天，尽管还有很多地方暂时是迷雾状态，但貌似略了解一点前端的整体框架。现在算是开了新的一个系列，在此算是记录一下我了解的前端的技术路线，如果那些和我一样的前端小白们能通过这个也大概了解一点到底现在需要学的、用的是什么，就再好不过了。</p>
+
+<p>对了，先声明下，这篇是作为非前端工程师不负责任的认知，个人觉得对于一个外行，且也并没有打算在这一行进行深入，仅作为快速了解、应用的人来说应该是个不错的交流。</p>
+
+<h2 id="技术分工">技术分工</h2>
+
+<p>既然说到前端技术路线，那就需要先确定下前端是什么。</p>
+
+<p>前端，通俗来说是和后端所对应的，通常指用户所能看到的网页以及交互的部分。一般来说，和用户直接打交道的都是前端，前端向后端请求数据以及提交数据，后端对用户提交的数据进行解析、服务器调度与功能操作，再返回数据给前端。所以我理解的前端的部分主要分成以下几个部分：前端的界面UI及交互UX，前端数据获取request与解析，前端数据提交返回。</p>
+
+<p>通常，前端UI大多涉及静态页面html及css样式，但若需要一些动态交互和动作，一般都离不开js的开发。对于数据获取、提交等数据绑定的功能，更是离不开js大法。一般常说的vue.js、react.js都提供了不少相关的功能组件，便于前端工程师快速开发。</p>
+
+<p>此外常听到的工具还有gulp、webpack等主要针对自动化、打包的工具，针对的功能点会有些不同，但具体还未深入研究。</p>
+
+<h2 id="静态页面分工">静态页面分工</h2>
+
+<p>一般网上大多数都在讨论和学习js大法，毕竟通过上段对于简单技术分工和技能点来说，js占据了非常重要的位置。但对于初学者来说，一般接触最多的是静态页面，毕竟很多时候只需要做个简单demo，或者是搭建博客界面之类的简单网页，需要的是轻量级的敏捷开发即可，而静态页面是与用户最直接的窗口。比如我来说，开始需要接触也是因为对想生成自己的博客主题，这就不能不开始学习这一部分。</p>
+
+<p>虽然说起来css和html不难，语法真不难，但就是因为它们太简单，中间的样式调整、覆盖、冲突的逻辑实在是难以捉摸，调整起来拆东墙补西墙，一点也不够结构化成体系。所以对于静态页面也可以分成css样式定义和html静态页面生成这两部分。</p>
+
+<h3 id="css样式">css样式</h3>
+
+<p>css比较难以结构化，可以使用css的预编译器来编写，可以使之更易于管理。常用的预编译器有sass和less。</p>
+
+<p>除了有css预编译的利器外，对于敏捷开发来说，还有一些css样式库，比如大名鼎鼎的bootstrap，虽然bootstrap也集成了一些js和组件，但基本主要用作css布局用的样式库。尽管bootstrap也被称为前端框架，但是和vue以及react等的框架并不是一个含义，bootstrap更多是css样式层面的。</p>
+
+<h3 id="html静态页面生成">html静态页面生成</h3>
+
+<p>有了css样式总是要生成静态页面的，这就需要生成html静态页面。最简单的就是直接写html，确定html布局，但是这样会很繁琐。因此有了不少静态页面生成器，比如我使用的hugo，还有jekyll、hexo。有了这些生成器，只需要定义html模板，然后使用模板，以后对于内容进行删减也不需要对html直接进行修改。生成了静态页面后就可以托管在服务器上。</p>
+
+<p>网页的生成也并不是总需要生成最重的静态页面的，比如python的轻量级网页应用框架flask，只要运行，可以自动调用html模板生成网页。</p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init 静态页面路线</td>
+<td>2018-08-05</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF" role="button">前端 </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>每周Paper精读(2) Sentence Representation系列泛读</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>前端试水(2) 使用docker镜像的Sass配置</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%89%8d%e8%a8%80">
+												 前言
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%8a%80%e6%9c%af%e5%88%86%e5%b7%a5">
+												 技术分工
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e9%9d%99%e6%80%81%e9%a1%b5%e9%9d%a2%e5%88%86%e5%b7%a5">
+												 静态页面分工
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#css%e6%a0%b7%e5%bc%8f">
+												 css样式
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#html%e9%9d%99%e6%80%81%e9%a1%b5%e9%9d%a2%e7%94%9f%e6%88%90">
+												 html静态页面生成
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

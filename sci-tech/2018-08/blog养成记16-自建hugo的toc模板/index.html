@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="Table Of Content是一个十分常用的功能，这个系列的第13篇Blog养成记13 增加一个TOC侧边栏就是为了这个做准备，只不过是在静态页面上尝试想要的样式。本文用到的样式都基于第13篇中增加的css样式。 Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参考这里。 在正文部分，Markdown正文中所有的标题都会自动建一个id，id为标题内容，也可以用{#your-id}来">
+  
+  <meta property="og:title" content="Blog养成记(16) 自建Hugo的TOC模板" />
+<meta property="og:description" content="Table Of Content是一个十分常用的功能，这个系列的第13篇Blog养成记13 增加一个TOC侧边栏就是为了这个做准备，只不过是在静态页面上尝试想要的样式。本文用到的样式都基于第13篇中增加的css样式。 Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参考这里。 在正文部分，Markdown正文中所有的标题都会自动建一个id，id为标题内容，也可以用{#your-id}来" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/" />
+
+
+
+<meta property="article:published_time" content="2018-08-25T22:59:59&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-08-25T22:59:59&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       Blog养成记(16) 自建Hugo的TOC模板 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>Blog养成记</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">Blog养成记(16) 自建Hugo的TOC模板</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Aug 25, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>5 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<p>Table Of Content是一个十分常用的功能，这个系列的第13篇<a href="https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/">Blog养成记13 增加一个TOC侧边栏</a>就是为了这个做准备，只不过是在静态页面上尝试想要的样式。本文用到的样式都基于第13篇中增加的css样式。</p>
+
+<h2 id="hugo的table-of-content">Hugo的Table of Content</h2>
+
+<p>Hugo对于Table Of Content也有内建变量，可以参考<a href="https://gohugo.io/content-management/toc/">这里</a>。</p>
+
+<p>在正文部分，Markdown正文中所有的标题都会自动建一个<code>id</code>，<code>id</code>为标题内容，也可以用<code>{#your-id}</code>来重新定义。TOC目录部分，Hugo对于这一部分渲染为<code>&lt;nav id=&quot;TableOfContents&quot;&gt;&lt;ul&gt;&lt;/ul&gt;&lt;/nav&gt;</code>，目录会连接到对应的<code>id</code>上。</p>
+
+<p>我建立的partial模板如下：</p>
+
+<pre><code class="language-html">{{ if .Params.toc }}
+&lt;!--Grid column--&gt;
+&lt;div class=&quot;col-md-2&quot;&gt;
+	&lt;!--Scrollspy--&gt;
+	&lt;div id=&quot;page-scrollspy&quot; class=&quot;toc-nav&quot;&gt;
+		{{ .TableOfContents }}
+	&lt;/div&gt;
+	&lt;!--Scrollspy--&gt;
+&lt;/div&gt;
+&lt;!--Grid column--&gt;
+{{- end -}}
+</code></pre>
+
+<p><strong>存在问题</strong></p>
+
+<p>其中，正如第13篇<a href="https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/">Blog养成记13 增加一个TOC侧边栏</a>说的，我在baseof.html模板中规定了&lt;body&gt;的样式，想使用滚动监听，同样也配置了第14篇<a href="https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/">Blog养成记14 让同页滚动更平滑</a>。</p>
+
+<pre><code>&lt;body class=&quot;bg-light&quot; data-spy=&quot;scroll&quot; data-target=&quot;#page-scrollspy&quot; data-offset=&quot;90&quot;&gt;
+</code></pre>
+
+<p>但可惜的是，由于Hugo自动渲染的html代码中缺少滚动监听所必须的类，因此无法实现滚动监听的功能。此外，Hugo的TOC对1~6级标题都包括了进来，这样光1级和6级之间的缩进空间就占了不少。因此不得不自己重新写TOC的模板。</p>
+
+<h2 id="自建toc模板">自建TOC模板</h2>
+
+<p>在<a href="https://github.com/gohugoio/hugo/issues/1778">Github的Issue</a>中找到了对于这些问题的一个方法，因此决定参考着也定制化地写一个我自己的TOC模板。模板中我并没有选择监听所有的标题，而只选择了&lt;h1&gt;~&lt;h4&gt;。此外，由于一些post中并不存在&lt;h1&gt;，对这种情况作了额外处理，避免TOC目录右移太多。</p>
+
+<pre><code>{{ if .Params.toc }}
+	&lt;!-- ignore empty links with + --&gt;
+	{{ $headers := findRE &quot;&lt;h[1-4].*?&gt;(.|\n])+?&lt;/h[1-4]&gt;&quot; .Content }}
+	&lt;!-- at least one header to link to --&gt;
+	{{ if ge (len $headers) 1 }}
+		<mark style="background: #eeb4ff;">{{ $h1_n := len (findRE &ldquo;<h1.*?>(.|\n])+?</h1>&rdquo; .Content) }}</mark>
+		<mark style="background: #eeb4ff;">{{ $re := (cond (eq $h1_n 0) &ldquo;&lt;h[2-4]&rdquo; &ldquo;&lt;h[1-4]&ldquo;) }}</mark>
+		<mark style="background: #eeb4ff;">{{ $renum := (cond (eq $h1_n 0) &ldquo;[2-4]&rdquo; &ldquo;[1-4]&ldquo;) }}</mark>
+	
+
+		&lt;!--Grid column--&gt;
+		&lt;div class=&quot;col-md-2 pl-0&quot;&gt;
+
+			&lt;!--Scrollspy--&gt;
+			&lt;div id=&quot;page-scrollspy&quot; class=&quot;toc-nav&quot;&gt;
+				
+				&lt;ul class=&quot;nav nav-pills ml-0&quot;&gt;
+					&lt;!-- TOC header --&gt;
+					&lt;li class=&quot;nav-item pb-3 text-center&quot;&gt;
+						&lt;span class=&quot;font-weight-bold mb-2&quot;&gt;- CATALOG - &lt;/span&gt;
+					&lt;/li&gt;
+
+					{{ range $headers }}
+						{{ $header := . }}
+						{{ range first 1 (findRE $re $header 1) }}
+							{{ range findRE $renum . 1 }}
+								<mark style="background: #eeb4ff;">{{ $next_heading := (cond (eq $h1_n 0) (sub (int .) 1 ) (int . ) ) }}</mark>
+								{{ range seq $next_heading }}
+									&lt;ul class=&quot;nav&quot;&gt;
+								{{end}}
+								{{ $anchorId :=  (replaceRE &quot;.* id=\&quot;(.*?)\&quot;.*&quot; &quot;$1&quot; $header ) }}
+
+										&lt;li class=&quot;nav-item&quot;&gt;
+						 					&lt;a class=&quot;nav-link&quot; href=&quot;#{{ $anchorId }}&quot;&gt;
+												 {{ $header | plainify | htmlUnescape }}
+											&lt;/a&gt;
+										&lt;/li&gt;
+						 
+								&lt;!-- close list --&gt;
+								{{ range seq $next_heading }}
+									&lt;/ul&gt;
+								{{end}}
+							{{ end }}
+						{{ end }}
+				 {{end}}
+
+				&lt;/ul&gt;
+			&lt;/div&gt;
+			&lt;!--Scrollspy--&gt;
+
+		&lt;/div&gt;
+		&lt;!--Grid column--&gt;
+	{{ end }}
+{{- end -}}
+</code></pre>
+
+<h3 id="解决-href-中文乱码问题">解决<code>href</code>中文乱码问题</h3>
+
+<p>需要注意的是，在上述的toc模板中<code>$anchorId</code>在&lt;a href&gt;中由于出现中文，会变成乱码，影响滚动监听。但很神奇的是，我直接在html中的<code>href</code>写中文，正常显示，把<code>$anchorId</code>显示在文中，也是正常显示。</p>
+
+<p>多次尝试无果，无奈之下，决定修改<code>bootstrap.js</code>来解决这个问题。</p>
+
+<p>对于<code>bootstrap.js</code>，需要修改两个地方。</p>
+
+<p>一个是<code>Public Util Api</code>中的<code>getSelectorFromElement。</code>需要对<code>href</code>的内容进行解码，获得正确的中文，因为正文中的<code>id</code>是正确的中文，只有这样才能获得正确的selector。</p>
+
+<pre><code class="language-javascript">getSelectorFromElement: function getSelectorFromElement(element) {
+        var selector = element.getAttribute('data-target');
+
+        if (!selector || selector === '#') {
+          selector = <mark style="background: #eeb4ff;">decodeURI</mark>(element.getAttribute('href')) || '';
+        }
+
+        try {
+          return document.querySelector(selector) ? selector : null;
+        } catch (err) {
+          return null;
+        }
+      }
+</code></pre>
+
+<p>另一个是<code>scrollspy</code>中<code>_activate</code>函数。由于是需要根据<code>href</code>的内容获取selector，因此需要将<code>id</code>进行编码获得真实的<code>href</code>值。另外，为了能够与<code>href</code>正常中文的进行兼容，增加了判断。</p>
+
+<pre><code>
+_proto._activate = function _activate(target) {
+
+        this._activeTarget = target;
+        this._clear();
+        var queries = this._selector.split(','); // eslint-disable-next-line arrow-body-style
+
+        queries = queries.map(function (selector) {
+            return selector + &quot;[data-target=\&quot;&quot; + target + &quot;\&quot;],&quot; + (selector + &quot;[href=\&quot;&quot; + target + &quot;\&quot;]&quot;);
+        });
+        var $link = $$$1([].slice.call(document.querySelectorAll(queries.join(','))));
+    
+        <mark style="background: #eeb4ff;">if ($link.length==0)</mark> {
+    
+            queries = this._selector.split(',');
+            queries = queries.map(function (selector) {
+              return selector + &quot;[data-target=\&quot;&quot; + target + &quot;\&quot;],&quot; + (selector + &quot;[href=\&quot;&quot; + <mark style="background: #eeb4ff;">encodeURI(target).toLowerCase()</mark> + &quot;\&quot;]&quot;);
+            });
+            var $link = $$$1([].slice.call(document.querySelectorAll(queries.join(','))));   
+        }
+                                
+        if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
+            $link.closest( Selector.DROPDOWN ).find( Selector.DROPDOWN_TOGGLE ).addClass( ClassName.ACTIVE );
+            $link.addClass(ClassName.ACTIVE);
+        } else {
+            // Set triggered link as active
+            $link.addClass(ClassName.ACTIVE); // Set triggered links parents as active
+            // With both &lt;ul&gt; and &lt;nav&gt; markup a parent is the previous sibling of any nav ancestor
+            $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_LINKS + &quot;, &quot; + Selector.LIST_ITEMS).addClass(ClassName.ACTIVE); // Handle special case when .nav-link is inside .nav-item
+            $link.parents( Selector.NAV_LIST_GROUP ).prev( Selector.NAV_ITEMS ).children(  Selector.NAV_LINKS ).addClass( ClassName.ACTIVE );
+        }
+    
+        $$$1(this._scrollElement).trigger(Event.ACTIVATE, {
+            relatedTarget: target
+        });
+      };
+
+</code></pre>
+
+<h3 id="解决监控位置问题">解决监控位置问题</h3>
+
+<p>在某些情况下，明明被监控内容中显示的是A，但是TOC中激活的是A的上一个目录。这样就会出现，我点击了TOC中的目录A，内容滚动到了A，但是后来TOC中激活的是A的上一个目录。</p>
+
+<p>仔细跟踪了一下bootstrap.js，发现一个问题：<code>offset</code>是使用函数<code>getBoundingClientRect()</code>获得的，是小数型，但是<code>scrollTop</code>是整型的，因此在边界点会出现问题。在Github/Issues上发现，还有其他小伙伴遇到了同样的问题，记录下我第一次<a href="https://github.com/twbs/bootstrap/issues/23809#issuecomment-422284646">回答Issue</a>，希望能帮上~</p>
+
+<p>解决方法就是在<code>_proto._process = function _process()</code>中修改<code>scrollTop</code>的数值：</p>
+
+<pre><code class="language-javascript">_proto._process = function _process() {
+        var scrollTop = this._getScrollTop() + this._config.offset <mark style="background: #eeb4ff;"><ul>
+<li>1</li>
+</ul>
+</mark>;
+
+        var scrollHeight = this._getScrollHeight();
+
+        var maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight();
+
+        if (this._scrollHeight !== scrollHeight) {
+          this.refresh();
+        }
+
+        if (scrollTop &gt;= maxScroll) {
+          var target = this._targets[this._targets.length - 1];
+
+          if (this._activeTarget !== target) {
+            this._activate(target);
+          }
+
+          return;
+        }
+
+        if (this._activeTarget &amp;&amp; scrollTop &lt; this._offsets[0] &amp;&amp; this._offsets[0] &gt; 0) {
+          this._activeTarget = null;
+
+          this._clear();
+
+          return;
+        }
+
+        var offsetLength = this._offsets.length;
+
+        for (var i = offsetLength; i--;) {
+          var isActiveTarget = this._activeTarget !== this._targets[i] &amp;&amp; scrollTop &gt;= this._offsets[i] &amp;&amp; (typeof this._offsets[i + 1] === 'undefined' || scrollTop &lt; this._offsets[i + 1]);
+
+          if (isActiveTarget) {
+            this._activate(this._targets[i]);
+          }
+        }
+      };
+</code></pre>
+
+<h3 id="标题太长怎么办">标题太长怎么办</h3>
+
+<p>经常会出现这种情况，一行的标题太长，于是就换行显示。问题到不大，只是不太美观，还是希望能够只显示一行。有两种方案，一个是允许TOC有水平滚动条，另一个是将太长的标题省略显示。</p>
+
+<h4 id="使用水平滚动条">使用水平滚动条</h4>
+
+<p>这个只需要在css样式中标记对应的元素不能换行即可。</p>
+
+<pre><code class="language-css">.toc-nav .nav-link {
+  white-space:nowrap;
+} 
+</code></pre>
+
+<p>这样如果标题太长，在TOC会出现水平滚动条。</p>
+
+<h4 id="太长标题省略显示">太长标题省略显示</h4>
+
+<p>TOC模块出现水平滚动条总嫌有些冗余，于是决定将太长的标题省略显示，我选择使用这种方案。在css中增加以下内容：</p>
+
+<pre><code class="language-css">.toc-nav ul {
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.toc-nav .nav-link {
+  text-overflow:ellipsis;
+  overflow:hidden;
+} 
+
+</code></pre>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p><a href="https://gohugo.io/content-management/toc/">Hugo官网对TableOfContent介绍</a>、<a href="https://github.com/gohugoio/hugo/issues/1778">自建TOC参考</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-08-25</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>处理没有&lt;h1&gt;</td>
+<td>2018-09-02</td>
+</tr>
+
+<tr>
+<td>1.2</td>
+<td>解决监控位置问题</td>
+<td>2018-09-18</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/hugo" role="button">hugo </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/blog" role="button">blog </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/toc" role="button">toc </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/js" role="button">js </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/bootstrap" role="button">bootstrap </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Blog养成记(15) 创建shortcode模板便捷高亮内容</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#hugo%e7%9a%84table-of-content">
+												 Hugo的Table of Content
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%87%aa%e5%bb%batoc%e6%a8%a1%e6%9d%bf">
+												 自建TOC模板
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%3ch1.%2a%3f%3e%28.%7c%5cn%5d%29%2b%3f%3c%2fh1%3e">
+												 (.|\n])&#43;?
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%a7%a3%e5%86%b3-href-%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81%e9%97%ae%e9%a2%98">
+												 解决href中文乱码问题
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%a7%a3%e5%86%b3%e7%9b%91%e6%8e%a7%e4%bd%8d%e7%bd%ae%e9%97%ae%e9%a2%98">
+												 解决监控位置问题
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%a0%87%e9%a2%98%e5%a4%aa%e9%95%bf%e6%80%8e%e4%b9%88%e5%8a%9e">
+												 标题太长怎么办
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bd%bf%e7%94%a8%e6%b0%b4%e5%b9%b3%e6%bb%9a%e5%8a%a8%e6%9d%a1">
+												 使用水平滚动条
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%a4%aa%e9%95%bf%e6%a0%87%e9%a2%98%e7%9c%81%e7%95%a5%e6%98%be%e7%a4%ba">
+												 太长标题省略显示
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#resource%e8%b5%84%e6%ba%90%e9%93%be%e6%8e%a5%e6%b1%87%e6%80%bb">
+												 Resource资源链接汇总
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

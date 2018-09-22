@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Carousel on 博客|ZHENG Zi&#39;ou</title>
+    <title>Carousel on ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/tags/carousel/</link>
-    <description>Recent content in Carousel on 博客|ZHENG Zi&#39;ou</description>
+    <description>Recent content in Carousel on ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cmn-Hans</language>
+    <language>zh-Hans</language>
     <lastBuildDate>Sun, 12 Aug 2018 01:41:43 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/carousel/index.xml" rel="self" type="application/rss+xml" />
@@ -13,14 +13,11 @@
     
     <item>
       <title>Blog养成记(10) 实现幻灯片(轮播)效果</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
       <pubDate>Sun, 12 Aug 2018 01:41:43 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
-      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在Github上的js插件，这次使用Bootstrap4发现这已经集成进Bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。
-Carousel 基础版 在Bootstrap4中轮播组件称为Carousel，在官网就有对其使用的简单介绍。
-简单说来，该组件分为四块：indicator(显示第几页)、control(控制上一页和下一页)、caption(每一页上显示的字)和slide(显示的图片)。这几部分中，除了slide是必须要有的（不然用这个控件干嘛），其他都可以不用。基本的格式如下，基本包含了所有的基础用法，还有一些参数比如间隔时间等可以调整：
-&amp;lt;!-- Carousel --&amp;gt; &amp;lt;div id=&amp;quot;example&amp;quot; class=&amp;quot;carousel slide carousel-fade&amp;quot; data-ride=&amp;quot;carousel&amp;quot; data-interval=&amp;quot;3000&amp;quot;&amp;gt; &amp;lt;!-- Indicator --&amp;gt; &amp;lt;!-- data-target=外面div的id --&amp;gt; &amp;lt;ol class=&amp;quot;carousel-indicators&amp;quot;&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;0&amp;quot; class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;1&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;2&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;!-- /.Indicator --&amp;gt; &amp;lt;!-- Slides --&amp;gt; &amp;lt;div class=&amp;quot;carousel-inner&amp;quot;&amp;gt; &amp;lt;!-- First Slide --&amp;gt; &amp;lt;div class=&amp;quot;carousel-item active&amp;quot;&amp;gt; &amp;lt;img class=&amp;quot;d-block w-100&amp;quot; src=&amp;quot;path/to/img1.jpg&amp;quot; alt=&amp;quot;First slide&amp;quot;&amp;gt; &amp;lt;!-- First Caption --&amp;gt; &amp;lt;div class=&amp;quot;carousel-caption d-none d-md-block&amp;quot;&amp;gt; &amp;lt;h5&amp;gt;Caption 1&amp;lt;/h5&amp;gt; &amp;lt;p&amp;gt;Content of caption 1&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
+      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在Github上的js插件，这次使用Bootstrap4发现这已经集成进Bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。 Carousel 基础版 在Bootstrap4中轮播组件称为Carousel，在官网就有对其使用的简单介绍。 简单说来</description>
     </item>
     
   </channel>

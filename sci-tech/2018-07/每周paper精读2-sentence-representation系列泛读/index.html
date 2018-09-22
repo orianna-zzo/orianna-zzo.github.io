@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="前言 原本计划是每周一篇论文精读，然而实际上由于项目上安排较紧，距离上一次论文精读已经过了几个月。现在项目算是告一段落，在项目中也算是找到一些问题所在，正在看感兴趣的论文（这期是赶不上了）。正好媛源的实习生肖风顺正在做关于句向量的调研，找了些相关论文，我也旁听了两次，顺便就把这两次旁听的结果记录一下，顺便也对其中内容也简要的过一遍大概思路，虽然这样算不上什么“论文精读”，但本来精读和泛读就要结合么😄">
+  
+  <meta property="og:title" content="每周Paper精读(2) Sentence Representation系列泛读" />
+<meta property="og:description" content="前言 原本计划是每周一篇论文精读，然而实际上由于项目上安排较紧，距离上一次论文精读已经过了几个月。现在项目算是告一段落，在项目中也算是找到一些问题所在，正在看感兴趣的论文（这期是赶不上了）。正好媛源的实习生肖风顺正在做关于句向量的调研，找了些相关论文，我也旁听了两次，顺便就把这两次旁听的结果记录一下，顺便也对其中内容也简要的过一遍大概思路，虽然这样算不上什么“论文精读”，但本来精读和泛读就要结合么😄" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/" />
+
+
+
+<meta property="article:published_time" content="2018-07-31T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-01T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       每周Paper精读(2) Sentence Representation系列泛读 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 论文精读 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>每周Paper精读</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">每周Paper精读(2) Sentence Representation系列泛读</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jul 30, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>6 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="前言">前言</h2>
+
+<p>原本计划是每周一篇论文精读，然而实际上由于项目上安排较紧，距离上一次论文精读已经过了几个月。现在项目算是告一段落，在项目中也算是找到一些问题所在，正在看感兴趣的论文（这期是赶不上了）。正好媛源的实习生肖风顺正在做关于句向量的调研，找了些相关论文，我也旁听了两次，顺便就把这两次旁听的结果记录一下，顺便也对其中内容也简要的过一遍大概思路，虽然这样算不上什么“论文精读”，但本来精读和泛读就要结合么😄。PS，写着写着其实和精读也差不多了😅。</p>
+
+<p>媛源这里主要是想将法院文书中的诉请语句和判决语句能够做一个分类，比较偏向于句子分类问题，因此会比较关注于Sentence Repre的生成，这一系列论文基本都是与此相关。</p>
+
+<h2 id="论文列表与contribution简述">论文列表与Contribution简述</h2>
+
+<p>[1]. <a href="#1-convolutional-neural-networks-for-sentence-classification">Kim, Yoon. “Convolutional Neural Networks for Sentence Classification.” <em>Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)</em>, 2014, pp. 1746–1751.</a> <a href="https://arxiv.org/abs/1408.5882">下载</a></p>
+
+<p>据说是第一篇在NLP领域使用CNN的论文，算是将CNN从图像识别领域延伸到了NLP来，并取得了不错的效果。</p>
+
+<p>[2]. <a href="#2-a-sensitivity-analysis-of-and-practitioners-guide-to-convolutional-neural-networks-for-sentence-classification">Zhang, Ye, and Byron C. Wallace. “A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification.” <em>International Joint Conference on Natural Language Processing(IJCNLP)</em>, vol. 1, 2017, pp. 253–263.</a>  <a href="https://arxiv.org/abs/1510.03820v1">下载</a></p>
+
+<p>对在句子分类层面使用CNN进行了详细的实验，对初学者的CNN调参有一定指导意义，可以帮助理解各参数对CNN的影响，但实质上的帮助并不会很大，算是给些经验性的参考吧。</p>
+
+<p>[3]. <a href="#3-character-level-convolutional-networks-for-text-classification">Zhang, Xiang, et al. “Character-Level Convolutional Networks for Text Classification.” <em>Neural Information Processing Systems(NIPS)</em>, 2015, pp. 649–657.</a> <a href="https://arxiv.org/abs/1509.01626">下载</a></p>
+
+<p>使用字符集Embedding来代替词语级的Embedding。</p>
+
+<p>[4]. <a href="#4-baseline-needs-more-love-on-simple-word-embedding-based-models-and-associated-pooling-mechanisms">Shen, Dinghan, et al. “Baseline Needs More Love: On Simple Word-Embedding-Based Models and Associated Pooling Mechanisms.” <em>Proceedings of the 56th Annual Meeting of the Association for      Computational Linguistics (ACL)</em>, 2018.</a> <a href="https://arxiv.org/abs/1805.09843">下载</a></p>
+
+<p>2015直接就跳到了2018，其实中间有很多基于attention做的repre的建模，不管是对于句子中词语的attention，句子结构的attention，还是段落的，整体结构算是越来越复杂。但是这篇2018ACL的文章指出，根本不需要这么复杂的模型，只需要最简单的词向量就可以有很好的效果。不过，据实验，调参的好坏很大程度上决定了这个基线的结果。</p>
+
+<p>[5]. <a href="#5-joint-embedding-of-words-and-labels-for-text-classification">Wang, Guoyin, et al. “Joint Embedding of Words and Labels for Text Classification.” <em>Meeting of the Association for Computational Linguistics(ACL)</em>, 2018.</a> <a href="https://arxiv.org/abs/1805.04174">下载</a></p>
+
+<p>[6]. <a href="#6-analogical-reasoning-on-chinese-morphological-and-semantic-relations">Li, Shen, et al. “Analogical Reasoning on Chinese Morphological and Semantic Relations.” <em>Meeting of the Association for Computational Linguistics</em>, 2018.</a> <a href="https://arxiv.org/abs/1805.06504">下载</a></p>
+
+<h2 id="数据集">数据集</h2>
+
+<p>便于以后进行查询实验，将几篇论文的数据集列一下：</p>
+
+<ul>
+<li><strong>MR</strong>: <a href="https://www.cs.cornell.edu/people/pabo/movie-review-data/">Movie reviews</a> with one sentence per review. Classiﬁcation involves detecting positive/negative reviews (Pang and Lee, 2005). (ref: 论文[1])</li>
+<li><strong>SST-1</strong>: <a href="http://nlp.stanford.edu/sentiment/">Stanford Sentiment Treebank</a>—an extension of MR but with train/dev/test splits provided and ﬁne-grained labels (very positive, positive, neutral, negative, very negative), re-labeled by Socher et al. (2013). Data is actually provided at the phrase-level and hence we train the model on both phrases and sentences but only score on sentences at test time, as in Socher et al. (2013), Kalchbrenner et al. (2014), and Le and Mikolov (2014). Thus the training set is an order of magnitude larger than listed in table 1. (ref: 论文[1])</li>
+<li><strong>SST-2</strong>: Same as SST-1 but with neutral reviews removed and binary labels. (ref: 论文[1])</li>
+<li><strong>Subj</strong>: Subjectivity dataset where the task is to classify a sentence as being subjective or objective (Pang and Lee, 2004). (ref: 论文[1])</li>
+<li><strong>TREC</strong>: <a href="http://cogcomp.cs.illinois.edu/Data/QA/QC/">TREC question dataset</a>—task involves classifying a question into 6 question types (whether the question is about person, location, numeric information, etc.) (Li and Roth, 2002). (ref: 论文[1])</li>
+<li><strong>CR</strong>: <a href="http://www.cs.uic.edu/ ∼ liub/FBS/sentiment-analysis.html">Customer reviews</a> of various products (cameras, MP3s etc.). Task is to predict positive/negative reviews (Hu and Liu, 2004). (ref: 论文[1])</li>
+<li><strong>MPQA</strong>: <a href="http://www.cs.pitt.edu/mpqa/">Opinion polarity detection subtask</a> of the MPQA dataset (Wiebe et al., 2005). (ref: 论文[1])</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>\(c\)</th>
+<th>\(l\)</th>
+<th>\(N\)</th>
+<th>\(|V|\)</th>
+<th>\(|V_{pre}|\)</th>
+<th>\(Test\)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>MR</strong></td>
+<td>2</td>
+<td>20</td>
+<td>10662</td>
+<td>18765</td>
+<td>16448</td>
+<td>\(CV\)</td>
+</tr>
+
+<tr>
+<td><strong>SST-1</strong></td>
+<td>5</td>
+<td>18</td>
+<td>11855</td>
+<td>17836</td>
+<td>16262</td>
+<td>2210</td>
+</tr>
+
+<tr>
+<td><strong>SST-2</strong></td>
+<td>2</td>
+<td>19</td>
+<td>9613</td>
+<td>16185</td>
+<td>14838</td>
+<td>1821</td>
+</tr>
+
+<tr>
+<td><strong>Subj</strong></td>
+<td>2</td>
+<td>23</td>
+<td>10000</td>
+<td>21323</td>
+<td>17913</td>
+<td>\(CV\)</td>
+</tr>
+
+<tr>
+<td><strong>TREC</strong></td>
+<td>6</td>
+<td>10</td>
+<td>5952</td>
+<td>9592</td>
+<td>9125</td>
+<td>500</td>
+</tr>
+
+<tr>
+<td><strong>CR</strong></td>
+<td>2</td>
+<td>19</td>
+<td>3775</td>
+<td>5340</td>
+<td>5046</td>
+<td>\(CV\)</td>
+</tr>
+
+<tr>
+<td><strong>MPQA</strong></td>
+<td>2</td>
+<td>3</td>
+<td>10606</td>
+<td>6246</td>
+<td>6083</td>
+<td>\(CV\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Table 1: Summary statistics for the datasets after tokenization. \(c\): Number of target classes. \(l\): Average sentence length. \(N\): Dataset size. \(|V|\): Vocabulary size. \(|V_{pre}|\): Number of words present in the set of pre-trained word vectors. \(Test\): Test set size (CV means there was no standard train/test split and thus 10-fold CV was used). (ref: 论文[1])</p>
+
+<h2 id="论文详情">论文详情</h2>
+
+<h3 id="1-convolutional-neural-networks-for-sentence-classification">[1]. Convolutional Neural Networks for Sentence Classification</h3>
+
+<p>据说是第一篇在NLP领域使用CNN的论文，但看了之后的实验观察，其实2014ACL就已经有一篇在NLP的句子建模领域使用CNN的论文了，但在那篇中在SST-1数据集上使用随机初始化词向量的模型效果只有37.4%，大大比这篇的45.0%低，作者Yoon Kim归功于采用了多个不同窗口宽度的filter。所以，这篇如果有较高地位，应该在“第一篇在NLP领域使用CNN的论文”前再加一句，效果出色。</p>
+
+<h4 id="架构细节">架构细节</h4>
+
+<p>其实乍一看，Yoon Kim就只是直接采用了CNN的框架套用在了NLP领域，与图像领域并没有什么很大区别。但一些细节上还是会有一些略微的不同。图1为原论文中的配图，图2为网上找到的对于一句话实例的介绍图片，相对更为清楚和详细。</p>
+
+<p><img src="https://github.com/llhthinker/NLP-Papers/raw/master/text%20classification/2017-10/Convolutional%20Neural%20Networks%20for%20Sentence%20Classification/model.png" alt="图1 原论文配图" /></p>
+
+<p><img src="https://github.com/llhthinker/NLP-Papers/raw/master/text%20classification/2017-10/A%20Sensitivity%20Analysis%20of%20(and%20Practitioners%E2%80%99%20Guide%20to)%20Convolutional/model.png" alt="图2 一句话实例" /></p>
+
+<p>基本上图就能够说明论文的主要步骤和思想了，有几点比较有趣的思考：</p>
+
+<ul>
+<li>不同于图像领域的卷积核为\(n \times n\)的正方形，Yoon Kim在这里使用的是\(n \times k\)，其中\(k\)是词向量的维度，在此情况下的卷积结果的确比粗暴直接套CNN的正方形filter更为合理（除非对于词向量来说，也存在局部视野的意义）。在此情况下，feature map不再是类似地正方形，而是一个一维向量，max pooling原本为对feature map的2维度pooling改为单维度取最大值也是显而易见的。</li>
+<li>图片天然有RGB的三通道，Yoon Kim尝试使用static和non-static的词向量策略作为两个不同的通道，并希望能通过static的部分减少过拟合（使feature map不会偏离太过），但不是在所有数据集上都有更好的效果。<mark style="background: #eeb4ff;">多通道部分的确是一个很有趣的思路，可以考虑融合更多的信息进来，就像NIN一样。</mark></li>
+<li>之前大多直接使用word2vec，由于word2vec只考虑了上下文的文字信息，更偏向于句法概率而不是语义，因此两个语义相反但用法相似的词语是很有可能在词向量的距离上是相近的。而在新的数据集（特别是情感分类数据集）上继续fine-tune，由于加入了语义部分不断进行调整，可以使两个用法相似但是语义更远的词分得更开，对于原本的词向量，能对现实中的词语有更好的建模。</li>
+</ul>
+
+<p>除了以上几点之外，还有以下几个论文的内容比较有意思：</p>
+
+<ul>
+<li>其实之前的思路一直是只将词向量作为初始化的方法来看待，目的是为了更快速地训练网络，提供更多的额外信息，并且能帮助降低一些迭代到不好的参数的可能。第一次看到说考虑static（词向量参数固定不再发生变化）和mixed（将词向量参数固定和词向量参数继续fine-tune作为两个通道）的情况。虽然最后的结论还是static的效果更为稳定地优秀，但还是耳目一新。</li>
+<li>论文提到另一篇2014ACL同样尝试了CNN做句子建模，同样随机初始化词向量，但在SST-1上只获得了37.4%的结果，相比Yoon Kim的45.0%相差挺多，Yoon Kim把这个结果归因于使用了多个不同窗口大小的filter。</li>
+<li>对于wordvec词典中未出现的词使用与word2vec一致variance的均匀分布来初始化。</li>
+</ul>
+
+<h3 id="2-a-sensitivity-analysis-of-and-practitioners-guide-to-convolutional-neural-networks-for-sentence-classification">[2]. A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification</h3>
+
+<h3 id="3-character-level-convolutional-networks-for-text-classification">[3]. Character-Level Convolutional Networks for Text Classification</h3>
+
+<h3 id="4-baseline-needs-more-love-on-simple-word-embedding-based-models-and-associated-pooling-mechanisms">[4]. Baseline Needs More Love: On Simple Word-Embedding-Based Models and Associated Pooling Mechanisms</h3>
+
+<h3 id="5-joint-embedding-of-words-and-labels-for-text-classification">[5]. Joint Embedding of Words and Labels for Text Classification</h3>
+
+<h3 id="6-analogical-reasoning-on-chinese-morphological-and-semantic-relations">[6]. Analogical Reasoning on Chinese Morphological and Semantic Relations</h3>
+
+<h2 id="进一步阅读与了解">进一步阅读与了解</h2>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init + paper[1]</td>
+<td>2018-07-30</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>Add shortcode for text bg</td>
+<td>2018-08-01</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/nlp" role="button">nlp </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/repre" role="button">repre </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-03/computer-graphics%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Computer Graphics资源整理</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>前端试水(1) 前端技术路线</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%89%8d%e8%a8%80">
+												 前言
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%ae%ba%e6%96%87%e5%88%97%e8%a1%a8%e4%b8%8econtribution%e7%ae%80%e8%bf%b0">
+												 论文列表与Contribution简述
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%95%b0%e6%8d%ae%e9%9b%86">
+												 数据集
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%ae%ba%e6%96%87%e8%af%a6%e6%83%85">
+												 论文详情
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#1-convolutional-neural-networks-for-sentence-classification">
+												 [1]. Convolutional Neural Networks for Sentence Classification
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9e%b6%e6%9e%84%e7%bb%86%e8%8a%82">
+												 架构细节
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#2-a-sensitivity-analysis-of-and-practitioners-guide-to-convolutional-neural-networks-for-sentence-classification">
+												 [2]. A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#3-character-level-convolutional-networks-for-text-classification">
+												 [3]. Character-Level Convolutional Networks for Text Classification
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#4-baseline-needs-more-love-on-simple-word-embedding-based-models-and-associated-pooling-mechanisms">
+												 [4]. Baseline Needs More Love: On Simple Word-Embedding-Based Models and Associated Pooling Mechanisms
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#5-joint-embedding-of-words-and-labels-for-text-classification">
+												 [5]. Joint Embedding of Words and Labels for Text Classification
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#6-analogical-reasoning-on-chinese-morphological-and-semantic-relations">
+												 [6]. Analogical Reasoning on Chinese Morphological and Semantic Relations
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%bf%9b%e4%b8%80%e6%ad%a5%e9%98%85%e8%af%bb%e4%b8%8e%e4%ba%86%e8%a7%a3">
+												 进一步阅读与了解
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="居然都找不到！ 其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。 什么？所以百度搜索搜不到我的个人博客？不死心，尝试一下，找得到github、gist主页，但是就是找不到g">
+  
+  <meta property="og:title" content="Blog养成记(5) 要让Github Pages被索引到" />
+<meta property="og:description" content="居然都找不到！ 其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。 什么？所以百度搜索搜不到我的个人博客？不死心，尝试一下，找得到github、gist主页，但是就是找不到g" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/" />
+
+
+
+<meta property="article:published_time" content="2018-01-28T22:04:23&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-28T22:04:23&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       Blog养成记(5) 要让Github Pages被索引到 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>Blog养成记</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">Blog养成记(5) 要让Github Pages被索引到</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jan 28, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>6 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="居然都找不到">居然都找不到！</h2>
+
+<p>其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。</p>
+
+<p>什么？所以百度搜索搜不到我的个人博客？不死心，尝试一下，找得到github、gist主页，但是就是找不到github.io后缀的网页。除了百度之外，我还尝试了Bing、Google，都没有，所以常用的三大搜索引擎都找不到我的博客，小小网站在浩瀚的网络世界中就像是一个孤岛，只有知道url才能达到。突然想到传说中的暗网是否也是加上了反爬，所以大众难以发现？</p>
+
+<p>话说回来，反爬也有反爬的好处，比如有时博客内容特别个人，只是想找个地方发泄一下、记录一下，不被搜索引擎索引到也降低了被他人发现的几率，就像是一个打开的日记本，但是不用担心被家长偷看的感觉。</p>
+
+<h2 id="如何让搜索引擎索引到呢">如何让搜索引擎索引到呢？</h2>
+
+<p>发现流行的搜索引擎居然都找不到博客，那就需要赶紧找解决方法。Google和Bing还不清楚是怎么回事，但网上流传的email回复内容都点明了Github Pages禁止了百度爬虫的爬去，似乎原因是百度爬虫爬得太过于频繁，会严重影响服务器性能。针对百度爬虫的问题，大家找了很多方法。比较早期的有把放在GitHub上的代码同时push到国内的GitCafe上，但GitCafe已经被Coding.net收购，2017年6月前很多方案都是同步推送到Coding.net上，而8月开始免费的Coding.net用户会被强行加入5s等待页面，也会导致爬取失败。自建服务器托管博客、将博客放在Gitlab上或者CDN方法都不在我的选择范围内，因为暂时我还没有购买服务器或者域名的打算，所以决定放弃百度……但不管怎么样Bing和Google还是要设置好的！</p>
+
+<h3 id="居然在robots-txt中设置了屏蔽">居然在robots.txt中设置了屏蔽!!!</h3>
+
+<p>我对网络、网站这部分并不熟悉，之前在了解themes里内容时有看见过这么个小小的txt文件，并没有放在心上，但原来各个爬虫爬不到罪魁祸首就在这个txt文件上。</p>
+
+<p>robots.txt在网站的根目录里，文件中明确了爬虫可以爬取以及禁止收录的范围。搜索引擎爬取网站第一个访问的文件就是robots.txt。robots.txt中可以对于不同的搜索引擎机器人设置不同的权限，这里就不赘述了，毕竟也不是我关心的重点^-^。</p>
+
+<p>Hugo在static文件夹中就有一个robots.txt，生成静态网页时就会把这个文件放在网站的根目录下。默认的robots.txt如下所示：</p>
+
+<pre><code>User-agent: *
+Disallow: /
+</code></pre>
+
+<p>第二行把所有爬虫都给屏蔽了，只需要把第二行的 <code>/</code> 删去就ok了。</p>
+
+<p>尽管已经修正了robots.txt，但是过了一天多看各个搜索引擎，还是找不到我的博客网站，所以还是要进一步处理。</p>
+
+<h3 id="google">Google</h3>
+
+<h4 id="添加资源">添加资源</h4>
+
+<p>在google搜索页面输入“site:orianna-zzo.github.io”就可以看到这个网页是否被google索引到，如果没被索引到，在搜索结果页面就会直接提示你使用<a href="www.google.com/webmasters/">Google Search Console</a>。登录后，如果是首次使用在Search Console中以下界面中选择“网页”类型资源，并将博客完整url填入其中，我填入“<a href="https://orianna-zzo.github.io">https://orianna-zzo.github.io</a>”。注意http或者https，www等最好能完全正确。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/google-add-resource1.png" alt="google-add-resource1" /></p>
+
+<p>如果已经添加过资源，则需要点击下面的红色按钮“添加属性”，然后和上面一样地添加资源即可。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/google-add-resource2.png" alt="google-add-resource2" /></p>
+
+<p>资源添加后，需要验证你对该网站有所有权。Google提供了几种方法，我选择了HTML验证文件上传，只需要根据要求，下载HTML验证文件，把文件放在网站的repository中上传，然后进行验证即可。</p>
+
+<h4 id="查看robots-txt">查看robots.txt</h4>
+
+<p>资源添加后，先查看robots.txt是否设置正确。我就是在这里才发现在这个文档中把所有搜索引擎的爬虫机器人都屏蔽了。</p>
+
+<p>进入资源后，在左侧点击“抓取&gt;robots.txt测试工具”，右边会有显示robots.txt的内容。需要注意的是，robots.txt并不一定是最新版的，看上去这个每天只会更新一次。可以在下方输入需要测试的网址，并点击测试。若显示已允许则说明设置ok。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/google-robots.png" alt="google-robots" /></p>
+
+<h4 id="添加url">添加url</h4>
+
+<p>robots.txt设置成功还是不够的，还是需要手动添加url。在左侧点击“抓取&gt;Google抓取工具”，在右侧金融人机身份验证后，可以将想要添加的url写入输入框，并进行抓取。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/google-crawl.png" alt="google-crawl" /></p>
+
+<p>状态显示完成，说明该网页已经爬取成功。点击“请求输入索引”，会显示以下选择框：</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/google-add-index.png" alt="google-add-index" /></p>
+
+<p>有两个选项，第一个仅抓取次网址，每个月500次提交机会，第二个抓取次网址及其直接链接，每个月有10次提交机会。提交后，编入了索引，等上一会就可以在google上搜索了！</p>
+
+<p>不过提交次数多就需要进行图片验证，而且如果网站有修改就需要重新提交。鉴于现在内容不多，先都是人肉提交的，如果网页多的话，可以通过站点地图进行提交。</p>
+
+<h4 id="站点地图">站点地图</h4>
+
+<p>在左侧点击“站点地图”，并在右侧点添加/测试站点地图，并添加url，我的是“<a href="https://orianna-zzo.github.io/sitemap.xml">https://orianna-zzo.github.io/sitemap.xml</a>”。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/google-add-sitemap.png" alt="google-add-sitemap" /></p>
+
+<p>发现提示有警告，说是网址遭到robots.txt阻止。原来sitemap需要在robots.txt增加配置，于是现在robots.txt如下所示：</p>
+
+<pre><code>User-agent: *
+Disallow: 
+Sitemap: https://orianna-zzo.github.io/sitemap.xml
+</code></pre>
+
+<p>要注意的是，如果有网页不想被爬取，不仅需要在robotx.txt中注意增加在Disallow后面，还要注意生成sitemap时不要添加进去。</p>
+
+<h3 id="bing">Bing</h3>
+
+<p>相似地，在<a href="https://www.bing.com/webmaster/home">Bing网站管理</a>登陆、添加网站url。</p>
+
+<p>然后在左侧点击“配置我的网站&gt;Sitemaps”，并在右侧加上sitemap的url，点击提交。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/bing-sitemap.png" alt="gbing-sitemap" /></p>
+
+<p>Google基本过一天就能查到，但是Bing我总是很难搜索到，猛然发现上次抓取更新时间还在1-11，已经过了大半个月了，不知道什么时候才能知道效果了。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/bing-crawl.png" alt="bing-crawl" /></p>
+
+<h3 id="百度不死心的尝试">百度不死心的尝试</h3>
+
+<p>百度在<a href="https://ziyuan.baidu.com/site/">这里</a>注册站长管理并添加网站资源，我同样选择添加HTML文件。注意http或者https、www等最好能完全正确。我百度的验证过好几次都没有成功，料想是将https写成了http所以验证出现问题。</p>
+
+<p>在右侧选择“数据监控&gt;Robots”，并点击检测并更新刷新robots设置。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/baidu-robots.png" alt="baidu-robots" /></p>
+
+<p>在“数据引入&gt;链接提交”中的自动提交选择sitemap，并提交sitemap地址。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/baidu-sitemap.png" alt="baidu-sitemap" /></p>
+
+<p>状态转了很久显示抓取失败T^T。</p>
+
+<p>然后选择“数据监控&gt;抓取诊断”，并输入博客网址进行抓取。然后发现，全部都抓取失败了，显示是“拒绝访问”。果然是真的屏蔽了百度爬虫了呀。</p>
+
+<p><img src="https://orianna-zzo.github.io/images/series/Blog养成记/5/baidu-spider.png" alt="baidu-spider" /></p>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p><a href="www.google.com/webmasters/">Google网站管理</a>、<a href="https://www.bing.com/webmaster/home">Bing网站管理</a>、<a href="https://ziyuan.baidu.com/site/">百度网站管理</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-01-28</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/seo" role="button">seo </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/sitemap" role="button">sitemap </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/blog" role="button">blog </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Mac中Git忽略.DS_Store文件</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B01-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>Mac小白探索记(1) 基本设置与常用软件</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%b1%85%e7%84%b6%e9%83%bd%e6%89%be%e4%b8%8d%e5%88%b0">
+												 居然都找不到！
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%a6%82%e4%bd%95%e8%ae%a9%e6%90%9c%e7%b4%a2%e5%bc%95%e6%93%8e%e7%b4%a2%e5%bc%95%e5%88%b0%e5%91%a2">
+												 如何让搜索引擎索引到呢？
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%b1%85%e7%84%b6%e5%9c%a8robots-txt%e4%b8%ad%e8%ae%be%e7%bd%ae%e4%ba%86%e5%b1%8f%e8%94%bd">
+												 居然在robots.txt中设置了屏蔽!!!
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#google">
+												 Google
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%b7%bb%e5%8a%a0%e8%b5%84%e6%ba%90">
+												 添加资源
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9f%a5%e7%9c%8brobots-txt">
+												 查看robots.txt
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%b7%bb%e5%8a%a0url">
+												 添加url
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%ab%99%e7%82%b9%e5%9c%b0%e5%9b%be">
+												 站点地图
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#bing">
+												 Bing
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%99%be%e5%ba%a6%e4%b8%8d%e6%ad%bb%e5%bf%83%e7%9a%84%e5%b0%9d%e8%af%95">
+												 百度不死心的尝试
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#resource%e8%b5%84%e6%ba%90%e9%93%be%e6%8e%a5%e6%b1%87%e6%80%bb">
+												 Resource资源链接汇总
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

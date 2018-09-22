@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sci-tech on ZHENG Zi&#39;ou</title>
+    <link>https://orianna-zzo.github.io/sci-tech/</link>
+    <description>Recent content in Sci-tech on ZHENG Zi&#39;ou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Tue, 18 Sep 2018 23:51:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://orianna-zzo.github.io/sci-tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blog养成记(16) 自建Hugo的TOC模板</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Sat, 25 Aug 2018 22:59:59 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/</guid>
+      <description>Table Of Content是一个十分常用的功能，这个系列的第13篇Blog养成记13 增加一个TOC侧边栏就是为了这个做准备，只不过是在静态页面上尝试想要的样式。本文用到的样式都基于第13篇中增加的css样式。 Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参考这里。 在正文部分，Markdown正文中所有的标题都会自动建一个id，id为标题内容，也可以用{#your-id}来</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(15) 创建shortcode模板便捷高亮内容</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</link>
+      <pubDate>Tue, 21 Aug 2018 21:59:02 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</guid>
+      <description>为什么使用shortcode 由于Hugo支持在文本内容中使用html标签，因此在文本中的文字如果需要高亮可以直接使用&amp;lt;mark&amp;gt;标签即可。但是code fence中的代码如何进行高亮呢？直接在code fence中使用html标签会被默认为文本（理应有办法转义，但暂时还不了解）。 之前我的方案是使用highlight shortcode(参见Blog养成记3 Hugo的语法高亮配置)，但是由于h</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(14) 让同页滚动更平滑</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</link>
+      <pubDate>Sat, 18 Aug 2018 20:14:59 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</guid>
+      <description>&lt;p&gt;上一期说到增加toc侧边栏，但是直接跳转非常突兀，因此特地找了让同页跳转滚动更平滑的插件。使用步骤如下：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(13) 增加一个TOC侧边栏</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</link>
+      <pubDate>Fri, 17 Aug 2018 21:01:32 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</guid>
+      <description>想在页面右侧保留一个固定在屏幕上的TOC导航栏(Table Of Content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。 Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。 Bootstrap基础版 sc</description>
+    </item>
+    
+    <item>
+      <title>前端试水(3) 自适应与响应式布局</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</link>
+      <pubDate>Tue, 14 Aug 2018 22:03:03 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</guid>
+      <description>前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。 自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。 自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(12) 给网页的图片加个蒙版</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</link>
+      <pubDate>Mon, 13 Aug 2018 00:40:13 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</guid>
+      <description>&lt;p&gt;上一期说到想给网站图标的图片加个蒙版，然而没有成功。那么网页中的图片么？经常看到个人图片都是圆形的，然而实际上上传的原图是方的。如果使用了蒙版功能，就可以对同一张图想怎么变形状就怎么变了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(11) 给网站加个小icon</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</link>
+      <pubDate>Mon, 13 Aug 2018 00:14:19 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</guid>
+      <description>&lt;p&gt;这部分其实很简单，只需要在&lt;code&gt;index.html&lt;/code&gt;的&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;部分增加以下一句话就好：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(10) 实现幻灯片(轮播)效果</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
+      <pubDate>Sun, 12 Aug 2018 01:41:43 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
+      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在Github上的js插件，这次使用Bootstrap4发现这已经集成进Bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。 Carousel 基础版 在Bootstrap4中轮播组件称为Carousel，在官网就有对其使用的简单介绍。 简单说来</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(9) 项目结构&amp;前端环境配置</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sat, 11 Aug 2018 19:00:35 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>其实如果只是对静态页面进行修改，不需要配什么环境，只需要对html进行修改就好。 哦，不对，因为还是会使用hugo来生成静态页面，hugo还是要配置的，配置的方法详见这个系列的第2篇Blog养成记2 Hugo+Docker在Github上建立Blog。所以重点就在如何自己生成自己喜欢的hugo模板了。 由于仅使用hugo静态页面，所以也不计划使用gulp之类的工具，可能出了hugo外唯一考虑要使用的是s</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(8) 页面设计demo</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</link>
+      <pubDate>Sat, 11 Aug 2018 17:27:55 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</guid>
+      <description>实际上前几个月就已经将页面原型设计完成，中间经过需求梳理和页面demo两个部分，不过设计完后就停滞了不少时间。最近才又开始折腾静态页面，在公司也尝试搭一个简单网站（尝试了flask，最后还是回归hugo生成静态页面），所以为了能将之后的部分继续，所以赶紧补上。 需求梳理 首先需要将应用场景进行梳理，细化需求，还特地做了对应的思维导图明确所需要的功能。 需求场景方面主要是以下几个点： 生活类：能满足基本的博</description>
+    </item>
+    
+    <item>
+      <title>前端试水(2) 使用docker镜像的Sass配置</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。 Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助c</description>
+    </item>
+    
+    <item>
+      <title>前端试水(1) 前端技术路线</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</link>
+      <pubDate>Wed, 01 Aug 2018 10:23:48 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</guid>
+      <description>前言 对于前端的了解欲望实际上是从想对博客主题进行修改开始的。但是前端这部分一直对我来说是个谜，虽然这些名词都能搜索到，但一直傻傻的不得其门而入。总算在一年后的今天，尽管还有很多地方暂时是迷雾状态，但貌似略了解一点前端的整体框架。现在算是开了新的一个系列，在此算是记录一下我了解的前端的技术路线，如果那些和我一样的前端小白们能通过这个也大概了解一点到底现在需要学的、用的是什么，就再好不过了。 对了，先声</description>
+    </item>
+    
+    <item>
+      <title>每周Paper精读(2) Sentence Representation系列泛读</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/</link>
+      <pubDate>Mon, 30 Jul 2018 17:41:23 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-07/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB2-sentence-representation%E7%B3%BB%E5%88%97%E6%B3%9B%E8%AF%BB/</guid>
+      <description>前言 原本计划是每周一篇论文精读，然而实际上由于项目上安排较紧，距离上一次论文精读已经过了几个月。现在项目算是告一段落，在项目中也算是找到一些问题所在，正在看感兴趣的论文（这期是赶不上了）。正好媛源的实习生肖风顺正在做关于句向量的调研，找了些相关论文，我也旁听了两次，顺便就把这两次旁听的结果记录一下，顺便也对其中内容也简要的过一遍大概思路，虽然这样算不上什么“论文精读”，但本来精读和泛读就要结合么😄</description>
+    </item>
+    
+    <item>
+      <title>Computer Graphics资源整理</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/computer-graphics%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</link>
+      <pubDate>Sun, 25 Mar 2018 23:48:35 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/computer-graphics%E8%B5%84%E6%BA%90%E6%95%B4%E7%90%86/</guid>
+      <description>&lt;p&gt;主要是针对Computer Animation，但现在还未入门，调研的是Computer Graphics大方向。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>慢学Docker(3) Docker Hub速度蜗牛爬怎么办?</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/%E6%85%A2%E5%AD%A6docker3-docker-hub%E9%80%9F%E5%BA%A6%E8%9C%97%E7%89%9B%E7%88%AC%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
+      <pubDate>Tue, 20 Mar 2018 23:47:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/%E6%85%A2%E5%AD%A6docker3-docker-hub%E9%80%9F%E5%BA%A6%E8%9C%97%E7%89%9B%E7%88%AC%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
+      <description>前言 其实两三个月前使用docker hub不管push还是pull虽然算不上光速但也不错。但今天修铭哥问我关于docker的使用，直接用Dockerfile建镜像不知道为什么成功不了，于是想直接pull我已经上传到docker hub中的镜像，结果就这1.3G左右的东西，下了整整一天。其中某layer就52M也能下半天。 晚上回家想下vue的docker镜像，几个四五十M的layer也慢悠悠下着，终于确</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(7) Hugo多级列表无法显示? —— Cocoa主题的Markdown bug合集</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E5%A4%9A%E7%BA%A7%E5%88%97%E8%A1%A8%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--cocoa%E4%B8%BB%E9%A2%98%E7%9A%84markdown-bug%E5%90%88%E9%9B%86/</link>
+      <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E5%A4%9A%E7%BA%A7%E5%88%97%E8%A1%A8%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--cocoa%E4%B8%BB%E9%A2%98%E7%9A%84markdown-bug%E5%90%88%E9%9B%86/</guid>
+      <description>前言 又一次开始折腾Markdown了，不过这一次是因为好好的md文件，在typora中显示的好好的，但在Hugo渲染后格式就不对了，引起我这次探究主要问题在多级列表。考虑到毕竟两个软件的markdown渲染引擎不同，我并没有用到很特别的语法。之前在引用上也碰到了问题，typora中能很好地识别我想要的引用段落，但是Hugo不行。所以这次探究下是哪里出了问题，以及对应的解决方案。 既然已经提到了mar</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(6) Hugo中的LaTeX渲染</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Mon, 19 Mar 2018 22:33:45 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</guid>
+      <description>前言 Hugo本身并不支持\(\LaTeX\)，但可以通过javascript进行渲染。Hugo官网提供了多种方法，由于这篇博客我决定选择\(\KaTeX\)，而不是MathJax。 安装 在head.html的标签前加上以下语句： &amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&amp;quot; integrity=&amp;quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&amp;quot; integrity=&amp;quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&amp;quot; integrity=&amp;quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt; 不过0.9.0版本似乎很难链接，还是从这里下载js和css，并放在static/js文件夹中，并将上面代码改为： &amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/js/katex/katex.min.css&amp;quot; &amp;gt; &amp;lt;script</description>
+    </item>
+    
+    <item>
+      <title>每周Paper精读(1) Understanding Deep Learning Requires Rethinking Generalization</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB1-understanding-deep-learning-requires-rethinking-generalization/</link>
+      <pubDate>Wed, 14 Mar 2018 10:40:55 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/%E6%AF%8F%E5%91%A8paper%E7%B2%BE%E8%AF%BB1-understanding-deep-learning-requires-rethinking-generalization/</guid>
+      <description>前言 上周五小仓鼠说有篇论文很有意思，问我看过没，是ICLR 2017 的 Best Paper [Zhang et al. 2017] Understanding Deep Learning Requires Rethinking Generalization。汗颜的确很久没有关心会议论文，现在更多都是关心项目技术点方向的论文。这篇论文一看的确很有意思，而且在学术界引起了非常激烈的讨论。有些人认为论文深度不够，提出的观点在泛化的理论学界已经研究很久，更偏向于实验报告不足以Best Paper，有人说中间有些逻辑问题，也有不少人觉得是对传统理论发</description>
+    </item>
+    
+    <item>
+      <title>Docker for datascience: 从纠结到放弃</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+      <pubDate>Tue, 06 Feb 2018 10:01:15 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+      <description>表示我是不纠结不死星人。 先是由jupyter stacks突发奇想，于是纠结于想建立属于自己的docker族系，特别是用来做数据科学&amp;amp;机器学习。想要不用Anaconda、甚至不用conda，自己按照使用习惯安装我自己需要的包、想使用最小的alpine作为基镜像，因此开始走上不归路。 想要使用bash而不是ash，想要默认调用bash，想要调用bash时能默认出现现在使用用户及现在所在文件夹。折</description>
+    </item>
+    
+    <item>
+      <title>Pycharm vs Notebook</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/pycharm-vs-notebook/</link>
+      <pubDate>Tue, 30 Jan 2018 21:07:19 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/pycharm-vs-notebook/</guid>
+      <description>严格说来题目起的有些问题，pycharm是一个IDE (Integrated Development Environment)，而且在pycharm里同样也可以使用Notebook。这里主要是指传统的编程方式和Notebook交互式方式的比较和选择。这篇博客希望对那些和我一样有选择恐惧症并且非常迷茫的人有所帮助。 缘起 说起来接触python也已经一年半的时间。去年7月，哦不，应该是前年7月，刚入职才开始因为工作学习的python，首先遇到的就是</description>
+    </item>
+    
+    <item>
+      <title>Mac小白探索记(2) Finder设置</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B02-finder%E8%AE%BE%E7%BD%AE/</link>
+      <pubDate>Tue, 30 Jan 2018 20:21:13 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B02-finder%E8%AE%BE%E7%BD%AE/</guid>
+      <description>Finder是mac的资源管理器，它的使用和配置与Windows区别还是挺多。习惯了Windows的使用使得Finder使用总觉得有些不便。配置好Finder能很大幅度提高我们的工作效率。 我会从遇到的问题着手，查找可以解决问题提高效率的解决方案。 Finder显示设置 显示隐藏文件夹 Mac系统Finder中的 /usr、/etc等文件夹都是隐藏文件，如果不进行设置用户是无法见到的。估计是因为mac用户并</description>
+    </item>
+    
+    <item>
+      <title>Mac小白探索记(1) 基本设置与常用软件</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B01-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Tue, 30 Jan 2018 15:04:48 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/mac%E5%B0%8F%E7%99%BD%E6%8E%A2%E7%B4%A2%E8%AE%B01-%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE%E4%B8%8E%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/</guid>
+      <description>序 原本打算将所有相关内容只写在一篇博文里，但后面发现越加越多，内容越来越零散，最后决定进行拆分，也变为一个系列。我是2017年底才刚开始深入使用mac，算是mac小白一枚，在探索的过程中想将一些我觉得高效实用的信息记录下来，希望其他和我一样刚开始学习mac的小伙伴们能看了后有所帮助。 第一篇主要介绍新入手mac后的基本设置与常用软件安装。终于转到有terminal的电脑上了，既然换了Mac OS，需要</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(5) 要让Github Pages被索引到</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/</link>
+      <pubDate>Sun, 28 Jan 2018 22:04:23 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/</guid>
+      <description>居然都找不到！ 其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。 什么？所以百度搜索搜不到我的个人博客？不死心，尝试一下，找得到github、gist主页，但是就是找不到g</description>
+    </item>
+    
+    <item>
+      <title>Mac中Git忽略.DS_Store文件</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Sun, 28 Jan 2018 13:36:28 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/</guid>
+      <description>Git中多出来的.DS_Store 虽然不是第一次使用mac，也不是第一次在mac上使用git，但对mac实际上非常不熟悉。每次git上传时多出来的.DS_Store文件虽然不清楚具体做什么，但看上去并没什么问题。git一般也是自己一个人单机使用，就算换机也一般是直接换，没有遇到过两个同时使用的时候，上传.DS_Store也就默认都上传了。 但这次用两个mac，一个mac提交了修改，第二个mac想要拉</description>
+    </item>
+    
+    <item>
+      <title>慢学Docker(2) Docker初探</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</link>
+      <pubDate>Sat, 27 Jan 2018 15:04:18 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</guid>
+      <description>Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用</description>
+    </item>
+    
+    <item>
+      <title>慢学Docker(1) Preface</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</link>
+      <pubDate>Sat, 27 Jan 2018 12:32:58 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</guid>
+      <description>初闻 作为一个一向不怎么关心各种资讯动态的人，我经常脱节于前沿新闻及热点，更何况对于非专业方向，我更是不会去主动关心，所以对于之前很火的容器和docker我是一点都不了解。第一次听说这个还是因为前人渣组长李想要求写份标书文档，什么技术热门可用就写进去。他听说了docker容器部署及环境配置的便利性，想利用到项目中的宣传中，更好地作为对外的卖点。不管怎么说，这是第一次听说并尝试了解docker和容器，</description>
+    </item>
+    
+    <item>
+      <title>/bin/sh vs /bin/bash</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/bin/sh-vs-/bin/bash/</link>
+      <pubDate>Mon, 22 Jan 2018 11:20:32 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/bin/sh-vs-/bin/bash/</guid>
+      <description>问题背景 这里是一些关于为什么会发现这个问题的碎碎念…… 之前也提到我们组的环境有些乱，一些开发机布置在生产，一台有GPU的计算机也布置在生产，如果需要root权限需要找运营，而据我上次和同事沟通结果是木有运营（我觉得应该是他们不知道找谁）。由于没有root权限，不能使用docker，而公司的机子连开发环境都是无法执行pip等操作的，所以只能使用conda创建虚拟环境。 然而，conda创建虚拟环境也需</description>
+    </item>
+    
+    <item>
+      <title>在公司建立python虚拟环境</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
+      <description>前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在p</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(4) Hugo中增加tags等分类</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
+      <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
+      <description>自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。 分类taxonomy有3个概念： Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容 例如我需要增加3个分类，分别是： tag：文章标签 topic：文章主题/文章系列 category：文章分类 以tag为例，则对应Taxonomy是tag，Term是</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(3) Hugo的语法高亮配置</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 09 Jan 2018 17:52:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。 一般有以下几种常见方法： 1. 使用Hugo默认Chroma (弃，一些代码无法高亮) 使用Pygments (弃，一些代码无法高亮) 使用Highlight Shortcode (弃，高亮颜色渲染问题) 使用Highlight.js ✔️ 使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Py</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
+      <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
+      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，</description>
+    </item>
+    
+    <item>
+      <title>Blog养成记(1) Preface</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</link>
+      <pubDate>Mon, 01 Jan 2018 16:05:25 +0800</pubDate>
+      
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</guid>
+      <description>初始 养个Blog的想法从很早就有了，但是&amp;hellip; 从本科开始就一直想要一个自己的Blog，一直没有行动。本身我没有记日记的习惯，也没有需求和冲动写下什么，本科虽然有时想记下学下的内容，但笔记就够了，也没写什么技术博客的想法。除了很久之前偶尔在qq空间或者人人po两篇直抒胸臆的文章，也就没有其他了。此外，虽说博客最重要的是内容，但没有一个好的生态环境和前端界面设计，至少对于我来说，没有兴趣花时</description>
+    </item>
+    
+  </channel>
+</rss>

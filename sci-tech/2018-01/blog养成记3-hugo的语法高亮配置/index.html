@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="前言 Hugo官网在这里给出了详细的语法高亮配置说明。 一般有以下几种常见方法： 1. 使用Hugo默认Chroma (弃，一些代码无法高亮) 使用Pygments (弃，一些代码无法高亮) 使用Highlight Shortcode (弃，高亮颜色渲染问题) 使用Highlight.js ✔️ 使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Py">
+  
+  <meta property="og:title" content="Blog养成记(3) Hugo的语法高亮配置" />
+<meta property="og:description" content="前言 Hugo官网在这里给出了详细的语法高亮配置说明。 一般有以下几种常见方法： 1. 使用Hugo默认Chroma (弃，一些代码无法高亮) 使用Pygments (弃，一些代码无法高亮) 使用Highlight Shortcode (弃，高亮颜色渲染问题) 使用Highlight.js ✔️ 使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Py" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/" />
+
+
+
+<meta property="article:published_time" content="2018-01-09T17:52:25&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-09T17:52:25&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       Blog养成记(3) Hugo的语法高亮配置 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>Blog养成记</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">Blog养成记(3) Hugo的语法高亮配置</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jan 9, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>4 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="前言">前言</h2>
+
+<p>Hugo官网在<a href="http://gohugo.io/content-management/syntax-highlighting/">这里</a>给出了详细的语法高亮配置说明。</p>
+
+<p>一般有以下几种常见方法：<br />
+1. 使用Hugo默认Chroma (弃，一些代码无法高亮)</p>
+
+<ol>
+<li><p><a href="#使用Pygments进行高亮">使用Pygments</a> (弃，一些代码无法高亮)</p></li>
+
+<li><p><a href="#使用highlight-shortcode进行高亮">使用Highlight Shortcode</a>  (弃，高亮颜色渲染问题)</p></li>
+
+<li><p><a href="#使用highlight.js进行高亮">使用Highlight.js</a>  ✔️</p></li>
+</ol>
+
+<h2 id="使用pygments进行高亮">使用Pygments进行高亮</h2>
+
+<p>Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。
+如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。</p>
+
+<h3 id="pygments安装">Pygments安装</h3>
+
+<p>我在建立Hugo镜像时已经安装了Pygments，不然需要先安装Pygments。如果在Debian和Ubuntu系统中可以用下面语句安装，其他系统也可参考：</p>
+
+<pre><code class="language-bash">$ sudo apt-get install python3-pygments
+</code></pre>
+
+<h3 id="pygments配置">Pygments配置</h3>
+
+<p>下面是我按官网在 <code>config.toml</code> 中配置的参数：</p>
+
+<pre><code class="language-toml">[highlighting] 
+  pygmentsUseClassic       = true
+  pygmentsCodeFences       = true
+  pygmentsStyle            = &quot;autumn&quot;
+</code></pre>
+
+<p>其中，
+<code>pygmentsUseClassic=true</code> 说明使用Pygments来进行语法高亮；<br />
+<code>pygmentsCodeFences=true</code> 使在code fence中的根据设置的语言标签进行语法高亮；<br />
+<code>pygmentsStyle=&quot;autumn&quot;</code> 设置高亮的风格,可以在<a href="https://help.farbox.com/pygments.html">这里</a>查看各高亮风格，选择最心仪的。</p>
+
+<p>我选择了 <code>autumn</code>，下面是在code fence中的高亮示例：</p>
+
+<pre><code class="language-python">#!/usr/bin/python3
+
+from engine import RunForrestRun
+
+&quot;&quot;&quot;Test code for syntax highlighting!&quot;&quot;&quot;
+
+class Foo:
+	def __init__(self, var):
+		self.var = var
+		self.run()
+
+	def run(self):
+		RunForrestRun()  # run along!
+</code></pre>
+
+<p>由于语法高亮渲染需要时间，因此语法高亮默认是放在缓存的，如果需要查看则需要清空缓存。</p>
+
+<h3 id="pygments存在问题">Pygments存在问题</h3>
+
+<p>与Chroma一样，Pygments对于一些格式无法进行高亮。现在发现的就有无法对shell脚本高亮，也无法识别toml文件。</p>
+
+<h2 id="使用highlight-shortcode进行高亮">使用Highlight Shortcode进行高亮</h2>
+
+<p>除了可以使用code fence高亮代码，还可Hugo内建的highlight shortcode进行高亮。highlight shortcode的优点是不仅可以根据语法进行高亮，还能在code fence中指定行进行mark，还可以设置代码的行号，比较灵活。</p>
+
+<p>使用下面的语法：</p>
+
+<pre><code>{{&lt; highlight python &quot;linenos=inline, hl_lines=3 8 12, linenostart=199&quot; &gt;}}
+# 代码放在这里
+{{&lt; /highlight &gt;}}
+</code></pre>
+
+<p>其中，<code>linenos=inline</code>或者<code>linenos=table</code>提示显示代码前的行数，<code>hl_lines</code>设置高亮代码，<code>linenostart</code>设置代码行数的起始数字。</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">199</span><span class="ch">#!/usr/bin/python3</span>
+<span class="ln">200</span>
+<span class="hl"><span class="ln">201</span><span class="kn">from</span> <span class="nn">engine</span> <span class="kn">import</span> <span class="n">RunForrestRun</span>
+</span><span class="ln">202</span>
+<span class="ln">203</span><span class="s2">&#34;&#34;&#34;Test code for syntax highlighting!&#34;&#34;&#34;</span>
+<span class="ln">204</span>
+<span class="ln">205</span><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+<span class="hl"><span class="ln">206</span><span class="err">​</span>	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+</span><span class="ln">207</span><span class="err">​</span>		<span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">var</span>
+<span class="ln">208</span><span class="err">​</span>		<span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="ln">209</span>
+<span class="hl"><span class="ln">210</span>	<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class="ln">211</span>		<span class="n">RunForrestRun</span><span class="p">()</span>  <span class="c1"># run along!</span></code></pre></div>
+
+<h4 id="2018-8-13-highlight-shortcode-颜色渲染问题修正">2018.8.13 <code>Highlight Shortcode</code>颜色渲染问题修正</h4>
+
+<p>如题，突然发现颜色渲染有问题，所以只能逐个看到底用了那个css。发现我的主页用了<code>highlight shortcode</code>的css样式和官网的不一样。鉴于不想花太多时间，只要能看就要，因此在<code>override.css</code>中加了强制的css样式，于是问题暂时打个不怎么好看的补丁，但至少<code>highlight shortcode</code>还是勉强可看了。</p>
+
+<pre><code class="language-css">.highlight pre {
+    background-color: #f7f7f7 !important;
+    color: rgb(194, 192, 192) !important;
+}
+</code></pre>
+
+<h4 id="2018-8-21-自建shortcode替代hightlight-shortcode">2018.8.21 自建shortcode替代Hightlight Shortcode</h4>
+
+<p>由于highlight shortcode的渲染样式实在是太诡异，难以调整，因此自己建立专门用于高亮的shortcode，这些shortcode也可以在代码块中使用，可以不仅只渲染一行，更为灵活方便。于是就可以弃用highlight shortcode了。具体内容详见<a href="https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/">Blog养成记15 创建shortcode模板便捷高亮内容</a>。</p>
+
+<h2 id="使用highlight-js进行高亮">使用highlight.js进行高亮</h2>
+
+<p>highlight.js这个插件使用起来特别方便，还可以定制化选择需要高亮的语言，只需要在<a href="https://highlightjs.org/download/">highlight.js官网</a>选择所需要的语言，下载即可。然后解压文件中，<code>highlight.pack.js</code>决定那些语言的代码会根据语法进行高亮，在style文件夹中选择喜欢的css样式文件，css文件决定代码高亮的颜色，最后我选择了<code>github-gist.css</code></p>
+
+<p>然后需要在&lt;head&gt;中增加：</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/styles/default.css&quot;&gt;
+</code></pre>
+
+<p>在&lt;body&gt;结束前增加：</p>
+
+<pre><code class="language-html">&lt;script src=&quot;/path/to/highlight.pack.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+</code></pre>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
+我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
+
+<p><a href="https://gohugo.io">Hugo官网</a>、<a href="http://gohugo.io/content-management/syntax-highlighting/">关于语法高亮说明</a>、<a href="https://help.farbox.com/pygments.html">pygments主题配色</a>、<a href="https://highlightjs.org/download/">highlight.js官网</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-01-09</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>增加tag、版本控制及资源链接</td>
+<td>2018-01-17</td>
+</tr>
+
+<tr>
+<td>1.2</td>
+<td>highlight颜色修正</td>
+<td>2018-08-13</td>
+</tr>
+
+<tr>
+<td>2.0</td>
+<td>修改结构，增加highlight.js</td>
+<td>2018-08-21</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/hugo" role="button">hugo </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE" role="button">语法高亮 </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/blog" role="button">blog </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>Blog养成记(4) Hugo中增加tags等分类</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%89%8d%e8%a8%80">
+												 前言
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bd%bf%e7%94%a8pygments%e8%bf%9b%e8%a1%8c%e9%ab%98%e4%ba%ae">
+												 使用Pygments进行高亮
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#pygments%e5%ae%89%e8%a3%85">
+												 Pygments安装
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#pygments%e9%85%8d%e7%bd%ae">
+												 Pygments配置
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#pygments%e5%ad%98%e5%9c%a8%e9%97%ae%e9%a2%98">
+												 Pygments存在问题
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bd%bf%e7%94%a8highlight-shortcode%e8%bf%9b%e8%a1%8c%e9%ab%98%e4%ba%ae">
+												 使用Highlight Shortcode进行高亮
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#2018-8-13-highlight-shortcode-%e9%a2%9c%e8%89%b2%e6%b8%b2%e6%9f%93%e9%97%ae%e9%a2%98%e4%bf%ae%e6%ad%a3">
+												 2018.8.13 Highlight Shortcode颜色渲染问题修正
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#2018-8-21-%e8%87%aa%e5%bb%bashortcode%e6%9b%bf%e4%bb%a3hightlight-shortcode">
+												 2018.8.21 自建shortcode替代Hightlight Shortcode
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bd%bf%e7%94%a8highlight-js%e8%bf%9b%e8%a1%8c%e9%ab%98%e4%ba%ae">
+												 使用highlight.js进行高亮
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#resource%e8%b5%84%e6%ba%90%e9%93%be%e6%8e%a5%e6%b1%87%e6%80%bb">
+												 Resource资源链接汇总
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

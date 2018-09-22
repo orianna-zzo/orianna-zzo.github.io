@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>前端试水 on 博客|ZHENG Zi&#39;ou</title>
+    <title>前端试水 on ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/series/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B4/</link>
-    <description>Recent content in 前端试水 on 博客|ZHENG Zi&#39;ou</description>
+    <description>Recent content in 前端试水 on ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cmn-Hans</language>
+    <language>zh-Hans</language>
     <lastBuildDate>Tue, 14 Aug 2018 22:03:03 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/series/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B4/index.xml" rel="self" type="application/rss+xml" />
@@ -13,63 +13,29 @@
     
     <item>
       <title>前端试水(3) 自适应与响应式布局</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</link>
       <pubDate>Tue, 14 Aug 2018 22:03:03 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</guid>
-      <description>前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。
-自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。
-自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是不会变。响应式布局是最近几年随着Bootstrap开源流行起来的概念，不仅包括了自适应布局的概念，而且还增加对布局变化。
-实现方式 定义viewport viewport 是用户网页的可视区域(&amp;ldquo;视区&amp;rdquo;)，viewport可能比浏览器的可视区域小，也可能比浏览器的可视区域大（此时就需要移动网页或者使用滚动条）。
-对于viewport的部分，特别涉及到移动设备，实际上并没有这么简单。这里就不深入探究了，有时间可兴趣可以看下移动前端开发之viewport的深入理解，这里简单阐述对于移动设备的三种viewport，分别是layout viewport、visual viewport和ideal viewport。而ideal viewport是最适合移动设备的viewport，因为无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。
-移动设备默认的viewport是layout viewport，因此要在网页代码的头部，加入一行viewport元标签，将viewport定义为ideal viewport：
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1, shrink-to-fit=no&amp;quot; /&amp;gt;  viewport是网页默认的宽度和高度，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%，`shrink-to-fit=no解决iOS9中不起作用的问题。
-除了以上几个外，还有下面表格中的参数：
-   参数 含义     minimum-scale 允许用户的最小缩放值，为一个数字，可以带小数   maximum-scale 允许用户的最大缩放值，为一个数字，可以带小数   height 设置layout viewport的高度，这个属性很少使用   user-scalable 是否允许用户进行缩放，值为&amp;rdquo;no&amp;rdquo;或&amp;rdquo;yes&amp;rdquo;, no 代表不允许，yes代表允许    尽量应用相对高度/宽度/字体/图片 尽量不指定绝对像素px，而是用相对的单位：
-width: 80%; width: 80vw; /* vw: 视窗宽度的百分比（1vw 代表视窗的宽度为1%） */ width: 80vh; /* vh: 视窗高度的百分比 */ width: 80vmin; /* vmin: 当前vw和vh中较小的一个值 */ width: 80vmax; /* vmax: 当前vw和vh中较大的一个值 */ width: auto; font-size: 1.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</guid>
+      <description>前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。 自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。 自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是</description>
     </item>
     
     <item>
       <title>前端试水(2) 使用docker镜像的Sass配置</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
-      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。
-Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助css的组织结构变得更合理和优雅，或者说更像一门编程语言，从而提高开发和维护效率。通俗说，就是在css上再套层更结构化的语法，帮助对样式进行组织和管理，再通过编译得到最终的css样式。
-与sass对标的是less，具体哪个更好对于初学者来说难以分辨和选择，但Bootstrap4抛弃了less转而选择sass和sass更大的社群都提供了选择了sass的理由。
-Sass选择 Sass vs Scss Sass实际上有两种语法，针对不同的后缀名称.sass和.scss。
-.sass是最早的语法，使用缩进而不是{}来表示嵌套，用换行而不是;来分隔属性，如下：
-$font-stack: Helvetica, sans-serif $primary-color: #333 body font: 100% $font-stack color: $primary-color  另一种.scss的格式仅在css3的语法基础上进行扩展，如下：
-$font-stack: Helvetica, sans-serif; $primary-color: #333; body { font: 100% $font-stack; color: $primary-color; }  对于码农来说，.scss相对更符合习惯一些，所以之后会选择后者。
-Ruby Sass vs Libsass vs Dart Sass 在官网最下方可以看到三个不同的Sass实现。
-Ruby Sass是最早的Sass，网上很多资料都是基于ruby的，不过这个实现版本作者之后不会再更新维护了。
-Libsass是使用C进行实现的版本，所以这个版本速度最快，Sassc就是在Libsass外套了一层wrapper。不过该版本的更新相对没有那么频繁和活跃，毕竟不是主要更新的实现版本。
-Dart Sass是替代Ruby Sass的实现版本，也是现在最主要的开发版本，新的功能也会主要在该实现版本中先进行集成。
-编译环境配置 估计很少有人像我这样折腾又莫名对一些点特别执着（或者说钻牛角尖）。当初一心想用docker把所有和开发环境配置相关的整理起来，折腾node-sass的dockerfile好久以失败告终。这次终于找到一个可以用的sass环境镜像，并根据此建立了自己的docker镜像，具体配置及使用方法在Libsass Docker。但由于该镜像基于libsass，一些功能并没有集成（比如--watch），所以又基于dart sass生成一版镜像，具体方法在Dart Sass Docker。
-两种镜像的比较如下：
-    Libsass Docker Dart Sass Docker     Size 8.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。 Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助c</description>
     </item>
     
     <item>
       <title>前端试水(1) 前端技术路线</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</link>
       <pubDate>Wed, 01 Aug 2018 10:23:48 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</guid>
-      <description> 前言 对于前端的了解欲望实际上是从想对博客主题进行修改开始的。但是前端这部分一直对我来说是个谜，虽然这些名词都能搜索到，但一直傻傻的不得其门而入。总算在一年后的今天，尽管还有很多地方暂时是迷雾状态，但貌似略了解一点前端的整体框架。现在算是开了新的一个系列，在此算是记录一下我了解的前端的技术路线，如果那些和我一样的前端小白们能通过这个也大概了解一点到底现在需要学的、用的是什么，就再好不过了。
-对了，先声明下，这篇是作为非前端工程师不负责任的认知，个人觉得对于一个外行，且也并没有打算在这一行进行深入，仅作为快速了解、应用的人来说应该是个不错的交流。
-技术分工 既然说到前端技术路线，那就需要先确定下前端是什么。
-前端，通俗来说是和后端所对应的，通常指用户所能看到的网页以及交互的部分。一般来说，和用户直接打交道的都是前端，前端向后端请求数据以及提交数据，后端对用户提交的数据进行解析、服务器调度与功能操作，再返回数据给前端。所以我理解的前端的部分主要分成以下几个部分：前端的界面UI及交互UX，前端数据获取request与解析，前端数据提交返回。
-通常，前端UI大多涉及静态页面html及css样式，但若需要一些动态交互和动作，一般都离不开js的开发。对于数据获取、提交等数据绑定的功能，更是离不开js大法。一般常说的vue.js、react.js都提供了不少相关的功能组件，便于前端工程师快速开发。
-此外常听到的工具还有gulp、webpack等主要针对自动化、打包的工具，针对的功能点会有些不同，但具体还未深入研究。
-静态页面分工 一般网上大多数都在讨论和学习js大法，毕竟通过上段对于简单技术分工和技能点来说，js占据了非常重要的位置。但对于初学者来说，一般接触最多的是静态页面，毕竟很多时候只需要做个简单demo，或者是搭建博客界面之类的简单网页，需要的是轻量级的敏捷开发即可，而静态页面是与用户最直接的窗口。比如我来说，开始需要接触也是因为对想生成自己的博客主题，这就不能不开始学习这一部分。
-虽然说起来css和html不难，语法真不难，但就是因为它们太简单，中间的样式调整、覆盖、冲突的逻辑实在是难以捉摸，调整起来拆东墙补西墙，一点也不够结构化成体系。所以对于静态页面也可以分成css样式定义和html静态页面生成这两部分。
-css样式 css比较难以结构化，可以使用css的预编译器来编写，可以使之更易于管理。常用的预编译器有sass和less。
-除了有css预编译的利器外，对于敏捷开发来说，还有一些css样式库，比如大名鼎鼎的bootstrap，虽然bootstrap也集成了一些js和组件，但基本主要用作css布局用的样式库。尽管bootstrap也被称为前端框架，但是和vue以及react等的框架并不是一个含义，bootstrap更多是css样式层面的。
-html静态页面生成 有了css样式总是要生成静态页面的，这就需要生成html静态页面。最简单的就是直接写html，确定html布局，但是这样会很繁琐。因此有了不少静态页面生成器，比如我使用的hugo，还有jekyll、hexo。有了这些生成器，只需要定义html模板，然后使用模板，以后对于内容进行删减也不需要对html直接进行修改。生成了静态页面后就可以托管在服务器上。
-网页的生成也并不是总需要生成最重的静态页面的，比如python的轻量级网页应用框架flask，只要运行，可以自动调用html模板生成网页。
-版本控制    Version Action Time     1.0 Init 静态页面路线 2018-08-05    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/</guid>
+      <description>前言 对于前端的了解欲望实际上是从想对博客主题进行修改开始的。但是前端这部分一直对我来说是个谜，虽然这些名词都能搜索到，但一直傻傻的不得其门而入。总算在一年后的今天，尽管还有很多地方暂时是迷雾状态，但貌似略了解一点前端的整体框架。现在算是开了新的一个系列，在此算是记录一下我了解的前端的技术路线，如果那些和我一样的前端小白们能通过这个也大概了解一点到底现在需要学的、用的是什么，就再好不过了。 对了，先声</description>
     </item>
     
   </channel>

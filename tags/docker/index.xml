@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docker on 博客|ZHENG Zi&#39;ou</title>
+    <title>Docker on ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/tags/docker/</link>
-    <description>Recent content in Docker on 博客|ZHENG Zi&#39;ou</description>
+    <description>Recent content in Docker on ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cmn-Hans</language>
+    <language>zh-Hans</language>
     <lastBuildDate>Thu, 02 Aug 2018 15:49:22 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
@@ -13,130 +13,56 @@
     
     <item>
       <title>前端试水(2) 使用docker镜像的Sass配置</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
-      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。
-Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助css的组织结构变得更合理和优雅，或者说更像一门编程语言，从而提高开发和维护效率。通俗说，就是在css上再套层更结构化的语法，帮助对样式进行组织和管理，再通过编译得到最终的css样式。
-与sass对标的是less，具体哪个更好对于初学者来说难以分辨和选择，但Bootstrap4抛弃了less转而选择sass和sass更大的社群都提供了选择了sass的理由。
-Sass选择 Sass vs Scss Sass实际上有两种语法，针对不同的后缀名称.sass和.scss。
-.sass是最早的语法，使用缩进而不是{}来表示嵌套，用换行而不是;来分隔属性，如下：
-$font-stack: Helvetica, sans-serif $primary-color: #333 body font: 100% $font-stack color: $primary-color  另一种.scss的格式仅在css3的语法基础上进行扩展，如下：
-$font-stack: Helvetica, sans-serif; $primary-color: #333; body { font: 100% $font-stack; color: $primary-color; }  对于码农来说，.scss相对更符合习惯一些，所以之后会选择后者。
-Ruby Sass vs Libsass vs Dart Sass 在官网最下方可以看到三个不同的Sass实现。
-Ruby Sass是最早的Sass，网上很多资料都是基于ruby的，不过这个实现版本作者之后不会再更新维护了。
-Libsass是使用C进行实现的版本，所以这个版本速度最快，Sassc就是在Libsass外套了一层wrapper。不过该版本的更新相对没有那么频繁和活跃，毕竟不是主要更新的实现版本。
-Dart Sass是替代Ruby Sass的实现版本，也是现在最主要的开发版本，新的功能也会主要在该实现版本中先进行集成。
-编译环境配置 估计很少有人像我这样折腾又莫名对一些点特别执着（或者说钻牛角尖）。当初一心想用docker把所有和开发环境配置相关的整理起来，折腾node-sass的dockerfile好久以失败告终。这次终于找到一个可以用的sass环境镜像，并根据此建立了自己的docker镜像，具体配置及使用方法在Libsass Docker。但由于该镜像基于libsass，一些功能并没有集成（比如--watch），所以又基于dart sass生成一版镜像，具体方法在Dart Sass Docker。
-两种镜像的比较如下：
-    Libsass Docker Dart Sass Docker     Size 8.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。 Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助c</description>
     </item>
     
     <item>
       <title>慢学Docker(3) Docker Hub速度蜗牛爬怎么办?</title>
-      <link>https://orianna-zzo.github.io/blog/2018-03/%E6%85%A2%E5%AD%A6docker3-docker-hub%E9%80%9F%E5%BA%A6%E8%9C%97%E7%89%9B%E7%88%AC%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/%E6%85%A2%E5%AD%A6docker3-docker-hub%E9%80%9F%E5%BA%A6%E8%9C%97%E7%89%9B%E7%88%AC%E6%80%8E%E4%B9%88%E5%8A%9E/</link>
       <pubDate>Tue, 20 Mar 2018 23:47:17 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-03/%E6%85%A2%E5%AD%A6docker3-docker-hub%E9%80%9F%E5%BA%A6%E8%9C%97%E7%89%9B%E7%88%AC%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
-      <description> 前言 其实两三个月前使用docker hub不管push还是pull虽然算不上光速但也不错。但今天修铭哥问我关于docker的使用，直接用Dockerfile建镜像不知道为什么成功不了，于是想直接pull我已经上传到docker hub中的镜像，结果就这1.3G左右的东西，下了整整一天。其中某layer就52M也能下半天。
-晚上回家想下vue的docker镜像，几个四五十M的layer也慢悠悠下着，终于确定不仅仅是公司网不好，重点是docker hub的速度是变得更慢了。于是网上开始找解决方案。
-解决方案 网上主要有以下几个国内镜像：
- Docker官方国内镜像 阿里云镜像 网易蜂巢 Daocloud  注意：docker版本低于1.10需要通过配置启动参数来配置镜像源，可参考这篇。
-我用的是mac，只需要在docker的Preference中配置即可，可配置多个Registry mirrors：
-最后点击⌈Apply&amp;amp; Restart⌋重启docker，或者在命令行执行重启。
-$ service docker restart  若是其他操作系统，需要根据各镜像给出的流程操作。
-Docker官方国内镜像 国内镜像地址是https://registry.docker-cn.com。详情查看官网。
-不过据说最近国内官方镜像挂了，好在可以输入多个镜像地址。
-阿里云镜像 登陆阿里云，访问https://cr.console.aliyun.com/#/accelerator，根据操作系统进行操作，添加镜像地址。
-网易蜂巢 在镜像列表中添加http://hub-mirror.c.163.com。
-Daocloud 进入注册入口注册。进入用户服务界面后，点击右上方的⌈加速器⌋：
-就会打开如下网页，可以得到一个加速器地址。根据docker所在系统的操作系统跟着指令完成配置。
-Daocloud在声明中提出docker加速器服务永久免费，希望不会食言。
-Resource资源链接汇总： docker国内官方镜像、阿里云镜像、知乎上对docker版本小于1.10镜像配置方法、Daocloud
-版本控制    Version Action Time     1.0 Init 2018-03-20    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/%E6%85%A2%E5%AD%A6docker3-docker-hub%E9%80%9F%E5%BA%A6%E8%9C%97%E7%89%9B%E7%88%AC%E6%80%8E%E4%B9%88%E5%8A%9E/</guid>
+      <description>前言 其实两三个月前使用docker hub不管push还是pull虽然算不上光速但也不错。但今天修铭哥问我关于docker的使用，直接用Dockerfile建镜像不知道为什么成功不了，于是想直接pull我已经上传到docker hub中的镜像，结果就这1.3G左右的东西，下了整整一天。其中某layer就52M也能下半天。 晚上回家想下vue的docker镜像，几个四五十M的layer也慢悠悠下着，终于确</description>
     </item>
     
     <item>
       <title>Docker for datascience: 从纠结到放弃</title>
-      <link>https://orianna-zzo.github.io/blog/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</link>
       <pubDate>Tue, 06 Feb 2018 10:01:15 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-      <description> 表示我是不纠结不死星人。
-先是由jupyter stacks突发奇想，于是纠结于想建立属于自己的docker族系，特别是用来做数据科学&amp;amp;机器学习。想要不用Anaconda、甚至不用conda，自己按照使用习惯安装我自己需要的包、想使用最小的alpine作为基镜像，因此开始走上不归路。
-想要使用bash而不是ash，想要默认调用bash，想要调用bash时能默认出现现在使用用户及现在所在文件夹。折腾了2天终于成功，dockerfile在orianna-zzo/dockerfile-repo/alpine-bash-docker，算是让我尝到一次甜头。
-成功第一次，于是开始尝试在python3.6上安装我想要的包。pull了python3.6-alpine3，废了老大功夫总算在多次碰壁下把依赖都安装成功可以成功pip install想要的包。不过在查验我装了每个python包是什么作用时发现我安装了nomkl，这个包说明使用numpy时使用非mkl版本。网上一查，mkl对于intel的cpu加速还是很厉害的，于是把nomkl删了开始重新继续折腾。折腾了一圈，通过安装openblas-dev，替代mkl，但发现openBlas性能不如mkl。
-然后狠下心，在alpine上直接安装。为了numpy等包装g++、gfortran，为了matplotlib装libfreetype-dev和libpng。结果发现连h5py都装不上，在pandas中无法用hdf5格式读写文件。alpine上mkl也难以安装成功，pip install也说平台不对。无奈之下舍弃alpine。
-使用ubuntu:16.04，为了h5py等包装build-essential，为了numpy等包装g++、gfortran，为了matplotlib装libfreetype6-dev和libpng12-dev，为了mkl装cpio。mkl终于安心装上，然而pip install numpy后使用show_config()查看时无法连接到mkl。spacy下了源码直接build结果总是报编码错误。心累。
-于是纠结了一周的环境问题，在我最后决定选择ubuntu:16.04+anaconda3落下帷幕。
-嗯，我正在尝试这个，希望能够成功。
-后文 果然还是无脑anaconda比较省心。只是ubuntu:16.04+anaconda3 后再安装tensorflow直接就超过3g大关，比官方镜像直接多了2g，捂脸。决定不再纠结这个，反正已经配置成功，可以正常使用。毕竟不是重点，已经浪费了好多时间，还是好好钻研算法吧！
-相关的dockerfile都可以在orianna-zzo/dockerfile-repo/python-docker找到。
-版本控制    Version Action Time     1.0 Init 2018-02-06   1.1 增加后文 2018-02-13    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+      <description>表示我是不纠结不死星人。 先是由jupyter stacks突发奇想，于是纠结于想建立属于自己的docker族系，特别是用来做数据科学&amp;amp;机器学习。想要不用Anaconda、甚至不用conda，自己按照使用习惯安装我自己需要的包、想使用最小的alpine作为基镜像，因此开始走上不归路。 想要使用bash而不是ash，想要默认调用bash，想要调用bash时能默认出现现在使用用户及现在所在文件夹。折</description>
     </item>
     
     <item>
       <title>慢学Docker(2) Docker初探</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</link>
       <pubDate>Sat, 27 Jan 2018 15:04:18 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</guid>
-      <description>Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用部署带来的困难，更不用提多次部署这种重复劳动的麻烦事了。此外，容器使用了sandbox机制，容器与容器之间有较好的隔离性，不用担心。这是docker最通俗也是最广泛的应用。
-是不是觉得这个优点和应用很熟悉？当我们想要跨平台无视底层环境要求跑程序执行应用我们都会想到什么？对，就是虚拟机。在本机上装个虚拟机应用比如说virtual box或者vmware，然后再用操作系统镜像（比如说win7）建个虚拟机，就可以在虚拟机中安装各种应用了。在这里docker就相当于virtual box或者vmware，容器就相当于你建的虚拟机实例，docker中也有一个镜像的概念，就相当于你建虚拟机所使用的操作系统镜像（win7）。这样说是否更通俗易理解一些？
-docker容器 vs vm虚拟机 既然虚拟机也可以完成相似的功能，为什么要用docker呢？换句话来问，同样都是虚拟化技术，docker的容器技术和vm虚拟机有什么区别？docker官方网站也简单回答了这个疑问，可以在这里查看。我对于这些底层的架构知识并不是很了解，只能根据网上的信息以及最近这一个月的入门级使用谈及一下感受。
-相比vm虚拟机，docker的容器技术更为轻量级。直观上，这个轻量级体现在启动速度更快、占用资源更少。我并没有具体测试比较过，但在实际使用中感受是，我原本开一个虚拟机跑程序就已经很不错了，虚拟机开机还有个等待开机时间，而现在使用docker，容器载入速度很快，同时在机子上会运行几个不同的容器，从镜像重新生成容器也很快很方便。2014年开始，docker一直对外宣传的一个重点也是这个，“虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。
-不过docker容器和虚拟机尽管都是虚拟化技术，但是里面的技术细节有很多不同。下面两张docker官网上的图很清晰简单地表示了两者的区别：
-前者是虚拟机的架构图，后者是docker容器的架构图。最显然的区别是，每个虚拟机中都运行着各自的guest OS，而在docker容器架构中每个容器只包含了各自的应用和依赖包，并不包含独立的操作系统。也就是说容器采用kernel共享，同时使用cgroups和namespace等方法对容器所使用的命名空间和依赖包等进行区分以达到隔离效果。所以尽管各个容器都是独立在宿主机的操作系统上运行着的，但不可避免地，各个容器之间会共享一些通用运行库。这个区别会使得各个容器之间相互独立，但并没有虚拟机的隔离性好，但这也是使得docker容器能够快速启动并且资源占用少的一个重要原因。太复杂的我也不清楚细节，只是大致有个概念，这对我们简单应用了解也应该就足够了。
-嗯，再啰嗦一句。在查资料是看到了这篇知乎上的博文，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了。
-docker并不万能 Docker真心很好用，才上手了1个多月的我特别喜欢。但是作为新兴技术，还有很多不完善的地方。有些问题可能作为个人使用者来说并不是很大的问题，但是对于生产来说都是非常重要需要考虑的问题，这里只是简单记录下到目前为止遇到的一些局限性，至于其他的，遇到再加吧：
- docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。 docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。 windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的，我新的实习生电脑就装不上，公司的windows笔记本也装不上。 截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。 由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。  GPU的选择: Nvidia Docker Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的github。
-这里只是提一嘴，关注点还是在docker本身。毕竟现在用的mac可用的不是n卡，等有机会整个n卡玩并需要安装docker的时候再试试nvidia-docker。
-Installation Docker分为Community (CE) 和Enterprise (EE) 版本，个人使用用CE就够了，一些EE的高级功能用不上也不会用。Docker CE有分为stable版和edge版，前者每一个季度更新一个更reliable的更新，后者每个月都会提供一些新的特征。不爱折腾的我就直接选择stable版。更多关于docker安装的环境需求可以参考官网该页面，不同的环境还是有不同的需求的。
-网上有很多零散的安装教程，建议找最新的来看，很多实际上都过时了。最安全的当然直接上官网。
-Mac安装 Mac可以选择用Homebrew进行安装:
-$ # stable channel $ brew cask install docker $ # edge channel $ brew cask install docker-edge  也可以在这里选择stable或者edge进行下载，安装对应的dmg包即可。
-PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉可能是早期版本，官网这里给出了解释，没有仔细看，不过我认为无脑安装docker for mac就够用了。</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/</guid>
+      <description>Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用</description>
     </item>
     
     <item>
       <title>慢学Docker(1) Preface</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</link>
       <pubDate>Sat, 27 Jan 2018 12:32:58 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</guid>
-      <description> 初闻 作为一个一向不怎么关心各种资讯动态的人，我经常脱节于前沿新闻及热点，更何况对于非专业方向，我更是不会去主动关心，所以对于之前很火的容器和docker我是一点都不了解。第一次听说这个还是因为前人渣组长李想要求写份标书文档，什么技术热门可用就写进去。他听说了docker容器部署及环境配置的便利性，想利用到项目中的宣传中，更好地作为对外的卖点。不管怎么说，这是第一次听说并尝试了解docker和容器，不过这份了解仅限于网上科技软文宣传，毕竟文档要求紧、内容多，又是全新的概念。
-第二次听说docker是带的17届应届生詹辉小仓鼠在公司实验ocr时网上各个项目需要的环境和依赖都有略微不同，比如当时caffe还是基于python2.7，但gpu机子上配的python3环境等问题。还有一个最主要的问题在于，公司的服务器都无法联网，安装环境十分困难。其实连公司的电脑也是无法使用conda、pip等在线安装的，需要离线安装，而且公司电脑标裝windows，配置起来与服务器区别很大。某天小仓鼠过来说docker据说很好用，但是他遇到了些问题，解决后他也认为docker对于环境配置方便了很多。
-Docker，你好 决定开始了解docker的契机是换了Mac，有心情来折腾一下电脑和环境，另外由于环境配置和管理的麻烦程度，我又有些强迫症地希望新电脑有一个更干净的环境，于是决定学习一下这个传说中的利器。
-这个系列开始于我已经使用docker一个月时间，在正常使用中开始渐渐步入正轨，融入我日常的工作以及学习中来。系列内容中对于docker的介绍可能不会很系统完整，只是对于我的学习过程和应用做一个记录。对于docker一些高级内容和使用方法也可能并不会涉及，毕竟只是“浅尝”、“慢学”罢了。
-版本控制    Version Action Time     1.0 Init 2018-01-27    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/</guid>
+      <description>初闻 作为一个一向不怎么关心各种资讯动态的人，我经常脱节于前沿新闻及热点，更何况对于非专业方向，我更是不会去主动关心，所以对于之前很火的容器和docker我是一点都不了解。第一次听说这个还是因为前人渣组长李想要求写份标书文档，什么技术热门可用就写进去。他听说了docker容器部署及环境配置的便利性，想利用到项目中的宣传中，更好地作为对外的卖点。不管怎么说，这是第一次听说并尝试了解docker和容器，</description>
     </item>
     
     <item>
       <title>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
       <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
-      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
-在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，更重要的是，最近对docker感兴趣，想实践一下。Docker是一个开源的应用容器引擎，可以方便地将不同容器间的环境进行隔离，但又比虚拟机更轻量化，能更快速启动。与Docker相关的内容我会在另一个Docker系列进行详细说明，这里主要还是与建立Blog相关的使用为主。
-网上使用Hugo写blog的内容很多，使用docker的也很多，但使用docker来搭建hugo编写环境并不多，我也是在一步步摸索中。那么，就跟着我一起开始尝试吧！
-Hugo的docker环境配置 Docker安装 在Mac中可以使用Homebrew进行安装：
-$ brew cask install docker  若是Windows或者其他操作系统，可以在这里选择你的操作系统下载相应版本进行安装并配置环境变量。
-获得Hugo开发镜像 我在docker hub上查找了下，截止目前并没有官方镜像，都是用户自己建立并上传的镜像。Hugo的Github中的确有建立docker镜像的Dockerfile，但是我试了几次都未成功，最后决定建立自己的Hugo docker镜像，顺便学习下Dockerfile。
-直接获得镜像 如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有33MB，只需要在终端中输入下面的命令即可：
-$ docker pull orianna/hugo  该镜像可以在docker hub中找到，点这里是在docker hub上的repo。
-接下去在终端输入下面这行命令可以查看你现在有的镜像信息：
-$ docker images  你可以发现orianna/hugo只有85.7MB大小.
-自建镜像 或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。
-我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
-将所有内容clone到当前目录：
-$ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
-接下去你就可以在终端输入下面这行命令来查看镜像信息：
-$ docker images  至此，你已经获得了Hugo的docker镜像了。
-尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
+      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，</description>
     </item>
     
   </channel>

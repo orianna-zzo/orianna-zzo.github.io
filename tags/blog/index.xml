@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on 博客|ZHENG Zi&#39;ou</title>
+    <title>Blog on ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/tags/blog/</link>
-    <description>Recent content in Blog on 博客|ZHENG Zi&#39;ou</description>
+    <description>Recent content in Blog on ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cmn-Hans</language>
+    <language>zh-Hans</language>
     <lastBuildDate>Sat, 25 Aug 2018 22:59:59 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
@@ -13,297 +13,146 @@
     
     <item>
       <title>Blog养成记(16) 自建Hugo的TOC模板</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/</link>
       <pubDate>Sat, 25 Aug 2018 22:59:59 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/</guid>
-      <description>Table Of Content是一个十分常用的功能，这个系列的第13篇增加一个TOC侧边栏就是为了这个做准备，只不过是在静态页面上尝试想要的样式。本文用到的样式都基于第13篇中增加的css样式。
-Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参考这里。
-在正文部分，Markdown正文中所有的标题都会自动建一个id，id为标题内容，也可以用{#your-id}来重新定义。TOC目录部分，Hugo对于这一部分渲染为&amp;lt;nav id=&amp;quot;TableOfContents&amp;quot;&amp;gt;&amp;lt;ul&amp;gt;&amp;lt;/ul&amp;gt;&amp;lt;/nav&amp;gt;，目录会连接到对应的id上。
-我建立的partial模板如下：
-{{ if .Params.toc }} &amp;lt;!--Grid column--&amp;gt; &amp;lt;div class=&amp;quot;col-md-2&amp;quot;&amp;gt; &amp;lt;!--Scrollspy--&amp;gt; &amp;lt;div id=&amp;quot;page-scrollspy&amp;quot; class=&amp;quot;toc-nav&amp;quot;&amp;gt; {{ .TableOfContents }} &amp;lt;/div&amp;gt; &amp;lt;!--Scrollspy--&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!--Grid column--&amp;gt; {{- end -}}  存在问题 其中，正如第13篇增加一个TOC侧边栏说的，我在baseof.html模板中规定了&amp;lt;body&amp;gt;的样式，想使用滚动监听，同样也配置了第14篇让同页滚动更平滑。
-&amp;lt;body class=&amp;quot;bg-light&amp;quot; data-spy=&amp;quot;scroll&amp;quot; data-target=&amp;quot;#page-scrollspy&amp;quot; data-offset=&amp;quot;90&amp;quot;&amp;gt;  但可惜的是，由于Hugo自动渲染的html代码中缺少滚动监听所必须的类，因此无法实现滚动监听的功能。此外，Hugo的TOC对1~6级标题都包括了进来，这样光1级和6级之间的缩进空间就占了不少。因此不得不自己重新写TOC的模板。
-自建TOC模板 在Github的Issue中找到了对于这些问题的一个方法，因此决定参考着也定制化地写一个我自己的TOC模板。模板中我并没有选择监听所有的标题，而只选择了&amp;lt;h1&amp;gt;~&amp;lt;h4&amp;gt;。此外，由于一些post中并不存在&amp;lt;h1&amp;gt;，对这种情况作了额外处理，避免TOC目录右移太多。
-{{ if .Params.toc }} &amp;lt;!-- ignore empty links with + --&amp;gt; {{ $headers := findRE &amp;quot;&amp;lt;h[1-4].*?&amp;gt;(.|\n])+?&amp;lt;/h[1-4]&amp;gt;&amp;quot; .Content }} &amp;lt;!-- at least one header to link to --&amp;gt; {{ if ge (len $headers) 1 }} {{ $h1_n := len (findRE &amp;ldquo;(.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B016-%E8%87%AA%E5%BB%BAhugo%E7%9A%84toc%E6%A8%A1%E6%9D%BF/</guid>
+      <description>Table Of Content是一个十分常用的功能，这个系列的第13篇Blog养成记13 增加一个TOC侧边栏就是为了这个做准备，只不过是在静态页面上尝试想要的样式。本文用到的样式都基于第13篇中增加的css样式。 Hugo的Table of Content Hugo对于Table Of Content也有内建变量，可以参考这里。 在正文部分，Markdown正文中所有的标题都会自动建一个id，id为标题内容，也可以用{#your-id}来</description>
     </item>
     
     <item>
       <title>Blog养成记(15) 创建shortcode模板便捷高亮内容</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</link>
       <pubDate>Tue, 21 Aug 2018 21:59:02 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</guid>
-      <description>为什么使用shortcode 由于Hugo支持在文本内容中使用html标签，因此在文本中的文字如果需要高亮可以直接使用&amp;lt;mark&amp;gt;标签即可。但是code fence中的代码如何进行高亮呢？直接在code fence中使用html标签会被默认为文本（理应有办法转义，但暂时还不了解）。
-之前我的方案是使用highlight shortcode(参见Hugo的语法高亮配置)，但是由于highlight渲染的风格难以调整的关系，对于这个使用起来非常不灵活。而且使用hightlight shortcode只能一行一行地高亮，不够灵活，有时只想高亮代码段中部分代码怎么办？
-什么是shortcode模板 Hugo官网对Shortcode介绍为出现在内容文件中可以自定义的代码片段(snippets)，可以减少作者在Markdown的内容中增加大段html的标签内容。Hugo本身提供了一些内建的shortcode，比如我之前使用的highlight就是其中一个，还有一些其他常用的片段内容。
-Shortcode不会在Hugo模板(template)中起作用，对应在Hugo模板中的片段应放在partial文件夹中作为partial模板。
-新建shortcode改变背景色 在/layouts/shortcodes/文件夹中新建一个html文件，文件名是shortcode的代码名。
-在这个场景中，我想要改变选中文字的背景色，因此我新建了bgstyle.html文件。
-在该文件中写shortcode的内容：
-{{- if eq (.Get 0) &amp;quot;yellow&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #ffeb92fd;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;red&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #fa9494;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;blue&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #9ccaff;&amp;quot;&amp;gt; {{- .Inner -}} &amp;lt;/mark&amp;gt; {{- else if eq (.Get 0) &amp;quot;green&amp;quot; -}} &amp;lt;mark style=&amp;quot;background: #acffea;&amp;quot;&amp;gt; {{- .</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B015-%E5%88%9B%E5%BB%BAshortcode%E6%A8%A1%E6%9D%BF%E4%BE%BF%E6%8D%B7%E9%AB%98%E4%BA%AE%E5%86%85%E5%AE%B9/</guid>
+      <description>为什么使用shortcode 由于Hugo支持在文本内容中使用html标签，因此在文本中的文字如果需要高亮可以直接使用&amp;lt;mark&amp;gt;标签即可。但是code fence中的代码如何进行高亮呢？直接在code fence中使用html标签会被默认为文本（理应有办法转义，但暂时还不了解）。 之前我的方案是使用highlight shortcode(参见Blog养成记3 Hugo的语法高亮配置)，但是由于h</description>
     </item>
     
     <item>
       <title>Blog养成记(14) 让同页滚动更平滑</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</link>
       <pubDate>Sat, 18 Aug 2018 20:14:59 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</guid>
-      <description>上一期说到增加toc侧边栏，但是直接跳转非常突兀，因此特地找了让同页跳转滚动更平滑的插件。使用步骤如下：
-配置smooth-scroll插件 首先下载smooth-scroll插件，将其中jquery.smooth-scroll.js放入js文件夹中。
-再在&amp;lt;script&amp;gt;中引入该js：
-&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/js/vendors/jquery.smooth-scroll.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;  基础使用 可以在自己的js文件中加入下面的代码
-// Bind the hashchange event listener $(window).bind(&#39;hashchange&#39;, function (event) { $.smoothScroll({ // Replace &#39;#/&#39; with &#39;#&#39; to go to the correct target scrollTarget: decodeURI(location.hash.replace(/^\#\/?/, &#39;#&#39;)) }); }); $(&#39;a[href*=&amp;quot;#&amp;quot;]&#39;) .bind(&#39;click&#39;, function (event) { // Remove &#39;#&#39; from the hash. var hash = this.hash.replace(/^#/, &#39;&#39;) if (this.pathname === location.pathname &amp;amp;&amp;amp; hash) { event.preventDefault(); // Change &#39;#&#39; (removed above) to &#39;#/&#39; so it doesn&#39;t jump without the smooth scrolling location.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B014-%E8%AE%A9%E5%90%8C%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9B%B4%E5%B9%B3%E6%BB%91/</guid>
+      <description>&lt;p&gt;上一期说到增加toc侧边栏，但是直接跳转非常突兀，因此特地找了让同页跳转滚动更平滑的插件。使用步骤如下：&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Blog养成记(13) 增加一个TOC侧边栏</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</link>
       <pubDate>Fri, 17 Aug 2018 21:01:32 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</guid>
-      <description>想在页面右侧保留一个固定在屏幕上的TOC导航栏(Table Of Content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。
-Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。
-Bootstrap基础版 scrollspy使用时分为两个部分，一个是正文被监控的部分(spied element)，另一个是监听菜单部分(Scrollspy)。前者需要将data-target设为后者的id，并设置data-spy=&amp;quot;scroll&amp;quot;，后者需要连接的href设为在前者内连接的id。
-在bootstrap提供的样例中，使用.nav或者.list-group来实现，动画效果也是基于这两者。由于.list-group只是一级目录，而在nested nav中，如果一个内部的.nav是.active的，那么它上级的.nav也是.active的，比较符合我的期望，因此放弃了.list-group的方法，具体可详见官网的教程。
-此外，需要在Spied Element中增加position: relative;。当监听对象Spied Element不是&amp;lt;body&amp;gt;时，还需要增加overflow-y: scroll;。如果希望监听菜单Scrollspy能够浮动在该元素中，而不是随着页面滚动消失的话，可以在监听菜单部分增加以下样式position: sticky;
-Bootstrap的Scrollspy我尝试了好几次，都无法达到页面展示的效果，甚至我担心是js冲突仅适用Bootstrap的框架，但还是无法达到监听的效果。我还怀疑过是否是Hugo的原因，但事实上即使不适用hugo，直接写一个index.html也无法达到监听的效果。后来直接将这些网站的源码都贴过来尝试，最后发现是因为如果监控对象不是&amp;lt;body&amp;gt;的话，监控对象的height必须有个数值，不能是auto或者100%
-基于nested nav的scrollspy的样例如下，重点部分进行高亮：
-&amp;lt;div class=&amp;quot;row&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-4&amp;quot;&amp;gt; &amp;lt;!-- Scrollspy --&amp;gt; &amp;lt;nav id=&amp;ldquo;navbar-example3&amp;quot; class=&amp;quot;navbar navbar-light bg-light flex-column&amp;quot; style=&amp;quot;position: sticky; top:6rem;&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;navbar-brand&amp;quot; href=&amp;quot;#&amp;quot;&amp;gt;Navbar&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;ldquo;nav-link&amp;rdquo; href=&amp;quot;#item-1&amp;quot;&amp;gt;Item 1&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-1-1&amp;quot;&amp;gt;Item 1-1&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-1-2&amp;quot;&amp;gt;Item 1-2&amp;lt;/a&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;a class=&amp;quot;nav-link&amp;quot; href=&amp;quot;#item-2&amp;quot;&amp;gt;Item 2&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link&amp;quot; href=&amp;quot;#item-3&amp;quot;&amp;gt;Item 3&amp;lt;/a&amp;gt; &amp;lt;nav class=&amp;quot;nav nav-pills flex-column&amp;quot;&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1&amp;quot; href=&amp;quot;#item-3-1&amp;quot;&amp;gt;Item 3-1&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;nav-link ml-3 my-1 active&amp;quot; href=&amp;quot;#item-3-2&amp;quot;&amp;gt;Item 3-2&amp;lt;/a&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/nav&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-8&amp;quot;&amp;gt; &amp;lt;!</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B013-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAtoc%E4%BE%A7%E8%BE%B9%E6%A0%8F/</guid>
+      <description>想在页面右侧保留一个固定在屏幕上的TOC导航栏(Table Of Content)，可以直接选择跳转的网页段落位置，此外也可以提醒文章结构。 Scrollspy 这个插件bootstrap中有，起名叫scrollspy滚动监听，但是原版的实在不是我想要的样式。之前在blog养成记10-实现幻灯片轮播效果中使用的mdb的这个插件有更好的样式，不过可惜这个是pro的样式，所以只能自己动手丰衣足食啦。 Bootstrap基础版 sc</description>
     </item>
     
     <item>
       <title>前端试水(3) 自适应与响应式布局</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</link>
       <pubDate>Tue, 14 Aug 2018 22:03:03 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</guid>
-      <description>前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。
-自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。
-自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是不会变。响应式布局是最近几年随着Bootstrap开源流行起来的概念，不仅包括了自适应布局的概念，而且还增加对布局变化。
-实现方式 定义viewport viewport 是用户网页的可视区域(&amp;ldquo;视区&amp;rdquo;)，viewport可能比浏览器的可视区域小，也可能比浏览器的可视区域大（此时就需要移动网页或者使用滚动条）。
-对于viewport的部分，特别涉及到移动设备，实际上并没有这么简单。这里就不深入探究了，有时间可兴趣可以看下移动前端开发之viewport的深入理解，这里简单阐述对于移动设备的三种viewport，分别是layout viewport、visual viewport和ideal viewport。而ideal viewport是最适合移动设备的viewport，因为无论在何种分辨率的屏幕下，那些针对ideal viewport 而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。
-移动设备默认的viewport是layout viewport，因此要在网页代码的头部，加入一行viewport元标签，将viewport定义为ideal viewport：
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1, shrink-to-fit=no&amp;quot; /&amp;gt;  viewport是网页默认的宽度和高度，网页宽度默认等于屏幕宽度（width=device-width），原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%，`shrink-to-fit=no解决iOS9中不起作用的问题。
-除了以上几个外，还有下面表格中的参数：
-   参数 含义     minimum-scale 允许用户的最小缩放值，为一个数字，可以带小数   maximum-scale 允许用户的最大缩放值，为一个数字，可以带小数   height 设置layout viewport的高度，这个属性很少使用   user-scalable 是否允许用户进行缩放，值为&amp;rdquo;no&amp;rdquo;或&amp;rdquo;yes&amp;rdquo;, no 代表不允许，yes代表允许    尽量应用相对高度/宽度/字体/图片 尽量不指定绝对像素px，而是用相对的单位：
-width: 80%; width: 80vw; /* vw: 视窗宽度的百分比（1vw 代表视窗的宽度为1%） */ width: 80vh; /* vh: 视窗高度的百分比 */ width: 80vmin; /* vmin: 当前vw和vh中较小的一个值 */ width: 80vmax; /* vmax: 当前vw和vh中较大的一个值 */ width: auto; font-size: 1.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/</guid>
+      <description>前言 其实一开始并没想考虑响应式布局的问题，但由于在幻灯片大图时找的样例有考虑到这个，就想对浮在幻灯片上的文字能否也有响应式的效果。昨晚研究一下，虽然没太掌握，效果也没有达到最优，但总算完成基础需求。 自适应布局与响应式布局 自适应布局和响应式布局网上有不少介绍，我比较认同以下这种。 自适应布局是很显然易见的概念，就是网页能自动适配不同大小屏幕，根据屏幕大小自动调整网页内容的宽度和高度，但是内容和布局还是</description>
     </item>
     
     <item>
       <title>Blog养成记(12) 给网页的图片加个蒙版</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</link>
       <pubDate>Mon, 13 Aug 2018 00:40:13 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</guid>
-      <description> 上一期说到想给网站图标的图片加个蒙版，然而没有成功。那么网页中的图片么？经常看到个人图片都是圆形的，然而实际上上传的原图是方的。如果使用了蒙版功能，就可以对同一张图想怎么变形状就怎么变了。
-首先，定义一个类，比如avatar，在css文件中定义该类使用了某长图片蒙版：
-.avatar { border-radius: 50%; box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2); max-width: 50px; -webkit-mask-image: url(/img/mask/circle.svg); mask-image: url(/img/mask/circle.svg); }  其中高亮的两句定义了蒙版的图片。在这里，蒙版我使用的是font awesome里的圆形图，就长下面这个样子：
-在实际使用时，只需要在&amp;lt;img&amp;gt;标签中使用该类即可，如：
-&amp;lt;img class=&amp;quot;avatar&amp;quot; src=&amp;quot;img/avatar.png&amp;quot; width=&amp;quot;40&amp;quot; height=&amp;quot;40&amp;quot; class=&amp;quot;d-inline-block align-top&amp;quot; alt=&amp;quot;&amp;quot; /&amp;gt;  版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B012-%E7%BB%99%E7%BD%91%E9%A1%B5%E7%9A%84%E5%9B%BE%E7%89%87%E5%8A%A0%E4%B8%AA%E8%92%99%E7%89%88/</guid>
+      <description>&lt;p&gt;上一期说到想给网站图标的图片加个蒙版，然而没有成功。那么网页中的图片么？经常看到个人图片都是圆形的，然而实际上上传的原图是方的。如果使用了蒙版功能，就可以对同一张图想怎么变形状就怎么变了。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Blog养成记(11) 给网站加个小icon</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</link>
       <pubDate>Mon, 13 Aug 2018 00:14:19 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</guid>
-      <description> 这部分其实很简单，只需要在index.html的&amp;lt;head&amp;gt;部分增加以下一句话就好：
-&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;/img/aviconfile.ico&amp;quot; &amp;gt;  不过，既然是要做主题，肯定是要用模板变量的么。因此，在模板中的增加以下内容：
-&amp;lt;!-- Icon --&amp;gt; &amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; {{ if .Site.Params.faviconfile }} href=&amp;quot;/{{ .Site.Params.faviconfile }}&amp;quot; {{ else if.Site.Params.avatar}} href=&amp;quot;/{{ .Site.Params.avatar }}&amp;quot; {{ end }} &amp;gt;  其中faviconfile是在config.toml中定义的网站图标的路径，avatar是在其中定义的个人头像照片的路径。这句话就是如果定义了网站图标就使用网站图标，如果不存在网站图标就使用个人头像。
-原本想尝试在网站图标上加个蒙版的，但是好像只能有已有的图片。方的一张图感觉太死板，于是我就将之前画画的签名截了一个姓下来抠了下图，感觉还不错。
-版本控制    Version Action Time     1.0 Init 2018-08-13    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B011-%E7%BB%99%E7%BD%91%E7%AB%99%E5%8A%A0%E4%B8%AA%E5%B0%8Ficon/</guid>
+      <description>&lt;p&gt;这部分其实很简单，只需要在&lt;code&gt;index.html&lt;/code&gt;的&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;部分增加以下一句话就好：&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Blog养成记(10) 实现幻灯片(轮播)效果</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</link>
       <pubDate>Sun, 12 Aug 2018 01:41:43 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
-      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在Github上的js插件，这次使用Bootstrap4发现这已经集成进Bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。
-Carousel 基础版 在Bootstrap4中轮播组件称为Carousel，在官网就有对其使用的简单介绍。
-简单说来，该组件分为四块：indicator(显示第几页)、control(控制上一页和下一页)、caption(每一页上显示的字)和slide(显示的图片)。这几部分中，除了slide是必须要有的（不然用这个控件干嘛），其他都可以不用。基本的格式如下，基本包含了所有的基础用法，还有一些参数比如间隔时间等可以调整：
-&amp;lt;!-- Carousel --&amp;gt; &amp;lt;div id=&amp;quot;example&amp;quot; class=&amp;quot;carousel slide carousel-fade&amp;quot; data-ride=&amp;quot;carousel&amp;quot; data-interval=&amp;quot;3000&amp;quot;&amp;gt; &amp;lt;!-- Indicator --&amp;gt; &amp;lt;!-- data-target=外面div的id --&amp;gt; &amp;lt;ol class=&amp;quot;carousel-indicators&amp;quot;&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;0&amp;quot; class=&amp;quot;active&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;1&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;li data-target=&amp;quot;#example&amp;quot; data-slide-to=&amp;quot;2&amp;quot;&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ol&amp;gt; &amp;lt;!-- /.Indicator --&amp;gt; &amp;lt;!-- Slides --&amp;gt; &amp;lt;div class=&amp;quot;carousel-inner&amp;quot;&amp;gt; &amp;lt;!-- First Slide --&amp;gt; &amp;lt;div class=&amp;quot;carousel-item active&amp;quot;&amp;gt; &amp;lt;img class=&amp;quot;d-block w-100&amp;quot; src=&amp;quot;path/to/img1.jpg&amp;quot; alt=&amp;quot;First slide&amp;quot;&amp;gt; &amp;lt;!-- First Caption --&amp;gt; &amp;lt;div class=&amp;quot;carousel-caption d-none d-md-block&amp;quot;&amp;gt; &amp;lt;h5&amp;gt;Caption 1&amp;lt;/h5&amp;gt; &amp;lt;p&amp;gt;Content of caption 1&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;!</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B010-%E5%AE%9E%E7%8E%B0%E5%B9%BB%E7%81%AF%E7%89%87%E8%BD%AE%E6%92%AD%E6%95%88%E6%9E%9C/</guid>
+      <description>前言 设计中首页有个大图，希望它能实现幻灯片的轮播效果，同时如果能够满足自适应的需求就更好了。对于幻灯片的轮播效果，一年前我试过一个在Github上的js插件，这次使用Bootstrap4发现这已经集成进Bootstrap的框架了，如果不是非要在网页上实现一个真的幻灯片，没必要再去整一个幻灯片的插件。 Carousel 基础版 在Bootstrap4中轮播组件称为Carousel，在官网就有对其使用的简单介绍。 简单说来</description>
     </item>
     
     <item>
       <title>Blog养成记(8) 页面设计demo</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</link>
       <pubDate>Sat, 11 Aug 2018 17:27:55 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</guid>
-      <description>实际上前几个月就已经将页面原型设计完成，中间经过需求梳理和页面demo两个部分，不过设计完后就停滞了不少时间。最近才又开始折腾静态页面，在公司也尝试搭一个简单网站（尝试了flask，最后还是回归hugo生成静态页面），所以为了能将之后的部分继续，所以赶紧补上。
-需求梳理 首先需要将应用场景进行梳理，细化需求，还特地做了对应的思维导图明确所需要的功能。
-需求场景方面主要是以下几个点：
- 生活类：能满足基本的博客需求，写一些生活感悟、观演感想、事件评论、心情日记之类的内容，能将之前的一些不错的游记（大多半途而废😂）、照片也能安置就更好了，这一部分越现代越好，更需要设计感一些； 技术类：能满足技术文档、学习记录的需求，记录一些小技巧和学习过程，主要是分为科研类、学习类和尝试类，这一部分越简约越好，能帮助聚焦，也会显得更专业； 专题类：主要是一些内容并不是孤立的，是围绕一个核心的； 个人简介：当然还是需要有个人介绍的，不过专业性cv类还是偏设计感可能需要看最后的需求。  页面设计 针对以上的需求场景，将分成了以下几类：
- 首页 Sci &amp;amp; Tech 赛先生  Papers 论文精读：论文精读 Learning 学海无涯：网课、知识点梳理、读书笔记 Tech 杂技浅尝：eg.前端、docker之类不会太深入研究的部分，主要针对快速掌握并应用  Project 课题组：项目情况 Blog 随想录  Thoughts 对酒当歌：人生感悟 Critique 品鉴评论 Travel 御风而行：游记 Moment 时光碎片：短内容的心情日记 Gallery 光影长廊：照片集  ArXiv 荟萃集 Profile 档案处：个人介绍  网上找了不少静态页面的模板参考，还有各个博客的设计，参考他们的设计和功能，列了不少设想，所有的内容汇集在下面的思维导图中。
-Demo出炉 向认识的产品的同事咨询了下，开始尝试墨刀，可以在上面做原型设计和简单交互。这个在线工具很方便，我也只用了最简单的设计部分，几乎是傻瓜式的。
-Duang~设计稿暂时定版如下，后续很有可能会修改，毕竟现在十分的粗糙。
-主页 赛先生 list:
-single:
-课题组 list:
-single:
-随想录 list:
-single - default:
-single - moment:
-single - gallery:</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</guid>
+      <description>实际上前几个月就已经将页面原型设计完成，中间经过需求梳理和页面demo两个部分，不过设计完后就停滞了不少时间。最近才又开始折腾静态页面，在公司也尝试搭一个简单网站（尝试了flask，最后还是回归hugo生成静态页面），所以为了能将之后的部分继续，所以赶紧补上。 需求梳理 首先需要将应用场景进行梳理，细化需求，还特地做了对应的思维导图明确所需要的功能。 需求场景方面主要是以下几个点： 生活类：能满足基本的博</description>
     </item>
     
     <item>
-      <title>Blog养成记(7) Hugo多级列表无法显示? —— Markdown的bug合集</title>
-      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E5%A4%9A%E7%BA%A7%E5%88%97%E8%A1%A8%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--markdown%E7%9A%84bug%E5%90%88%E9%9B%86/</link>
+      <title>Blog养成记(7) Hugo多级列表无法显示? —— Cocoa主题的Markdown bug合集</title>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E5%A4%9A%E7%BA%A7%E5%88%97%E8%A1%A8%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--cocoa%E4%B8%BB%E9%A2%98%E7%9A%84markdown-bug%E5%90%88%E9%9B%86/</link>
       <pubDate>Tue, 20 Mar 2018 16:46:17 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E5%A4%9A%E7%BA%A7%E5%88%97%E8%A1%A8%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--markdown%E7%9A%84bug%E5%90%88%E9%9B%86/</guid>
-      <description>前言 又一次开始折腾Markdown了，不过这一次是因为好好的md文件，在typora中显示的好好的，但在Hugo渲染后格式就不对了，引起我这次探究主要问题在多级列表。考虑到毕竟两个软件的markdown渲染引擎不同，我并没有用到很特别的语法。之前在引用上也碰到了问题，typora中能很好地识别我想要的引用段落，但是Hugo不行。所以这次探究下是哪里出了问题，以及对应的解决方案。
-既然已经提到了markdown，在针对问题之前也记录下现在hugo的markdown解析引擎。Markdown解析器有很多，最广泛应用的是GitHub Flavored Markdown的解析器(GFM)，基于CommonMark进行了拓展。Hugo现在默认使用Blackfriday作为Markdown解析引擎，只要日志文件是以.md或者.markdown结尾即可，可以参考这里在配置文件中配置相关参数。除了Blackfriday这个使用最广泛的引擎之外，hugo还支持mmark，mmark是一个基于Blackfriday之上增加了更多拓展语法的解析器。有两种方式可以声明使用mmark，一种是日志文件以.mmark结尾，另一种在日志文件的头部增加markup: mmark声明使用mmark进行解析。
-问题列表 以下是问题列表：
- 无序列表的多级列表无法显示层级，即应表现为:
-  have a try  first second  another     却表现为(空心应为实心)：
-  have a try  first second another    有序列表下的无序列表表现为有序列表，即应表现为:
-  have a try  first second    却表现为：
-  have a try  first second    引用中的代码段无法识别正确结束位置，即应表现为:
-  In the quote
-$ This is code fence   Out the quote</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B07-hugo%E5%A4%9A%E7%BA%A7%E5%88%97%E8%A1%A8%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA--cocoa%E4%B8%BB%E9%A2%98%E7%9A%84markdown-bug%E5%90%88%E9%9B%86/</guid>
+      <description>前言 又一次开始折腾Markdown了，不过这一次是因为好好的md文件，在typora中显示的好好的，但在Hugo渲染后格式就不对了，引起我这次探究主要问题在多级列表。考虑到毕竟两个软件的markdown渲染引擎不同，我并没有用到很特别的语法。之前在引用上也碰到了问题，typora中能很好地识别我想要的引用段落，但是Hugo不行。所以这次探究下是哪里出了问题，以及对应的解决方案。 既然已经提到了mar</description>
     </item>
     
     <item>
       <title>Blog养成记(6) Hugo中的LaTeX渲染</title>
-      <link>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</link>
       <pubDate>Mon, 19 Mar 2018 22:33:45 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</guid>
-      <description>前言 Hugo本身并不支持\(\LaTeX\)，但可以通过javascript进行渲染。Hugo官网提供了多种方法，由于这篇博客我决定选择\(\KaTeX\)，而不是MathJax。
-安装 在head.html的标签前加上以下语句：
-&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&amp;quot; integrity=&amp;quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&amp;quot; integrity=&amp;quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&amp;quot; integrity=&amp;quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  不过0.9.0版本似乎很难链接，还是从这里下载js和css，并放在static/js文件夹中，并将上面代码改为：
-&amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/js/katex/katex.min.css&amp;quot; &amp;gt; &amp;lt;script src=&amp;quot;/js/katex/katex.min.js&amp;quot; &amp;gt; &amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;/js/katex/contrib/auto-render.min.js&amp;quot; &amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt;  使用 尽管KaTeX的github上是如下给出auto-render的默认值的：
-[ {left: &amp;quot;$$&amp;quot;, right: &amp;quot;$$&amp;quot;, display: true}, {left: &amp;quot;\\[&amp;quot;, right: &amp;quot;\\]&amp;quot;, display: true}, {left: &amp;quot;\\(&amp;quot;, right: &amp;quot;\\)&amp;quot;, display: false} ]  但实际上，三种标识符都成立，其中前两种将数学公式以block形式展现，第三种以inline形式展现。使用中只需要将left和right放在数学公式两侧即可。</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-03/blog%E5%85%BB%E6%88%90%E8%AE%B06-hugo%E4%B8%AD%E7%9A%84latex%E6%B8%B2%E6%9F%93/</guid>
+      <description>前言 Hugo本身并不支持\(\LaTeX\)，但可以通过javascript进行渲染。Hugo官网提供了多种方法，由于这篇博客我决定选择\(\KaTeX\)，而不是MathJax。 安装 在head.html的标签前加上以下语句： &amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css&amp;quot; integrity=&amp;quot;sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js&amp;quot; integrity=&amp;quot;sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js&amp;quot; integrity=&amp;quot;sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; document.addEventListener(&amp;quot;DOMContentLoaded&amp;quot;, function() { renderMathInElement(document.body); }); &amp;lt;/script&amp;gt; 不过0.9.0版本似乎很难链接，还是从这里下载js和css，并放在static/js文件夹中，并将上面代码改为： &amp;lt;!-- KaTeX --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;/js/katex/katex.min.css&amp;quot; &amp;gt; &amp;lt;script</description>
     </item>
     
     <item>
       <title>Blog养成记(5) 要让Github Pages被索引到</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/</link>
       <pubDate>Sun, 28 Jan 2018 22:04:23 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/</guid>
-      <description>居然都找不到！ 其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。
-什么？所以百度搜索搜不到我的个人博客？不死心，尝试一下，找得到github、gist主页，但是就是找不到github.io后缀的网页。除了百度之外，我还尝试了Bing、Google，都没有，所以常用的三大搜索引擎都找不到我的博客，小小网站在浩瀚的网络世界中就像是一个孤岛，只有知道url才能达到。突然想到传说中的暗网是否也是加上了反爬，所以大众难以发现？
-话说回来，反爬也有反爬的好处，比如有时博客内容特别个人，只是想找个地方发泄一下、记录一下，不被搜索引擎索引到也降低了被他人发现的几率，就像是一个打开的日记本，但是不用担心被家长偷看的感觉。
-如何让搜索引擎索引到呢？ 发现流行的搜索引擎居然都找不到博客，那就需要赶紧找解决方法。Google和Bing还不清楚是怎么回事，但网上流传的email回复内容都点明了Github Pages禁止了百度爬虫的爬去，似乎原因是百度爬虫爬得太过于频繁，会严重影响服务器性能。针对百度爬虫的问题，大家找了很多方法。比较早期的有把放在GitHub上的代码同时push到国内的GitCafe上，但GitCafe已经被Coding.net收购，2017年6月前很多方案都是同步推送到Coding.net上，而8月开始免费的Coding.net用户会被强行加入5s等待页面，也会导致爬取失败。自建服务器托管博客、将博客放在Gitlab上或者CDN方法都不在我的选择范围内，因为暂时我还没有购买服务器或者域名的打算，所以决定放弃百度……但不管怎么样Bing和Google还是要设置好的！
-居然在robots.txt中设置了屏蔽!!! 我对网络、网站这部分并不熟悉，之前在了解themes里内容时有看见过这么个小小的txt文件，并没有放在心上，但原来各个爬虫爬不到罪魁祸首就在这个txt文件上。
-robots.txt在网站的根目录里，文件中明确了爬虫可以爬取以及禁止收录的范围。搜索引擎爬取网站第一个访问的文件就是robots.txt。robots.txt中可以对于不同的搜索引擎机器人设置不同的权限，这里就不赘述了，毕竟也不是我关心的重点^-^。
-Hugo在static文件夹中就有一个robots.txt，生成静态网页时就会把这个文件放在网站的根目录下。默认的robots.txt如下所示：
-User-agent: * Disallow: /  第二行把所有爬虫都给屏蔽了，只需要把第二行的 / 删去就ok了。
-尽管已经修正了robots.txt，但是过了一天多看各个搜索引擎，还是找不到我的博客网站，所以还是要进一步处理。
-Google 添加资源 在google搜索页面输入“site:orianna-zzo.github.io”就可以看到这个网页是否被google索引到，如果没被索引到，在搜索结果页面就会直接提示你使用Google Search Console。登录后，如果是首次使用在Search Console中以下界面中选择“网页”类型资源，并将博客完整url填入其中，我填入“https://orianna-zzo.github.io”。注意http或者https，www等最好能完全正确。
-如果已经添加过资源，则需要点击下面的红色按钮“添加属性”，然后和上面一样地添加资源即可。
-资源添加后，需要验证你对该网站有所有权。Google提供了几种方法，我选择了HTML验证文件上传，只需要根据要求，下载HTML验证文件，把文件放在网站的repository中上传，然后进行验证即可。
-查看robots.txt 资源添加后，先查看robots.txt是否设置正确。我就是在这里才发现在这个文档中把所有搜索引擎的爬虫机器人都屏蔽了。
-进入资源后，在左侧点击“抓取&amp;gt;robots.txt测试工具”，右边会有显示robots.txt的内容。需要注意的是，robots.txt并不一定是最新版的，看上去这个每天只会更新一次。可以在下方输入需要测试的网址，并点击测试。若显示已允许则说明设置ok。
-添加url robots.txt设置成功还是不够的，还是需要手动添加url。在左侧点击“抓取&amp;gt;Google抓取工具”，在右侧金融人机身份验证后，可以将想要添加的url写入输入框，并进行抓取。
-状态显示完成，说明该网页已经爬取成功。点击“请求输入索引”，会显示以下选择框：
-有两个选项，第一个仅抓取次网址，每个月500次提交机会，第二个抓取次网址及其直接链接，每个月有10次提交机会。提交后，编入了索引，等上一会就可以在google上搜索了！
-不过提交次数多就需要进行图片验证，而且如果网站有修改就需要重新提交。鉴于现在内容不多，先都是人肉提交的，如果网页多的话，可以通过站点地图进行提交。
-站点地图 在左侧点击“站点地图”，并在右侧点添加/测试站点地图，并添加url，我的是“https://orianna-zzo.github.io/sitemap.xml”。
-发现提示有警告，说是网址遭到robots.txt阻止。原来sitemap需要在robots.txt增加配置，于是现在robots.txt如下所示：
-User-agent: * Disallow: Sitemap: https://orianna-zzo.github.io/sitemap.xml  要注意的是，如果有网页不想被爬取，不仅需要在robotx.txt中注意增加在Disallow后面，还要注意生成sitemap时不要添加进去。
-Bing 相似地，在Bing网站管理登陆、添加网站url。
-然后在左侧点击“配置我的网站&amp;gt;Sitemaps”，并在右侧加上sitemap的url，点击提交。
-Google基本过一天就能查到，但是Bing我总是很难搜索到，猛然发现上次抓取更新时间还在1-11，已经过了大半个月了，不知道什么时候才能知道效果了。
-百度不死心的尝试 百度在这里注册站长管理并添加网站资源，我同样选择添加HTML文件。注意http或者https、www等最好能完全正确。我百度的验证过好几次都没有成功，料想是将https写成了http所以验证出现问题。
-在右侧选择“数据监控&amp;gt;Robots”，并点击检测并更新刷新robots设置。
-在“数据引入&amp;gt;链接提交”中的自动提交选择sitemap，并提交sitemap地址。
-状态转了很久显示抓取失败T^T。
-然后选择“数据监控&amp;gt;抓取诊断”，并输入博客网址进行抓取。然后发现，全部都抓取失败了，显示是“拒绝访问”。果然是真的屏蔽了百度爬虫了呀。
-Resource资源链接汇总 Google网站管理、Bing网站管理、百度网站管理
-版本控制    Version Action Time     1.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B05-%E8%A6%81%E8%AE%A9github-pages%E8%A2%AB%E7%B4%A2%E5%BC%95%E5%88%B0/</guid>
+      <description>居然都找不到！ 其实Blog我主要是用来做一些记录，更何况忙起来经常不更新，因此尽管有加上一些流量统计的功能，但实际上也不怎么关心到底有多少访问量。在浏览网上其他人的博客布局寻找灵感时，突然看到有博客提到GitHub Pages屏蔽了百度的爬虫，所以百度是搜索不到GitHub Pages上的网页的。 什么？所以百度搜索搜不到我的个人博客？不死心，尝试一下，找得到github、gist主页，但是就是找不到g</description>
     </item>
     
     <item>
       <title>Blog养成记(4) Hugo中增加tags等分类</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</link>
       <pubDate>Tue, 09 Jan 2018 18:22:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
-      <description>自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。
-分类taxonomy有3个概念：
- Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容  例如我需要增加3个分类，分别是：
- tag：文章标签 topic：文章主题/文章系列 category：文章分类  以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。
-配置分类 需要在 config.toml 中增加分类。还是这个例子，则需要增加如下内容：
-[taxonomies] tag = &amp;quot;tags&amp;quot; series = &amp;quot;series&amp;quot; category = &amp;quot;categories&amp;quot;  而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：
-date: &amp;quot;2018-01-09T16:22:25+08:00&amp;quot; draft: false title: &amp;quot;Blog养成记(4) 增加tags等分类&amp;quot; tags: [&amp;quot;hugo&amp;quot;] series: [&amp;quot;Blog养成记&amp;quot;] categories: [&amp;quot;杂技浅尝&amp;quot;]  当然实际上，Hugo默认会产生 tags 和 categories 的分类，如果只需要这两个，可以不用在 config.toml 中声明就在post头部使用。
-分类集合查看 使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。
-还是以tag为例：
-example.com/tags/ 会列出tags中的所有术语；
-example.com/tags/docker 会列出tags标为docker的所有网页列表。
-分类排序  分类排序还未正式尝试，无法确认正式效果，还需后面确认后再补充。</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/</guid>
+      <description>自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。 分类taxonomy有3个概念： Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容 例如我需要增加3个分类，分别是： tag：文章标签 topic：文章主题/文章系列 category：文章分类 以tag为例，则对应Taxonomy是tag，Term是</description>
     </item>
     
     <item>
       <title>Blog养成记(3) Hugo的语法高亮配置</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Tue, 09 Jan 2018 17:52:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
-      <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。
-一般有以下几种常见方法：
-1. 使用Hugo默认Chroma (弃，一些代码无法高亮)
- 使用Pygments (弃，一些代码无法高亮)
- 使用Highlight Shortcode (弃，高亮颜色渲染问题)
- 使用Highlight.js ✔️
-  使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Pygments，需要先安装Pygments，并在网站配置文件中设置一些相关参数。
-Pygments安装 我在建立Hugo镜像时已经安装了Pygments，不然需要先安装Pygments。如果在Debian和Ubuntu系统中可以用下面语句安装，其他系统也可参考：
-$ sudo apt-get install python3-pygments  Pygments配置 下面是我按官网在 config.toml 中配置的参数：
-[highlighting] pygmentsUseClassic = true pygmentsCodeFences = true pygmentsStyle = &amp;quot;autumn&amp;quot;  其中， pygmentsUseClassic=true 说明使用Pygments来进行语法高亮；
-pygmentsCodeFences=true 使在code fence中的根据设置的语言标签进行语法高亮；
-pygmentsStyle=&amp;quot;autumn&amp;quot; 设置高亮的风格,可以在这里查看各高亮风格，选择最心仪的。
-我选择了 autumn，下面是在code fence中的高亮示例：
-#!/usr/bin/python3 from engine import RunForrestRun &amp;quot;&amp;quot;&amp;quot;Test code for syntax highlighting!&amp;quot;&amp;quot;&amp;quot; class Foo: def __init__(self, var): self.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 Hugo官网在这里给出了详细的语法高亮配置说明。 一般有以下几种常见方法： 1. 使用Hugo默认Chroma (弃，一些代码无法高亮) 使用Pygments (弃，一些代码无法高亮) 使用Highlight Shortcode (弃，高亮颜色渲染问题) 使用Highlight.js ✔️ 使用Pygments进行高亮 Hugo从0.28版本开始默认使用Chroma来作语法高亮。Chroma使用go编写的，渲染速度很快。 如果需要使用Py</description>
     </item>
     
     <item>
       <title>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
       <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
-      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
-在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，更重要的是，最近对docker感兴趣，想实践一下。Docker是一个开源的应用容器引擎，可以方便地将不同容器间的环境进行隔离，但又比虚拟机更轻量化，能更快速启动。与Docker相关的内容我会在另一个Docker系列进行详细说明，这里主要还是与建立Blog相关的使用为主。
-网上使用Hugo写blog的内容很多，使用docker的也很多，但使用docker来搭建hugo编写环境并不多，我也是在一步步摸索中。那么，就跟着我一起开始尝试吧！
-Hugo的docker环境配置 Docker安装 在Mac中可以使用Homebrew进行安装：
-$ brew cask install docker  若是Windows或者其他操作系统，可以在这里选择你的操作系统下载相应版本进行安装并配置环境变量。
-获得Hugo开发镜像 我在docker hub上查找了下，截止目前并没有官方镜像，都是用户自己建立并上传的镜像。Hugo的Github中的确有建立docker镜像的Dockerfile，但是我试了几次都未成功，最后决定建立自己的Hugo docker镜像，顺便学习下Dockerfile。
-直接获得镜像 如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有33MB，只需要在终端中输入下面的命令即可：
-$ docker pull orianna/hugo  该镜像可以在docker hub中找到，点这里是在docker hub上的repo。
-接下去在终端输入下面这行命令可以查看你现在有的镜像信息：
-$ docker images  你可以发现orianna/hugo只有85.7MB大小.
-自建镜像 或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。
-我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
-将所有内容clone到当前目录：
-$ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
-接下去你就可以在终端输入下面这行命令来查看镜像信息：
-$ docker images  至此，你已经获得了Hugo的docker镜像了。
-尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
+      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，</description>
     </item>
     
     <item>
       <title>Blog养成记(1) Preface</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</link>
       <pubDate>Mon, 01 Jan 2018 16:05:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</guid>
-      <description> 初始  养个Blog的想法从很早就有了，但是&amp;hellip;  从本科开始就一直想要一个自己的Blog，一直没有行动。本身我没有记日记的习惯，也没有需求和冲动写下什么，本科虽然有时想记下学下的内容，但笔记就够了，也没写什么技术博客的想法。除了很久之前偶尔在qq空间或者人人po两篇直抒胸臆的文章，也就没有其他了。此外，虽说博客最重要的是内容，但没有一个好的生态环境和前端界面设计，至少对于我来说，没有兴趣花时间在上面，原谅我还是外观主义者不够geek。当初选择qq空间和人人更多的是为了圈子和分享，记录的因素只占了很少的一部分，让我长久在这上面却不会满意，毕竟这两者的整体环境定位更偏大众。原谅我比较俗气。这就和你发邮件选择@qq.com还是@gmail.com或者@outlook.com感觉一样，后者给予更正式化的感觉，作为邮箱基础功能来说并没有实质性区别。对于界面设计，之前流行的CSDN或者博客园都是简洁风，不够美观现代化，但够用、功能强大、社区用户庞大，不过没让我提起兴趣。自建网站却止步于嫌整套网站建立使用Wordpress太重，嗯，还要租用服务器。我觉得我还要承认，当时作为本科生的我，太过局限于学校课堂，并未出去看看，对于网络信息的运用和挖掘也更多停留在看看答案、找找软件、翻翻视频的基础使用上，最多也就查看下算法之类的。
-近几年，特别从研究生开始，越来越多的都是自己查找信息，更多地接触了“世界”的信息和知识，拓宽了视野，也明白本科王建明老师所说的“语言定义了你的范围”这句话的含义。非常感谢导师王文敏教授和在北大的研究生生涯，研究生和本科生的学习方式上差别很多，真正开始“去林子里打鸟”，而这个林子也扩展为“世界的林子”。随着自我学习机会和时间愈多，碎片化学习和感想也愈多，加上虽然网上知识丰富，但内容庞杂，过段时间想再查找却需要对这些信息重新筛选略费时，再加上工作后发现个人体悟有些良多，人老了很多回忆开始忘却，想要记录的心情越发迫切，于是又一次萌生个人博客的想法。
-难产  选择恐惧症+控制狂的特质决定了我家Blog的难产&amp;hellip;  尽管现在有很多像知乎专栏这样有现代化的界面和良好的用户群的网站可以让人直接在上面写作发布更关心核心内容，但我还是更倾向于选择Github Pages，与Github非常紧密的关系是该倾向性很重要的原因（这对码农来说很有诱惑力），但仔细想想我的主要原因可能还是由于Github Pages中整个界面设计都可以自己定制，我自认控制欲还是挺强的（虽然界面设计是个头疼的问题）。
-Github Pages搭建个人博客，使用的是轻量级的静态网页，网上已经有很多教程和方案。其实去年大约10月开始我就已经开始着手搭建基于Jekyll的博客了。选择Jekyll只是因为它是官方推荐的选择，据说可定制化和功能很强大。尽管对前端框架和ruby都不熟，但由于个人固执，并没有选择简单fork一个theme就安心写博客。我看了官方推荐的好多theme，找了很多自己喜欢的设计和模块，根据自己的需求想进行重新设计和拼接。现在看来，当初界面整体设计有些不忍直视，还需要重新设计。那段时间持续了挺久，下班回去都22点多，却还会打开电脑看看怎么整，不过由于前端我是新手中的新手，很多问题需要好久才能解决并实现设想，后面搭着搭着想把中间遇到的问题和解决方案记下来，下次可以再找，也算记录博客的搭建过程，不过可惜只写了提纲以及最开始的安装部分。这在去深圳出差那段忙碌的日子打断之后再没有捡起来。
-重建  过去这么久，干脆重新开始吧！  断了这么久，好多都不记得了，看之前的设计也觉很多需要修改，干脆推倒重来。重来这回就从一开始进行记录，希望这次能够顺利养成。
-反正都要重新开始，就想选择更合适的静态网站工具。除了Jekyll外，Hexo是国人教程最多的，国外口碑也非常好，看到外国的一句评论说，缺点就是大多数内容都是中文，英文教程少，哈哈。去年的时候网上就已经很多博客写如何从Jekyll转到Hexo了，其中一个原因是Jekyll用的是Ruby，Hexo是基于Node.js，前者要学liquid，要用css预编译学scss或者less，后者要学js，但后者相对而言对程序员友好些，如果不是特别爱折腾会很繁琐，另一个主要原因说是Hexo的编译速度要比Jekyll快很多。不过这次我决定选择另一个Framework，使用Hugo。Hugo是用现在大热的go语言写的，据说编译起来比Hexo还会快很多。
-除此之外，由于新买了Macbook Pro，出于不想弄乱mac的环境可以瞎折腾这个考虑，最近一直在研究docker的使用和最佳实践，于是新的环境搭建希望是基于docker的。就这样开始吧！
-版本控制    Version Action Time     1.0 Init 2018-01-01   1.1 增加tag和版本控制 2018-01-17    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/</guid>
+      <description>初始 养个Blog的想法从很早就有了，但是&amp;hellip; 从本科开始就一直想要一个自己的Blog，一直没有行动。本身我没有记日记的习惯，也没有需求和冲动写下什么，本科虽然有时想记下学下的内容，但笔记就够了，也没写什么技术博客的想法。除了很久之前偶尔在qq空间或者人人po两篇直抒胸臆的文章，也就没有其他了。此外，虽说博客最重要的是内容，但没有一个好的生态环境和前端界面设计，至少对于我来说，没有兴趣花时</description>
     </item>
     
   </channel>

@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，">
+  
+  <meta property="og:title" content="Blog养成记(2) Hugo&#43;Docker在Github上建立Blog" />
+<meta property="og:description" content="Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/" />
+
+
+
+<meta property="article:published_time" content="2018-01-07T11:05:25&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-07T11:05:25&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       Blog养成记(2) Hugo&#43;Docker在Github上建立Blog | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>Blog养成记</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jan 7, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>10 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="introduction">Introduction</h2>
+
+<p>正如上一篇说的，我选择了<a href="https://gohugo.io">Hugo</a>作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在<a href="https://github.com/gohugoio/hugo/releases">这里</a>选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。</p>
+
+<p>在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，更重要的是，最近对docker感兴趣，想实践一下。<a href="https://www.docker.com/">Docker</a>是一个开源的应用容器引擎，可以方便地将不同容器间的环境进行隔离，但又比虚拟机更轻量化，能更快速启动。与Docker相关的内容我会在另一个Docker系列进行详细说明，这里主要还是与建立Blog相关的使用为主。</p>
+
+<p>网上使用Hugo写blog的内容很多，使用docker的也很多，但使用docker来搭建hugo编写环境并不多，我也是在一步步摸索中。那么，就跟着我一起开始尝试吧！</p>
+
+<h2 id="hugo的docker环境配置">Hugo的docker环境配置</h2>
+
+<h3 id="docker安装">Docker安装</h3>
+
+<p>在Mac中可以使用Homebrew进行安装：</p>
+
+<pre><code class="language-shell">$ brew cask install docker
+</code></pre>
+
+<p>若是Windows或者其他操作系统，可以在<a href="https://www.docker.com/get-docker">这里</a>选择你的操作系统下载相应版本进行安装并配置环境变量。</p>
+
+<h3 id="获得hugo开发镜像">获得Hugo开发镜像</h3>
+
+<p>我在docker hub上查找了下，截止目前并没有官方镜像，都是用户自己建立并上传的镜像。<a href="https://github.com/gohugoio/hugo">Hugo的Github</a>中的确有建立docker镜像的Dockerfile，但是我试了几次都未成功，最后决定建立自己的Hugo docker镜像，顺便学习下Dockerfile。</p>
+
+<h4 id="直接获得镜像">直接获得镜像</h4>
+
+<p>如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有33MB，只需要在终端中输入下面的命令即可：</p>
+
+<pre><code class="language-shell">$ docker pull orianna/hugo
+</code></pre>
+
+<p>该镜像可以在docker hub中找到，点<a href="https://hub.docker.com/r/orianna/hugo/">这里</a>是在docker hub上的repo。</p>
+
+<p>接下去在终端输入下面这行命令可以查看你现在有的镜像信息：</p>
+
+<pre><code class="language-shell">$ docker images
+</code></pre>
+
+<p>你可以发现<code>orianna/hugo</code>只有85.7MB大小.</p>
+
+<h4 id="自建镜像">自建镜像</h4>
+
+<p>或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。</p>
+
+<p>我建立Hugo docker的Dockerfile放在<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github</a>上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。</p>
+
+<p>将所有内容clone到当前目录：</p>
+
+<pre><code class="language-shell">$ git clone https://github.com/orianna-zzo/hugo-docker-dev.git
+</code></pre>
+
+<p>打开Dockerfile，其中HUGO_VERSION是<a href="https://github.com/gohugoio/hugo">Hugo</a>官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是<code>/hugo-site</code>用来挂载你的Hugo源码，另一个是<code>static-site</code>用来定义Hugo生成静态网页的输出文件夹。</p>
+
+<mark style="color: #cbcbcb;"><del>除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行<code>start.sh</code>。该shell脚本只有一个作用，如果在当前文件夹中包含<code>run.sh</code>文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。<code>run.sh</code>的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例<code>run.sh</code>。</del>(v2.0)</mark>
+
+<p>在这个repo的文件夹中打开终端，输入下面命令以建立镜像：</p>
+
+<pre><code class="language-shell">$ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .
+</code></pre>
+
+<p>其中<code>-t</code>给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为<code>你的docker-name/镜像名称</code>，<code>:</code>后为该镜像的tag。<code>-t</code>可以有多个。注意不要忘记最后的<code>.</code>，它表示使用该文件夹中除了<code>.dockerignore</code> 中的其他内容作为建立镜像的上下文内容。</p>
+
+<p>接下去你就可以在终端输入下面这行命令来查看镜像信息：</p>
+
+<pre><code class="language-shell">$ docker images
+</code></pre>
+
+<p>至此，你已经获得了Hugo的docker镜像了。</p>
+
+<h3 id="尝试使用hugo">尝试使用Hugo</h3>
+
+<p>假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd)/site-sample:/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest
+</code></pre>
+
+<p>其中，<code>—name</code> 给该容器起了名字（可省略）；</p>
+
+<p><code>-v $(pwd)/site-sample:/hugo-site</code> 是将当前文件夹中的 <code>site-sample</code> 文件夹挂载到镜像中的 <code>/hugo-site</code> 文件夹（不可省略）；</p>
+
+<p><code>-v $(pwd)/public:static-site</code> 将当前文件夹中 <code>public</code> 文件夹挂载到镜像中的 <code>/static-site</code> 文件夹（可视情况省略）；</p>
+
+<p><code>-p</code> 是给出了镜像和宿主机之间的端口映射；</p>
+
+<p><code>—rm</code> 说明该容器结束后就自动销毁；</p>
+
+<p><code>-it</code> 表明打开一个可交互的终端。</p>
+
+<p>此时，就可以用浏览器打<a href="http://localhost:1313">http://localhost:1313</a>查看网页了。至此，基于Docker的Hugo开发环境就已经就绪了。</p>
+
+<h2 id="正式初建blog">正式初建Blog</h2>
+
+<h3 id="blog文件夹结构">Blog文件夹结构</h3>
+
+<p>在本地建立文件夹 <code>blog-hugo</code> 以存放Hugo源码，进入该文件夹，打开docker容器并将之挂载到Hugo的docker容器中。</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest COMMAND [-flag]
+</code></pre>
+
+<mark style="color: #cbcbcb;"><del>此时，因为 <code>blog-hugo</code> 文件夹中并未有 <code>run.sh</code> ，所以会打开一个交互终端，并位于 <code>/hugo-site</code> 文件夹下。</del>(v2.0)</mark>
+
+<p>如执行<code>hugo new site.</code>，Hugo就会自动生成一个博客的目录结构，则需要输入：</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest new site .
+</code></pre>
+
+<p>Hugo的文件夹结构一般如下所示：</p>
+
+<pre><code>.
+└── site
+    ├── config.toml / config.yaml / config.json
+    ├── content
+    │   └── ...
+    ├── layouts
+    │   └── ...
+    ├── themes
+    │   └── ...
+    ├── static
+    │   └── ...
+    ├── archetypes
+    │   └── ...
+    ├── data
+    │   └── ...
+    └── ...
+</code></pre>
+
+<p>其中，<code>config.toml</code> 是网站的配置文件，Hugo还可使用 <code>config.yaml</code> 或者 <code>config.json</code> 进行配置。</p>
+
+<p><code>content</code> 文件夹中存放所有的网站内容，可在此文件夹中建立其他子文件夹，即为子模块。</p>
+
+<p><code>layouts</code> 文件夹存放 <code>.html</code> 格式的模板。模板确定了静态网站渲染的样式。</p>
+
+<p><code>themes</code> 文件夹存放网站使用的theme主题模板。</p>
+
+<p><code>static</code> 文件夹存放未来网站使用的静态内容，比如图片、css、JavaScript等。当Hugo生成静态网站时，该文件夹中的所有内容会原封不动的被复制。</p>
+
+<p><code>archetypes</code> 文件夹存放网站预设置的文件模板头部，当使用 <code>hugo new</code> 时即可生成一个带有该头部的实例。</p>
+
+<p><code>data</code> 文件夹用来存储Hugo生成网站时应用的配置文件。配置文件可以是YAML，JSON或者TOML格式。</p>
+
+<h3 id="配置theme">配置theme</h3>
+
+<p>可在<a href="https://themes.gohugo.io/">这里</a>找自己喜欢的主题。我暂时选择简洁风的<a href="https://github.com/nishanths/cocoa-hugo-theme">cocoa</a>，将主题clone到 <code>themes</code> 文件夹下：</p>
+
+<pre><code class="language-shell">$ git clone https://github.com/nishanths/cocoa-hugo-theme.git themes/cocoa
+</code></pre>
+
+<p>具体使用方式，可参照主题中 <code>exampleSite</code> 文件夹中 <code>config.toml</code> 配置网站的配置文件 <code>config.toml</code> ，需要在该文件中指出 <code>theme=&quot;cocoa&quot;</code>。此外还可参考该文件夹 <code>content</code> 中的内容建立自己的博客，具体我就不在这里阐述了，可参考我的<a href="https://github.com/orianna-zzo/blog-hugo">Github</a>。</p>
+
+<p>在 <code>content</code> 中建立 <code>blog</code> 文件夹，包含一个 <code>_index.md</code> 文件，该文件仅包含一个文件头部。文件头部样例如下：</p>
+
+<pre><code>+++
+date = &quot;2018-01-06T02:15:26+08:00&quot;
+draft = false
+title = &quot;Blog&quot;
++++
+</code></pre>
+
+<p>或者使用YAML风格头部：</p>
+
+<pre><code>---
+date: &quot;2018-01-06T02:15:26+08:00&quot;
+draft: false
+title: &quot;Blog&quot;
+---
+</code></pre>
+
+<p>其中，<code>date</code> 说明该博客建立时间，<code>draft</code> 说明这篇是否是草稿，若是草稿，在无特别指明情况下并不会生成静态网页，<code>title</code> 表明该文件显示的标题。</p>
+
+<p>在同样文件夹下，建立其他 <code>.md</code> 文件，同样也是有相似的文件头部。该博客的文件名应和 <code>title</code> 一致，但要注意 <code>title</code> 中的空格或者 <code>+</code> 作为文件名时应该替换成<code>-</code>， 不然会报找不到404网页。文件内容在这块区域下面，使用markdown语法。</p>
+
+<h3 id="查看网页">查看网页</h3>
+
+<mark style="color: #cbcbcb;"><del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)</mark>
+
+<p>通过<code>hugo server -b http://localhost:1313 --bind=0.0.0.0</code>来即使查看静态网页情况：</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest server -b http://localhost:1313 --bind=0.0.0.0
+</code></pre>
+
+<p>即可在<a href="http://localhost:1313">http://localhost:1313</a>查看你编写的网页了。</p>
+
+<p>这行命令也可放在 <code>run.sh</code> 中以复用，每次打开容器即执行该命令。</p>
+
+<h3 id="生成静态页面">生成静态页面</h3>
+
+<mark style="color: #cbcbcb;"><del>若文件夹中不存在 <code>run.sh</code> 文件，执行容器后执行：</del>(v2.0)</mark>
+
+<p>通过<code>hugo --baseUrl=&quot;https://orianna-zzo.github.io/&quot;</code>来生成静态网页，需要明确静态网页url：</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; 
+</code></pre>
+
+<p>将上述命令中网站的url替换成你网站的url。该命令会在文件夹中生成 <code>public</code> 文件夹，并将静态网页生成在该文件夹中。</p>
+
+<p>在v0.3版的Hugo镜像之后中，可以将想要将镜像网站生成的文件夹挂载在容器中，可用下面命令执行容器：</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -v ~/Documents/WorkingProject/orianna-zzo.github.io:/static-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; 
+</code></pre>
+
+<p>可将上面 <code>~/Documents/WorkingProject/orianna-zzo.github.io</code> 的路径替换成自己的文件夹。</p>
+
+<p>然后在执行容器后执行下面命令，则会将静态网页生成到指定文件夹中：</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; -d /static-site
+</code></pre>
+
+<p>若要部署在Github Pages上，需要将生成的静态网页push到Github上。</p>
+
+<p>鉴于我嫌上面生成挂载静态网页的文件夹的容器命令太过冗长，因此决定在该文件中建立一个指向 <code>~/Documents/WorkingProject/orianna-zzo.github.io</code> 的软连接。</p>
+
+<pre><code class="language-shell">$ ln -s ~/Documents/WorkingProject/orianna-zzo.github.io public
+</code></pre>
+
+<p>软连接建立后，只需要用下面命令生成容器即可，感觉如此生成静态网页方便很多：</p>
+
+<pre><code class="language-shell">$ docker run --name my-hugo -v $(pwd):/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; -d /static-site
+</code></pre>
+
+<h3 id="配置alias简化命令">配置alias简化命令</h3>
+
+<p>每次都需要翻blog找上述命令复制到terminal中总是有些繁琐，于是决定给上述命令配置别名。</p>
+
+<p>配置需要写到配置文件，有两个选择：</p>
+
+<ul>
+<li>对全部用户生效：修改 <code>/etc/profile</code>文件</li>
+<li>对当前用户生效：修改 <code>~/.profile</code>文件 （仅针对Mac，linux大多数情况下修改 <code>~/.bashrc</code>）</li>
+</ul>
+
+<p>我将用户自定义部分还是放入了<code>~/.profile</code>文件：</p>
+
+<pre><code class="language-shell">$ vi ~/.profile
+</code></pre>
+
+<p>增加以下内容，给起个别称 <code>hugo</code>，这样就可以将<code>hugo</code>命令当做本地命令使用了：</p>
+
+<pre><code class="language-shell"># config alias
+alias hugo=&quot;docker run -v \$(pwd):/hugo-site -v \$(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest&quot;
+</code></pre>
+
+<p>注意，该命令需要注意执行命令所在的位置，且静态页面生成的文件夹就为<code>./public</code>。</p>
+
+<p>记得source一下，使配置文件立即生效：</p>
+
+<pre><code class="language-shell">$ source ~/.profile
+</code></pre>
+
+<p>现在开始就可以直接使用 <code>hugo</code> 来启动hugo的docker镜像了。</p>
+
+<p>除了以上简化hugo内容之外，还可以有以下别名配置：</p>
+
+<pre><code class="language-shell"># 查看博客的页面生成情况(绝对路径，所以不限执行该命令位置)
+alias hugo-dev='docker run --name my-hugo -v /Users/orianna/Projects/homepage/blog-hugo:/hugo-site -v /Users/orianna/Projects/homepage/blog-hugo/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest server -b http://localhost:1313 --bind=0.0.0.0 --disableFastRender'
+
+# 生成博客的静态页面(绝对路径，所以不限执行该命令位置)
+alias hugo-dev-gen='docker run --name my-hugo -v /Users/orianna/Projects/homepage/blog-hugo:/hugo-site -v /Users/orianna/Projects/homepage/blog-hugo/public:/static-site -p 1313:1313 --rm -it orianna/hugo:latest --baseUrl=&quot;https://orianna-zzo.github.io/&quot; -d /static-site'
+
+# 可将常用的命令写在执行的文件夹中的run.sh中，镜像直接执行(绝对路径，所以不限执行该命令位置)
+alias hugo-dev-run='docker run --name my-hugo -v /Users/orianna/Projects/homepage/blog-hugo:/hugo-site -v /Users/orianna/Projects/homepage/blog-hugo/public:/static-site -p 1313:1313 --rm -it --entrypoint sh orianna/hugo-docker-dev:latest run.sh'
+
+# 可将常用的命令写在执行的文件夹中的run.sh中，镜像直接执行(注意执行命令的路径)
+alias hugo-run='docker run -v $(pwd):/hugo-site -v $(pwd)/public:/static-site -p 1313:1313 --rm -it orianna/hugo-docker-dev:latest'
+
+</code></pre>
+
+<p>这样我最常用的就是<code>hugo-dev</code>和<code>hugo-dev-gen</code>了</p>
+
+<h2 id="github-pages部署">Github Pages部署</h2>
+
+<p>参考<a href="https://help.github.com/articles/user-organization-and-project-pages/">这里</a>，在Github Pages有四种类型，而对于非组织型用户来说有两种，一种是用户的个人网站，网页域名为 <code>username.github.io</code>，另一种为Project的主页，网页域名为 <code>username.github.io/projectname</code>。Github Pages对于Project主页的源码要求有了修改，现在也可以放置在master上，之前版本中必须放在<code>gh-pages</code> 分支上，不过这里暂且不提，主要还是关心用户个人主页。</p>
+
+<p>这就需要你在Github上建立一个以 <code>username.github.io</code> 为名称的repository，对于我来说就是 <code>orianna-zzo.github.io</code>。此外，需要将Hugo生成的所有静态网页push到这个repository的master分支上。现在就可以用这个域名打开个人网站了。</p>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
+我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
+
+<p><a href="https://gohugo.io">Hugo官网</a>、<a href="https://github.com/gohugoio/hugo/releases">Hugo release版下载</a><br />
+<a href="https://www.docker.com/">Docker官网</a>、<a href="https://www.docker.com/get-docker">Docker下载</a><br />
+<a href="https://help.github.com/articles/user-organization-and-project-pages/">Github Pages个人/项目主页设置</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-01-07</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>增加tag、版本控制及资源链接</td>
+<td>2018-01-17</td>
+</tr>
+
+<tr>
+<td>1.2</td>
+<td>Config alias</td>
+<td>2018-03-21</td>
+</tr>
+
+<tr>
+<td>1.3</td>
+<td>hugo-docker-dev v0.46 + 修改alias用法</td>
+<td>2018-08-03</td>
+</tr>
+
+<tr>
+<td>2.0</td>
+<td>hugo修改为ENTRYPOINT + 修改alias用法</td>
+<td>2018-08-05</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/hugo" role="button">hugo </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/docker" role="button">docker </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE" role="button">环境配置 </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/blog" role="button">blog </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B01-preface/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Blog养成记(1) Preface</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>Blog养成记(3) Hugo的语法高亮配置</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#introduction">
+												 Introduction
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#hugo%e7%9a%84docker%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae">
+												 Hugo的docker环境配置
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#docker%e5%ae%89%e8%a3%85">
+												 Docker安装
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%8e%b7%e5%be%97hugo%e5%bc%80%e5%8f%91%e9%95%9c%e5%83%8f">
+												 获得Hugo开发镜像
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%9b%b4%e6%8e%a5%e8%8e%b7%e5%be%97%e9%95%9c%e5%83%8f">
+												 直接获得镜像
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%87%aa%e5%bb%ba%e9%95%9c%e5%83%8f">
+												 自建镜像
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%b0%9d%e8%af%95%e4%bd%bf%e7%94%a8hugo">
+												 尝试使用Hugo
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%ad%a3%e5%bc%8f%e5%88%9d%e5%bb%bablog">
+												 正式初建Blog
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#blog%e6%96%87%e4%bb%b6%e5%a4%b9%e7%bb%93%e6%9e%84">
+												 Blog文件夹结构
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e9%85%8d%e7%bd%aetheme">
+												 配置theme
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9f%a5%e7%9c%8b%e7%bd%91%e9%a1%b5">
+												 查看网页
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%94%9f%e6%88%90%e9%9d%99%e6%80%81%e9%a1%b5%e9%9d%a2">
+												 生成静态页面
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e9%85%8d%e7%bd%aealias%e7%ae%80%e5%8c%96%e5%91%bd%e4%bb%a4">
+												 配置alias简化命令
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#github-pages%e9%83%a8%e7%bd%b2">
+												 Github Pages部署
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#resource%e8%b5%84%e6%ba%90%e9%93%be%e6%8e%a5%e6%b1%87%e6%80%bb">
+												 Resource资源链接汇总
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。 Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助c">
+  
+  <meta property="og:title" content="前端试水(2) 使用docker镜像的Sass配置" />
+<meta property="og:description" content="前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。 Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助c" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/" />
+
+
+
+<meta property="article:published_time" content="2018-08-02T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-08-05T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+  
+  
+    <meta property="og:see_also" content="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B43-%E8%87%AA%E9%80%82%E5%BA%94%E4%B8%8E%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80/" />
+  
+    
+  
+    <meta property="og:see_also" content="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/" />
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       前端试水(2) 使用docker镜像的Sass配置 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B4"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>前端试水</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">前端试水(2) 使用docker镜像的Sass配置</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Aug 2, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>6 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="前言">前言</h2>
+
+<p>半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。</p>
+
+<h2 id="sass是什么">Sass是什么</h2>
+
+<p>Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助css的组织结构变得更合理和优雅，或者说更像一门编程语言，从而提高开发和维护效率。通俗说，就是在css上再套层更结构化的语法，帮助对样式进行组织和管理，再通过编译得到最终的css样式。</p>
+
+<p>与sass对标的是less，具体哪个更好对于初学者来说难以分辨和选择，但Bootstrap4抛弃了less转而选择sass和sass更大的社群都提供了选择了sass的理由。</p>
+
+<h3 id="sass选择">Sass选择</h3>
+
+<h4 id="sass-vs-scss">Sass vs Scss</h4>
+
+<p>Sass实际上有两种语法，针对不同的后缀名称<code>.sass</code>和<code>.scss</code>。</p>
+
+<p><code>.sass</code>是最早的语法，使用缩进而不是<code>{}</code>来表示嵌套，用换行而不是<code>;</code>来分隔属性，如下：</p>
+
+<pre><code class="language-sass">$font-stack:    Helvetica, sans-serif
+$primary-color: #333
+
+body
+  font: 100% $font-stack
+  color: $primary-color
+</code></pre>
+
+<p>另一种<code>.scss</code>的格式仅在css3的语法基础上进行扩展，如下：</p>
+
+<pre><code class="language-sass">$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+</code></pre>
+
+<p>对于码农来说，<code>.scss</code>相对更符合习惯一些，所以之后会选择后者。</p>
+
+<h4 id="ruby-sass-vs-libsass-vs-dart-sass">Ruby Sass vs Libsass vs Dart Sass</h4>
+
+<p>在官网最下方可以看到三个不同的Sass实现。</p>
+
+<p>Ruby Sass是最早的Sass，网上很多资料都是基于ruby的，不过这个实现版本作者之后不会再更新维护了。</p>
+
+<p>Libsass是使用C进行实现的版本，所以这个版本速度最快，Sassc就是在Libsass外套了一层wrapper。不过该版本的更新相对没有那么频繁和活跃，毕竟不是主要更新的实现版本。</p>
+
+<p>Dart Sass是替代Ruby Sass的实现版本，也是现在最主要的开发版本，新的功能也会主要在该实现版本中先进行集成。</p>
+
+<h2 id="编译环境配置">编译环境配置</h2>
+
+<p>估计很少有人像我这样折腾又莫名对一些点特别执着（或者说钻牛角尖）。当初一心想用docker把所有和开发环境配置相关的整理起来，折腾node-sass的dockerfile好久以失败告终。这次终于找到一个可以用的sass环境镜像，并根据此建立了自己的docker镜像，具体配置及使用方法在<a href="#libsass-docker">Libsass Docker</a>。但由于该镜像基于libsass，一些功能并没有集成（比如<code>--watch</code>），所以又基于dart sass生成一版镜像，具体方法在<a href="#dart-sass-docker">Dart Sass Docker</a>。</p>
+
+<p>两种镜像的比较如下：</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Libsass Docker</th>
+<th>Dart Sass Docker</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><strong>Size</strong></td>
+<td>8.76MB</td>
+<td>680MB</td>
+</tr>
+
+<tr>
+<td><strong>Writen in</strong></td>
+<td>C</td>
+<td>JS</td>
+</tr>
+
+<tr>
+<td><strong>Compiling Speed</strong></td>
+<td>Fast</td>
+<td>Normal</td>
+</tr>
+
+<tr>
+<td><strong>Integrated with JS</strong></td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+
+<tr>
+<td><strong>Function</strong></td>
+<td>Limited</td>
+<td>Full</td>
+</tr>
+
+<tr>
+<td><strong>Update Feq &amp; Priority</strong></td>
+<td>Normal</td>
+<td>First Priority</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="libsass-docker">Libsass Docker</h3>
+
+<p>我建立了我自己的<a href="https://hub.docker.com/r/orianna/libsass/">sass镜像</a>，对应的Dockerfile<a href="https://github.com/orianna-zzo/dockerfile-repo/tree/master/front-end-docker/sass-docker/libsass-docker">在此</a>（参考了的<a href="https://hub.docker.com/r/jbergknoff/sass/">jbergknoff/sass</a>），就内容上来说基本一致，都是使用的alpine为base image，都是使用sassc和libsass。有一些细节上的区别，但可能最大的区别就是我的镜像是新建的，sassc和libsass版本较新吧。该镜像一共才8.76MB。</p>
+
+<p>在设立Dockerfile的时候纠结过是使用<code>ENTRYPOINT</code>还是<code>CMD</code>，但由于该镜像只用作Sass的编译，因此使用了前者。</p>
+
+<h4 id="libsass-docker配置">Libsass Docker配置</h4>
+
+<p>首先需要获取镜像，打开终端输入：</p>
+
+<pre><code class="language-bash">$ docker pull orianna/libsass
+</code></pre>
+
+<p>然后就可以调用docker镜像来编译sass/scss了。为了简化操作，可以使用alias设置别名并保存。</p>
+
+<p>配置需要写到配置文件，有两个选择：</p>
+
+<ul>
+<li>对全部用户生效：修改 <code>/etc/profile</code>文件</li>
+<li>对当前用户生效：修改 <code>~/.profile</code>文件 （仅针对Mac，linux大多数情况下修改 <code>~/.bashrc</code>）</li>
+</ul>
+
+<p>我将用户自定义部分还是放入了<code>~/.profile</code>文件：</p>
+
+<pre><code class="language-bash">$ vi ~/.profile
+</code></pre>
+
+<p>增加以下内容，给起个别称 <code>libsass</code>，这样之后就可以将docker镜像当做本地命令使用了，非常方便：</p>
+
+<pre><code class="language-bash"># config alias
+alias libsass=&quot;docker run -it --rm -v \$(pwd):/sass -v \$(pwd):/output orianna/libsass:latest&quot;
+</code></pre>
+
+<p>记得source一下，使配置文件立即生效：</p>
+
+<pre><code class="language-bash">$ source ~/.profile
+</code></pre>
+
+<p>现在开始就可以直接使用 <code>libsass</code> 来启动sass的docker镜像了。</p>
+
+<h4 id="libsass-docker使用方法">Libsass Docker使用方法</h4>
+
+<p>由于已经设置了alias，所以直接按以下方式即可编译sass/scss文件为css文件：</p>
+
+<pre><code class="language-bash">$ libsass ORIGIN.sass DEST.css
+</code></pre>
+
+<p>需要注意的是，工作目录为当前目录，所以基本就可以当做本地的命令执行了，很方便。</p>
+
+<p>如果需要执行该容器中其他命令，则需要在docker命令中使用<code>--entrypoint</code>进行覆盖，方法如下：</p>
+
+<pre><code class="language-shell">$ docker run --name my-sass -it --rm --entrypoint sh orianna/libsass
+</code></pre>
+
+<h3 id="dart-sass-docker">Dart Sass Docker</h3>
+
+<p>由于Sassc缺少一些功能，而最新最全的功能都会在Dart Sass上，因此又研究一下建一个dart-sass的镜像使用。<a href="https://github.com/sass/dart-sass">Dart Sass的github</a>给了不少安装方法，本想在alpine上用standalone版的，但总是报错说找不到dart，于是直接用了node作为base image。想用node:alpine减少镜像的大小，但结果没有建成，所以现在镜像有680MB。</p>
+
+<h4 id="dart-sass-docker配置">Dart Sass Docker配置</h4>
+
+<p>首先需要获取镜像，打开终端输入：</p>
+
+<pre><code class="language-bash">$ docker pull orianna/dart-sass
+</code></pre>
+
+<p>然后就可以调用docker镜像来编译sass/scss了。为了简化操作，可以使用alias设置别名并保存。</p>
+
+<p>配置需要写到配置文件，有两个选择：</p>
+
+<ul>
+<li>对全部用户生效：修改 <code>/etc/profile</code>文件</li>
+<li>对当前用户生效：修改 <code>~/.profile</code>文件 （仅针对Mac，linux大多数情况下修改 <code>~/.bashrc</code>）</li>
+</ul>
+
+<p>我将用户自定义部分还是放入了<code>~/.profile</code>文件：</p>
+
+<pre><code class="language-bash">$ vi ~/.profile
+</code></pre>
+
+<p>增加以下内容，给起个别称 <code>sass</code>，这样之后就可以将docker镜像当做本地命令使用了，非常方便：</p>
+
+<pre><code class="language-bash"># config alias
+alias sass=&quot;docker run -it --rm -v \$(pwd):/sass -v \$(pwd):/output orianna/dart-sass:latest&quot;
+</code></pre>
+
+<p>记得source一下，使配置文件立即生效：</p>
+
+<pre><code class="language-bash">$ source ~/.profile
+</code></pre>
+
+<p>现在开始就可以直接使用 <code>sass</code> 来启动sass的docker镜像了。</p>
+
+<h4 id="dart-sass-docker使用方法">Dart Sass Docker使用方法</h4>
+
+<p>由于已经设置了alias，所以直接按以下方式即可编译sass/scss文件为css文件：</p>
+
+<pre><code class="language-bash">$ sass ORIGIN.sass DEST.css
+</code></pre>
+
+<p>需要注意的是，工作目录为当前目录，所以基本就可以当做本地的命令执行了，很方便。另外，尽管dart-sass已经集成了watch的功能，但我现在的镜像不知道为什么一用就卡在那里……</p>
+
+<p>如果需要执行该容器中其他命令，则需要在docker命令中使用<code>--entrypoint</code>进行覆盖，方法如下：</p>
+
+<pre><code class="language-shell">$ docker run --name my-sass -it --rm --entrypoint sh orianna/dart-sass
+</code></pre>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p>我建立的docker for Sass开发镜像:  <a href="https://hub.docker.com/r/orianna/libsass/">Libsass docker镜像</a>、<a href="https://hub.docker.com/r/orianna/dart-sass/">Dart Sass docker镜像</a>、<a href="https://github.com/orianna-zzo/dockerfile-repo/tree/master/front-end-docker/sass-docker">Docker for Sass的Dockerfile</a>。</p>
+
+<p><a href="http://sass-lang.com">Sass官网</a>、<a href="https://github.com/sass/libsass">Libsass的github</a>、<a href="https://github.com/sass/dart-sass">Dart Sass的github</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-08-02</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/%E5%89%8D%E7%AB%AF" role="button">前端 </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/sass" role="button">sass </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/docker" role="button">docker </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE" role="button">环境配置 </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/css" role="button">css </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B41-%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E8%B7%AF%E7%BA%BF/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>前端试水(1) 前端技术路线</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>Blog养成记(8) 页面设计demo</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%89%8d%e8%a8%80">
+												 前言
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#sass%e6%98%af%e4%bb%80%e4%b9%88">
+												 Sass是什么
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#sass%e9%80%89%e6%8b%a9">
+												 Sass选择
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#sass-vs-scss">
+												 Sass vs Scss
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#ruby-sass-vs-libsass-vs-dart-sass">
+												 Ruby Sass vs Libsass vs Dart Sass
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%bc%96%e8%af%91%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae">
+												 编译环境配置
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#libsass-docker">
+												 Libsass Docker
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#libsass-docker%e9%85%8d%e7%bd%ae">
+												 Libsass Docker配置
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#libsass-docker%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95">
+												 Libsass Docker使用方法
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#dart-sass-docker">
+												 Dart Sass Docker
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#dart-sass-docker%e9%85%8d%e7%bd%ae">
+												 Dart Sass Docker配置
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#dart-sass-docker%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95">
+												 Dart Sass Docker使用方法
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#resource%e8%b5%84%e6%ba%90%e9%93%be%e6%8e%a5%e6%b1%87%e6%80%bb">
+												 Resource资源链接汇总
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

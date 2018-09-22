@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>环境配置 on 博客|ZHENG Zi&#39;ou</title>
+    <title>环境配置 on ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
-    <description>Recent content in 环境配置 on 博客|ZHENG Zi&#39;ou</description>
+    <description>Recent content in 环境配置 on ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cmn-Hans</language>
+    <language>zh-Hans</language>
     <lastBuildDate>Sat, 11 Aug 2018 19:00:35 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.xml" rel="self" type="application/rss+xml" />
@@ -13,104 +13,47 @@
     
     <item>
       <title>Blog养成记(9) 项目结构&amp;前端环境配置</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sat, 11 Aug 2018 19:00:35 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
-      <description>其实如果只是对静态页面进行修改，不需要配什么环境，只需要对html进行修改就好。
-哦，不对，因为还是会使用hugo来生成静态页面，hugo还是要配置的，配置的方法详见这个系列的第2篇Hugo+Docker在Github上建立Blog。所以重点就在如何自己生成自己喜欢的hugo模板了。
-由于仅使用hugo静态页面，所以也不计划使用gulp之类的工具，可能出了hugo外唯一考虑要使用的是sass。这是因为css的结构化有些糟，而sass作为css的预编译器，有更好的结构性，更像一门编程语言，修改起来会更得心应手，(我猜😶)不会有改了A不知道会不会影响B的囧状。sass具体的配置详见前端试水系列第2篇使用docker镜像的sass配置。
-项目结构 参考Hugo的其他theme和官网对各个文件夹的介绍，对新建主题的文件结构如下：
-MyNewTheme ├── archetypes/ ├── exampleSite/ ├── i18n/ ├── layouts/ ⎮	├── _default/ ⎮	├── partials/ ⎮	├── page ⎮	├── post ⎮	├── shortcodes/ ⎮	├── 404.html ⎮	├── index.html ⎮	└── robots.txt ├── static/ ⎮	├── css/ ⎮	├── js/ ⎮	├── scss/ ⎮	├── font/ ⎮	└── img/ └── theme.toml  其中archetypes定义了如果使用hugo new，默认生成的md的文件头；exampleSite提供一个网站实例；i18n提供多语言的翻译；layouts提供主题的布局；static存放静态文件；theme.toml提供主题的信息。
-Hugo官网对于每个模板都会有简单的介绍，可以借鉴一下。
-其中scss主要参考Sass目录层次，建立以下scss的项目结构：
-scss ├── abstracts/ ├── base/ ├── components/ ├── layout/ ├── pages/ ├── vendors/ ⎮	└── bootstrap4/ └── main.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B09-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>其实如果只是对静态页面进行修改，不需要配什么环境，只需要对html进行修改就好。 哦，不对，因为还是会使用hugo来生成静态页面，hugo还是要配置的，配置的方法详见这个系列的第2篇Blog养成记2 Hugo+Docker在Github上建立Blog。所以重点就在如何自己生成自己喜欢的hugo模板了。 由于仅使用hugo静态页面，所以也不计划使用gulp之类的工具，可能出了hugo外唯一考虑要使用的是s</description>
     </item>
     
     <item>
       <title>前端试水(2) 使用docker镜像的Sass配置</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Thu, 02 Aug 2018 15:49:22 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
-      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。
-Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助css的组织结构变得更合理和优雅，或者说更像一门编程语言，从而提高开发和维护效率。通俗说，就是在css上再套层更结构化的语法，帮助对样式进行组织和管理，再通过编译得到最终的css样式。
-与sass对标的是less，具体哪个更好对于初学者来说难以分辨和选择，但Bootstrap4抛弃了less转而选择sass和sass更大的社群都提供了选择了sass的理由。
-Sass选择 Sass vs Scss Sass实际上有两种语法，针对不同的后缀名称.sass和.scss。
-.sass是最早的语法，使用缩进而不是{}来表示嵌套，用换行而不是;来分隔属性，如下：
-$font-stack: Helvetica, sans-serif $primary-color: #333 body font: 100% $font-stack color: $primary-color  另一种.scss的格式仅在css3的语法基础上进行扩展，如下：
-$font-stack: Helvetica, sans-serif; $primary-color: #333; body { font: 100% $font-stack; color: $primary-color; }  对于码农来说，.scss相对更符合习惯一些，所以之后会选择后者。
-Ruby Sass vs Libsass vs Dart Sass 在官网最下方可以看到三个不同的Sass实现。
-Ruby Sass是最早的Sass，网上很多资料都是基于ruby的，不过这个实现版本作者之后不会再更新维护了。
-Libsass是使用C进行实现的版本，所以这个版本速度最快，Sassc就是在Libsass外套了一层wrapper。不过该版本的更新相对没有那么频繁和活跃，毕竟不是主要更新的实现版本。
-Dart Sass是替代Ruby Sass的实现版本，也是现在最主要的开发版本，新的功能也会主要在该实现版本中先进行集成。
-编译环境配置 估计很少有人像我这样折腾又莫名对一些点特别执着（或者说钻牛角尖）。当初一心想用docker把所有和开发环境配置相关的整理起来，折腾node-sass的dockerfile好久以失败告终。这次终于找到一个可以用的sass环境镜像，并根据此建立了自己的docker镜像，具体配置及使用方法在Libsass Docker。但由于该镜像基于libsass，一些功能并没有集成（比如--watch），所以又基于dart sass生成一版镜像，具体方法在Dart Sass Docker。
-两种镜像的比较如下：
-    Libsass Docker Dart Sass Docker     Size 8.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/%E5%89%8D%E7%AB%AF%E8%AF%95%E6%B0%B42-%E4%BD%BF%E7%94%A8docker%E9%95%9C%E5%83%8F%E7%9A%84sass%E9%85%8D%E7%BD%AE/</guid>
+      <description>前言 半年前，由于终于将博客主题初版设计出来准备开始实施，在less和sass中纠结良久选择了sass。为了保持环境纯净性，想用docker装sass，用node-sass，试了几次中间都失败，无奈放弃。几乎半年后的今天，莫名又开始有搭建网页的欲望，于是又开始折腾。不过这次运气不错，终于折腾成功。 Sass是什么 Sass 是一个 css的预编译器。它在css语法的基础上，引入了更多的变量、规则等功能，可以帮助c</description>
     </item>
     
     <item>
       <title>Docker for datascience: 从纠结到放弃</title>
-      <link>https://orianna-zzo.github.io/blog/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</link>
       <pubDate>Tue, 06 Feb 2018 10:01:15 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
-      <description> 表示我是不纠结不死星人。
-先是由jupyter stacks突发奇想，于是纠结于想建立属于自己的docker族系，特别是用来做数据科学&amp;amp;机器学习。想要不用Anaconda、甚至不用conda，自己按照使用习惯安装我自己需要的包、想使用最小的alpine作为基镜像，因此开始走上不归路。
-想要使用bash而不是ash，想要默认调用bash，想要调用bash时能默认出现现在使用用户及现在所在文件夹。折腾了2天终于成功，dockerfile在orianna-zzo/dockerfile-repo/alpine-bash-docker，算是让我尝到一次甜头。
-成功第一次，于是开始尝试在python3.6上安装我想要的包。pull了python3.6-alpine3，废了老大功夫总算在多次碰壁下把依赖都安装成功可以成功pip install想要的包。不过在查验我装了每个python包是什么作用时发现我安装了nomkl，这个包说明使用numpy时使用非mkl版本。网上一查，mkl对于intel的cpu加速还是很厉害的，于是把nomkl删了开始重新继续折腾。折腾了一圈，通过安装openblas-dev，替代mkl，但发现openBlas性能不如mkl。
-然后狠下心，在alpine上直接安装。为了numpy等包装g++、gfortran，为了matplotlib装libfreetype-dev和libpng。结果发现连h5py都装不上，在pandas中无法用hdf5格式读写文件。alpine上mkl也难以安装成功，pip install也说平台不对。无奈之下舍弃alpine。
-使用ubuntu:16.04，为了h5py等包装build-essential，为了numpy等包装g++、gfortran，为了matplotlib装libfreetype6-dev和libpng12-dev，为了mkl装cpio。mkl终于安心装上，然而pip install numpy后使用show_config()查看时无法连接到mkl。spacy下了源码直接build结果总是报编码错误。心累。
-于是纠结了一周的环境问题，在我最后决定选择ubuntu:16.04+anaconda3落下帷幕。
-嗯，我正在尝试这个，希望能够成功。
-后文 果然还是无脑anaconda比较省心。只是ubuntu:16.04+anaconda3 后再安装tensorflow直接就超过3g大关，比官方镜像直接多了2g，捂脸。决定不再纠结这个，反正已经配置成功，可以正常使用。毕竟不是重点，已经浪费了好多时间，还是好好钻研算法吧！
-相关的dockerfile都可以在orianna-zzo/dockerfile-repo/python-docker找到。
-版本控制    Version Action Time     1.0 Init 2018-02-06   1.1 增加后文 2018-02-13    </description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-02/docker-for-datascience-%E4%BB%8E%E7%BA%A0%E7%BB%93%E5%88%B0%E6%94%BE%E5%BC%83/</guid>
+      <description>表示我是不纠结不死星人。 先是由jupyter stacks突发奇想，于是纠结于想建立属于自己的docker族系，特别是用来做数据科学&amp;amp;机器学习。想要不用Anaconda、甚至不用conda，自己按照使用习惯安装我自己需要的包、想使用最小的alpine作为基镜像，因此开始走上不归路。 想要使用bash而不是ash，想要默认调用bash，想要调用bash时能默认出现现在使用用户及现在所在文件夹。折</description>
     </item>
     
     <item>
       <title>在公司建立python虚拟环境</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Thu, 18 Jan 2018 09:14:15 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
-      <description>前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在python3.5上成功链接，python3.6上尽管能够安装，但是在实际使用中却无法成功读数。除了python主版本外，所依赖的第三方包版本在不同的应用上可能也会不同。
-复杂的版本问题可能在个人开发时并不会有很大影响 (除非有强迫症需要在一个干净的开发环境)，但是当多人需要在同一个开发机/测试机/生产机上跑应用或者模型时，对于各个环境依赖的隔离就急需找到解决方案。依赖隔离问题其实不仅仅在python环境中十分重要，在很多其他程序中也是如此，不过本文还是主要以python环境为主要出发点。
-python环境隔离方案 经过网上搜索，目前为止对于python的依赖隔离主要有以下几种主要方法：
- docker virtualenv venv conda  方案选择 docker 其实docker很不错。容器化是现在非常火的一个方案。docker容器崩溃也不会影响主机，而且环境镜像可移植性非常强，能非常方便地把环境移植到不同的主机上去而不需要重新配置安装。现在我自己电脑也尽量在docker中开发，希望能不扰乱电脑本身的环境。可惜的是，尽管网上有信息说新版的docker容器使用可以不使用root权限，也有教程说建立一个可以使用docker的用户组，但是docker的安装还是避免不了需要root权限，而对于公司的环境来说，主机系统环境版本较旧且需要运营安装配置，灵活度不够。（插一句吐槽，其实对于正常有运营的组来说非常正常，但现在新到的组十分不规范，虽然不使用生产数据库但开发机都放在生产环境，其他人都不知道怎么找人root安装软件。）所以在公司使用的场景下只能忍痛放弃。如果没有这个限制，我还是很推荐这个方案，具体使用方法可以参考我另外的docker系列文章。
-virtualenv vs venv virtualenv是一个针对python建立定制的虚拟环境的工具，可以在虚拟环境中指定python版本并使用pip安装到激活的虚拟环境中。在使用virtualenv时，虚拟环境会依赖系统环境中的site-packages，可以添加 —no-site-packages 表明虚拟环境不依赖这些包建立一个干净的环境。默认情况下，virtualenv并不会复制一个环境，而是建立一个软连接到现有环境，因此若是需要完全独立的环境，需要添加 —always-copy 来说明。virtualenv存在时间已经很长了，网上有很多相关使用方法。
-venv在python3.3之后集成在python标准库中。在python3.4之后可以直接使用venv，而较早版本在venv外包了一层pyvenv，所以很多地方都会提及pyvenv而不是venv，但建议如果允许还是直接使用venv。（注意，pyvenv与pyenv并不同，不要混淆。）尽管一些细节上还是有所区别，venv的实现很大程度上基于virtualenv，因此如果使用python3.3之后的版本，完全可以使用venv替代virtualenv。当然如果你乐意还是依旧可以再装个virtualenv的。
-virtualenv vs conda venv相关信息比较少，但因为virtualenv与之相似度很大，就用virtualenv与conda进行比较了。
-首先非常重要的一点，venv也好，virtualenv也好都只针对python，也就是无法用在其他语言环境，而conda并不局限于python，它可以管理任何其他语言。我找到一篇关于澄清对conda误解的博文，看完就能对conda有个大致的认识。其中，第5条说明了作者认为conda相比于virtualenv/venv的优点，之后还给出了virtualenv与conda如何结合使用。对我来说最重要的是：conda环境完全隔离，连执行路径都不一致，还有很重要的一点，conda虚拟环境也方便迁移，可以在有外网的电脑生成后打包上传到无网的服务器上使用。这一点就基本决定了要使用conda建立python开发环境。
-此外，针对python，Anaconda的文档中对conda、pip和virtualenv进行了简要的比较，其中点明了pip是个包管理器、virtualenv是环境管理器，而conda两者兼顾，还可以升级python核心程序。这个很好地说明了conda的全能。具体对比如下：
-   Task Conda package and environment manager command Pip package manager command Virtualenv environment manager command     Install a package conda install $PACKAGE_NAME pip install $PACKAGE_NAME X   Update a package conda update --name $ENVIRONMENT_NAME$PACKAGE_NAME pip install --upgrade $PACKAGE_NAME X   Update package manager conda update conda Linux/OSX： pip install -U pip Win： python -m pipinstall -U pip X   Uninstall a package conda remove --name $ENVIRONMENT_NAME$PACKAGE_NAME pip uninstall $PACKAGE_NAME X   Create an environment conda create --name $ENVIRONMENT_NAMEpython X cd $ENV_BASE_DIR; virtualenv$ENVIRONMENT_NAME   Activate an environment source activate $ENVIRONMENT_NAME X source$ENV_BASE_DIR/$ENVIRONMENT_NAME/bin/activate   Deactivate an environment source deactivate X deactivate   Search available packages conda search $SEARCH_TERM pip search $SEARCH_TERM X   Install package from specific source conda install --channel $URL$PACKAGE_NAME pip install --index-url $URL $PACKAGE_NAME X   List installed packages conda list --name $ENVIRONMENT_NAME pip list X   Create requirements file conda list --export pip freeze X   List all environments conda info --envs X Install virtualenv wrapper, then lsvirtualenv   Install other package manager conda install pip pip install conda X   Install Python conda install python=x.</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/</guid>
+      <description>前言 尽管官方已经声明python2.7在2020年就不再进行维护，但很多企业应用和第三方包还是建立在python2.7的版本上，进行切换有一定成本。而相比python3，python2对于中文编码处理也相对繁琐的多，因此新的应用一般都会建立在python3上。而python3的版本选择也有分歧，比如说，尽管截止目前为止最新的版本是python3.6，但是链接oracle的包cx_Oracle只在p</description>
     </item>
     
     <item>
       <title>Blog养成记(2) Hugo&#43;Docker在Github上建立Blog</title>
-      <link>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</link>
       <pubDate>Sun, 07 Jan 2018 11:05:25 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
-      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。
-在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，更重要的是，最近对docker感兴趣，想实践一下。Docker是一个开源的应用容器引擎，可以方便地将不同容器间的环境进行隔离，但又比虚拟机更轻量化，能更快速启动。与Docker相关的内容我会在另一个Docker系列进行详细说明，这里主要还是与建立Blog相关的使用为主。
-网上使用Hugo写blog的内容很多，使用docker的也很多，但使用docker来搭建hugo编写环境并不多，我也是在一步步摸索中。那么，就跟着我一起开始尝试吧！
-Hugo的docker环境配置 Docker安装 在Mac中可以使用Homebrew进行安装：
-$ brew cask install docker  若是Windows或者其他操作系统，可以在这里选择你的操作系统下载相应版本进行安装并配置环境变量。
-获得Hugo开发镜像 我在docker hub上查找了下，截止目前并没有官方镜像，都是用户自己建立并上传的镜像。Hugo的Github中的确有建立docker镜像的Dockerfile，但是我试了几次都未成功，最后决定建立自己的Hugo docker镜像，顺便学习下Dockerfile。
-直接获得镜像 如果只想获得开发镜像，可以选择从docker hub上下载个镜像，选择还挺多，欢迎下载我建立的docker镜像，在docker hub中只有33MB，只需要在终端中输入下面的命令即可：
-$ docker pull orianna/hugo  该镜像可以在docker hub中找到，点这里是在docker hub上的repo。
-接下去在终端输入下面这行命令可以查看你现在有的镜像信息：
-$ docker images  你可以发现orianna/hugo只有85.7MB大小.
-自建镜像 或者，你可以选择自己建立镜像。如果已经获得了Hugo镜像，可以略过这一部分。
-我建立Hugo docker的Dockerfile放在Github上，大家可以去参考试试。现在是v0.46版，只有85.7MB大小的镜像，后续随着开发可能会有新的变化。
-将所有内容clone到当前目录：
-$ git clone https://github.com/orianna-zzo/hugo-docker-dev.git  打开Dockerfile，其中HUGO_VERSION是Hugo官方的发布版本，可以选择你需要的Hugo版本进行修改。在v0.3的Dockerfile中，定义了两个挂载文件夹，一个是/hugo-site用来挂载你的Hugo源码，另一个是static-site用来定义Hugo生成静态网页的输出文件夹。
-除了基础的下载Hugo执行文件和pygments高亮外，Dockerfile还定义了每次打开容器都会执行start.sh。该shell脚本只有一个作用，如果在当前文件夹中包含run.sh文件则执行该文件，若不存在则打开一个终端，在该终端内你可以自由尝试hugo命令。run.sh的作用主要是便于不用反复输入常用命令，可将常用命令直接写入其中保持注释状态，使用时只需要将要使用的命令保持正常状态即可。如果你clone了这个repository，在site-sample中包含了一个样例run.sh。(v2.0) 在这个repo的文件夹中打开终端，输入下面命令以建立镜像：
-$ docker build -t orianna/hugo:0.46 -t orianna/hugo:latest .  其中-t给这个镜像打上tag。根据docker hub的要求，非官方镜像的镜像名称需要为你的docker-name/镜像名称，:后为该镜像的tag。-t可以有多个。注意不要忘记最后的.，它表示使用该文件夹中除了.dockerignore 中的其他内容作为建立镜像的上下文内容。
-接下去你就可以在终端输入下面这行命令来查看镜像信息：
-$ docker images  至此，你已经获得了Hugo的docker镜像了。
-尝试使用Hugo 假设您clone了上文提到的内容，可以在该项目中使用下面命令启动容器来试用Hugo docker：</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B02-hugo-docker%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8Bblog/</guid>
+      <description>Introduction 正如上一篇说的，我选择了Hugo作为静态网页生成器。Hugo是一个用go写的静态网页生成器，它被提及最多的优点就是它生成网站的速度快。此外，Hugo的安装配置看上去也并不麻烦，直接在这里选择合适的版本和环境下载对应release版并配置环境变量即可。整体来说非常方便。 在决定使用Hugo之外，我还决定用Docker来做环境配置。因为新买了mac，不愿意弄乱环境，也希望以后能够跨平台使用，方便配置，</description>
     </item>
     
   </channel>

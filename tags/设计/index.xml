@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>设计 on 博客|ZHENG Zi&#39;ou</title>
+    <title>设计 on ZHENG Zi&#39;ou</title>
     <link>https://orianna-zzo.github.io/tags/%E8%AE%BE%E8%AE%A1/</link>
-    <description>Recent content in 设计 on 博客|ZHENG Zi&#39;ou</description>
+    <description>Recent content in 设计 on ZHENG Zi&#39;ou</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cmn-Hans</language>
+    <language>zh-Hans</language>
     <lastBuildDate>Sat, 11 Aug 2018 17:27:55 +0800</lastBuildDate>
     
 	<atom:link href="https://orianna-zzo.github.io/tags/%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
@@ -13,25 +13,11 @@
     
     <item>
       <title>Blog养成记(8) 页面设计demo</title>
-      <link>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</link>
+      <link>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</link>
       <pubDate>Sat, 11 Aug 2018 17:27:55 +0800</pubDate>
       
-      <guid>https://orianna-zzo.github.io/blog/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</guid>
-      <description>实际上前几个月就已经将页面原型设计完成，中间经过需求梳理和页面demo两个部分，不过设计完后就停滞了不少时间。最近才又开始折腾静态页面，在公司也尝试搭一个简单网站（尝试了flask，最后还是回归hugo生成静态页面），所以为了能将之后的部分继续，所以赶紧补上。
-需求梳理 首先需要将应用场景进行梳理，细化需求，还特地做了对应的思维导图明确所需要的功能。
-需求场景方面主要是以下几个点：
- 生活类：能满足基本的博客需求，写一些生活感悟、观演感想、事件评论、心情日记之类的内容，能将之前的一些不错的游记（大多半途而废😂）、照片也能安置就更好了，这一部分越现代越好，更需要设计感一些； 技术类：能满足技术文档、学习记录的需求，记录一些小技巧和学习过程，主要是分为科研类、学习类和尝试类，这一部分越简约越好，能帮助聚焦，也会显得更专业； 专题类：主要是一些内容并不是孤立的，是围绕一个核心的； 个人简介：当然还是需要有个人介绍的，不过专业性cv类还是偏设计感可能需要看最后的需求。  页面设计 针对以上的需求场景，将分成了以下几类：
- 首页 Sci &amp;amp; Tech 赛先生  Papers 论文精读：论文精读 Learning 学海无涯：网课、知识点梳理、读书笔记 Tech 杂技浅尝：eg.前端、docker之类不会太深入研究的部分，主要针对快速掌握并应用  Project 课题组：项目情况 Blog 随想录  Thoughts 对酒当歌：人生感悟 Critique 品鉴评论 Travel 御风而行：游记 Moment 时光碎片：短内容的心情日记 Gallery 光影长廊：照片集  ArXiv 荟萃集 Profile 档案处：个人介绍  网上找了不少静态页面的模板参考，还有各个博客的设计，参考他们的设计和功能，列了不少设想，所有的内容汇集在下面的思维导图中。
-Demo出炉 向认识的产品的同事咨询了下，开始尝试墨刀，可以在上面做原型设计和简单交互。这个在线工具很方便，我也只用了最简单的设计部分，几乎是傻瓜式的。
-Duang~设计稿暂时定版如下，后续很有可能会修改，毕竟现在十分的粗糙。
-主页 赛先生 list:
-single:
-课题组 list:
-single:
-随想录 list:
-single - default:
-single - moment:
-single - gallery:</description>
+      <guid>https://orianna-zzo.github.io/sci-tech/2018-08/blog%E5%85%BB%E6%88%90%E8%AE%B08-%E9%A1%B5%E9%9D%A2%E8%AE%BE%E8%AE%A1demo/</guid>
+      <description>实际上前几个月就已经将页面原型设计完成，中间经过需求梳理和页面demo两个部分，不过设计完后就停滞了不少时间。最近才又开始折腾静态页面，在公司也尝试搭一个简单网站（尝试了flask，最后还是回归hugo生成静态页面），所以为了能将之后的部分继续，所以赶紧补上。 需求梳理 首先需要将应用场景进行梳理，细化需求，还特地做了对应的思维导图明确所需要的功能。 需求场景方面主要是以下几个点： 生活类：能满足基本的博</description>
     </item>
     
   </channel>

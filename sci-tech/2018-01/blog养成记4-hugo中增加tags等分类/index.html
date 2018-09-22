@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。 分类taxonomy有3个概念： Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容 例如我需要增加3个分类，分别是： tag：文章标签 topic：文章主题/文章系列 category：文章分类 以tag为例，则对应Taxonomy是tag，Term是">
+  
+  <meta property="og:title" content="Blog养成记(4) Hugo中增加tags等分类" />
+<meta property="og:description" content="自定义分类 Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在这里查看。 分类taxonomy有3个概念： Taxonomy 分类: 可以用来对内容进行分类的类别 Term 术语: 分类的一个键 Value 值: 分配给这个Term的具体内容 例如我需要增加3个分类，分别是： tag：文章标签 topic：文章主题/文章系列 category：文章分类 以tag为例，则对应Taxonomy是tag，Term是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/" />
+
+
+
+<meta property="article:published_time" content="2018-01-09T18:22:25&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-09T18:22:25&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       Blog养成记(4) Hugo中增加tags等分类 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B04-hugo%E4%B8%AD%E5%A2%9E%E5%8A%A0tags%E7%AD%89%E5%88%86%E7%B1%BB/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/blog%E5%85%BB%E6%88%90%E8%AE%B0"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>Blog养成记</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">Blog养成记(4) Hugo中增加tags等分类</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jan 9, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>5 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="自定义分类">自定义分类</h2>
+
+<p>Hugo是支持用户自定义分类的，这个称为taxonomy，可以来对网页内容进行逻辑划分，详情可以在<a href="https://gohugo.io/content-management/taxonomies/">这里</a>查看。</p>
+
+<p>分类taxonomy有3个概念：</p>
+
+<ul>
+<li><strong>Taxonomy 分类</strong>: 可以用来对内容进行分类的类别</li>
+<li><strong>Term 术语</strong>: 分类的一个键</li>
+<li><strong>Value 值</strong>: 分配给这个Term的具体内容</li>
+</ul>
+
+<p>例如我需要增加3个分类，分别是：</p>
+
+<ul>
+<li>tag：文章标签</li>
+<li>topic：文章主题/文章系列</li>
+<li>category：文章分类</li>
+</ul>
+
+<p>以tag为例，则对应Taxonomy是tag，Term是具体标签内容比如docker或者hugo，Value是打上这个标签的对应网页。</p>
+
+<h3 id="配置分类">配置分类</h3>
+
+<p>需要在 <code>config.toml</code> 中增加分类。还是这个例子，则需要增加如下内容：</p>
+
+<pre><code>[taxonomies]
+  tag = &quot;tags&quot;
+  series = &quot;series&quot;
+  category = &quot;categories&quot;
+</code></pre>
+
+<p>而将每个post的头部也相应增加对应的分类，例如这篇的头部就相应为：</p>
+
+<pre><code class="language-yaml">date: &quot;2018-01-09T16:22:25+08:00&quot;
+draft: false
+title: &quot;Blog养成记(4) 增加tags等分类&quot;
+tags: [&quot;hugo&quot;]
+series: [&quot;Blog养成记&quot;]
+categories: [&quot;杂技浅尝&quot;]
+</code></pre>
+
+<p>当然实际上，Hugo默认会产生 <code>tags</code> 和 <code>categories</code> 的分类，如果只需要这两个，可以不用在 <code>config.toml</code> 中声明就在post头部使用。</p>
+
+<h3 id="分类集合查看">分类集合查看</h3>
+
+<p>使用分类taxonomy之后，Hugo会使用分类的模板 (taxonomy templates) 来自动生成一个显示所有分类的term术语的网页以及一个显示该术语的所有value内容列表网页。</p>
+
+<p>还是以tag为例：</p>
+
+<p><code>example.com/tags/</code> 会列出tags中的所有术语；</p>
+
+<p><code>example.com/tags/docker</code> 会列出tags标为docker的所有网页列表。</p>
+
+<h3 id="分类排序">分类排序</h3>
+
+<blockquote>
+<p>分类排序还未正式尝试，无法确认正式效果，还需后面确认后再补充。</p>
+</blockquote>
+
+<p>在内容页头部中以 <code>术语名称_weight</code> 来标志权重，可在分类的查看野种按该权重进行排序。但暂时只支持默认情况下以日期作为权重排序标准。</p>
+
+<p>还是以这篇博文为例：</p>
+
+<pre><code class="language-yaml">date: &quot;2018-01-09T16:22:25+08:00&quot;
+draft: true
+title: &quot;Blog养成记(4) 增加tags、topics和categories&quot;
+tags: [&quot;hugo&quot;]
+tags_weight: 66
+series: [&quot;Blog养成记&quot;]
+series_weight: 96
+categories: [&quot;浅尝杂技&quot;]
+categoryes_weight: 96
+</code></pre>
+
+<h2 id="网页布局修改">网页布局修改</h2>
+
+<p>我的Hugo源码在<a href="https://github.com/orianna-zzo/blog-hugo">这里</a>，可以进行参考。</p>
+
+<p>我现在使用的是<a href="https://github.com/nishanths/cocoa-hugo-theme">cocoa主题</a>，该主题并不会显示tags等分类，因此对于网页布局需要进行覆盖。</p>
+
+<p>我先将 <code>themes/cocoa/layouts/blog</code> 中的 <code>single.html</code> 复制到 <code>layouts/blog</code> 中，只需要对主文件夹中 <code>layouts</code> 文件夹中进行修改，修改后的布局会自动覆盖主题中的布局。</p>
+
+<p>网页布局主要涉及到Hugo的模板，可对现有主题的布局进行的修改有很多，具体语法和教程可参考官网对于<a href="https://gohugo.io/templates/">模板的介绍</a>，现暂且从简单入手，只考虑对博客正文页增加tags、topics、categories，并增加table of contents作为目录导航，因此只需要考虑single page template单页模板，<a href="https://gohugo.io/templates/single-page-templates/">此处</a>有官网具体说明。</p>
+
+<h4 id="显示分类">显示分类</h4>
+
+<p>在显示文章的元信息块 (<code>&lt;div class=&quot;meta&quot;&gt;</code>) 中，在阅读时间下面 (<code>{{ if not .Site.Params.noshowreadtime }}...{{ end }}</code>)，增加显示tags、topics和categories的代码：</p>
+
+<pre><code class="language-html">{{ with .Params.tags }}
+&lt;ul id=&quot;tags&quot;&gt;
+  {{ range . }}
+    &lt;li&gt; &lt;a href=&quot;{{ &quot;tags&quot; | absURL }}/{{ . | urlize }}&quot;&gt;{{ . }}&lt;/a&gt; &lt;/li&gt;
+  {{ end }}
+&lt;/ul&gt;
+{{ end }}
+
+{{ with .Params.topics }}
+&lt;ul id=&quot;topics&quot;&gt;
+  {{ range . }}
+    &lt;li&gt; &lt;a href=&quot;{{ &quot;topics&quot; | absURL }}/{{ . | urlize }}&quot;&gt;{{ . }}&lt;/a&gt; &lt;/li&gt;
+  {{ end }}
+&lt;/ul&gt;
+{{ end }}
+
+{{ with .Params.categories }}
+&lt;ul id=&quot;categories&quot;&gt;
+  {{ range . }}
+    &lt;li&gt;&lt;a href=&quot;{{ &quot;categories&quot; | absURL}}/{{ . | urlize }}&quot;&gt;{{ . }}&lt;/a&gt; &lt;/li&gt;
+  {{ end }}
+&lt;/ul&gt;
+{{ end }}
+</code></pre>
+
+<p>这样，这篇博文头部定义的tag、topic和category就都显示出来了。</p>
+
+<h4 id="增加page-tag-css类">增加page-tag CSS类</h4>
+
+<p>虽然显示出来了，但是显示格式需要通过css定义呀。在 <code>static/css</code> 文件夹中的 <code>override.css</code>中增加 <code>page-tag</code>的css类：</p>
+
+<pre><code class="language-css">.page-tag {
+    font-size: 14px;
+    font-family: 'Raleway', 'Helvetica Neue', 'Arial', sans-serif;
+    letter-spacing: -0.005rem;
+    font-weight: 400;
+    color: #666 !important;
+    font-style: normal;
+    margin-right: 5px;
+    margin-left: 0px;
+    display: flex;
+  }
+</code></pre>
+
+<p>将每一个显示分类的代码都放入一个div块，并使用page-tag作为css类。</p>
+
+<h4 id="布局修改">布局修改</h4>
+
+<p>虽然现在都显示出来了，但是都没有放在我想要的位置。我对前端一知半解，每次调试都耗费不少时间，如果你对这些很熟悉，完全可以自己试着玩玩，我更多的目的为了记录。</p>
+
+<p>首先，因为meta类中定义了 <code>display: flex</code>，所以这个div中的div都是浮动的，无法占有一行，所以先在自定义css中对meta的 <code>display</code> 重新定义：</p>
+
+<pre><code class="language-css">.meta {
+    display:block !important;
+}
+</code></pre>
+
+<p>这样meta类的div中的所有div都占有一行，但是如此一来，显示post时间和显示阅读时间也分成了两行，所以对于这两部分，在外面也套一个div，定义style的 <code>display: flex</code>。同样的，我也希望topic和category也在一行，所以做同样的操作。</p>
+
+<p>再加上一些局部布局样式修改以及若标签内没有内容就不显示这部分内容，这一块代码现在应为：</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln"> 1</span><span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;meta&#34;</span><span class="o">&gt;</span>
+<span class="hl"><span class="ln"> 2</span>    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&#34;display: flex&#34;</span><span class="o">&gt;</span>
+</span><span class="ln"> 3</span>        <span class="p">{{</span> <span class="k">if</span> <span class="ow">and</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">dateformfull</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">dateform</span> <span class="p">}}</span>
+<span class="ln"> 4</span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;date&#34;</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;{{ .Date.Format .Site.Params.dateformfull }}&#39;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">Format</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">dateformfull</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln"> 5</span>        <span class="p">{{</span> <span class="k">else</span> <span class="p">}}</span>
+<span class="ln"> 6</span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;date&#34;</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;{{ .Date.Format &#34;Mon Jan 2 2006 15:04:05&#34; }}&#39;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">Format</span> <span class="s2">&#34;Jan 2, 2006&#34;</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln"> 7</span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="ln"> 8</span>      
+<span class="ln"> 9</span>        <span class="p">{{</span> <span class="k">if</span> <span class="ow">not</span> <span class="o">.</span><span class="n">Site</span><span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">noshowreadtime</span> <span class="p">}}</span>
+<span class="ln">10</span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;reading-time&#34;</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;middot&#34;</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">i18n</span> <span class="s2">&#34;readingTime&#34;</span> <span class="o">.</span><span class="n">ReadingTime</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln">11</span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="ln">12</span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="hl"><span class="ln">13</span>    <span class="o">&lt;</span><span class="n">div</span> <span class="n">style</span><span class="o">=</span><span class="s2">&#34;display: flex;&#34;</span><span class="o">&gt;</span>
+</span><span class="hl"><span class="ln">14</span>        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">series</span> <span class="p">}}</span>
+</span><span class="hl"><span class="ln">15</span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span><span class="o">&gt;</span>
+</span><span class="ln">16</span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span><span class="o">&gt;</span><span class="n">topic</span><span class="p">:</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="hl"><span class="ln">17</span>            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">series</span> <span class="p">}}</span>
+</span><span class="ln">18</span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&#34;series&#34;</span><span class="o">&gt;</span>
+<span class="ln">19</span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="ln">20</span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&#34;{{ &#34;</span><span class="n">series</span><span class="s2">&#34; | absURL }}/{{ . | urlize }}&#34;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
+<span class="ln">21</span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="ln">22</span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln">23</span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="hl"><span class="ln">24</span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class="hl"><span class="ln">25</span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="ln">26</span>
+<span class="hl"><span class="ln">27</span>        <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">categories</span> <span class="p">}}</span>
+</span><span class="ln">28</span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span><span class="o">&gt;</span>
+<span class="ln">29</span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span><span class="o">&gt;</span><span class="n">category</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln">30</span>            <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">categories</span> <span class="p">}}</span>
+<span class="ln">31</span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&#34;categories&#34;</span><span class="o">&gt;</span>
+<span class="ln">32</span>                <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="ln">33</span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&#34;{{ &#34;</span><span class="n">categories</span><span class="s2">&#34; | absURL}}/{{ . | urlize }}&#34;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> 
+<span class="ln">34</span>                <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="hl"><span class="ln">35</span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span><span class="hl"><span class="ln">36</span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="ln">37</span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="hl"><span class="ln">38</span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+</span><span class="ln">39</span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="hl"><span class="ln">40</span>
+</span><span class="ln">41</span>    <span class="p">{{</span> <span class="k">if</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">tags</span> <span class="p">}}</span>
+<span class="ln">42</span>    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span><span class="o">&gt;</span>
+<span class="ln">43</span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span><span class="o">&gt;</span><span class="n">tags</span><span class="p">:</span> <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln">44</span>        <span class="p">{{</span> <span class="k">with</span> <span class="o">.</span><span class="n">Params</span><span class="o">.</span><span class="n">tags</span> <span class="p">}}</span>
+<span class="ln">45</span>        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&#34;tags&#34;</span><span class="o">&gt;</span>
+<span class="ln">46</span>            <span class="p">{{</span> <span class="nb">range</span> <span class="o">.</span> <span class="p">}}</span>
+<span class="ln">47</span>            <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&#34;page-tag&#34;</span><span class="o">&gt;</span>
+<span class="ln">48</span>                <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&#34;{{ &#34;</span><span class="n">tags</span><span class="s2">&#34; | absURL }}/{{ . | urlize }}&#34;</span><span class="o">&gt;</span><span class="p">{{</span> <span class="o">.</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="ln">49</span>            <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln">50</span>            <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="ln">51</span>        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln">52</span>        <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="ln">53</span>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="ln">54</span>    <span class="p">{{</span> <span class="n">end</span> <span class="p">}}</span>
+<span class="ln">55</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span></code></pre></div>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总</h2>
+
+<p>我建立的docker for Hugo开发镜像:  <a href="https://hub.docker.com/r/orianna/hugo-docker-dev/">Docker Hub上的repo</a>、<a href="https://github.com/orianna-zzo/hugo-docker-dev">Github上的repo</a>。<br />
+我的个人主页Hugo代码:  <a href="https://github.com/orianna-zzo/blog-hugo">blog-hugo</a></p>
+
+<p><a href="https://gohugo.io">Hugo官网</a>、<a href="https://gohugo.io/content-management/taxonomies/">关于Taxonomy分类说明</a>、<a href="https://gohugo.io/templates/">Hugo Template介绍</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-01-09</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>增加tag、网页布局、版本控制及资源汇总</td>
+<td>2018-01-17</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/hugo" role="button">hugo </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/blog" role="button">blog </a></li>
+      
+    
+      <li><a href="https://orianna-zzo.github.io/tags/tag" role="button">tag </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/blog%E5%85%BB%E6%88%90%E8%AE%B03-hugo%E7%9A%84%E8%AF%AD%E6%B3%95%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>Blog养成记(3) Hugo的语法高亮配置</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/%E5%9C%A8%E5%85%AC%E5%8F%B8%E5%BB%BA%E7%AB%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>在公司建立python虚拟环境</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e5%88%86%e7%b1%bb">
+												 自定义分类
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e9%85%8d%e7%bd%ae%e5%88%86%e7%b1%bb">
+												 配置分类
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%88%86%e7%b1%bb%e9%9b%86%e5%90%88%e6%9f%a5%e7%9c%8b">
+												 分类集合查看
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%88%86%e7%b1%bb%e6%8e%92%e5%ba%8f">
+												 分类排序
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%bd%91%e9%a1%b5%e5%b8%83%e5%b1%80%e4%bf%ae%e6%94%b9">
+												 网页布局修改
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%98%be%e7%a4%ba%e5%88%86%e7%b1%bb">
+												 显示分类
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%a2%9e%e5%8a%a0page-tag-css%e7%b1%bb">
+												 增加page-tag CSS类
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e5%b8%83%e5%b1%80%e4%bf%ae%e6%94%b9">
+												 布局修改
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#resource%e8%b5%84%e6%ba%90%e9%93%be%e6%8e%a5%e6%b1%87%e6%80%bb">
+												 Resource资源链接汇总
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>

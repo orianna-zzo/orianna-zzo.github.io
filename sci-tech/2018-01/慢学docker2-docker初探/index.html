@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1" />
+  <meta name="author" content="ZHENG Zi&#39;ou">
+  <meta name="description" content="Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用">
+  
+  <meta property="og:title" content="慢学Docker(2) Docker初探" />
+<meta property="og:description" content="Introduction 什么是docker？ 什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/" />
+
+
+
+<meta property="article:published_time" content="2018-01-27T15:04:18&#43;08:00"/>
+
+<meta property="article:modified_time" content="2018-01-27T15:04:18&#43;08:00"/>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+  <title>
+  
+       慢学Docker(2) Docker初探 | ZHENG Zi&#39;ou 
+  
+  </title>
+
+  <link rel="canonical" href="https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker2-docker%E5%88%9D%E6%8E%A2/">
+
+  
+  
+
+  
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/fontawesome/all.min.css" rel="stylesheet">
+
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:300,400,500,600">
+  <link href="https://orianna-zzo.github.io/css/font.css" rel="stylesheet"> 
+    
+  
+  <link href="https://orianna-zzo.github.io/css/vendors/bootstrap4/bootstrap.min.css" rel="stylesheet">
+  <link href="https://orianna-zzo.github.io/css/vendors-extensions/mdb/mdb.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/vendors/mdb/style.min.css" rel="stylesheet"> 
+  <link href="https://orianna-zzo.github.io/css/main.css" rel="stylesheet">
+
+
+  
+  <link rel="shortcut icon"
+  
+      href="https://orianna-zzo.github.io/img/zheng.png"
+  
+  >
+
+
+  
+  
+
+  <style type="text/css">
+      @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
+
+
+  
+  <link rel="stylesheet" href="https://orianna-zzo.github.io/js/vendors/katex/katex.min.css">
+  
+
+  
+    
+    <link rel="stylesheet" href="https://orianna-zzo.github.io/css/vendors/highlight/github-gist.css">
+  
+
+</head>
+
+  <body class="bg-light" data-spy="scroll" data-target="#page-scrollspy" data-offset="90">
+  
+    
+    
+
+    
+      
+
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      
+      <a class="navbar-brand" href="https://orianna-zzo.github.io/">
+          
+        <img class="avatar" src="https://orianna-zzo.github.io/img/zheng.png" style="width: 40px!important;height: auto;"  class="d-inline-block align-top" alt="" >
+        
+        <strong> ZHENG Zi&#39;ou</strong>
+      </a>
+
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item ">
+            <a class="nav-link" href="https://orianna-zzo.github.io/">Home</a>
+          </li>
+             
+            <li class="nav-item  active ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/sci-tech/" >Sci-Tech  <span class="sr-only">(current)</span> </a>
+            </li>
+          
+             
+            <li class="nav-item ">
+              <a class="nav-link" href="https://orianna-zzo.github.io/blog/" >Blog  </a>
+            </li>
+          
+          
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  
+ 
+      
+ 
+
+
+
+
+
+
+
+<div id="site-header" class="carousel slide carousel-fade" data-ride="carousel" style="height: 18rem;" >  
+
+  
+  
+  
+
+  
+  <div class="carousel-inner" role="listbox">
+    
+      
+
+        
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/explore.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              
+              
+              
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/fan.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/in_the_mirror.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/leaf.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/orianna_in_the_wood.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515691746.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+      
+
+        
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('https://orianna-zzo.github.io//img/header-slides/raw_1515847341.jpeg'); background-repeat: no-repeat; background-size: cover;">
+
+            
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+            
+
+            </div>
+            
+
+          </div>
+        </div>
+        
+      
+    
+
+  
+  </div>
+  
+
+  
+  <div class="carousel-content text-center white-text wow fadeIn">
+    <div class="row mx-0 headfont mt-3 pt-4">
+      
+      <div class="col-12 col-sm-5 align-middle">
+        <a href="https://orianna-zzo.github.io/">
+          
+            <img class="pull-right avatar avatar-md" src="https://orianna-zzo.github.io/img/profile.png" alt="" >
+          
+        </a>
+      </div>
+      
+      <div class="col-12 col-sm-7 text-left pl-2">
+        <a href="https://orianna-zzo.github.io/">
+          <h1 class="mb-2 h1" style="font-weight: 300;" >
+            <strong>ZHENG Zi&#39;ou</strong>
+          </h1>
+        </a>
+        
+
+             
+        <div class="mt-2" style="font-size: 1rem; color: white;">
+            
+              <a href="//github.com/orianna-zzo" target="_blank" rel="noopener"><i class="fab fa-github pr-1" aria-hidden="true"></i></a>    
+            
+            
+              <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin pr-1" aria-hidden="true"></i></a>
+            
+
+            
+
+            
+
+            
+
+            
+                <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+    
+        
+            
+                <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open pr-1" aria-hidden="true"></i></a>
+            
+    
+            
+
+            
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+
+</div>
+  
+    
+
+    
+  
+  <main class="post-main-wrapper">
+    
+    
+    <div class="row">
+
+      
+
+      
+      <div class="col-md-10">
+      
+
+        
+        <div class="z-depth-1  post-wrapper white-bg single-post">
+
+          <div class="post-header text-center" >
+  <ul class="post-meta li-x">
+    
+      
+        <li><a href="https://orianna-zzo.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D"><i class="fas fa-folder-open pr-1" aria-hidden="true"></i> 杂技浅尝 </a></li>
+      
+    
+    
+      
+        <li><a href="https://orianna-zzo.github.io/series/%E6%85%A2%E5%AD%A6docker"><i class="fas fa-bookmark pr-1" aria-hidden="true"></i>慢学Docker</a></li>
+      
+    
+  </ul>
+
+  <div class="px-4 post-heading">慢学Docker(2) Docker初探</div>
+
+  <ul class="post-meta li-x mt-1">
+    
+      <li>Jan 27, 2018</li>
+    
+
+    
+      <li class="middot"></li>
+      <li>9 minutes read</li>
+    
+  </ul>
+  
+
+</div>
+
+
+          <div class="post-content markdown">
+            
+
+<h2 id="introduction">Introduction</h2>
+
+<h3 id="什么是docker">什么是docker？</h3>
+
+<p>什么是Docker？Docker是一个开源的容器应用引擎。开发者可以将应用及依赖打包上传到一个可移植的容器中执行，由于容器是可移植的，于是，这个应用就可以在任何其他可以运行这个容器的地方运行了。换句话说，只要其他可以运行docker的地方就可以运行这个容器（因为是可移植的），也就可以运行你的应用，而docker在很多平台都可以安装运行，这样完全不用担心由于平台环境的不同对应用部署带来的困难，更不用提多次部署这种重复劳动的麻烦事了。此外，容器使用了sandbox机制，容器与容器之间有较好的隔离性，不用担心。这是docker最通俗也是最广泛的应用。</p>
+
+<p>是不是觉得这个优点和应用很熟悉？当我们想要跨平台无视底层环境要求跑程序执行应用我们都会想到什么？对，就是虚拟机。在本机上装个虚拟机应用比如说virtual box或者vmware，然后再用操作系统镜像（比如说win7）建个虚拟机，就可以在虚拟机中安装各种应用了。在这里docker就相当于virtual box或者vmware，容器就相当于你建的虚拟机实例，docker中也有一个镜像的概念，就相当于你建虚拟机所使用的操作系统镜像（win7）。这样说是否更通俗易理解一些？</p>
+
+<h3 id="docker容器-vs-vm虚拟机">docker容器 vs vm虚拟机</h3>
+
+<p>既然虚拟机也可以完成相似的功能，为什么要用docker呢？换句话来问，同样都是虚拟化技术，docker的容器技术和vm虚拟机有什么区别？docker官方网站也简单回答了这个疑问，可以在<a href="https://docs.docker.com/get-started/#containers-vs-virtual-machines">这里</a>查看。我对于这些底层的架构知识并不是很了解，只能根据网上的信息以及最近这一个月的入门级使用谈及一下感受。</p>
+
+<p>相比vm虚拟机，docker的容器技术更为轻量级。直观上，这个轻量级体现在启动速度更快、占用资源更少。我并没有具体测试比较过，但在实际使用中感受是，我原本开一个虚拟机跑程序就已经很不错了，虚拟机开机还有个等待开机时间，而现在使用docker，容器载入速度很快，同时在机子上会运行几个不同的容器，从镜像重新生成容器也很快很方便。2014年开始，docker一直对外宣传的一个重点也是这个，“虚拟机需要数分钟启动，而Docker容器只需要50毫秒”。</p>
+
+<p>不过docker容器和虚拟机尽管都是虚拟化技术，但是里面的技术细节有很多不同。下面两张docker官网上的图很清晰简单地表示了两者的区别：</p>
+
+<p><img name="virtual machine architecture" src="https://www.docker.com/sites/default/files/VM%402x.png" width='300px'/></p>
+
+<p><img name="docker container architecture" src="https://www.docker.com/sites/default/files/Container%402x.png"  width='300px'/></p>
+
+<p>前者是虚拟机的架构图，后者是docker容器的架构图。最显然的区别是，每个虚拟机中都运行着各自的guest OS，而在docker容器架构中每个容器只包含了各自的应用和依赖包，并不包含独立的操作系统。也就是说容器采用kernel共享，同时使用cgroups和namespace等方法对容器所使用的命名空间和依赖包等进行区分以达到隔离效果。所以尽管各个容器都是独立在宿主机的操作系统上运行着的，但不可避免地，各个容器之间会共享一些通用运行库。这个区别会使得各个容器之间相互独立，但并没有虚拟机的隔离性好，但这也是使得docker容器能够快速启动并且资源占用少的一个重要原因。太复杂的我也不清楚细节，只是大致有个概念，这对我们简单应用了解也应该就足够了。</p>
+
+<p>嗯，再啰嗦一句。在查资料是看到了这篇知乎上的<a href="https://zhuanlan.zhihu.com/p/30594040?utm_source=weibo&amp;utm_medium=social">博文</a>，里面提到在会议SOSP 2017上发表了一篇很有意思的paper，他们通过精简内核和其他虚拟技术把虚拟机做的更轻量级，使之启动速度比docker更快，内存开销比docker更小。现在的热门是容器技术，说不定再过个四五年的又是虚拟机的天下了呢？嗯，说不准是两个结合的究极进化体。门外汉表示看看热闹就可以了。</p>
+
+<h3 id="docker并不万能">docker并不万能</h3>
+
+<p>Docker真心很好用，才上手了1个多月的我特别喜欢。但是作为新兴技术，还有很多不完善的地方。有些问题可能作为个人使用者来说并不是很大的问题，但是对于生产来说都是非常重要需要考虑的问题，这里只是简单记录下到目前为止遇到的一些局限性，至于其他的，遇到再加吧：</p>
+
+<ul>
+<li>docker容器主要针对Unix系的，也就是说如果应用是基于windows平台的，现在无法使用docker容器。不负责任地加一嘴，就是没有windows系的基镜像，就像不让你用windows虚拟机一样。</li>
+<li>docker本身基于Linux 64bit，也就是说如果你的机子是32位的，暂时无法使用，不过好在现在基本是64位机的天下了，这个问题基本很少遇到。</li>
+<li>windows机如果要使用docker，需要支持硬件虚拟化。现在windows版的docker实际上相当于跑了个linux内核的虚拟机。也就是windows不是所有64位机子都能装得上docker的，我新的实习生电脑就装不上，公司的windows笔记本也装不上。</li>
+<li>截止目前为止，docker的安装还需要root权限，docker的使用至少需要有sudo权限的用户组。据说容器的使用已经可以不需要root权限了，但我还没有实际使用过。公司服务器一般不会给你root权限，这个需要找运营，折腾起来麻烦。</li>
+<li>由于docker的隔离性并不够强，所以docker的安全方面还有待加强。这部分我还没有强烈感受到，反正不影响在自己电脑上折腾。</li>
+</ul>
+
+<h3 id="gpu的选择-nvidia-docker">GPU的选择: Nvidia Docker</h3>
+
+<p>Docker很好地解决了cpu程序环境依赖问题，但没有解决gpu程序的依赖问题。程序无法可移植地配置gpu环境。为docker配置gpu (nvidia) 环境必须在虚拟环境中安装与宿主环境相同版本的显卡驱动，并手动将显卡设备挂在指定位置。这为gpu程序移植造成困扰。Nvidia在docker基础上进行了封装，解决了gpu依赖问题。如果需要使用gpu，可以安装nvidia-docker。Nvidia-docker安装的前置条件包括docker已经安装、NVIDIA GPU、NVIDIA driver已经安装等，具体条件和安装过程需要查看nvidia-docker的<a href="https://github.com/NVIDIA/nvidia-docker">github</a>。</p>
+
+<p>这里只是提一嘴，关注点还是在docker本身。毕竟现在用的mac可用的不是n卡，等有机会整个n卡玩并需要安装docker的时候再试试nvidia-docker。</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Docker分为Community (CE) 和Enterprise (EE) 版本，个人使用用CE就够了，一些EE的高级功能用不上也不会用。Docker CE有分为stable版和edge版，前者每一个季度更新一个更reliable的更新，后者每个月都会提供一些新的特征。不爱折腾的我就直接选择stable版。更多关于docker安装的环境需求可以参考官网<a href="https://docs.docker.com/install/#server">该页面</a>，不同的环境还是有不同的需求的。</p>
+
+<p>网上有很多零散的安装教程，建议找最新的来看，很多实际上都过时了。最安全的当然直接上官网。</p>
+
+<h3 id="mac安装">Mac安装</h3>
+
+<p>Mac可以选择用Homebrew进行安装:</p>
+
+<pre><code class="language-shell">$ # stable channel
+$ brew cask install docker
+$ # edge channel
+$ brew cask install docker-edge
+</code></pre>
+
+<p>也可以在<a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac">这里</a>选择stable或者edge进行下载，安装对应的dmg包即可。</p>
+
+<p>PS，其实还有docker toolbox，暂时还没搞清楚之间的关系，感觉可能是早期版本，官网<a href="https://docs.docker.com/docker-for-mac/docker-toolbox/">这里</a>给出了解释，没有仔细看，不过我认为无脑安装docker for mac就够用了。</p>
+
+<h3 id="windows安装">Windows安装</h3>
+
+<p>在官网<a href="https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows">这里</a>选择版本进行下载安装。不过Windows最低版本要求时64位win10 pro。</p>
+
+<h3 id="linux安装">Linux安装</h3>
+
+<p>Docker CE支持Ubuntu、Debian、CentOS、Fedora这几个Linux环境安装。
+以下主要作为介绍及资料汇总，来源为官网(<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>、<a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>、<a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS</a>、<a href="https://docs.docker.com/install/linux/docker-ce/fedora/">Fedora</a>)。</p>
+
+<p>Linux的版本要求如下：</p>
+
+<ul>
+<li>Ubuntu
+
+<ul>
+<li>Artful 17.10 (仅Docker CE 17.11 Edge 或更高版本)</li>
+<li>Xenial 16.04 (LTS)</li>
+<li>Trusty 14.04 (LTS)<br /></li>
+</ul></li>
+<li>Debian
+
+<ul>
+<li>Buster 10 (Docker CE 17.11 Edge only)</li>
+<li>Stretch 9 (stable) / Raspbian Stretch</li>
+<li>Jessie 8 (LTS) / Raspbian Jessie</li>
+<li>Wheezy 7.7 (LTS) (需要升级内核，版本至少为3.10)</li>
+</ul></li>
+<li>CentOS
+
+<ul>
+<li>CentOS7 maintained version<br /></li>
+</ul></li>
+<li>Fedora
+
+<ul>
+<li>64位 version 26</li>
+<li>64位 version 27</li>
+</ul></li>
+</ul>
+
+<p>安装前需要先卸载以前的旧版本的docker或者docker-engine。</p>
+
+<p>Linux安装分为2种：</p>
+
+<ul>
+<li><p>一种是在<a href="https://download.docker.com/linux/">这里</a>选择对应的linux发行版本下载安装包。</p>
+
+<ul>
+<li>Ubuntu<br />
+在<a href="https://download.docker.com/linux/ubuntu/dists/">https://download.docker.com/linux/ubuntu/dists/</a>选择Ubuntu版本，然后进入pool/stable文件夹，选择计算机架构并下载.deb包。<br /></li>
+<li>Debian<br />
+在<a href="https://download.docker.com/linux/debian/dists/">https://download.docker.com/linux/debian/dists/</a>选择Debian版本，然后进入pool/stable文件夹，选择计算机架构并下载.deb包。<br /></li>
+<li>CentOS<br />
+在<a href="https://download.docker.com/linux/centos/7/x86_64/stable/Packages/">https://download.docker.com/linux/centos/7/x86_64/stable/Packages/</a>下载.rpm包。</li>
+<li>Fedora<br />
+在<a href="https://download.docker.com/linux/fedora/">https://download.docker.com/linux/fedora/</a>选择Fedora版本，然后进入x86_64/stable/Packages文件夹，选择计算机架构并下载.rpm包。
+<br /></li>
+</ul></li>
+</ul>
+
+<p>然后再通过安装包进行安装，并通过下面命令启动docker。</p>
+
+<pre><code class="language-shell">  $ # Ubuntu &amp; Debian
+  $ sudo dpkg -i /path/to/package.deb    # start docker automatically
+  $ # CentOS
+  $ sudo yum install /path/to/package.rpm
+  $ sudo systemctl start docker    # start docker
+  $ # Fedora
+  $ sudo dnf -y install /path/to/package.rpm
+  $ sudo systemctl start docker    # start docker
+</code></pre>
+
+<ul>
+<li>另一种需要先配置包管理器（apt-get/yum/dnf）的repository，再通过对应包管理器下载。不同的发行版本，具体的操作也不同，详情这里就不列举了，到官网对应的安装说明页（<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a>、<a href="https://docs.docker.com/install/linux/docker-ce/debian/">Debian</a>、<a href="https://docs.docker.com/install/linux/docker-ce/centos/">CentOS</a>、<a href="https://docs.docker.com/install/linux/docker-ce/fedora/">Fedora</a>）去查看。</li>
+</ul>
+
+<h3 id="查看安装版本">查看安装版本</h3>
+
+<p>安装完毕后可以检查Docker Engine, Docker Compose和Docker Machine版本</p>
+
+<pre><code class="language-shell">$ docker --version
+$ docker-compose --version
+$ docker-machine --version
+</code></pre>
+
+<p>这样docker就安装成功了！</p>
+
+<h2 id="一个简单的实例">一个简单的实例</h2>
+
+<p>安装完docker后，可以通过一个简单的实例了解docker的一些基础操作，这样就可以快速开始上手玩了。更为复杂的操作以及基本概念会在后续内容中介绍。</p>
+
+<p>首先，我们需要获得一个镜像，例如alpine：</p>
+
+<pre><code class="language-shell">$ docker pull alpine
+</code></pre>
+
+<p>这样我们就从docker的仓库中获得了latest版本的alpine镜像（默认latest版本），通过下面命令查看电脑中所有的docker镜像及镜像信息：</p>
+
+<pre><code class="language-shell">$ docker images
+</code></pre>
+
+<p>alpine镜像已经下载成功，接下去我们就运行一个alpine的容器：</p>
+
+<pre><code class="language-shell">$ docker run --name my-docker -it alpine
+</code></pre>
+
+<p><code>—name</code> 给这个容器赋一个名字， <code>-it</code> 表示使用一个可交互的终端。</p>
+
+<p>这时就已经在一个alpine容器中了。可以进行你想做的操作，比如说 <code>ls</code>，<code>cd</code>等。操作完成后可以键入 <code>exit</code> 离开容器。</p>
+
+<p>我们看一下现在运行的容器：</p>
+
+<pre><code class="language-shell">$ docker ps
+</code></pre>
+
+<p>嗯，看不到my-docker了，这个容器已经关掉了。</p>
+
+<p>那现在一共有哪些容器呢？</p>
+
+<pre><code class="language-shell">$ docker ps -a
+</code></pre>
+
+<p>这会显示所有的容器，包括并未在运行的容器。</p>
+
+<p>我们可以继续打开这个容器继续上次未完的操作：</p>
+
+<pre><code class="language-shell">$ docker start -i my-docker
+</code></pre>
+
+<p><code>-i</code> 表示使用可交互式的方式。</p>
+
+<p>这样可以继续上次的操作，并以 <code>exit</code>退出。</p>
+
+<p>这个容器后面不再会使用的话，可以删除：</p>
+
+<pre><code class="language-shell">$ docker rm my-docker
+</code></pre>
+
+<p>alpine这个镜像如果不使用的话也可以删除了：</p>
+
+<pre><code class="language-shell">$ docker rmi alpine
+</code></pre>
+
+<h2 id="resource资源链接汇总">Resource资源链接汇总：</h2>
+
+<p><a href="https://docs.docker.com/">docker官方文档</a>、<a href="https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac">docker for mac下载页</a>、<a href="https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows">docker for windows下载页</a>、<a href="https://download.docker.com/linux/">docer for linux下载页</a></p>
+
+<p><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">docker for Ubuntu安装说明</a>、<a href="https://docs.docker.com/install/linux/docker-ce/debian/">docker for Debian安装说明</a>、<a href="https://docs.docker.com/install/linux/docker-ce/centos/">docker for CentOS安装说明</a>、<a href="https://docs.docker.com/install/linux/docker-ce/fedora/">docker for Fedora安装说明</a></p>
+
+<p><a href="https://github.com/NVIDIA/nvidia-docker">nvidia-docker github</a></p>
+
+<h2 id="版本控制">版本控制</h2>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Action</th>
+<th>Time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1.0</td>
+<td>Init</td>
+<td>2018-01-27</td>
+</tr>
+
+<tr>
+<td>1.1</td>
+<td>Update Linux Installation</td>
+<td>2018-03-21</td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-8">
+            
+              <div class="mb-5">
+                
+<div class="li-x div-x post-meta">
+  <li class="pr-0"><a href="https://orianna-zzo.github.io/tags/"><i class="fas fa-tags"></i></a></li>
+  <div class="tags-sm">
+    
+      <li><a href="https://orianna-zzo.github.io/tags/docker" role="button">docker </a></li>
+      
+    
+  </div>
+</div>
+              </div>
+            
+            </div>
+            
+          </div>
+          
+
+          
+          <div class="row pt-3">
+            <div class="col-md-6">
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/%E6%85%A2%E5%AD%A6docker1-preface/ class="post-meta">Previous
+                  <div class="pt-2 pb-5 d-flex">
+                    <i class="fas fa-angle-left text-grey font-weight-bold mr-2 active-color"></i>
+                    <span>慢学Docker(1) Preface</span>
+                  </div>
+                </a>
+              
+            </div>
+            
+            <div class="col-md-6 text-right" >
+              
+                <a href=https://orianna-zzo.github.io/sci-tech/2018-01/mac%E4%B8%ADgit%E5%BF%BD%E7%95%A5.ds_store%E6%96%87%E4%BB%B6/ class="post-meta">Next
+                  <div class="pt-2 pb-5 flex-reverse">
+                    <i class="fas fa-angle-right text-grey font-weight-bold ml-2 active-color"></i>
+                    <span>Mac中Git忽略.DS_Store文件</span>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+
+          
+
+        </div>
+        
+
+      </div>
+      
+
+      
+	
+	
+	
+	
+		
+		
+		
+	
+
+		
+		<div class="col-md-2 pl-0">
+
+			
+			<div id="page-scrollspy" class="toc-nav">
+				
+				<ul class="nav nav-pills ml-0">
+					
+					<li class="nav-item pb-3 text-center">
+						<span class="font-weight-bold mb-2">- CATALOG - </span>
+					</li>
+
+					
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#introduction">
+												 Introduction
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%bb%80%e4%b9%88%e6%98%afdocker">
+												 什么是docker？
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#docker%e5%ae%b9%e5%99%a8-vs-vm%e8%99%9a%e6%8b%9f%e6%9c%ba">
+												 docker容器 vs vm虚拟机
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#docker%e5%b9%b6%e4%b8%8d%e4%b8%87%e8%83%bd">
+												 docker并不万能
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#gpu%e7%9a%84%e9%80%89%e6%8b%a9-nvidia-docker">
+												 GPU的选择: Nvidia Docker
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#installation">
+												 Installation
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#mac%e5%ae%89%e8%a3%85">
+												 Mac安装
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#windows%e5%ae%89%e8%a3%85">
+												 Windows安装
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#linux%e5%ae%89%e8%a3%85">
+												 Linux安装
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e6%9f%a5%e7%9c%8b%e5%ae%89%e8%a3%85%e7%89%88%e6%9c%ac">
+												 查看安装版本
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e4%b8%80%e4%b8%aa%e7%ae%80%e5%8d%95%e7%9a%84%e5%ae%9e%e4%be%8b">
+												 一个简单的实例
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#resource%e8%b5%84%e6%ba%90%e9%93%be%e6%8e%a5%e6%b1%87%e6%80%bb">
+												 Resource资源链接汇总：
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+						
+						
+							
+								
+								
+									<ul class="nav">
+								
+								
+
+										<li class="nav-item">
+						 					<a class="nav-link" href="#%e7%89%88%e6%9c%ac%e6%8e%a7%e5%88%b6">
+												 版本控制
+											</a>
+										</li>
+						 
+								
+								
+									</ul>
+								
+							
+						
+				 
+
+				</ul>
+			</div>
+			
+
+		</div>
+		
+	
+
+    </div>
+    
+
+
+  </main>
+  
+
+
+    
+    
+
+<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+
+  
+  <div class="pb-2 mt-5 pt-5">
+    
+      <a href="//github.com/orianna-zzo " target="_blank" rel="noopener"><i class="fab fa-github mr-3" aria-hidden="true"></i></a>    
+    
+    
+      <a href="//linkedin.com/in/ziouzheng" target="_blank" rel="noopener"><i class="fab fa-linkedin-in mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+    
+
+    
+        <a href="//instagram.com/seagulldreamer/" target="_blank" rel="noopener"><i class="fab fa-instagram mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+
+    
+        <a href="mailto:zhengziou@gmail.com"><i class="far fa-envelope-open mr-3" aria-hidden="true"></i></a>
+    
+
+    
+
+    
+
+  </div>
+  
+
+  
+  <div class="copyright py-4">
+    
+    <span>  2016 - 2018 &copy; | Theme <a href='https://github.com/orianna-zzo/AllinOne' target="_blank">AllinOne</a> by <a href='https://github.com/orianna-zzo' target="_blank">Orianna</a>  </span>
+  </div>
+  
+
+</footer>
+
+
+    
+
+
+
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/jquery/jquery.smooth-scroll.min.js"></script>
+
+
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/popper.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/holder.min.js"></script>
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors-extensions/bootstrap4/bootstrap.js" ></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/vendors/mdb/mdb.min.js"></script>
+
+<script type="text/javascript" src="https://orianna-zzo.github.io/js/main.js"></script>
+
+
+
+  
+<script src="https://orianna-zzo.github.io/js/vendors/highlight.pack.js"> </script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+<script src="https://orianna-zzo.github.io/js/vendors/katex/katex.min.js"> </script>
+<script src="https://orianna-zzo.github.io/js/vendors/katex/contrib/auto-render.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body);
+    });
+</script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+  new WOW().init();
+</script>
+
+
+
+
+  </body>
+</html>
